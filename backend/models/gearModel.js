@@ -10,4 +10,4 @@ const gearSchema = new Schema({
   image_url: Schema.Types.Mixed
 }, { timestamps: true })
 
-module.exports = mongoose.model('gearSchema', gearSchema)
+module.exports = mongoose.model('Gear', gearSchema)

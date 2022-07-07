@@ -1,4 +1,5 @@
 const express = require('express')
+const Gear = require('../models/gearModel')
 
 const router = express.Router()
 
@@ -13,8 +14,30 @@ router.get('/:id', (req, res) => {
 })
 
 // POST single closet item
-router.post('/', (req, res) => {
-  res.json({mssg: 'POST new closet item'})
+router.post('/', async (req, res) => {
+  console.log(req.body)
+  const {
+    gear_name, 
+    weight, 
+    price, 
+    notes, 
+    website, 
+    image_url
+  } = req.body
+
+  try {
+    const gear = await Gear.create({
+        gear_name, 
+        weight, 
+        price, 
+        notes, 
+        website, 
+        image_url
+      })
+    res.status(200).json(gear)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
 })
 
 // DELETE single closet item
