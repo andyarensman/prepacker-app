@@ -58,12 +58,39 @@ const addGear = async (req, res) => {
 
 // delete gear
 const deleteSingleGear = async (req, res) => {
+  const { id } = req.params
+
+  if ( !mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({error: 'No such gear'})
+  }
+
+  const gear = await Gear.findOneAndDelete({_id: id})
+
+  if (!gear) {
+    return res.status(404).json({error: 'No such gear'})
+  }
+
+  res.status(200).json(gear)
 
 }
 
 // edit gear
 const editGear = async (req, res) => {
+  const { id } = req.params
 
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({error: 'No such gear'})
+  }
+
+  const gear = await Gear.findOneAndUpdate({_id: id }, {
+    ...req.body
+  })
+
+  if (!gear) {
+    return res.status(404).json({error: 'No such gear'})
+  }
+
+  res.status(200).json(gear)
 }
 
 

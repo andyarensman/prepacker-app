@@ -1,5 +1,5 @@
 const express = require('express')
-const { getGear, getSingleGear, addGear } = require('../controllers/closetController')
+const { getGear, getSingleGear, addGear, deleteSingleGear, editGear } = require('../controllers/closetController')
 
 
 const router = express.Router()
@@ -14,14 +14,10 @@ router.get('/:id', getSingleGear)
 router.post('/', addGear)
 
 // DELETE single closet item
-router.delete('/:id', (req, res) => {
-  res.json({mssg: 'DELETE a closet item'})
-})
+router.delete('/:id', deleteSingleGear)
 
 // UPDATE single closet item
-router.patch('/', (req, res) => {
-  res.json({mssg: 'UPDATE closet item'})
-})
+router.patch('/:id', editGear)
 
 
 
