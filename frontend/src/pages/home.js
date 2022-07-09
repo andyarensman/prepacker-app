@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 // components
 import GearDetails from '../components/GearDetails'
+import GearForm from "../components/GearForm";
 
 const Home = () => {
 
@@ -27,6 +28,7 @@ const Home = () => {
           <GearDetails key={gear._id} gear={gear}/>
         ))}
       </div>
+      <GearForm />
     </div>
    );
 }
