@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useClosetContext } from "../hooks/useClosetContext";
 
 // components
 import GearDetails from '../components/GearDetails'
 import GearForm from "../components/GearForm";
 
 const Home = () => {
-
-  const [closet, setCloset] = useState(null)
+  const {closet, dispatch}= useClosetContext()
 
   useEffect(() => {
     const fetchCloset = async () => {
@@ -14,12 +14,12 @@ const Home = () => {
       const json = await response.json()
 
       if (response.ok) {
-        setCloset(json)
+        dispatch({type:'SET_CLOSET', payload: json})
       }
     }
 
     fetchCloset()
-  }, [])
+  }, [dispatch])
 
   return ( 
     <div className="home">

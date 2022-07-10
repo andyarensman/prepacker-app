@@ -1,8 +1,11 @@
 // TODO: Need to add other things to the form
 
 import { useState } from "react";
+import { useClosetContext } from "../hooks/useClosetContext";
 
 const GearForm = () => {
+  const { dispatch } = useClosetContext()
+
   const [gear_name, setGearName] = useState('')
   const [weight, setWeight] = useState('')
   const [price, setPrice] = useState('')
@@ -32,6 +35,7 @@ const GearForm = () => {
       setWeight('')
       setError(null)
       console.log('new workout added', json)
+      dispatch({type: 'CREATE_GEAR', payload: json})
     }
   }
 
