@@ -12,6 +12,10 @@ export const closetReducer = (state, action) => {
       return {
         closet: [action.payload, ...state.closet]
       }
+    case 'DELETE_GEAR':
+      return {
+        closet: state.closet.filter((gear) => gear._id !== action.payload._id)
+      }
     default:
       return state
   }
