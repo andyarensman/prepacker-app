@@ -1,6 +1,9 @@
 // TODO: Need to add any other gear information here. Images, etc.
 import { useClosetContext } from "../hooks/useClosetContext";
 
+// date fns
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 const GearDetails = ({ gear }) => {
 
   const { dispatch } = useClosetContext()
@@ -21,8 +24,8 @@ const GearDetails = ({ gear }) => {
       <h4>{gear.gear_name}</h4>
       {gear.weight && <p><strong>Weight (lbs): </strong>{gear.weight}</p>}
       {gear.price && <p><strong>Price ($): </strong>{gear.price}</p>}
-      {gear.createdAt}
-      <span onClick={handleClick}>delete</span>
+      <p>{formatDistanceToNow(new Date(gear.createdAt), { addSuffix: true })}</p>
+      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>
    );
 }
