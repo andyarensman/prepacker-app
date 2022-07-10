@@ -10,6 +10,7 @@ const GearForm = () => {
   const [weight, setWeight] = useState('')
   const [price, setPrice] = useState('')
   const [error, setError] = useState(null)
+  const [emptyFields, setEmptyFields] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -27,6 +28,7 @@ const GearForm = () => {
 
     if (!response.ok) {
       setError(json.error)
+      setEmptyFields(json.emptyFields)
     }
 
     if (response.ok) {
@@ -34,6 +36,7 @@ const GearForm = () => {
       setPrice('')
       setWeight('')
       setError(null)
+      setEmptyFields([])
       console.log('new workout added', json)
       dispatch({type: 'CREATE_GEAR', payload: json})
     }
@@ -48,6 +51,7 @@ const GearForm = () => {
         type="text"
         onChange={(e) => setGearName(e.target.value)}
         value={gear_name}
+        className={emptyFields.includes('gear_name') ? 'error' : ''}
       />
 
       <label>Weight (lbs):</label>

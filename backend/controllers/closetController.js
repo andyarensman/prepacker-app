@@ -39,6 +39,17 @@ const addGear = async (req, res) => {
     image_url
   } = req.body
 
+  // forgotten Field
+  let emptyFields = []
+
+  //! If there are more required fields, add them here with more if checks
+  if(!gear_name) {
+    emptyFields.push('gear_name')
+  }
+  if(emptyFields.length > 0) {
+    return res.status(400).json({ error: 'Please fill in all required fields', emptyFields})
+  }
+
   // add doc to db
   try {
     const gear = await Gear.create({
