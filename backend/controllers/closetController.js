@@ -1,5 +1,7 @@
 const Gear = require('../models/gearModel')
 const mongoose = require('mongoose')
+const axios = require('axios')
+const cheerio = require('cheerio')
 
 // get all gear
 const getGear = async (req, res) => {
@@ -104,11 +106,31 @@ const editGear = async (req, res) => {
   res.status(200).json(gear)
 }
 
+const getScrapedGear = async (req, res) => {
+
+  const url_scrape = req.body.url_scrape
+
+  axios(url_scrape)
+    .then(res => {
+      const html = res.data
+      const $ = cheerio.load(html)
+
+      //TODO: Get other data
+      const gear_name = $('#product-page-title').text().trim()
+      console.log(gear_name)
+
+      //TODO: Send the data back to frontend
+      
+    }).catch(err => console.log(err))
+
+}
+
 
 module.exports = {
   getGear,
   getSingleGear,
   addGear,
   deleteSingleGear,
-  editGear
+  editGear,
+  getScrapedGear
 }

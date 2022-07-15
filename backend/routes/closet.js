@@ -1,5 +1,5 @@
 const express = require('express')
-const { getGear, getSingleGear, addGear, deleteSingleGear, editGear } = require('../controllers/closetController')
+const { getGear, getSingleGear, addGear, deleteSingleGear, editGear, getScrapedGear } = require('../controllers/closetController')
 
 
 const router = express.Router()
@@ -18,6 +18,9 @@ router.delete('/:id', deleteSingleGear)
 
 // UPDATE single closet item
 router.patch('/:id', editGear)
+
+// POST scraped data
+router.post('/scrape-gear', getScrapedGear)
 
 
 
