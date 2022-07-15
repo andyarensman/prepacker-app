@@ -4,6 +4,7 @@ import { useClosetContext } from "../hooks/useClosetContext";
 // components
 import GearDetails from '../components/GearDetails'
 import GearForm from "../components/GearForm";
+import GearScraper from "../components/GearScraper";
 
 const Home = () => {
   const {closet, dispatch}= useClosetContext()
@@ -28,7 +29,10 @@ const Home = () => {
           <GearDetails key={gear._id} gear={gear}/>
         ))}
       </div>
-      <GearForm />
+      <div>
+        <GearForm />
+        <GearScraper />
+      </div>
     </div>
    );
 }
