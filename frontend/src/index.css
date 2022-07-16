@@ -30,7 +30,7 @@ header a {
 }
 .pages{
   max-width: 1400px;
-  padding: 20px;
+  padding: 20px 40px;
   margin: 0 auto;
 }
 
@@ -104,4 +104,11 @@ div.error {
 }
 input.error {
   border: 1px solid var(--error);
+}
+
+@media screen and (max-width: 1200px) {
+  .home {
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+  }
 }
