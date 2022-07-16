@@ -109,20 +109,32 @@ const editGear = async (req, res) => {
 const getScrapedGear = async (req, res) => {
 
   const url_scrape = req.body.url_scrape
+  let returnData = [];
 
-  axios(url_scrape)
-    .then(res => {
-      const html = res.data
+  await axios(url_scrape)
+    .then(response => {
+      const html = response.data
       const $ = cheerio.load(html)
 
+      // Create an array of objects for the data
       //TODO: Get other data
       const gear_name = $('#product-page-title').text().trim()
       console.log(gear_name)
+      returnData.push({gear_name})
 
-      //TODO: Send the data back to frontend
+      // Weight - need a regex and alg. for converting weight text to num
+      // 1) Get the weight String
+
+      // 2) ???
+
+      // 3) Profit
+      
       
     }).catch(err => console.log(err))
-
+  
+  console.log(returnData)
+  //Send the data back to frontend
+  res.status(200).json(returnData)
 }
 
 

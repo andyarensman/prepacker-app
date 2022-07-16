@@ -17,8 +17,8 @@ const GearScraper = () => {
       }
     })
     //TODO: Get data to frontend and handle it
-    const jsonScrape = await scrapeResponse.json()
-    console.log(jsonScrape)
+    const jsonScrapeObj = await scrapeResponse.json()
+    console.log(jsonScrapeObj)
   }
 
   return (
