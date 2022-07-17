@@ -122,6 +122,32 @@ const getScrapedGear = async (req, res) => {
       console.log(gear_name)
       returnData.push({gear_name})
 
+      // console.log($('#tech-specs-collapsible > table > tbody > tr:nth-child(11) > td > p:nth-child(1)').text())
+
+      let tableArray = []
+
+      $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
+        //console.log($(element).text());
+        // console.log($(element).find('td').text().trim());
+
+        let key = $(element).find('th').text().trim()
+        let value = []
+
+        // value.push($(element).find('td').find('p').text().trim())
+
+        
+        console.log(value)
+      });
+
+      // Grab full table?
+      /*
+      [
+        {
+          tech-spec: "info"
+        }
+      ]
+      */
+
       // Weight - need a regex and alg. for converting weight text to num
       // 1) Get the weight String
 
@@ -132,7 +158,7 @@ const getScrapedGear = async (req, res) => {
       
     }).catch(err => console.log(err))
   
-  console.log(returnData)
+  //console.log(returnData)
   //Send the data back to frontend
   res.status(200).json(returnData)
 }
