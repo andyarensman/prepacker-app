@@ -128,13 +128,13 @@ const getScrapedGear = async (req, res) => {
 
       $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
 
-        let key = $(element).find('th').text().trim()
+        let key = $(element).find('th').text().trim().toLowerCase()
         let value = []
 
         // This is a mess but it works
         value.push(...$('p', element).text().trim().split(/\r?\n/))
         value.forEach((e, i) => {
-          value[i] = e.replace(/\r?\n/, '').trim()
+          value[i] = e.replace(/\r?\n/, '').trim().toLowerCase()
         })
         value = value.filter(e => e)
 
