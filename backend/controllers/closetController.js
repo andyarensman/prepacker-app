@@ -116,44 +116,39 @@ const getScrapedGear = async (req, res) => {
       const html = response.data
       const $ = cheerio.load(html)
 
-      // Create an array of objects for the data
+      // Create an array of objects for the data in returnData
       //TODO: Get other data
       const gear_name = $('#product-page-title').text().trim()
       console.log(gear_name)
       returnData.push({gear_name})
 
-      // console.log($('#tech-specs-collapsible > table > tbody > tr:nth-child(11) > td > p:nth-child(1)').text())
+      // Grab all data from the table and store it as an array of objects
 
       let tableArray = []
 
       $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
-        //console.log($(element).text());
-        // console.log($(element).find('td').text().trim());
 
         let key = $(element).find('th').text().trim()
         let value = []
 
-        // value.push($(element).find('td').find('p').text().trim())
+        // This is a mess but it works
+        value.push(...$('p', element).text().trim().split(/\r?\n/))
+        value.forEach((e, i) => {
+          value[i] = e.replace(/\r?\n/, '').trim()
+        })
+        value = value.filter(e => e)
 
-        
-        console.log(value)
+        let obj = {}
+        obj[key] = value
+        tableArray.push(obj)
       });
+      console.log(tableArray)
 
-      // Grab full table?
-      /*
-      [
-        {
-          tech-spec: "info"
-        }
-      ]
-      */
+      // Go through the tableArray and first find if anything exactly matches 'weight'
+      
+      // if not, go through again and find any key with weight in it's name
 
-      // Weight - need a regex and alg. for converting weight text to num
-      // 1) Get the weight String
-
-      // 2) ???
-
-      // 3) Profit
+      // convert the key's value to a number by figuring out if it's pounds, oz, or both. won't always be labeled the same way
       
       
     }).catch(err => console.log(err))

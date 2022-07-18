@@ -6,7 +6,7 @@ const GearScraper = () => {
 
   const handleUrlSubmit = async (e) => {
     e.preventDefault()
-
+    //TODO: make sure they can only use rei.com links
     const url = {url_scrape}
 
     const scrapeResponse = await fetch('/api/closet/scrape-gear', {
