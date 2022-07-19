@@ -125,11 +125,14 @@ const getScrapedGear = async (req, res) => {
       // Grab all data from the table and store it as an array of objects
 
       let tableArray = []
+      let gearWeightOptions = {};
 
       $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
 
         let key = $(element).find('th').text().trim().toLowerCase()
         let value = []
+
+        
 
         // This is a mess but it works
         value.push(...$('p', element).text().trim().split(/\r?\n/))
@@ -138,11 +141,23 @@ const getScrapedGear = async (req, res) => {
         })
         value = value.filter(e => e)
 
+        // weight options
+        switch (key) {
+          case 'weight':
+          case 'minimum trail weight':
+          case key.match(/weight/)?.input:
+            gearWeightOptions[key] = value;
+            break;
+          default:
+            break;
+        }
+
         let obj = {}
         obj[key] = value
         tableArray.push(obj)
       });
-      console.log(tableArray)
+      // console.log(tableArray)
+      console.log(gearWeightOptions)
 
       // Go through the tableArray and first find if anything exactly matches 'weight'
       
