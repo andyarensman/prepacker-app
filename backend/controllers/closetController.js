@@ -127,12 +127,21 @@ const getScrapedGear = async (req, res) => {
       let tableArray = []
       let gearWeightOptions = {};
 
+      // regex for lbs oz
+      const lbsOzRegex = /\d+\s?lbs?\.?\s?\d+\s?oz\.?/i
+      // regex lbs
+      const lbsRegex = /\d+\s?lbs?/i
+      // regex oz
+      const ozRegex = /\d+\s?oz\.?/i
+      // regex pounds
+      const poundsRegex = /\d+\.?(\d+)?\s?pounds?/i
+      // regex ounces
+      const ouncesRegex = /\d+\.?(\d+)?\s?ounces?/i
+
       $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
 
         let key = $(element).find('th').text().trim().toLowerCase()
         let value = []
-
-        
 
         // This is a mess but it works
         value.push(...$('p', element).text().trim().split(/\r?\n/))
