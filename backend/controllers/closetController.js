@@ -122,6 +122,11 @@ const getScrapedGear = async (req, res) => {
       console.log(gear_name)
       returnData.push({gear_name})
 
+      // Grab the image source
+      const gear_image_url = 'https://www.rei.com' + $('#media-center-primary-image').attr('src')
+      console.log(gear_image_url)
+      returnData.push({gear_image_url})
+
       // Grab all data from the table and store it as an array of objects
 
       let tableArray = []
