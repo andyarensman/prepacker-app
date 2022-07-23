@@ -131,17 +131,7 @@ const getScrapedGear = async (req, res) => {
 
       let tableArray = []
       let gearWeightOptions = {};
-
-      // regex for lbs oz
-      const lbsOzRegex = /\d+\s?lbs?\.?\s?\d+\s?oz\.?/i
-      // regex lbs
-      const lbsRegex = /\d+\s?lbs?/i
-      // regex oz
-      const ozRegex = /\d+\s?oz\.?/i
-      // regex pounds
-      const poundsRegex = /\d+\.?(\d+)?\s?pounds?/i
-      // regex ounces
-      const ouncesRegex = /\d+\.?(\d+)?\s?ounces?/i
+      let otherWeightKeys = []
 
       $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
 
@@ -159,8 +149,11 @@ const getScrapedGear = async (req, res) => {
         switch (key) {
           case 'weight':
           case 'minimum trail weight':
+            gearWeightOptions[key] = value;
+            break;
           case key.match(/weight/)?.input:
             gearWeightOptions[key] = value;
+            otherWeightKeys.push(key)
             break;
           default:
             break;
@@ -173,7 +166,52 @@ const getScrapedGear = async (req, res) => {
       // console.log(tableArray)
       console.log(gearWeightOptions)
 
-      // Go through the tableArray and first find if anything exactly matches 'weight'
+      // regex for lbs oz
+      const lbsOzRegex = /\d+\s?lbs?\.?\s?\d+\s?oz\.?/i
+      // regex lbs
+      const lbsRegex = /\d+\s?lbs?/i
+      // regex oz
+      const ozRegex = /\d+\s?oz\.?/i
+      // regex pounds
+      const poundsRegex = /\d+\.?(\d+)?\s?pounds?/i
+      // regex ounces
+      const ouncesRegex = /\d+\.?(\d+)?\s?ounces?/i
+
+      // function for converting string weight to number
+      const weightToNum = (weightText) => {
+        switch (true) {
+          case lbsOzRegex.test(weightText):
+            let test = weightText.match(lbsOzRegex)
+            console.log(test[0]);
+            break;
+          case lbsRegex.test(weightText):
+            console.log(weightText.match(lbsRegex));
+            break;
+          case ozRegex.test(weightText):
+            console.log(weightText.match(ozRegex));
+            break;
+          case poundsRegex.test(weightText):
+            console.log(weightText.match(poundsRegex));
+            break;
+          case ouncesRegex.test(weightText):
+            console.log(weightText.match(ouncesRegex));
+            break;
+          default:
+            break
+        }
+      }
+
+      // Go through the gearWeightOptions and first find if anything exactly matches 'weight'
+      if (gearWeightOptions.weight) {
+        console.log('yeah weight')
+        weightToNum(gearWeightOptions.weight[0])
+      } else if (gearWeightOptions['minimum trail weight']) {
+        console.log('min weight')
+        weightToNum(gearWeightOptions['minimum trail weight'][0])
+      } else if (gearWeightOptions[otherWeightKeys[0]]) {
+        console.log('other key')
+        weightToNum(gearWeightOptions[otherWeightKeys[0]])
+      }
       
       // if not, go through again and find any key with weight in it's name
 
