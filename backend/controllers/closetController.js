@@ -118,6 +118,8 @@ const getScrapedGear = async (req, res) => {
 
       // Create an array of objects for the data in returnData
       //TODO: Get other data
+      //TODO: Make sure it can't break with wrong or no info
+      //TODO: Clean it up a bit
       const gear_name = $('#product-page-title').text().trim()
       console.log(gear_name)
       returnData.push({gear_name})
@@ -129,9 +131,10 @@ const getScrapedGear = async (req, res) => {
 
       // Grab all data from the table and store it as an array of objects
 
-      let tableArray = []
+      let tableArray = [];
       let gearWeightOptions = {};
-      let otherWeightKeys = []
+      let otherWeightKeys = [];
+      let gear_weight_ounces;
 
       $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
 
@@ -167,34 +170,52 @@ const getScrapedGear = async (req, res) => {
       console.log(gearWeightOptions)
 
       // regex for lbs oz
-      const lbsOzRegex = /\d+\s?lbs?\.?\s?\d+\s?oz\.?/i
+      const lbsOzRegex = /\d+\s?lbs?\.?\s?\d+(\.\d+)?\s?oz\.?/i
       // regex lbs
-      const lbsRegex = /\d+\s?lbs?/i
+      const lbsRegex = /\d+(\.\d+)?\s?lbs?/i
       // regex oz
-      const ozRegex = /\d+\s?oz\.?/i
+      const ozRegex = /\d+(\.\d+)?\s?oz\.?/i
       // regex pounds
-      const poundsRegex = /\d+\.?(\d+)?\s?pounds?/i
+      const poundsRegex = /\d+(\.\d+)?\s?pounds?/i
       // regex ounces
-      const ouncesRegex = /\d+\.?(\d+)?\s?ounces?/i
+      const ouncesRegex = /\d+(\.\d+)?\s?ounces?/i
+      // regex numbers
+      const weightNumRegex = /\d+(\.\d+)?/g
 
       // function for converting string weight to number
       const weightToNum = (weightText) => {
+        let weightString;
+
         switch (true) {
           case lbsOzRegex.test(weightText):
-            let test = weightText.match(lbsOzRegex)
-            console.log(test[0]);
+            weightString = weightText.match(lbsOzRegex)[0]
+            let weightArray = weightString.match(weightNumRegex)
+
+            gear_weight_ounces = Number(weightArray[0])*16 + Number(weightArray[1]);
             break;
           case lbsRegex.test(weightText):
-            console.log(weightText.match(lbsRegex));
+            weightString = weightText.match(lbsRegex)[0];
+            let weightArray1 = weightString.match(weightNumRegex)
+
+            gear_weight_ounces = Number(weightArray1[0])*16;
             break;
           case ozRegex.test(weightText):
-            console.log(weightText.match(ozRegex));
+            weightString = weightText.match(ozRegex)[0];
+            let weightArray2 = weightString.match(weightNumRegex)
+
+            gear_weight_ounces = Number(weightArray2[0]);
             break;
           case poundsRegex.test(weightText):
-            console.log(weightText.match(poundsRegex));
+            weightString = weightText.match(poundsRegex)[0];
+            let weightArray3 = weightString.match(weightNumRegex)
+
+            gear_weight_ounces = Number(weightArray3[0])*16;
             break;
           case ouncesRegex.test(weightText):
-            console.log(weightText.match(ouncesRegex));
+            weightString = weightText.match(ouncesRegex)[0];
+            let weightArray4 = weightString.match(weightNumRegex)
+
+            gear_weight_ounces = Number(weightArray4[0]);
             break;
           default:
             break
@@ -213,9 +234,8 @@ const getScrapedGear = async (req, res) => {
         weightToNum(gearWeightOptions[otherWeightKeys[0]])
       }
       
-      // if not, go through again and find any key with weight in it's name
-
-      // convert the key's value to a number by figuring out if it's pounds, oz, or both. won't always be labeled the same way
+      console.log(gear_weight_ounces)
+      returnData.push({gear_weight_ounces})
       
       
     }).catch(err => console.log(err))
