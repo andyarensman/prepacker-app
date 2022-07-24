@@ -120,6 +120,8 @@ const getScrapedGear = async (req, res) => {
       //TODO: Get other data
       //TODO: Make sure it can't break with wrong or no info
       //TODO: Clean it up a bit
+      //TODO: only add gear data if its there?
+      //TODO: should the return data be an array?
       const gear_name = $('#product-page-title').text().trim()
       console.log(gear_name)
       returnData.push({gear_name})
@@ -224,13 +226,10 @@ const getScrapedGear = async (req, res) => {
 
       // Go through the gearWeightOptions and first find if anything exactly matches 'weight'
       if (gearWeightOptions.weight) {
-        console.log('yeah weight')
         weightToNum(gearWeightOptions.weight[0])
       } else if (gearWeightOptions['minimum trail weight']) {
-        console.log('min weight')
         weightToNum(gearWeightOptions['minimum trail weight'][0])
       } else if (gearWeightOptions[otherWeightKeys[0]]) {
-        console.log('other key')
         weightToNum(gearWeightOptions[otherWeightKeys[0]])
       }
       
