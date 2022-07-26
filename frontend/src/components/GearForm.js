@@ -1,17 +1,22 @@
 // TODO: Need to add other things to the form
 
-import { useState } from "react";
 import { useClosetContext } from "../hooks/useClosetContext";
 
-const GearForm = () => {
+const GearForm = ({
+    gear_name,
+    setGearName,
+    pounds,
+    setPounds,
+    ounces,
+    setOunces,
+    price,
+    setPrice,
+    error,
+    setError,
+    emptyFields,
+    setEmptyFields,
+  }) => {
   const { dispatch } = useClosetContext()
-
-  const [gear_name, setGearName] = useState('')
-  const [pounds, setPounds] = useState('')
-  const [ounces, setOunces] = useState('')
-  const [price, setPrice] = useState('')
-  const [error, setError] = useState(null)
-  const [emptyFields, setEmptyFields] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault()

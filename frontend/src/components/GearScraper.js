@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-const GearScraper = () => {
-
-  const [url_scrape, setUrlScrape] = useState('')
+const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setPrice}) => {
 
   const handleUrlSubmit = async (e) => {
     e.preventDefault()
