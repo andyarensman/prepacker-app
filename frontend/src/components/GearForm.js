@@ -7,14 +7,15 @@ const GearForm = () => {
   const { dispatch } = useClosetContext()
 
   const [gear_name, setGearName] = useState('')
-  const [weight, setWeight] = useState('')
+  const [pounds, setPounds] = useState('')
+  const [ounces, setOunces] = useState('')
   const [price, setPrice] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    const weight = Number(pounds)*16 + Number(ounces)
     const gear = {gear_name, weight, price}
 
     const response = await fetch('/api/closet', {
@@ -34,7 +35,8 @@ const GearForm = () => {
     if (response.ok) {
       setGearName('')
       setPrice('')
-      setWeight('')
+      setPounds('')
+      setOunces('')
       setError(null)
       setEmptyFields([])
       console.log('new workout added', json)
@@ -54,12 +56,21 @@ const GearForm = () => {
         className={emptyFields.includes('gear_name') ? 'error' : ''}
       />
 
-      <label>Weight (lbs):</label>
-      <input 
-        type="number"
-        onChange={(e) => setWeight(e.target.value)}
-        value={weight}
-      />
+      <label>Weight</label>
+      <div className="weight">
+        <input 
+          type="number"
+          onChange={(e) => setPounds(e.target.value)}
+          value={pounds}
+        />
+        <label>lbs.</label>
+        <input 
+          type="number"
+          onChange={(e) => setOunces(e.target.value)}
+          value={ounces}
+        />
+        <label>oz.</label>
+      </div>
 
       <label>Price ($):</label>
       <input 

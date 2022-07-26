@@ -19,10 +19,29 @@ const GearDetails = ({ gear }) => {
     }
   }
 
+  const handleWeight = (weight) => {
+    let pounds = Math.floor(weight/16)
+    let ouncesNoRound = (gear.weight - (Math.floor(gear.weight/16))*16)
+    let ounces = Math.round(ouncesNoRound * 10) / 10
+
+    if (pounds != 0 && ounces != 0) {
+      return (`${pounds} lb ${ounces} oz`)
+    }
+    if (pounds == 0 && ounces !=0 ) {
+      return (`${ounces} oz`)
+    }
+    if (pounds != 0 && ounces == 0) {
+      return (`${pounds} lb`)
+    }
+    if (pounds == 0 && ounces == 0) {
+      return ('N/A')
+    }
+  }
+
   return ( 
     <div className="gear-details">
       <h4>{gear.gear_name}</h4>
-      {gear.weight && <p><strong>Weight (lbs): </strong>{gear.weight}</p>}
+      {gear.weight && <p><strong>Weight: </strong>{handleWeight(gear.weight)}</p>}
       {gear.price && <p><strong>Price ($): </strong>{gear.price}</p>}
       <p>{formatDistanceToNow(new Date(gear.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
