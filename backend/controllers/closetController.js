@@ -109,7 +109,7 @@ const editGear = async (req, res) => {
 const getScrapedGear = async (req, res) => {
 
   const url_scrape = req.body.url_scrape
-  let returnData = [];
+  let returnData = {};
 
   await axios(url_scrape)
     .then(response => {
@@ -124,12 +124,12 @@ const getScrapedGear = async (req, res) => {
       //TODO: should the return data be an array?
       const gear_name = $('#product-page-title').text().trim()
       console.log(gear_name)
-      returnData.push({gear_name})
+      returnData.gear_name = gear_name
 
       // Grab the image source
       const gear_image_url = 'https://www.rei.com' + $('#media-center-primary-image').attr('src')
       console.log(gear_image_url)
-      returnData.push({gear_image_url})
+      returnData.gear_image_url = gear_image_url
 
       // Grab all data from the table and store it as an array of objects
 
@@ -234,7 +234,7 @@ const getScrapedGear = async (req, res) => {
       }
       
       console.log(gear_weight_ounces)
-      returnData.push({gear_weight_ounces})
+      returnData.gear_weight_ounces = gear_weight_ounces
       
       
     }).catch(err => console.log(err))

@@ -1,5 +1,23 @@
 const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setPrice}) => {
 
+  const handleWeight = (weight) => {
+    let pounds = Math.floor(weight/16)
+    let ouncesNoRound = (weight - (Math.floor(weight/16))*16)
+    let ounces = Math.round(ouncesNoRound * 10) / 10
+
+    if (pounds !== 0 && ounces !== 0) {
+      setPounds(pounds)
+      setOunces(ounces)
+      return
+    }
+    if (pounds === 0 && ounces !== 0) {
+      setOunces(ounces)
+    }
+    if (pounds !== 0 && ounces === 0) {
+      setPounds(pounds)
+    }
+  }
+
   const handleUrlSubmit = async (e) => {
     e.preventDefault()
     //TODO: make sure they can only use rei.com links
@@ -15,6 +33,10 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
     //TODO: Get data to frontend and handle it
     const jsonScrapeObj = await scrapeResponse.json()
     console.log(jsonScrapeObj)
+    setGearName(jsonScrapeObj.gear_name)
+    handleWeight(jsonScrapeObj.gear_weight_ounces)
+
+    
   }
 
   return (
