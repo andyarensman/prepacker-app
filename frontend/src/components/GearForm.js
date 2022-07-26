@@ -9,19 +9,25 @@ const GearForm = ({
     setPounds,
     ounces,
     setOunces,
+    url,
+    setUrl,
     price,
     setPrice,
+    image_url,
+    setImageUrl,
     error,
     setError,
     emptyFields,
     setEmptyFields,
+    setUrlScrape
   }) => {
   const { dispatch } = useClosetContext()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const weight = Number(pounds)*16 + Number(ounces)
-    const gear = {gear_name, weight, price}
+    const gear = {gear_name, weight, price, image_url}
+    gear.website = url
 
     const response = await fetch('/api/closet', {
       method: 'POST',
@@ -42,8 +48,11 @@ const GearForm = ({
       setPrice('')
       setPounds('')
       setOunces('')
+      setImageUrl('')
+      setUrl('')
       setError(null)
       setEmptyFields([])
+      setUrlScrape('')
       console.log('new workout added', json)
       dispatch({type: 'CREATE_GEAR', payload: json})
     }
@@ -77,12 +86,27 @@ const GearForm = ({
         <label>oz.</label>
       </div>
 
+      <label>Product Page:</label>
+      <input 
+        type="url"
+        onChange={(e) => setUrl(e.target.value)}
+        value={url}
+      />
+
       <label>Price ($):</label>
       <input 
         type="number"
         onChange={(e) => setPrice(e.target.value)}
         value={price}
       />
+
+      <label>Image Url:</label>
+      <input 
+        type="url"
+        onChange={(e) => setImageUrl(e.target.value)}
+        value={image_url}
+      />
+
       <button>Add Gear to Closet</button>
       {error && <div className="error">{error}</div>}
     </form>

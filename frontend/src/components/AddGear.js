@@ -6,7 +6,9 @@ const AddGear = () => {
   const [gear_name, setGearName] = useState('')
   const [pounds, setPounds] = useState('')
   const [ounces, setOunces] = useState('')
+  const [url, setUrl] = useState('')
   const [price, setPrice] = useState('')
+  const [image_url, setImageUrl] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
   const [url_scrape, setUrlScrape] = useState('')
@@ -19,7 +21,9 @@ const AddGear = () => {
         setGearName={setGearName}
         setPounds={setPounds}
         setOunces={setOunces}
+        setUrl={setUrl}
         setPrice={setPrice}
+        setImageUrl={setImageUrl}
       />
       <GearForm 
         gear_name={gear_name}
@@ -28,12 +32,17 @@ const AddGear = () => {
         setPounds={setPounds}
         ounces={ounces}
         setOunces={setOunces}
+        url={url}
+        setUrl={setUrl}
         price={price}
         setPrice={setPrice}
+        image_url={image_url}
+        setImageUrl={setImageUrl}
         error={error}
         setError={setError}
         emptyFields={emptyFields}
         setEmptyFields={setEmptyFields}
+        setUrlScrape={setUrlScrape}
       />
     </div>
    );

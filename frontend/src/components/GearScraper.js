@@ -1,4 +1,4 @@
-const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setPrice}) => {
+const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setUrl, setPrice, setImageUrl}) => {
 
   const handleWeight = (weight) => {
     let pounds = Math.floor(weight/16)
@@ -23,6 +23,7 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
     //TODO: make sure they can only use rei.com links
     const url = {url_scrape}
 
+    // Get data to frontend
     const scrapeResponse = await fetch('/api/closet/scrape-gear', {
       method: 'POST',
       body: JSON.stringify(url),
@@ -30,13 +31,14 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
         'Content-Type': 'application/json'
       }
     })
-    //TODO: Get data to frontend and handle it
+    // Update state with new data
     const jsonScrapeObj = await scrapeResponse.json()
     console.log(jsonScrapeObj)
     setGearName(jsonScrapeObj.gear_name)
     handleWeight(jsonScrapeObj.gear_weight_ounces)
-
-    
+    setUrl(url_scrape)
+    setImageUrl(jsonScrapeObj.gear_image_url)
+    setUrlScrape('')
   }
 
   return (
