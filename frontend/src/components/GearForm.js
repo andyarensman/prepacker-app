@@ -1,4 +1,4 @@
-// TODO: Need to add other things to the form
+// TODO: Need to add other things to the form: product type
 
 import { useClosetContext } from "../hooks/useClosetContext";
 
@@ -19,7 +19,8 @@ const GearForm = ({
     setError,
     emptyFields,
     setEmptyFields,
-    setUrlScrape
+    setUrlScrape,
+    setScraperError
   }) => {
   const { dispatch } = useClosetContext()
 
@@ -44,6 +45,7 @@ const GearForm = ({
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)
+      setScraperError(false)
     }
 
     if (response.ok) {
@@ -56,7 +58,8 @@ const GearForm = ({
       setError(null)
       setEmptyFields([])
       setUrlScrape('')
-      console.log('new workout added', json)
+      setScraperError(false)
+      console.log('new gear added', json)
       dispatch({type: 'CREATE_GEAR', payload: json})
     }
   }

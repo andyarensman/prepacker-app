@@ -10,6 +10,7 @@ const AddGear = () => {
   const [price, setPrice] = useState('')
   const [image_url, setImageUrl] = useState('')
   const [error, setError] = useState(null)
+  const [scraperError, setScraperError] = useState(false)
   const [emptyFields, setEmptyFields] = useState([])
   const [url_scrape, setUrlScrape] = useState('')
 
@@ -24,6 +25,10 @@ const AddGear = () => {
         setUrl={setUrl}
         setPrice={setPrice}
         setImageUrl={setImageUrl}
+        scraperError={scraperError}
+        setScraperError={setScraperError}
+        setError={setError}
+        setEmptyFields={setEmptyFields}
       />
       <GearForm 
         gear_name={gear_name}
@@ -43,6 +48,7 @@ const AddGear = () => {
         emptyFields={emptyFields}
         setEmptyFields={setEmptyFields}
         setUrlScrape={setUrlScrape}
+        setScraperError={setScraperError}
       />
     </div>
    );
