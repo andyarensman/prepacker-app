@@ -128,8 +128,12 @@ const getScrapedGear = async (req, res) => {
 
       // Grab the image source
       const gear_image_url = 'https://www.rei.com' + $('#media-center-primary-image').attr('src')
-      console.log(gear_image_url)
       returnData.gear_image_url = gear_image_url
+
+      // Grab the current price
+      let currency = $('#buy-box-product-price').text().trim()
+      const price = Number(currency.replace(/[^0-9.-]+/g,""))
+      returnData.price = price
 
       // Grab all data from the table and store it as an array of objects
 
@@ -233,7 +237,7 @@ const getScrapedGear = async (req, res) => {
         weightToNum(gearWeightOptions[otherWeightKeys[0]])
       }
       
-      console.log(gear_weight_ounces)
+      console.log(gear_weight_ounces, 'ounces')
       returnData.gear_weight_ounces = gear_weight_ounces
       
       
