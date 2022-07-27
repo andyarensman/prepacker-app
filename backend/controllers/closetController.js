@@ -109,6 +109,8 @@ const editGear = async (req, res) => {
 const getScrapedGear = async (req, res) => {
 
   const url_scrape = req.body.url_scrape
+
+  // Create an object for the data in returnData
   let returnData = {};
 
   await axios(url_scrape)
@@ -116,12 +118,11 @@ const getScrapedGear = async (req, res) => {
       const html = response.data
       const $ = cheerio.load(html)
 
-      // Create an array of objects for the data in returnData
-      //TODO: Get other data
       //TODO: Make sure it can't break with wrong or no info
       //TODO: Clean it up a bit
       //TODO: only add gear data if its there?
-      //TODO: should the return data be an array?
+
+      // Grab gear name
       const gear_name = $('#product-page-title').text().trim()
       console.log(gear_name)
       returnData.gear_name = gear_name
@@ -135,7 +136,7 @@ const getScrapedGear = async (req, res) => {
       const price = Number(currency.replace(/[^0-9.-]+/g,""))
       returnData.price = price
 
-      // Grab all data from the table and store it as an array of objects
+      // Grab all data from the table and store it as an array of objects (mostly for weight, but may use others later)
 
       let tableArray = [];
       let gearWeightOptions = {};
@@ -228,7 +229,7 @@ const getScrapedGear = async (req, res) => {
         }
       }
 
-      // Go through the gearWeightOptions and first find if anything exactly matches 'weight'
+      // Go through the gearWeightOptions and find the best match
       if (gearWeightOptions.weight) {
         weightToNum(gearWeightOptions.weight[0])
       } else if (gearWeightOptions['minimum trail weight']) {
@@ -240,10 +241,10 @@ const getScrapedGear = async (req, res) => {
       console.log(gear_weight_ounces, 'ounces')
       returnData.gear_weight_ounces = gear_weight_ounces
       
-      
     }).catch(err => console.log(err))
   
   //console.log(returnData)
+
   //Send the data back to frontend
   res.status(200).json(returnData)
 }
