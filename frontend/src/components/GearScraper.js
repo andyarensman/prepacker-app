@@ -33,13 +33,21 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
     })
     // Update state with new data
     const jsonScrapeObj = await scrapeResponse.json()
-    console.log(jsonScrapeObj)
-    setGearName(jsonScrapeObj.gear_name)
-    handleWeight(jsonScrapeObj.gear_weight_ounces)
+    // console.log(jsonScrapeObj)
+    if (jsonScrapeObj.gear_name) {
+      setGearName(jsonScrapeObj.gear_name)
+    }
+    if (jsonScrapeObj.gear_weight_ounces) {
+      handleWeight(jsonScrapeObj.gear_weight_ounces)
+    }
     setUrl(url_scrape)
-    setPrice(jsonScrapeObj.price)
-    setImageUrl(jsonScrapeObj.gear_image_url)
-    setUrlScrape('')
+    if (jsonScrapeObj.price) {
+      setPrice(jsonScrapeObj.price)
+    }
+    if (jsonScrapeObj.gear_image_url) {
+      setImageUrl(jsonScrapeObj.gear_image_url)
+    }
+    // setUrlScrape('')
   }
 
   return (

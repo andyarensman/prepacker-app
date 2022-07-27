@@ -25,7 +25,10 @@ const GearForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const weight = Number(pounds)*16 + Number(ounces)
+    let weight;
+    if (pounds || ounces) {
+      weight = Number(pounds)*16 + Number(ounces)
+    }
     const gear = {gear_name, weight, price, image_url}
     gear.website = url
 

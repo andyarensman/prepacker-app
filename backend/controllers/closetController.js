@@ -124,17 +124,24 @@ const getScrapedGear = async (req, res) => {
 
       // Grab gear name
       const gear_name = $('#product-page-title').text().trim()
-      console.log(gear_name)
-      returnData.gear_name = gear_name
+      if (gear_name.length !== 0) {
+        console.log(gear_name)
+        returnData.gear_name = gear_name
+      }
 
       // Grab the image source
-      const gear_image_url = 'https://www.rei.com' + $('#media-center-primary-image').attr('src')
-      returnData.gear_image_url = gear_image_url
+      let image_url_end = $('#media-center-primary-image').attr('src')
+      if (image_url_end.length !== 0) {
+        const gear_image_url = 'https://www.rei.com' + image_url_end
+        returnData.gear_image_url = gear_image_url
+      }
 
       // Grab the current price
       let currency = $('#buy-box-product-price').text().trim()
-      const price = Number(currency.replace(/[^0-9.-]+/g,""))
-      returnData.price = price
+      if (currency.length !== 0) {
+        const price = Number(currency.replace(/[^0-9.-]+/g,""))
+        returnData.price = price
+      }
 
       // Grab all data from the table and store it as an array of objects (mostly for weight, but may use others later)
 
@@ -143,36 +150,40 @@ const getScrapedGear = async (req, res) => {
       let otherWeightKeys = [];
       let gear_weight_ounces;
 
-      $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
 
-        let key = $(element).find('th').text().trim().toLowerCase()
-        let value = []
+      if ($("#tech-specs-collapsible > table > tbody > tr").text().length !== 0) {
+        $("#tech-specs-collapsible > table > tbody > tr").each((index, element) => {
 
-        // This is a mess but it works
-        value.push(...$('p', element).text().trim().split(/\r?\n/))
-        value.forEach((e, i) => {
-          value[i] = e.replace(/\r?\n/, '').trim().toLowerCase()
-        })
-        value = value.filter(e => e)
-
-        // weight options
-        switch (key) {
-          case 'weight':
-          case 'minimum trail weight':
-            gearWeightOptions[key] = value;
-            break;
-          case key.match(/weight/)?.input:
-            gearWeightOptions[key] = value;
-            otherWeightKeys.push(key)
-            break;
-          default:
-            break;
-        }
-
-        let obj = {}
-        obj[key] = value
-        tableArray.push(obj)
-      });
+          let key = $(element).find('th').text().trim().toLowerCase()
+          let value = []
+  
+          // This is a mess but it works
+          value.push(...$('p', element).text().trim().split(/\r?\n/))
+          value.forEach((e, i) => {
+            value[i] = e.replace(/\r?\n/, '').trim().toLowerCase()
+          })
+          value = value.filter(e => e)
+  
+          // weight options
+          switch (key) {
+            case 'weight':
+            case 'minimum trail weight':
+              gearWeightOptions[key] = value;
+              break;
+            case key.match(/weight/)?.input:
+              gearWeightOptions[key] = value;
+              otherWeightKeys.push(key)
+              break;
+            default:
+              break;
+          }
+  
+          let obj = {}
+          obj[key] = value
+          tableArray.push(obj)
+        });
+      }
+      
       // console.log(tableArray)
       console.log(gearWeightOptions)
 
@@ -239,7 +250,10 @@ const getScrapedGear = async (req, res) => {
       }
       
       console.log(gear_weight_ounces, 'ounces')
-      returnData.gear_weight_ounces = gear_weight_ounces
+      if (gear_weight_ounces) {
+        returnData.gear_weight_ounces = gear_weight_ounces
+      }
+      
       
     }).catch(err => console.log(err))
   
