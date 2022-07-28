@@ -35,7 +35,8 @@ const addGear = async (req, res) => {
   const {
     gear_name, 
     weight, 
-    price, 
+    price,
+    category, 
     notes, 
     website, 
     image_url
@@ -48,6 +49,9 @@ const addGear = async (req, res) => {
   if(!gear_name) {
     emptyFields.push('gear_name')
   }
+  if(!category) {
+    emptyFields.push('category')
+  }
   if(emptyFields.length > 0) {
     return res.status(400).json({ error: 'Please fill in all required fields', emptyFields})
   }
@@ -56,7 +60,8 @@ const addGear = async (req, res) => {
   try {
     const gear = await Gear.create({
         gear_name, 
-        weight, 
+        weight,
+        category, 
         price, 
         notes, 
         website, 

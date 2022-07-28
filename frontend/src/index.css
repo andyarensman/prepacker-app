@@ -58,6 +58,12 @@ header a {
   font-size: 0.9em;
   color: #555;
 }
+
+.gear-details a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .gear-details span {
   position: absolute;
   top: 20px;
@@ -69,8 +75,8 @@ header a {
   color: #333;
 }
 
-/* new workout form */
-label, input {
+/* new gear form */
+label, input, select {
   display: block;
 }
 .create .weight {
@@ -86,7 +92,7 @@ label, input {
 .scrape {
   padding-bottom: 20px;
 }
-input {
+input, select {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -112,7 +118,7 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
-input.error {
+input.error, select.error {
   border: 1px solid var(--error);
 }
 

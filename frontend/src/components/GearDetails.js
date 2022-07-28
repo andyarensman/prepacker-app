@@ -37,12 +37,36 @@ const GearDetails = ({ gear }) => {
       return ('N/A')
     }
   }
+  
+  const handleCategory = (category) => {
+    switch (category) {
+        case ("container"):
+          return ("Container")
+        case ("essential"):
+          return ("Essential Tool")
+        case ("hygiene"):
+          return ("Hygiene/Care")
+        case ("kitchen"):
+          return ("Kitchen")
+        case ("sleep"):
+          return ("Sleep System")
+        case ("personal"):
+          return ("Personal Item")
+        case ("mountaineering"):
+          return ("Mountaineering")
+        case ("other"):
+          return ("Other")
+        default:
+          return ("None")
+    }
+  }
 
   return ( 
     <div className="gear-details">
       <h4>{gear.gear_name}</h4>
       {gear.weight && <p><strong>Weight: </strong>{handleWeight(gear.weight)}</p>}
-      {gear.website && <p><strong>Product Page: </strong><a href={gear.website} target="_blank" rel="noreferrer">Link</a></p>}
+      {gear.category && <p><strong>Category: </strong>{handleCategory(gear.category)}</p>}
+      {gear.website && <p><strong>Product Page: </strong><a href={gear.website} target="_blank" rel="noreferrer">REI</a></p>}
       {gear.price && <p><strong>Price: </strong>${gear.price}</p>}
       <p>{formatDistanceToNow(new Date(gear.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>

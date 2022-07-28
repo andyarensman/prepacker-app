@@ -8,6 +8,7 @@ const AddGear = () => {
   const [ounces, setOunces] = useState('')
   const [url, setUrl] = useState('')
   const [price, setPrice] = useState('')
+  const [category, setCategory] = useState('')
   const [image_url, setImageUrl] = useState('')
   const [error, setError] = useState(null)
   const [scraperError, setScraperError] = useState(false)
@@ -22,6 +23,7 @@ const AddGear = () => {
         setGearName={setGearName}
         setPounds={setPounds}
         setOunces={setOunces}
+        setCategory={setCategory}
         setUrl={setUrl}
         setPrice={setPrice}
         setImageUrl={setImageUrl}
@@ -37,6 +39,8 @@ const AddGear = () => {
         setPounds={setPounds}
         ounces={ounces}
         setOunces={setOunces}
+        category={category}
+        setCategory={setCategory}
         url={url}
         setUrl={setUrl}
         price={price}

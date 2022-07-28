@@ -9,6 +9,8 @@ const GearForm = ({
     setPounds,
     ounces,
     setOunces,
+    category,
+    setCategory,
     url,
     setUrl,
     price,
@@ -30,7 +32,7 @@ const GearForm = ({
     if (pounds || ounces) {
       weight = Number(pounds)*16 + Number(ounces)
     }
-    const gear = {gear_name, weight, price, image_url}
+    const gear = {gear_name, weight, price, image_url, category}
     gear.website = url
 
     const response = await fetch('/api/closet', {
@@ -53,6 +55,7 @@ const GearForm = ({
       setPrice('')
       setPounds('')
       setOunces('')
+      setCategory('')
       setImageUrl('')
       setUrl('')
       setError(null)
@@ -92,7 +95,25 @@ const GearForm = ({
         <label>oz.</label>
       </div>
 
-      <label>Product Page:</label>
+      <label>Category</label>
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className={emptyFields.includes('category') ? 'error' : ''}
+      >
+        <option value=""></option>
+        <option value="clothing">Clothing</option>
+        <option value="container">Containers</option>
+        <option value="essential">Essential Tools</option>
+        <option value="hygiene">Hygiene/Care</option>
+        <option value="kitchen">Kitchen</option>
+        <option value="sleep">Sleep System</option>
+        <option value="personal">Personal Items</option>
+        <option value="mountaineering">Mountaineering</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label>Product URL:</label>
       <input 
         type="url"
         onChange={(e) => setUrl(e.target.value)}
