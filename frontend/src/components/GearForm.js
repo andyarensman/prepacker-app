@@ -103,7 +103,7 @@ const GearForm = ({
       >
         <option value=""></option>
         <option value="clothing">Clothing</option>
-        <option value="container">Containers</option>
+        <option value="container">Containers/Bags</option>
         <option value="essential">Essential Tools</option>
         <option value="hygiene">Hygiene/Care</option>
         <option value="kitchen">Kitchen</option>

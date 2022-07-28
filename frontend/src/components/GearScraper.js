@@ -1,4 +1,4 @@
-const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setUrl, setPrice, setImageUrl, scraperError, setScraperError, setError, setEmptyFields}) => {
+const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setCategory, setUrl, setPrice, setImageUrl, scraperError, setScraperError, setError, setEmptyFields}) => {
 
   const handleWeight = (weight) => {
     let pounds = Math.floor(weight/16)
@@ -47,6 +47,9 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
       }
       if (jsonScrapeObj.gear_weight_ounces) {
         handleWeight(jsonScrapeObj.gear_weight_ounces)
+      }
+      if (jsonScrapeObj.category) {
+        setCategory(jsonScrapeObj.category)
       }
       setUrl(url_scrape)
       if (jsonScrapeObj.price) {

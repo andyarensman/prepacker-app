@@ -123,9 +123,8 @@ const getScrapedGear = async (req, res) => {
       const html = response.data
       const $ = cheerio.load(html)
 
-      //TODO: Make sure it can't break with wrong or no info
+      //TODO: Add category scrape?
       //TODO: Clean it up a bit
-      //TODO: only add gear data if its there?
 
       // Grab gear name
       const gear_name = $('#product-page-title').text().trim()
@@ -140,6 +139,71 @@ const getScrapedGear = async (req, res) => {
         const gear_image_url = 'https://www.rei.com' + image_url_end
         returnData.gear_image_url = gear_image_url
       }
+
+      // Grab Category
+      let category;
+      let potentialCategory1 = $('ol.cdr-breadcrumb__list_11-3-1 > li:nth-child(3) > a').text().trim().toLowerCase();
+      let potentialCategory2 = $('ol.cdr-breadcrumb__list_11-3-1 > li:nth-child(2) > a').text().trim().toLowerCase()
+      let potentialCategory3 = $('ol.cdr-breadcrumb__list_11-3-1 > li:nth-child(1) > a').text().trim().toLowerCase()
+
+      //console.log(potentialCategory1, potentialCategory2, potentialCategory3)
+
+      const categoryFinder = (item) => {
+        switch (item) {
+          case 'women\'s clothing':
+          case 'men\'s clothing':
+          case 'clothing':
+          case 'footwear':
+          case 'sunglasses':
+            category = 'clothing';
+            break;
+          case 'hiking backpacks':
+          case 'stuff sacks':
+            category = 'container';
+            break;
+          case 'health and safety':
+          case 'water bottles and treatment':
+          case 'headlamps':
+            category = 'essential';
+            break;
+          case 'camp bathroom':
+            category = 'hygiene';
+            break;
+          case 'camp kitchen':
+            category = 'kitchen';
+            break;
+          case 'tents':
+          case 'sleeping bags':
+          case 'sleeping pads, cots and hammocks':
+            category = 'sleep';
+            break;
+          case 'avalanche safety gear':
+          case 'mountaineering gear':
+          case 'climbing helmets':
+          case 'climbing harnesses':
+          case 'climbing':
+            category = 'mountaineering';
+            break;
+          default:
+            break;
+        }
+      }
+
+      categoryFinder(potentialCategory1)
+      if (!category) {
+        categoryFinder(potentialCategory2)
+      }
+      if (!category) {
+        categoryFinder(potentialCategory3)
+      }
+
+      console.log('category: ', category)
+
+      if (category) {
+        console.log('added category')
+        returnData.category = category
+      }
+      
 
       // Grab the current price
       let currency = $('#buy-box-product-price').text().trim()
@@ -250,8 +314,8 @@ const getScrapedGear = async (req, res) => {
         weightToNum(gearWeightOptions.weight[0])
       } else if (gearWeightOptions['minimum trail weight']) {
         weightToNum(gearWeightOptions['minimum trail weight'][0])
-      } else if (gearWeightOptions[otherWeightKeys[0]]) {
-        weightToNum(gearWeightOptions[otherWeightKeys[0]])
+      } else if (gearWeightOptions[otherWeightKeys]) {
+        weightToNum(gearWeightOptions[otherWeightKeys][0])
       }
       
       console.log(gear_weight_ounces, 'ounces')
