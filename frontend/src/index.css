@@ -64,6 +64,10 @@ header a {
   text-decoration: inherit;
 }
 
+/* .gear-details img.gear-image {
+  height: 100px;
+} */
+
 .gear-details span {
   position: absolute;
   top: 20px;
@@ -134,8 +138,6 @@ input.error, select.error {
     grid-template-columns: 2fr 1fr;
     gap: 50px;
   }
-
-  
   
   .gear-details span.edit {
     top: 20px;

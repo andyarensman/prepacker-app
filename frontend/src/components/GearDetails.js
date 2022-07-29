@@ -69,6 +69,7 @@ const GearDetails = ({ gear }) => {
       {gear.website && <p><strong>Product Page: </strong><a href={gear.website} target="_blank" rel="noreferrer">REI</a></p>}
       {gear.price && <p><strong>Price: </strong>${gear.price}</p>}
       <p>{formatDistanceToNow(new Date(gear.createdAt), { addSuffix: true })}</p>
+      {/* {gear.image_url && <img src={gear.image_url} alt={"Image: " + gear.gear_name} className="gear-image"/>} */}
       <span className="material-symbols-outlined edit">edit</span>
       <span className="material-symbols-outlined delete" onClick={handleClick}>delete</span>
     </div>
