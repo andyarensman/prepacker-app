@@ -67,12 +67,19 @@ header a {
 .gear-details span {
   position: absolute;
   top: 20px;
-  right: 20px;
   cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
   border-radius: 50%;
   color: #333;
+}
+
+.gear-details span.edit {
+  right: 70px;
+}
+
+.gear-details span.delete {
+  right: 20px;
 }
 
 /* new gear form */
@@ -126,5 +133,16 @@ input.error, select.error {
   .home {
     grid-template-columns: 2fr 1fr;
     gap: 50px;
+  }
+
+  
+  
+  .gear-details span.edit {
+    top: 20px;
+    right: 20px;
+  }
+  
+  .gear-details span.delete {
+    top: 70px;
   }
 }
