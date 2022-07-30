@@ -15,8 +15,8 @@ const GearForm = ({
     setUrl,
     price,
     setPrice,
-    image_url,
-    setImageUrl,
+    // image_url,
+    // setImageUrl,
     error,
     setError,
     emptyFields,
@@ -32,7 +32,7 @@ const GearForm = ({
     if (pounds || ounces) {
       weight = Number(pounds)*16 + Number(ounces)
     }
-    const gear = {gear_name, weight, price, image_url, category}
+    const gear = {gear_name, weight, price,/* image_url,*/ category}
     gear.website = url
 
     const response = await fetch('/api/closet', {
@@ -56,7 +56,7 @@ const GearForm = ({
       setPounds('')
       setOunces('')
       setCategory('')
-      setImageUrl('')
+      // setImageUrl('')
       setUrl('')
       setError(null)
       setEmptyFields([])
@@ -127,12 +127,12 @@ const GearForm = ({
         value={price}
       />
 
-      <label>Image Url:</label>
+      {/* <label>Image Url:</label>
       <input 
         type="url"
         onChange={(e) => setImageUrl(e.target.value)}
         value={image_url}
-      />
+      /> */}
 
       <button>Add Gear to Closet</button>
       {error && <div className="error">{error}</div>}

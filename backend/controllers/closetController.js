@@ -38,8 +38,8 @@ const addGear = async (req, res) => {
     price,
     category, 
     notes, 
-    website, 
-    image_url
+    website 
+    // image_url
   } = req.body
 
   // forgotten Field
@@ -64,8 +64,8 @@ const addGear = async (req, res) => {
         category, 
         price, 
         notes, 
-        website, 
-        image_url
+        website 
+        // image_url
       })
     res.status(200).json(gear)
   } catch (error) {
@@ -133,12 +133,14 @@ const getScrapedGear = async (req, res) => {
         returnData.gear_name = gear_name
       }
 
-      // Grab the image source
+      // Grab the image source - removed for copyright concerns
+      /*
       let image_url_end = $('#media-center-primary-image').attr('src')
       if (image_url_end.length !== 0) {
         const gear_image_url = 'https://www.rei.com' + image_url_end
         returnData.gear_image_url = gear_image_url
       }
+      */
 
       // Grab Category
       let category;

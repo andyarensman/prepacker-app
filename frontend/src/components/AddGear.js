@@ -9,7 +9,7 @@ const AddGear = () => {
   const [url, setUrl] = useState('')
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
-  const [image_url, setImageUrl] = useState('')
+  // const [image_url, setImageUrl] = useState('')
   const [error, setError] = useState(null)
   const [scraperError, setScraperError] = useState(false)
   const [emptyFields, setEmptyFields] = useState([])
@@ -26,7 +26,7 @@ const AddGear = () => {
         setCategory={setCategory}
         setUrl={setUrl}
         setPrice={setPrice}
-        setImageUrl={setImageUrl}
+        // setImageUrl={setImageUrl}
         scraperError={scraperError}
         setScraperError={setScraperError}
         setError={setError}
@@ -45,8 +45,8 @@ const AddGear = () => {
         setUrl={setUrl}
         price={price}
         setPrice={setPrice}
-        image_url={image_url}
-        setImageUrl={setImageUrl}
+        // image_url={image_url}
+        // setImageUrl={setImageUrl}
         error={error}
         setError={setError}
         emptyFields={emptyFields}
