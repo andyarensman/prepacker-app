@@ -1,4 +1,5 @@
 // TODO: Need to add any images
+// TODO: Only scroll on this component
 import { useClosetContext } from "../hooks/useClosetContext";
 
 // date fns
