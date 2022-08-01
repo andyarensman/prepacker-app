@@ -35,7 +35,7 @@ header a {
 }
 
 /* homepage */
-.home {
+.gear-closet {
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 100px;
@@ -131,6 +131,15 @@ div.error {
 }
 input.error, select.error {
   border: 1px solid var(--error);
+}
+
+/* navbar */
+nav {
+  display: flex;
+  align-items: center;
+}
+nav a {
+  margin-left: 10px;
 }
 
 @media screen and (max-width: 1200px) {

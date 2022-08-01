@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 
 // pages and components
 import Home from './pages/home';
+import GearCloset from './pages/gearCloset';
 
 
 function App() {
@@ -12,9 +13,13 @@ function App() {
       <Navbar />
         <div className="pages">
           <Routes>
-            <Route 
+          <Route 
               path="/"
               element={<Home />}
+            />
+            <Route 
+              path="/gear-closet"
+              element={<GearCloset />}
             />
           </Routes>
         </div>

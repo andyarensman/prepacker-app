@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { useClosetContext } from "../hooks/useClosetContext";
 
 // components
+import GearDetails from '../components/GearDetails'
+import AddGear from "../components/AddGear";
 
-const Home = () => {
+const GearCloset = () => {
   const {closet, dispatch}= useClosetContext()
 
   //! This is now on the new home page and here. Should it be in the parent instead?
@@ -21,11 +23,17 @@ const Home = () => {
   }, [dispatch])
 
   return ( 
-    <div className="home">
-      <div className="trip-list"></div>
-      <div className="closet-list"></div>
+    <div className="gear-closet">
+      <div className="closet">
+        {closet && closet.map((gear) => (
+          <GearDetails key={gear._id} gear={gear}/>
+        ))}
+      </div>
+      <div>
+        <AddGear />
+      </div>
     </div>
    );
 }
  
-export default Home;
+export default GearCloset;
