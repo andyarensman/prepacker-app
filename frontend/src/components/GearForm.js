@@ -101,7 +101,7 @@ const GearForm = ({
         onChange={(e) => setCategory(e.target.value)}
         className={emptyFields.includes('category') ? 'error' : ''}
       >
-        <option value=""></option>
+        <option value="" disabled></option>
         <option value="clothing">Clothing</option>
         <option value="container">Containers/Bags</option>
         <option value="essential">Essential Tools</option>

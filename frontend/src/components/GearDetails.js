@@ -41,6 +41,8 @@ const GearDetails = ({ gear }) => {
   
   const handleCategory = (category) => {
     switch (category) {
+        case("clothing"):
+          return ("Clothing")
         case ("container"):
           return ("Container")
         case ("essential"):

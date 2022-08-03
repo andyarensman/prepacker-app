@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useClosetContext } from "../hooks/useClosetContext";
 
 // components
-import ClosetList from "../components/ClosetList";
 import TripList from "../components/TripList";
+import ClosetCategory from "../components/ClosetCategory";
 
 const Home = () => {
   const [trip_list, setTripList] = useState([])
@@ -35,14 +35,17 @@ const Home = () => {
         />
       </div>
       <div className="closet-list">
-      {closet && closet.map((gear) => (
-          <ClosetList 
-            key={gear._id} 
-            gear={gear}
+        <h2>My Gear</h2>
+        {closet && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
+          <ClosetCategory
+            closet={closet}
+            category={e}
+            key={e}
             trip_list={trip_list}
             setTripList={setTripList}
           />
         ))}
+        
       </div>
     </div>
    );
