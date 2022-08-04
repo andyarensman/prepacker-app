@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useClosetContext } from "../hooks/useClosetContext";
 
 // components
-import TripList from "../components/TripList";
 import ClosetCategory from "../components/ClosetCategory";
+import TripListCategory from "../components/TripListCategory";
 
 const Home = () => {
   const [trip_list, setTripList] = useState([])
@@ -29,10 +29,16 @@ const Home = () => {
   return ( 
     <div className="home">
       <div>
-        <TripList 
-          trip_list={trip_list}
-          setTripList={setTripList}
-        />
+        <h2>My PrePacker Checklist</h2>
+        {trip_list && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
+            <TripListCategory
+              category={e}
+              key={e}
+              trip_list={trip_list}
+              setTripList={setTripList}
+            />
+          ))}
+          {trip_list.length !== 0 && <button className="save-list">Save List</button>}
       </div>
       <div className="closet-list">
         <h2>My Gear</h2>
