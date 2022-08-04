@@ -11,3 +11,5 @@ There will be two main pages: the closet and the PrePacker. On the closet page, 
 ## Notes
 
 Originally I planned to scrape image urls and use those as images next to the gear data. However, I soon realized that this would likely be a copyright violation, so I scrapped the idea. I may use some public domain icons to represent each gear category instead.
+
+Creating the backend for the checklists was super simple - I just had to copy everything from the closet side of things (model, route, controller) and change a few variables.
