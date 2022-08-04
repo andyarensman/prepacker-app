@@ -29,9 +29,9 @@ const ClosetCategory = ({ closet, category, trip_list, setTripList }) => {
 
   return ( 
     <>
-      {closet && closet.some(e => e.category === category) && <h3>{handleCategory(category)}</h3>}
+      {closet.some(e => e.category === category) && <h3>{handleCategory(category)}</h3>}
 
-      {closet && closet.map((gear) => {
+      {closet.map((gear) => {
         return gear.category === category &&
           <ClosetList 
             key={gear._id} 

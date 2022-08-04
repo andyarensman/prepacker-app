@@ -32,7 +32,7 @@ const TripListCategory = ({ category, trip_list, setTripList }) => {
       {trip_list.some(e => e.category === category) && <h3>{handleCategory(category)}</h3>}
 
       
-      {trip_list && trip_list.map((gear) => {
+      {trip_list.map((gear) => {
         return gear.category === category &&
           <TripList 
             key={gear._id} 
