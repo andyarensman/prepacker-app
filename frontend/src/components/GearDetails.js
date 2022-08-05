@@ -20,6 +20,7 @@ const GearDetails = ({ gear }) => {
     }
   }
 
+  //! This is on the home page, GearDetails component, and TripList component
   const handleWeight = (weight) => {
     let pounds = Math.floor(weight/16)
     let ouncesNoRound = (weight - (Math.floor(weight/16))*16)

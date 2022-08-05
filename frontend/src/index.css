@@ -5,7 +5,7 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
+  --primary: #708259;
   --error: #e7195a;
 }
 body {
@@ -35,9 +35,14 @@ header a {
 }
 
 /* homepage */
-.gear-closet, .home {
+.gear-closet {
   display: grid;
   grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+.home {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
   gap: 100px;
 }
 .gear-details {
@@ -143,6 +148,12 @@ nav {
 }
 nav a {
   margin-left: 10px;
+}
+
+
+/* checklist maker */
+.weight-italics {
+  color: #9A3E25
 }
 
 @media screen and (max-width: 1200px) {

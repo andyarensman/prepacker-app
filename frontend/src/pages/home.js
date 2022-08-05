@@ -26,6 +26,39 @@ const Home = () => {
     fetchCloset()
   }, [dispatch])
 
+  //! This is on the home page, GearDetails component, and TripList component
+  const handleWeight = (weight) => {
+    let pounds = Math.floor(weight/16)
+    let ouncesNoRound = (weight - (Math.floor(weight/16))*16)
+    let ounces = Math.round(ouncesNoRound * 10) / 10
+
+    if (pounds !== 0 && ounces !== 0) {
+      return (`${pounds} lb ${ounces} oz`)
+    }
+    if (pounds === 0 && ounces !== 0) {
+      return (`${ounces} oz`)
+    }
+    if (pounds !== 0 && ounces === 0) {
+      return (`${pounds} lb`)
+    }
+    if (!pounds && !ounces) {
+      return ('N/A')
+    }
+  }
+
+  const findTotalWeight = () => {
+    let totalWeight = 0
+
+    trip_list.map(gear => {
+      if (gear.weight) {
+        totalWeight += gear.weight
+      }
+      return totalWeight
+    })
+
+    return handleWeight(totalWeight)
+  }
+
   return ( 
     <div className="home">
       <div>
@@ -38,6 +71,8 @@ const Home = () => {
               setTripList={setTripList}
             />
           ))}
+          <br/>
+          {trip_list.length !== 0 && <p><b>Total Weight: <i className="weight-italics">{findTotalWeight()}</i></b></p>}
           {trip_list.length !== 0 && <button className="save-list">Save List</button>}
       </div>
       <div className="closet-list">
