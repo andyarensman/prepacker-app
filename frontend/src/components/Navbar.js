@@ -7,6 +7,12 @@ const Navbar = () => {
         <Link to="/">
           <h1>PrePacker</h1>
         </Link>
+        <Link to="/">
+          <h3>New List</h3>
+        </Link>
+        <Link to="/saved-lists">
+          <h3>Saved Lists</h3>
+        </Link>
         <Link to="/gear-closet">
           <h3>My Gear Closet</h3>
         </Link>

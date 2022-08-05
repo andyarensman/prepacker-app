@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 // pages and components
 import Home from './pages/home';
 import GearCloset from './pages/gearCloset';
+import SavedLists from './pages/savedLists';
 
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
             <Route 
               path="/gear-closet"
               element={<GearCloset />}
+            />
+            <Route 
+              path="/saved-lists"
+              element={<SavedLists />}
             />
           </Routes>
         </div>
