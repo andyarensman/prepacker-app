@@ -9,6 +9,11 @@ import TripListCategory from "../components/TripListCategory";
 
 const Home = () => {
   const [trip_list, setTripList] = useState([])
+  const [checklist_name, setChecklistName] = useState('')
+  const [checklist_notes, setChecklistNotes] = useState('')
+  const [error, setError] = useState(null)
+  const [emptyFields, setEmptyFields] = useState([])
+
   const {closet, dispatch}= useClosetContext()
   // console.log(closet)
 
@@ -59,6 +64,38 @@ const Home = () => {
     return handleWeight(totalWeight)
   }
 
+  // Submit Checklist 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    let gear_items = trip_list.map(e => e._id)
+
+
+    const checklist = {checklist_name, gear_items, checklist_notes}
+
+    const response = await fetch('/api/checklist', {
+      method: 'POST',
+      body: JSON.stringify(checklist),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const json = await response.json()
+
+    if (!response.ok) {
+      console.log('something went wrong')
+      setError(json.error)
+      setEmptyFields(json.emptyFields)
+    }
+
+    if (response.ok) {
+      console.log('i think it worked')
+      setError(null)
+      setEmptyFields([])
+    }
+  }
+
   return ( 
     <div className="home">
       <div>
@@ -72,8 +109,29 @@ const Home = () => {
             />
           ))}
           <br/>
-          {trip_list.length !== 0 && <p><b>Total Weight: <i className="weight-italics">{findTotalWeight()}</i></b></p>}
-          {trip_list.length !== 0 && <button className="save-list">Save List</button>}
+          {trip_list.length !== 0 && (
+            <form className="create-checklist" onSubmit={handleSubmit}>
+              <p>
+                <b>Total Weight: <i className="weight-italics">{findTotalWeight()}</i></b>
+              </p>
+              <label>Checklist Name</label>
+              <input
+                type="text" 
+                onChange={(e) => setChecklistName(e.target.value)}
+                value={checklist_name}
+                className={emptyFields.includes('checklist_name') ? 'error' : ''}
+              />
+              <label>Notes</label>
+              <textarea 
+                onChange={(e) => setChecklistNotes(e.target.value)}
+                value={checklist_notes}
+              />
+              <br/>
+              <button className="save-list">Save List</button>
+              {error && <div className="error">{error}</div>}
+            </form>
+          )}
+          
       </div>
       <div className="closet-list">
         <h2>My Gear</h2>

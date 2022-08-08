@@ -29,7 +29,8 @@ const getSingleChecklist = async (req, res) => {
 const addChecklist = async (req, res) => {
   const {
     checklist_name, 
-    gear_items
+    gear_items,
+    checklist_notes
   } = req.body
 
   // forgotten Field
@@ -39,9 +40,6 @@ const addChecklist = async (req, res) => {
   if(!checklist_name) {
     emptyFields.push('checklist_name')
   }
-  if(!gear_items) {
-    emptyFields.push('gear_items')
-  }
   if(emptyFields.length > 0) {
     return res.status(400).json({ error: 'Please fill in all required fields', emptyFields})
   }
@@ -50,7 +48,8 @@ const addChecklist = async (req, res) => {
   try {
     const checklist = await Checklist.create({
         checklist_name, 
-        gear_items
+        gear_items,
+        checklist_notes
       })
     res.status(200).json(checklist)
   } catch (error) {
