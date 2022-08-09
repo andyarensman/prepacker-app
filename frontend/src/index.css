@@ -81,10 +81,12 @@ header a {
   padding: 6px;
   border-radius: 50%;
   color: #333;
+  font-size: 22px;
 }
 
 .gear-details span.edit {
   right: 70px;
+  
 }
 
 .gear-details span.delete {
@@ -92,6 +94,14 @@ header a {
 }
 
 /* new gear form */
+
+span.cancel {
+  position: relative;
+  top: 4px;
+  cursor: pointer;
+  color: #333;
+  font-size: 18px;
+}
 label, input, select {
   display: block;
 }
@@ -178,6 +188,6 @@ button.delete-list {
   }
   
   .gear-details span.delete {
-    top: 70px;
+    top: 62px;
   }
 }
