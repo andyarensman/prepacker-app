@@ -1,4 +1,6 @@
 //TODO: User should be able to remove items from here as well. Change check_box state to instead look at the trip_list state to see if the corresponding id is there
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 
 const TripList = ({trip_list, setTripList, gear}) => {
 
@@ -22,9 +24,20 @@ const TripList = ({trip_list, setTripList, gear}) => {
     }
   }
 
+  // Remove from List
+  const handleClick = () => {
+    let index = trip_list.findIndex(x => x._id === gear._id)
+
+    let new_trip_list = trip_list.filter((e, i) => i !== index)
+
+    setTripList(new_trip_list)
+    
+  }
+
   return ( 
     <div className="trip-list">
-      {gear.gear_name} {gear.weight && <i className="weight-italics">({handleWeight(gear.weight)})</i>}
+      {gear.gear_name} {gear.weight && <i className="weight-italics">({handleWeight(gear.weight)}) </i>}
+      <FontAwesomeIcon icon={faCircleXmark} size="lg" color="black" onClick={() => handleClick()}/>
     </div>
    );
 }
