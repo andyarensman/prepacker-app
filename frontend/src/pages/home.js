@@ -31,6 +31,19 @@ const Home = () => {
     fetchCloset()
   }, [dispatch])
 
+  // Fetch trip list from local storage
+  useEffect(() =>{
+    const data = window.localStorage.getItem('PREPACK_NEW_CHECKLIST')
+    if (data !== null) setTripList(JSON.parse(data))
+  }, [])
+
+
+  // Update local storage with trip list data
+  useEffect(() =>{
+    window.localStorage.setItem('PREPACK_NEW_CHECKLIST', JSON.stringify(trip_list))
+  }, [trip_list])
+
+
   //! This is on the home page, GearDetails component, and TripList component
   const handleWeight = (weight) => {
     let pounds = Math.floor(weight/16)
