@@ -7,7 +7,7 @@ const TripListCategory = ({ category, trip_list, setTripList }) => {
         case("clothing"):
             return ("Clothing")
         case ("container"):
-          return ("Container")
+          return ("BackPack/Container")
         case ("essential"):
           return ("Essential Tools")
         case ("hygiene"):

@@ -1,27 +1,30 @@
+
 import ClosetList from "../components/ClosetList";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShirt, faBox, faScrewdriverWrench, faHandSparkles, faFireBurner, faTent, faMobile, faMountain, faBinoculars } from '@fortawesome/free-solid-svg-icons'
 
 const ClosetCategory = ({ closet, category, trip_list, setTripList }) => {
   const handleCategory = (category) => {
 
     switch (category) {
         case("clothing"):
-            return ("Clothing")
+            return (<><FontAwesomeIcon icon={faShirt} /> Clothing</>)
         case ("container"):
-          return ("Container")
+          return (<><FontAwesomeIcon icon={faBox} /> BackPack/Container</>)
         case ("essential"):
-          return ("Essential Tools")
+          return (<><FontAwesomeIcon icon={faScrewdriverWrench} /> Essential Tools</>)
         case ("hygiene"):
-          return ("Hygiene/Care")
+          return (<><FontAwesomeIcon icon={faHandSparkles} /> Hygiene/Care</>)
         case ("kitchen"):
-          return ("Kitchen")
+          return (<><FontAwesomeIcon icon={faFireBurner} /> Kitchen</>)
         case ("sleep"):
-          return ("Sleep System")
+          return (<><FontAwesomeIcon icon={faTent} /> Sleep System</>)
         case ("personal"):
-          return ("Personal Item")
+          return (<><FontAwesomeIcon icon={faMobile} /> Personal Item</>)
         case ("mountaineering"):
-          return ("Mountaineering")
+          return (<><FontAwesomeIcon icon={faMountain} /> Mountaineering</>)
         case ("other"):
-          return ("Other")
+          return (<><FontAwesomeIcon icon={faBinoculars} /> Other</>)
         default:
           return ("None")
     }
