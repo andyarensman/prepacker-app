@@ -96,6 +96,15 @@ const Home = () => {
     }
   }
 
+  // Remove all from checklist
+  const handleClick = () => {
+    setTripList([])
+    setChecklistName('')
+    setChecklistNotes('')
+    setError(null)
+    setEmptyFields([])
+  }
+
   return ( 
     <div className="home">
       <div>
@@ -110,26 +119,30 @@ const Home = () => {
           ))}
           <br/>
           {trip_list.length !== 0 && (
-            <form className="create-checklist" onSubmit={handleSubmit}>
-              <p>
-                <b>Total Weight: <i className="weight-italics">{findTotalWeight()}</i></b>
-              </p>
-              <label>Checklist Name</label>
-              <input
-                type="text" 
-                onChange={(e) => setChecklistName(e.target.value)}
-                value={checklist_name}
-                className={emptyFields.includes('checklist_name') ? 'error' : ''}
-              />
-              <label>Notes</label>
-              <textarea 
-                onChange={(e) => setChecklistNotes(e.target.value)}
-                value={checklist_notes}
-              />
-              <br/>
-              <button className="save-list">Save List</button>
+            <>
+              <form className="create-checklist" onSubmit={handleSubmit}>
+                <p>
+                  <b>Total Weight: <i className="weight-italics">{findTotalWeight()}</i></b>
+                </p>
+                <label>Checklist Name</label>
+                <input
+                  type="text" 
+                  onChange={(e) => setChecklistName(e.target.value)}
+                  value={checklist_name}
+                  className={emptyFields.includes('checklist_name') ? 'error' : ''}
+                />
+                <label>Notes</label>
+                <textarea 
+                  onChange={(e) => setChecklistNotes(e.target.value)}
+                  value={checklist_notes}
+                />
+                <br/>
+                <button className="save-list">Save List</button>
+                
+              </form>
+              <button className="delete-list" onClick={() => handleClick()}>Remove All</button>
               {error && <div className="error">{error}</div>}
-            </form>
+            </>
           )}
           
       </div>

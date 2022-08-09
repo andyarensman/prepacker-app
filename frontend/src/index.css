@@ -155,6 +155,16 @@ nav a {
 .weight-italics {
   color: #9A3E25
 }
+button.delete-list {
+  background-color: #9A3E25;
+  margin-top: 10px;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Lato";
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 1200px) {
   .home {
