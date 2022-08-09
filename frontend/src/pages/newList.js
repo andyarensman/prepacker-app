@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { useClosetContext } from "../hooks/useClosetContext";
 
 // components
-import ClosetCategory from "../components/ClosetCategory";
-import TripListCategory from "../components/TripListCategory";
+import ClosetCategory from "../components/newList/ClosetCategory";
+import TripListCategory from "../components/newList/TripListCategory";
 
-const Home = () => {
+const NewList = () => {
   const [trip_list, setTripList] = useState([])
   const [checklist_name, setChecklistName] = useState('')
   const [checklist_notes, setChecklistNotes] = useState('')
@@ -176,4 +176,4 @@ const Home = () => {
    );
 }
  
-export default Home;
+export default NewList;

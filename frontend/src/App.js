@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
 
 // pages and components
-import Home from './pages/home';
+import NewList from './pages/newList';
 import GearCloset from './pages/gearCloset';
 import SavedLists from './pages/savedLists';
 
@@ -15,8 +15,8 @@ function App() {
         <div className="pages">
           <Routes>
           <Route 
-              path="/"
-              element={<Home />}
+              path="/new-list"
+              element={<NewList />}
             />
             <Route 
               path="/gear-closet"

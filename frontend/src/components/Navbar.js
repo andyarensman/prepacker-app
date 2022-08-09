@@ -4,10 +4,10 @@ const Navbar = () => {
   return ( 
     <header>
       <div className="container">
-        <Link to="/">
+        <Link to="/new-list">
           <h1>PrePacker</h1>
         </Link>
-        <Link to="/">
+        <Link to="/new-list">
           <h3>New List</h3>
         </Link>
         <Link to="/saved-lists">

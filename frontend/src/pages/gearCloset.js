@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useClosetContext } from "../hooks/useClosetContext";
 
 // components
-import GearDetails from '../components/GearDetails'
-import AddGear from "../components/AddGear";
+import GearDetails from '../components/gearCloset/GearDetails'
+import AddGear from "../components/gearCloset/AddGear";
 
 const GearCloset = () => {
   const {closet, dispatch}= useClosetContext()

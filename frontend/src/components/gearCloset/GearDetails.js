@@ -1,6 +1,6 @@
 // TODO: Need to add any images
 // TODO: Only scroll on this component
-import { useClosetContext } from "../hooks/useClosetContext";
+import { useClosetContext } from "../../hooks/useClosetContext";
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'

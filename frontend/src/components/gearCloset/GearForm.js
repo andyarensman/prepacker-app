@@ -1,6 +1,6 @@
 // TODO: Need to add other things to the form: product type
 
-import { useClosetContext } from "../hooks/useClosetContext";
+import { useClosetContext } from "../../hooks/useClosetContext";
 
 const GearForm = ({
     gear_name,

@@ -1,5 +1,5 @@
 
-import ClosetList from "../components/ClosetList";
+import ClosetList from "./ClosetList";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShirt, faBox, faScrewdriverWrench, faHandSparkles, faFireBurner, faTent, faMobile, faMountain, faBinoculars } from '@fortawesome/free-solid-svg-icons'
 

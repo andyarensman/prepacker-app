@@ -1,4 +1,4 @@
-import TripList from "../components/TripList";
+import TripList from "./TripList";
 
 const TripListCategory = ({ category, trip_list, setTripList }) => {
   const handleCategory = (category) => {
