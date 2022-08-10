@@ -1,24 +1,6 @@
+import { handleWeight } from "../../helpers/utils"
+
 const TripList = ({trip_list, setTripList, gear}) => {
-
-  //! This is on the home page, GearDetails component, and TripList component
-  const handleWeight = (weight) => {
-    let pounds = Math.floor(weight/16)
-    let ouncesNoRound = (weight - (Math.floor(weight/16))*16)
-    let ounces = Math.round(ouncesNoRound * 10) / 10
-
-    if (pounds !== 0 && ounces !== 0) {
-      return (`${pounds} lb ${ounces} oz`)
-    }
-    if (pounds === 0 && ounces !== 0) {
-      return (`${ounces} oz`)
-    }
-    if (pounds !== 0 && ounces === 0) {
-      return (`${pounds} lb`)
-    }
-    if (!pounds && !ounces) {
-      return ('N/A')
-    }
-  }
 
   // Remove from List
   const handleClick = () => {

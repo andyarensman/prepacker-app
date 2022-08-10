@@ -1,11 +1,11 @@
-// TODO: Gear should be organized by category
-
 import { useEffect, useState } from "react";
 import { useClosetContext } from "../hooks/useClosetContext";
+
 
 // components
 import ClosetCategory from "../components/newList/ClosetCategory";
 import TripListCategory from "../components/newList/TripListCategory";
+import { findTotalWeight } from "../helpers/utils";
 
 const NewList = () => {
   const [trip_list, setTripList] = useState([])
@@ -42,40 +42,6 @@ const NewList = () => {
   useEffect(() =>{
     window.localStorage.setItem('PREPACK_NEW_CHECKLIST', JSON.stringify(trip_list))
   }, [trip_list])
-
-
-  //! This is on the home page, GearDetails component, and TripList component
-  const handleWeight = (weight) => {
-    let pounds = Math.floor(weight/16)
-    let ouncesNoRound = (weight - (Math.floor(weight/16))*16)
-    let ounces = Math.round(ouncesNoRound * 10) / 10
-
-    if (pounds !== 0 && ounces !== 0) {
-      return (`${pounds} lb ${ounces} oz`)
-    }
-    if (pounds === 0 && ounces !== 0) {
-      return (`${ounces} oz`)
-    }
-    if (pounds !== 0 && ounces === 0) {
-      return (`${pounds} lb`)
-    }
-    if (!pounds && !ounces) {
-      return ('N/A')
-    }
-  }
-
-  const findTotalWeight = () => {
-    let totalWeight = 0
-
-    trip_list.map(gear => {
-      if (gear.weight) {
-        totalWeight += gear.weight
-      }
-      return totalWeight
-    })
-
-    return handleWeight(totalWeight)
-  }
 
   // Submit Checklist 
   const handleSubmit = async (e) => {
@@ -135,7 +101,7 @@ const NewList = () => {
             <>
               <form className="create-checklist" onSubmit={handleSubmit}>
                 <p>
-                  <b>Total Weight: <i className="weight-italics">{findTotalWeight()}</i></b>
+                  <b>Total Weight: <i className="weight-italics">{findTotalWeight(trip_list)}</i></b>
                 </p>
                 <label>Checklist Name</label>
                 <input

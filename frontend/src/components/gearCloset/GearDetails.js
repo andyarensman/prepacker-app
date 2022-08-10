@@ -1,6 +1,7 @@
 // TODO: Need to add any images
 // TODO: Only scroll on this component
 import { useClosetContext } from "../../hooks/useClosetContext";
+import { handleWeight } from "../../helpers/utils";
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
@@ -17,26 +18,6 @@ const GearDetails = ({ gear }) => {
 
     if (response.ok) {
       dispatch({type: 'DELETE_GEAR', payload: json})
-    }
-  }
-
-  //! This is on the home page, GearDetails component, and TripList component
-  const handleWeight = (weight) => {
-    let pounds = Math.floor(weight/16)
-    let ouncesNoRound = (weight - (Math.floor(weight/16))*16)
-    let ounces = Math.round(ouncesNoRound * 10) / 10
-
-    if (pounds !== 0 && ounces !== 0) {
-      return (`${pounds} lb ${ounces} oz`)
-    }
-    if (pounds === 0 && ounces !== 0) {
-      return (`${ounces} oz`)
-    }
-    if (pounds !== 0 && ounces === 0) {
-      return (`${pounds} lb`)
-    }
-    if (pounds === 0 && ounces === 0) {
-      return ('N/A')
     }
   }
   

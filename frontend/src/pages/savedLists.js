@@ -1,4 +1,5 @@
 // This page will retrieve all saved lists from mongodb and display a shorter version of them somehow. Then the user can click the list to see more details, start checking things off
+//TODO: Change to using context for better loading?
 
 import { useEffect, useState } from "react";
 import ChecklistDetails from "../components/savedLists/ChecklistDetails";
