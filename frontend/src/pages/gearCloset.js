@@ -6,7 +6,7 @@ import GearDetails from '../components/gearCloset/GearDetails'
 import AddGear from "../components/gearCloset/AddGear";
 
 const GearCloset = () => {
-  const {closet, dispatch}= useClosetContext()
+  const {closet, dispatch} = useClosetContext()
 
   //! This is now on the new home page and here. Should it be in the parent instead?
   useEffect(() => {
