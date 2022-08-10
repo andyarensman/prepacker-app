@@ -48,9 +48,10 @@ const NewList = () => {
     e.preventDefault()
 
     let gear_items = trip_list.map(e => e._id)
+    let total_weight = findTotalWeight(trip_list)
 
 
-    const checklist = {checklist_name, gear_items, checklist_notes}
+    const checklist = {checklist_name, gear_items, total_weight, checklist_notes}
 
     const response = await fetch('/api/checklist', {
       method: 'POST',
