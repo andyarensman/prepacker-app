@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useClosetContext } from "../hooks/useClosetContext";
 
 // components
@@ -6,21 +5,7 @@ import GearDetails from '../components/gearCloset/GearDetails'
 import AddGear from "../components/gearCloset/AddGear";
 
 const GearCloset = () => {
-  const {closet, dispatch} = useClosetContext()
-
-  //! This is now on the new home page and here. Should it be in the parent instead?
-  useEffect(() => {
-    const fetchCloset = async () => {
-      const response = await fetch('/api/closet')
-      const json = await response.json()
-
-      if (response.ok) {
-        dispatch({type:'SET_CLOSET', payload: json})
-      }
-    }
-
-    fetchCloset()
-  }, [dispatch])
+  const {closet} = useClosetContext()
 
   return ( 
     <div className="gear-closet">

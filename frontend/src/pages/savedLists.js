@@ -3,25 +3,9 @@
 
 import { useEffect, useState } from "react";
 import ChecklistDetails from "../components/savedLists/ChecklistDetails";
-import { useClosetContext } from "../hooks/useClosetContext";
 
 const SavedLists = () => {
   const [checklists, setChecklists] = useState(null)
-  const {closet, dispatch} = useClosetContext()
-
-  //! This is now on the closet page and here. Should it be in the parent instead?
-  useEffect(() => {
-    const fetchCloset = async () => {
-      const response = await fetch('/api/closet')
-      const json = await response.json()
-
-      if (response.ok) {
-        dispatch({type:'SET_CLOSET', payload: json})
-      }
-    }
-
-    fetchCloset()
-  }, [dispatch])
 
   // Getting the saved lists
   useEffect(() => {

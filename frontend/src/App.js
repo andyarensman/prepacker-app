@@ -1,14 +1,32 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
+import { useEffect } from "react";
 
-// pages and components
+// pages, components, context
 import NewList from './pages/newList';
 import GearCloset from './pages/gearCloset';
 import SavedLists from './pages/savedLists';
 import SavedListDetails from './pages/savedListDetails';
+import { useClosetContext } from './hooks/useClosetContext';
 
 
 function App() {
+  const {dispatch} = useClosetContext()
+  
+  // Grab the closet data. This was on every page.
+  useEffect(() => {
+    const fetchCloset = async () => {
+      const response = await fetch('/api/closet')
+      const json = await response.json()
+
+      if (response.ok) {
+        dispatch({type:'SET_CLOSET', payload: json})
+      }
+    }
+
+    fetchCloset()
+  }, [dispatch])
+
   return (
     <div className="App">
       <BrowserRouter>

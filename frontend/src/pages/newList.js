@@ -14,22 +14,8 @@ const NewList = () => {
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
-  const {closet, dispatch}= useClosetContext()
-  // console.log(closet)
+  const {closet}= useClosetContext()
 
-  //! This is now on the closet page and here. Should it be in the parent instead?
-  useEffect(() => {
-    const fetchCloset = async () => {
-      const response = await fetch('/api/closet')
-      const json = await response.json()
-
-      if (response.ok) {
-        dispatch({type:'SET_CLOSET', payload: json})
-      }
-    }
-
-    fetchCloset()
-  }, [dispatch])
 
   // Fetch trip list from local storage
   useEffect(() =>{
