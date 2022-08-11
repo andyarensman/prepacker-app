@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import NewList from './pages/newList';
 import GearCloset from './pages/gearCloset';
 import SavedLists from './pages/savedLists';
-import SavedListDetails from './pages/SavedListDetails';
+import SavedListDetails from './pages/savedListDetails';
 
 
 function App() {

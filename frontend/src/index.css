@@ -45,7 +45,7 @@ header a {
   grid-template-columns: 3fr 2fr;
   gap: 100px;
 }
-.gear-details {
+.gear-details, .checklist-details {
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
@@ -53,18 +53,18 @@ header a {
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
-.gear-details h4 {
+.gear-details h4, .checklist-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
-.gear-details p {
+.gear-details p, .checklist-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
 
-.gear-details a {
+.gear-details a, .checklist-details a {
   color: inherit;
   text-decoration: inherit;
 }
@@ -175,6 +175,11 @@ button.delete-list {
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* saved lists */
+/* .checklist-details {
+
+} */
 
 @media screen and (max-width: 1200px) {
   .home {
