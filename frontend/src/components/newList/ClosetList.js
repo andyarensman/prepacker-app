@@ -1,25 +1,6 @@
+import { handleWeight } from "../../helpers/utils"
+
 const ClosetList = ({ gear, trip_list, setTripList }) => {
-
-  //! This is on the home page, GearDetails component, and TripList component
-  const handleWeight = (weight) => {
-    let pounds = Math.floor(weight/16)
-    let ouncesNoRound = (weight - (Math.floor(weight/16))*16)
-    let ounces = Math.round(ouncesNoRound * 10) / 10
-
-    if (pounds !== 0 && ounces !== 0) {
-      return (`${pounds} lb ${ounces} oz`)
-    }
-    if (pounds === 0 && ounces !== 0) {
-      return (`${ounces} oz`)
-    }
-    if (pounds !== 0 && ounces === 0) {
-      return (`${pounds} lb`)
-    }
-    if (!pounds && !ounces) {
-      return ('N/A')
-    }
-  }
-
 
   const handleClick = () => {
     if (checkTripList() === '+') {

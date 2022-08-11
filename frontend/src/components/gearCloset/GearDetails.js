@@ -1,13 +1,12 @@
 // TODO: Need to add any images
 // TODO: Only scroll on this component
 import { useClosetContext } from "../../hooks/useClosetContext";
-import { handleWeight } from "../../helpers/utils";
+import { handleCategory, handleWeight } from "../../helpers/utils";
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const GearDetails = ({ gear }) => {
-
   const { dispatch } = useClosetContext()
 
   const handleClick = async () => {
@@ -18,31 +17,6 @@ const GearDetails = ({ gear }) => {
 
     if (response.ok) {
       dispatch({type: 'DELETE_GEAR', payload: json})
-    }
-  }
-  
-  const handleCategory = (category) => {
-    switch (category) {
-        case("clothing"):
-          return ("Clothing")
-        case ("container"):
-          return ("Container")
-        case ("essential"):
-          return ("Essential Tool")
-        case ("hygiene"):
-          return ("Hygiene/Care")
-        case ("kitchen"):
-          return ("Kitchen")
-        case ("sleep"):
-          return ("Sleep System")
-        case ("personal"):
-          return ("Personal Item")
-        case ("mountaineering"):
-          return ("Mountaineering")
-        case ("other"):
-          return ("Other")
-        default:
-          return ("None")
     }
   }
 
