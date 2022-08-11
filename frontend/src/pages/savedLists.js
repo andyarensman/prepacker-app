@@ -14,7 +14,6 @@ const SavedLists = () => {
 
       if (response.ok) {
         setChecklists(json)
-        console.log(json)
       }
     }
 

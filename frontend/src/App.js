@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import NewList from './pages/newList';
 import GearCloset from './pages/gearCloset';
 import SavedLists from './pages/savedLists';
+import SavedListDetails from './pages/SavedListDetails';
 
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
             <Route 
               path="/saved-lists"
               element={<SavedLists />}
+            />
+            <Route 
+              path="/saved-lists/:id"
+              element={<SavedListDetails />}
             />
           </Routes>
         </div>
