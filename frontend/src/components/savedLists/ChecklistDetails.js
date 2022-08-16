@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const ChecklistDetails = ({ checklist }) => {
   const [gearNames, setGearNames] = useState([])
   const {closet} = useClosetContext()
-
+  
   useEffect(() => {
     if (checklist.gear_items) {
       let tempArray = []
@@ -19,7 +19,7 @@ const ChecklistDetails = ({ checklist }) => {
       })
       setGearNames(tempArray)
     }
-  }, [])
+  }, [checklist, closet])
 
   return ( 
     <div className="checklist-details">
