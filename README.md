@@ -17,3 +17,5 @@ Creating the backend for the checklists was super simple - I just had to copy ev
 In order to use local storage to set state, I had to disable Strict Mode in the index.js. I may add it back in later to make sure I don't have any problems.
 
 I quickly had a lot of components and a lot of things to implement. In order to prevent myself from becoming overwhelmed, I divided up the components folder into sub-folders based on what page the component is being used for. I also made a to do list with every feature I want to add so I could quickly look something up and start to add it.
+
+Make sure to use array.forEach instead of array.map if you don't have a return value.

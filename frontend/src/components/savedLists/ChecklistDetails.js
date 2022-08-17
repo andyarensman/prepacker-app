@@ -9,17 +9,17 @@ const ChecklistDetails = ({ checklist }) => {
   const [gearNames, setGearNames] = useState([])
   const {closet} = useClosetContext()
   
-  // useEffect(() => {
-  //   if (checklist.gear_items && closet) {
-  //     let tempArray = []
-  //     closet.map(gear => {
-  //       if (checklist.gear_items.includes(gear._id)) {
-  //         tempArray.push(gear.gear_name)
-  //       }
-  //     })
-  //     setGearNames(tempArray)
-  //   }
-  // }, [checklist, closet])
+  useEffect(() => {
+    if (checklist.gear_items && closet) {
+      let tempArray = []
+      closet.forEach(gear => {
+        if (checklist.gear_items.includes(gear._id)) {
+          tempArray.push(gear.gear_name)
+        }
+      })
+      setGearNames(tempArray)
+    }
+  }, [checklist, closet])
 
   return ( 
     <div className="checklist-details">
