@@ -14,7 +14,7 @@ const NewList = () => {
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
-  const {closet}= useClosetContext()
+  const { closet, dispatch }= useClosetContext()
 
 
   // Fetch trip list from local storage
@@ -56,9 +56,10 @@ const NewList = () => {
     }
 
     if (response.ok) {
-      console.log('i think it worked')
+      console.log('new list added', json)
       setError(null)
       setEmptyFields([])
+      dispatch({type: 'CREATE_CHECKLIST', payload: json})
     }
   }
 

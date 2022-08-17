@@ -24,7 +24,21 @@ function App() {
       }
     }
 
-    fetchCloset()
+    fetchCloset() 
+  }, [dispatch])
+
+  // Grab the checklists data
+  useEffect(() => {
+    const fetchSavedLists = async () => {
+        const response = await fetch('/api/checklist')
+        const json = await response.json()
+  
+        if (response.ok) {
+          dispatch({type:'SET_CHECKLISTS', payload: json})
+        }
+      }
+
+    fetchSavedLists()
   }, [dispatch])
 
   return (
