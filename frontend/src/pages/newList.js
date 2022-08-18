@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useClosetContext } from "../hooks/useClosetContext";
 
 
@@ -15,6 +16,7 @@ const NewList = () => {
   const [emptyFields, setEmptyFields] = useState([])
 
   const { closet, dispatch }= useClosetContext()
+  const navigate = useNavigate()
 
 
   // Fetch trip list from local storage
@@ -53,6 +55,7 @@ const NewList = () => {
       console.log('something went wrong')
       setError(json.error)
       setEmptyFields(json.emptyFields)
+      
     }
 
     if (response.ok) {
@@ -60,6 +63,7 @@ const NewList = () => {
       setError(null)
       setEmptyFields([])
       dispatch({type: 'CREATE_CHECKLIST', payload: json})
+      navigate('/saved-lists/' + json._id)
     }
   }
 
