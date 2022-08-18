@@ -9,11 +9,14 @@ const GearCloset = () => {
   const { closet } = useClosetContext()
 
   const [sort, setSort] = useState('nameAscending')
+  const [alpha, setAlpha] = useState([])
   const [currentSortArr, setCurrentSortArr] = useState([])
 
   useEffect(() => {
     if (closet) {
-      setCurrentSortArr([...closet])
+      const alphaAsc = [...closet].sort((a, b) => a.gear_name.localeCompare(b.gear_name))
+      setAlpha([...alphaAsc])
+      setCurrentSortArr([...alphaAsc])
     }
   }, [closet])
 
@@ -22,19 +25,19 @@ const GearCloset = () => {
 
     switch(e) {
       case "nameAscending":
-        setCurrentSortArr([...closet])
+        setCurrentSortArr([...alpha])
         break;
       case "nameDescending":
-        setCurrentSortArr([...closet].sort((a, b) => b.gear_name.localeCompare(a.gear_name)))
+        setCurrentSortArr([...alpha].sort((a, b) => b.gear_name.localeCompare(a.gear_name)))
         break;
       case "categoryAscending":
-        setCurrentSortArr([...closet].sort((a, b) => a.category.localeCompare(b.category)))
+        setCurrentSortArr([...alpha].sort((a, b) => a.category.localeCompare(b.category)))
         break;
       case "categoryDescending":
-        setCurrentSortArr([...closet].sort((a, b) => b.category.localeCompare(a.category)))
+        setCurrentSortArr([...alpha].sort((a, b) => b.category.localeCompare(a.category)))
         break;
       case "weightAscending":
-        setCurrentSortArr([...closet].sort((a, b) => {
+        setCurrentSortArr([...alpha].sort((a, b) => {
           if (!a.weight) {
             return 1
           } else if (!b.weight) {
@@ -45,7 +48,7 @@ const GearCloset = () => {
         }))
         break;
       case "weightDescending":
-        setCurrentSortArr([...closet].sort((a, b) => {
+        setCurrentSortArr([...alpha].sort((a, b) => {
           if (!a.weight) {
             return 1
           } else if (!b.weight) {
@@ -56,7 +59,7 @@ const GearCloset = () => {
         }))
         break;
       case "priceAscending":
-        setCurrentSortArr([...closet].sort((a, b) => {
+        setCurrentSortArr([...alpha].sort((a, b) => {
           if (!a.price) {
             return 1
           } else if (!b.price) {
@@ -67,13 +70,13 @@ const GearCloset = () => {
         }))
         break;
       case "priceDescending":
-        setCurrentSortArr([...closet].sort((a, b) => b.price - a.price))
+        setCurrentSortArr([...alpha].sort((a, b) => b.price - a.price))
         break;
       case "createdAscending":
-        setCurrentSortArr([...closet].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)))
+        setCurrentSortArr([...alpha].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)))
         break;
       case "createdDescending":
-        setCurrentSortArr([...closet].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)))
+        setCurrentSortArr([...alpha].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)))
         break;
       default:
         break;

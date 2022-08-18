@@ -7,7 +7,7 @@ const ClosetCategory = ({ closet, category, trip_list, setTripList }) => {
     <>
       {closet.some(e => e.category === category) && <h3>{handleCategory(category)}</h3>}
 
-      {closet.map((gear) => {
+      {[...closet].sort((a, b) => a.gear_name.localeCompare(b.gear_name)).map((gear) => {
         return gear.category === category &&
           <ClosetList 
             key={gear._id} 
