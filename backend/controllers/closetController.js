@@ -6,7 +6,7 @@ const cheerio = require('cheerio')
 // get all gear
 const getGear = async (req, res) => {
   // TODO: may need to change the sort later or do it in front end
-  const gear = await Gear.find({}).sort({createdAt: -1})
+  const gear = await Gear.find({}).collation({'locale':'en'}).sort({gear_name: 1})
 
   res.status(200).json(gear)
 }
