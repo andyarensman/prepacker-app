@@ -15,9 +15,15 @@ const NewList = () => {
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
+  const [currentSortArr, setCurrentSortArr] = useState([])
+
   const { closet, dispatch }= useClosetContext()
   const navigate = useNavigate()
 
+  // Set currentSortArr to closet
+  useEffect(() => {
+    setCurrentSortArr([...closet])
+  }, [closet])
 
   // Fetch trip list from local storage
   useEffect(() =>{
@@ -76,6 +82,18 @@ const NewList = () => {
     setEmptyFields([])
   }
 
+  // Search Functionality
+  const handleChange = (searchWord) => {
+
+    if (!searchWord) {
+      setCurrentSortArr([...closet])
+    } else {
+      let regex = new RegExp(searchWord, 'i')
+      let searchResult = closet.filter(gear => regex.test(gear.gear_name))
+      setCurrentSortArr([...searchResult])
+    }
+  }
+
   return ( 
     <div className="home">
       <div>
@@ -120,10 +138,22 @@ const NewList = () => {
           
       </div>
       <div className="closet-list">
-        <h2>My Gear</h2>
+        <div className="closet-list-header">
+          <h2>My Gear</h2>
+          <div className="search-container">
+            <form onSubmit={(e) => e.preventDefault()} className="search-form">
+              <input 
+                type="text"
+                placeholder="Search..."
+                onChange={(e) => handleChange(e.target.value)}
+              />
+              <button><span className="material-symbols-outlined search-symbol">search</span></button>
+            </form>
+          </div> 
+        </div>
         {closet && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
           <ClosetCategory
-            closet={closet}
+            closet={currentSortArr}
             category={e}
             key={e}
             trip_list={trip_list}

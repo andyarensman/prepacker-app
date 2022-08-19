@@ -83,13 +83,14 @@ const GearCloset = () => {
     }
   }
 
+  // Search Functionality
   const handleChange = (searchWord) => {
     setSort('nameAscending')
 
     if (!searchWord) {
       setCurrentSortArr([...closet])
     } else {
-      let regex = new RegExp(searchWord)
+      let regex = new RegExp(searchWord, 'i')
       let searchResult = closet.filter(gear => regex.test(gear.gear_name))
       setCurrentSortArr([...searchResult])
     }
