@@ -82,6 +82,18 @@ const GearCloset = () => {
         break;
     }
   }
+
+  const handleChange = (searchWord) => {
+    setSort('nameAscending')
+
+    if (!searchWord) {
+      setCurrentSortArr([...closet])
+    } else {
+      let regex = new RegExp(searchWord)
+      let searchResult = closet.filter(gear => regex.test(gear.gear_name))
+      setCurrentSortArr([...searchResult])
+    }
+  }
   
   return ( 
     <div className="gear-closet">
@@ -105,7 +117,11 @@ const GearCloset = () => {
           </select>
           <div className="search-container">
             <form onSubmit={(e) => e.preventDefault()} className="search-form">
-              <input type="text" placeholder="Search..."/>
+              <input 
+                type="text"
+                placeholder="Search..."
+                onChange={(e) => handleChange(e.target.value)}
+              />
               <button><span className="material-symbols-outlined search-symbol">search</span></button>
             </form>
           </div>
