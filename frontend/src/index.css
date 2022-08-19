@@ -103,13 +103,13 @@ header a {
   grid-template-columns: 5fr 1fr;
   gap: 0px;
 }
-.search-form input,  .closet-header select{
-  margin: 19.92px 0px;
+.search-form input, .closet-header select, .closet-header h2, .closet-list-header h2, .saved-lists-header h2 {
+  margin: 20px 0px 0px 0px;
   height: 37px;
 }
 .search-form button {
   height: 37px;
-  margin-top: auto;
+  margin-top: 20px;
   margin-bottom: auto;
   padding: 0;
   width: 37px;

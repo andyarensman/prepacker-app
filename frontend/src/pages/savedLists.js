@@ -27,7 +27,7 @@ const SavedLists = () => {
   return ( 
     <div className="saved-lists">
       <div className="saved-lists-header">
-        <h2>Saved Lists</h2>
+        <h2 className="search-header">Saved Lists</h2>
         <form onSubmit={(e) => e.preventDefault()} className="search-form">
           <input 
             type="text"
