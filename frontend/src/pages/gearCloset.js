@@ -86,22 +86,30 @@ const GearCloset = () => {
   return ( 
     <div className="gear-closet">
       <div className="closet">
-        <h2>My Gear</h2>
-        <select
-          value={sort}
-          onChange={(e) => changeSort(e.target.value)}
-        >
-          <option value="nameAscending">Name: A - Z</option>
-          <option value="nameDescending">Name: Z - A</option>
-          <option value="categoryAscending">Category: A - Z</option>
-          <option value="categoryDescending">Category: Z - A</option>
-          <option value="weightAscending">Weight: Low - High</option>
-          <option value="weightDescending">Weight: High - Low</option>
-          <option value="priceAscending">Price: Low - High</option>
-          <option value="priceDescending">Price: High - Low</option>
-          <option value="createdAscending">Added: New - Old</option>
-          <option value="createdDescending">Added: Old - New</option>
-        </select>
+        <div className="closet-header">
+          <h2>My Gear</h2>
+          <select
+            value={sort}
+            onChange={(e) => changeSort(e.target.value)}
+          >
+            <option value="nameAscending">Name: A - Z</option>
+            <option value="nameDescending">Name: Z - A</option>
+            <option value="categoryAscending">Category: A - Z</option>
+            <option value="categoryDescending">Category: Z - A</option>
+            <option value="weightAscending">Weight: Low - High</option>
+            <option value="weightDescending">Weight: High - Low</option>
+            <option value="priceAscending">Price: Low - High</option>
+            <option value="priceDescending">Price: High - Low</option>
+            <option value="createdAscending">Added: New - Old</option>
+            <option value="createdDescending">Added: Old - New</option>
+          </select>
+          <div className="search-container">
+            <form onSubmit={(e) => e.preventDefault()} className="search-form">
+              <input type="text" placeholder="Search..."/>
+              <button><span className="material-symbols-outlined search-symbol">search</span></button>
+            </form>
+          </div>
+        </div>
         {closet && currentSortArr.map((gear) => (
           <GearDetails key={gear._id} gear={gear}/>
         ))}

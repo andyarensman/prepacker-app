@@ -34,7 +34,7 @@ header a {
   margin: 0 auto;
 }
 
-/* homepage */
+/* homepage and gear closet page */
 .gear-closet {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -83,14 +83,42 @@ header a {
   color: #333;
   font-size: 22px;
 }
-
 .gear-details span.edit {
   right: 70px;
-  
 }
-
 .gear-details span.delete {
   right: 20px;
+}
+.closet-header {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr 1fr;
+  gap: 10px;
+}
+.search-form {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  gap: 0px;
+}
+.search-form input,  .closet-header select{
+  margin: 19.92px 0px;
+  height: 37px;
+}
+.search-form button {
+  height: 37px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0;
+  width: 37px;
+  border-radius: 0px 4px 4px 0px;
+  border: 1px solid #ddd;
+  border-left: none;
+}
+.search-form input {
+  border-radius: 4px 0px 0px 4px;
+  border-right: none;
+}
+.search-symbol {
+  margin-top: 5px;
 }
 
 /* new gear form */
@@ -120,12 +148,14 @@ label, input, select {
 }
 input, select {
   padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
+}
+.create input, .create select, .scrape input {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 form button, .save-list {
   background: var(--primary);
