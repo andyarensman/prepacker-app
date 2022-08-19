@@ -3,6 +3,10 @@
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;800&family=VT323&display=swap');
 
+/*! This is to prevent the page shift */
+html {
+  overflow: scroll;
+}
 /* layout */
 :root {
   --primary: #708259;
@@ -224,9 +228,11 @@ button.delete-list {
 }
 
 /* saved lists */
-/* .checklist-details {
-
-} */
+.saved-lists-header {
+  display: grid;
+  grid-template-columns: 150px 300px;
+  gap: 10px;
+}
 
 @media screen and (max-width: 1200px) {
   .home {
