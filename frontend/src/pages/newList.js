@@ -124,19 +124,19 @@ const NewList = () => {
                   type="text" 
                   onChange={(e) => setChecklistName(e.target.value)}
                   value={checklist_name}
-                  className={emptyFields.includes('checklist_name') ? 'error list-name' : 'list-name'}
+                  className={emptyFields.includes('checklist_name') ? `error ${NewListCSS.listName}` : NewListCSS.listName}
                 />
                 <label><b>Notes:</b></label>
                 <textarea 
                   onChange={(e) => setChecklistNotes(e.target.value)}
                   value={checklist_notes}
-                  className="list-textarea"
+                  className={NewListCSS.listTextarea}
                 />
                 <br/>
-                <button className="save-list">Save List</button>
+                <button className={NewListCSS.saveList}>Save List</button>
                 
               </form>
-              <button className="delete-list" onClick={() => handleClick()}>Remove All</button>
+              <button className={NewListCSS.deleteList} onClick={() => handleClick()}>Remove All</button>
               {error && <div className="error list-name">{error}</div>}
             </>
           )}

@@ -1,5 +1,3 @@
-/* ! Temporarily using the netninja css from his mern stack tutorial*/
-
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;800&family=VT323&display=swap');
 
@@ -7,19 +5,23 @@
 html {
   overflow: scroll;
 }
+
 /* layout */
 :root {
   --primary: #708259;
   --error: #e7195a;
 }
+
 body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Lato";
 }
+
 header {
   background: #fff;
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -28,20 +30,19 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   color: #333;
   text-decoration: none;
 }
+
 .pages{
   max-width: 1400px;
   padding: 20px 40px;
   margin: 0 auto;
 }
 
-/* homepage and gear closet page */
-
-
-/* new gear form */
+/* Forms */
 
 span.cancel {
   position: relative;
@@ -50,21 +51,11 @@ span.cancel {
   color: #333;
   font-size: 18px;
 }
+
 label, input, select {
   display: block;
 }
-.create .weight {
-  display: grid;
-  grid-template-columns: 3fr 1fr 3fr 1fr;
-  gap: 10px;
-}
-.create .weight label {
-  align-self: end;
-  padding-bottom: 30px;
-}
-.scrape {
-  padding-bottom: 20px;
-}
+
 input, select {
   padding: 10px;
   width: 100%;
@@ -72,11 +63,8 @@ input, select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-.create input, .create select, .scrape input {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-form button, .save-list {
+
+form button {
   background: var(--primary);
   border: 0;
   color: #fff;
@@ -85,9 +73,7 @@ form button, .save-list {
   border-radius: 4px;
   cursor: pointer;
 }
-.save-list {
-  margin-top: 15px; 
-}
+
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -96,72 +82,21 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
+
 input.error, select.error {
   border: 1px solid var(--error);
 }
-/* .closet-list-header {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 10px;
-} */
+
+.weight-italics {
+  color: #9A3E25
+}
 
 /* navbar */
 nav {
   display: flex;
   align-items: center;
 }
+
 nav a {
   margin-left: 10px;
-}
-
-
-/* checklist maker */
-.weight-italics {
-  color: #9A3E25
-}
-button.delete-list {
-  background-color: #9A3E25;
-  margin-top: 10px;
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  font-family: "Lato";
-  border-radius: 4px;
-  cursor: pointer;
-}
-.list-name, .list-textarea {
-  width: 325px;
-  box-sizing: border-box;
-}
-
-.list-textarea {
-  height: 72px;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-/* saved lists */
-/* .saved-lists-header {
-  display: grid;
-  grid-template-columns: 150px 300px;
-  gap: 10px;
-} */
-
-@media screen and (max-width: 1200px) {
-  .home {
-    grid-template-columns: 2fr 1fr;
-    gap: 50px;
-  }
-  
-  .gear-details span.edit {
-    top: 20px;
-    right: 20px;
-  }
-  
-  .gear-details span.delete {
-    top: 62px;
-  }
 }

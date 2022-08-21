@@ -2,6 +2,9 @@
 
 import { useClosetContext } from "../../hooks/useClosetContext";
 
+// css module
+import GearFormCSS from '../../styles/GearForm.module.css'
+
 const GearForm = ({
     gear_name,
     setGearName,
@@ -68,7 +71,7 @@ const GearForm = ({
   }
 
   return ( 
-    <form className="create" onSubmit={handleSubmit}>
+    <form className={GearFormCSS.create} onSubmit={handleSubmit}>
       <h3>Add a New Piece of Gear</h3>
 
       <label>Gear Name:</label>
@@ -80,7 +83,7 @@ const GearForm = ({
       />
 
       <label>Weight</label>
-      <div className="weight">
+      <div className={GearFormCSS.weight}>
         <input 
           type="number"
           onChange={(e) => setPounds(e.target.value)}

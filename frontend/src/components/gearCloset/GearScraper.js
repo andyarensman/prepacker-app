@@ -1,3 +1,6 @@
+// css module
+import GearFormCSS from '../../styles/GearForm.module.css'
+
 const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setCategory, setUrl, setPrice,/* setImageUrl,*/ scraperError, setScraperError, setError, setEmptyFields}) => {
 
   const handleWeight = (weight) => {
@@ -68,7 +71,7 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
   }
 
   return (
-    <form className="scrape" onSubmit={handleUrlSubmit}>
+    <form className={GearFormCSS.scrape} onSubmit={handleUrlSubmit}>
       <h3>Import from Webpage</h3>
       <label>REI Web Address:</label>
       <input 

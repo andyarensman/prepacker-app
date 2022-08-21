@@ -1,0 +1,19 @@
+.weight {
+  display: grid;
+  grid-template-columns: 3fr 1fr 3fr 1fr;
+  gap: 10px;
+}
+
+.weight label {
+  align-self: end;
+  padding-bottom: 30px;
+}
+
+.scrape {
+  padding-bottom: 20px;
+}
+
+.create input, .create select, .scrape input {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

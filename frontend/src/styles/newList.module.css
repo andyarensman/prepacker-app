@@ -14,3 +14,44 @@
   margin: 20px 0px 0px 0px;
   height: 37px;
 }
+
+.saveList {
+  margin-top: 15px; 
+}
+
+button.deleteList {
+  background-color: #9A3E25;
+  margin-top: 10px;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Lato";
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.listName {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.listName, .listTextarea {
+  width: 325px;
+  box-sizing: border-box;
+}
+
+.listTextarea {
+  height: 72px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 1200px) {
+  .page {
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+  }
+}

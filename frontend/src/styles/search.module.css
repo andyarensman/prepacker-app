@@ -3,10 +3,12 @@
   grid-template-columns: 5fr 1fr;
   gap: 0px;
 }
+
 .searchForm input {
   margin: 20px 0px 0px 0px;
   height: 37px;
 }
+
 .searchForm button {
   height: 37px;
   margin-top: 20px;
@@ -17,10 +19,12 @@
   border: 1px solid #ddd;
   border-left: none;
 }
+
 .searchForm input {
   border-radius: 4px 0px 0px 4px;
   border-right: none;
 }
+
 .searchSymbol {
   margin-top: 5px;
 }
