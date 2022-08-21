@@ -3,6 +3,9 @@
 import { useClosetContext } from "../../hooks/useClosetContext";
 import { handleCategory, handleWeight } from "../../helpers/utils";
 
+// css module
+import GearDetailsCSS from '../../styles/GearDetails.module.css'
+
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
@@ -21,7 +24,7 @@ const GearDetails = ({ gear }) => {
   }
 
   return ( 
-    <div className="gear-details">
+    <div className={GearDetailsCSS.gearDetails}>
       <h4>{gear.gear_name}</h4>
       {gear.weight && <p><strong>Weight: </strong>{handleWeight(gear.weight)}</p>}
       {gear.category && <p><strong>Category: </strong>{handleCategory(gear.category)}</p>}
@@ -29,8 +32,8 @@ const GearDetails = ({ gear }) => {
       {gear.price && <p><strong>Price: </strong>${gear.price}</p>}
       <p>{formatDistanceToNow(new Date(gear.createdAt), { addSuffix: true })}</p>
       {/* {gear.image_url && <img src={gear.image_url} alt={"Image: " + gear.gear_name} className="gear-image"/>} */}
-      <span className="material-symbols-outlined edit">edit</span>
-      <span className="material-symbols-outlined delete" onClick={handleClick}>delete</span>
+      <span className={`material-symbols-outlined ${GearDetailsCSS.editBtn}`}>edit</span>
+      <span className={`material-symbols-outlined ${GearDetailsCSS.deleteBtn}`} onClick={handleClick}>delete</span>
     </div>
    );
 }

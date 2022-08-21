@@ -39,91 +39,7 @@ header a {
 }
 
 /* homepage and gear closet page */
-.gear-closet {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 100px;
-}
-.home {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 100px;
-}
-.gear-details, .checklist-details {
-  background: #fff;
-  border-radius: 4px;
-  margin: 20px auto;
-  padding: 20px;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-}
-.gear-details h4, .checklist-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-  color: var(--primary);
-}
-.gear-details p, .checklist-details p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #555;
-}
 
-.gear-details a, .checklist-details a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-/* .gear-details img.gear-image {
-  height: 100px;
-} */
-
-.gear-details span {
-  position: absolute;
-  top: 20px;
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
-  font-size: 22px;
-}
-.gear-details span.edit {
-  right: 70px;
-}
-.gear-details span.delete {
-  right: 20px;
-}
-.closet-header {
-  display: grid;
-  grid-template-columns: 120px 1fr 1fr 1fr;
-  gap: 10px;
-}
-.search-form {
-  display: grid;
-  grid-template-columns: 5fr 1fr;
-  gap: 0px;
-}
-.search-form input, .closet-header select, .closet-header h2, .closet-list-header h2, .saved-lists-header h2 {
-  margin: 20px 0px 0px 0px;
-  height: 37px;
-}
-.search-form button {
-  height: 37px;
-  margin-top: 20px;
-  margin-bottom: auto;
-  padding: 0;
-  width: 37px;
-  border-radius: 0px 4px 4px 0px;
-  border: 1px solid #ddd;
-  border-left: none;
-}
-.search-form input {
-  border-radius: 4px 0px 0px 4px;
-  border-right: none;
-}
-.search-symbol {
-  margin-top: 5px;
-}
 
 /* new gear form */
 
@@ -183,11 +99,11 @@ div.error {
 input.error, select.error {
   border: 1px solid var(--error);
 }
-.closet-list-header {
+/* .closet-list-header {
   display: grid;
   grid-template-columns: 110px 1fr;
   gap: 10px;
-}
+} */
 
 /* navbar */
 nav {
@@ -228,11 +144,11 @@ button.delete-list {
 }
 
 /* saved lists */
-.saved-lists-header {
+/* .saved-lists-header {
   display: grid;
   grid-template-columns: 150px 300px;
   gap: 10px;
-}
+} */
 
 @media screen and (max-width: 1200px) {
   .home {

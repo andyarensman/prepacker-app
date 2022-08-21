@@ -1,0 +1,16 @@
+.page {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+.closetHeader {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.closetHeader select, .closetHeader h2 {
+  margin: 20px 0px 0px 0px;
+  height: 37px;
+}

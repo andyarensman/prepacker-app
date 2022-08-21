@@ -1,0 +1,16 @@
+.page {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 100px;
+}
+
+.closetListHeader {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px;
+}
+
+.closetListHeader h2 {
+  margin: 20px 0px 0px 0px;
+  height: 37px;
+}

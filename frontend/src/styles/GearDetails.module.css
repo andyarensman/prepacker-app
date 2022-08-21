@@ -1,0 +1,56 @@
+.gearDetails, .checklist-details {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.gearDetails h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.gearDetails p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.gearDetails a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* .gear-details img.gear-image {
+  height: 100px;
+} */
+
+.gearDetails span {
+  position: absolute;
+  top: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+  font-size: 22px;
+}
+span.editBtn {
+  right: 70px;
+}
+span.deleteBtn {
+  right: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  span.editBtn {
+    top: 20px;
+    right: 20px;
+  }
+  
+  span.deleteBtn {
+    top: 62px;
+  }
+}

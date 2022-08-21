@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import ChecklistDetails from "../components/savedLists/ChecklistDetails";
 import { useClosetContext } from "../hooks/useClosetContext";
 
+// css module
+import SavedListsCSS from '../styles/savedLists.module.css'
+import SearchCSS from '../styles/search.module.css'
+
 const SavedLists = () => {
   const [currentSortArr, setCurrentSortArr] = useState([])
 
@@ -26,15 +30,15 @@ const SavedLists = () => {
 
   return ( 
     <div className="saved-lists">
-      <div className="saved-lists-header">
+      <div className={SavedListsCSS.savedListsHeader}>
         <h2 className="search-header">Saved Lists</h2>
-        <form onSubmit={(e) => e.preventDefault()} className="search-form">
+        <form onSubmit={(e) => e.preventDefault()} className={SearchCSS.searchForm}>
           <input 
             type="text"
             placeholder="Search..."
             onChange={(e) => handleChange(e.target.value)}
           />
-          <button><span className="material-symbols-outlined search-symbol">search</span></button>
+          <button><span className={`material-symbols-outlined ${SearchCSS.searchSymbol}`}>search</span></button>
         </form>
       </div>
       <div className="checklists">

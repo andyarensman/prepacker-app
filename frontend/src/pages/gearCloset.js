@@ -5,6 +5,10 @@ import { useEffect, useState } from "react";
 import GearDetails from '../components/gearCloset/GearDetails'
 import AddGear from "../components/gearCloset/AddGear";
 
+// css modules
+import GearClosetCSS from '../styles/gearCloset.module.css'
+import SearchCSS from '../styles/search.module.css'
+
 const GearCloset = () => {
   const { closet } = useClosetContext()
 
@@ -97,9 +101,9 @@ const GearCloset = () => {
   }
   
   return ( 
-    <div className="gear-closet">
+    <div className={GearClosetCSS.page}>
       <div className="closet">
-        <div className="closet-header">
+        <div className={GearClosetCSS.closetHeader}>
           <h2>My Gear</h2>
           <select
             value={sort}
@@ -117,13 +121,13 @@ const GearCloset = () => {
             <option value="createdDescending">Added: Old - New</option>
           </select>
           <div className="search-container">
-            <form onSubmit={(e) => e.preventDefault()} className="search-form">
+            <form onSubmit={(e) => e.preventDefault()} className={SearchCSS.searchForm}>
               <input 
                 type="text"
                 placeholder="Search..."
                 onChange={(e) => handleChange(e.target.value)}
               />
-              <button><span className="material-symbols-outlined search-symbol">search</span></button>
+              <button><span className={`material-symbols-outlined ${SearchCSS.searchSymbol}`}>search</span></button>
             </form>
           </div>
         </div>

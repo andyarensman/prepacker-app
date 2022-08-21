@@ -1,0 +1,10 @@
+.savedListsHeader {
+  display: grid;
+  grid-template-columns: 150px 300px;
+  gap: 10px;
+}
+
+.savedListsHeader h2 {
+  margin: 20px 0px 0px 0px;
+  height: 37px;
+}

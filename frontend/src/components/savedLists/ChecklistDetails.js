@@ -1,9 +1,12 @@
 import { useClosetContext } from "../../hooks/useClosetContext";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+// css module
+import ChecklistDetailsCSS from '../../styles/ChecklistDetails.module.css'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 const ChecklistDetails = ({ checklist }) => {
   const [gearNames, setGearNames] = useState([])
@@ -22,7 +25,7 @@ const ChecklistDetails = ({ checklist }) => {
   }, [checklist, closet])
 
   return ( 
-    <div className="checklist-details">
+    <div className={ChecklistDetailsCSS.checklistDetails}>
       <Link to={"/saved-lists/" + checklist._id}><h4>{checklist.checklist_name}</h4></Link>
       <p><strong>Total Items: </strong>{checklist.gear_items.length}</p>
       <p><strong>Total Weight: </strong>{checklist.total_weight}</p>

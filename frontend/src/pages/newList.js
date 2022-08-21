@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useClosetContext } from "../hooks/useClosetContext";
 
-
 // components
 import ClosetCategory from "../components/newList/ClosetCategory";
 import TripListCategory from "../components/newList/TripListCategory";
 import { findTotalWeight } from "../helpers/utils";
+
+// css modules
+import NewListCSS from '../styles/newList.module.css'
+import SearchCSS from '../styles/search.module.css'
 
 const NewList = () => {
   const [trip_list, setTripList] = useState([])
@@ -22,7 +25,9 @@ const NewList = () => {
 
   // Set currentSortArr to closet
   useEffect(() => {
-    setCurrentSortArr([...closet])
+    if (closet) {
+      setCurrentSortArr([...closet])
+    } 
   }, [closet])
 
   // Fetch trip list from local storage
@@ -95,7 +100,7 @@ const NewList = () => {
   }
 
   return ( 
-    <div className="home">
+    <div className={NewListCSS.page}>
       <div>
         <h2>My PrePacker Checklist</h2>
         {trip_list && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
@@ -138,16 +143,16 @@ const NewList = () => {
           
       </div>
       <div className="closet-list">
-        <div className="closet-list-header">
+        <div className={NewListCSS.closetListHeader}>
           <h2>My Gear</h2>
           <div className="search-container">
-            <form onSubmit={(e) => e.preventDefault()} className="search-form">
+            <form onSubmit={(e) => e.preventDefault()} className={SearchCSS.searchForm}>
               <input 
                 type="text"
                 placeholder="Search..."
                 onChange={(e) => handleChange(e.target.value)}
               />
-              <button><span className="material-symbols-outlined search-symbol">search</span></button>
+              <button><span className={`material-symbols-outlined ${SearchCSS.searchSymbol}`}>search</span></button>
             </form>
           </div> 
         </div>

@@ -1,0 +1,25 @@
+.checklistDetails {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.checklistDetails h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+
+.checklistDetails p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.checklistDetails a {
+  color: inherit;
+  text-decoration: inherit;
+}
