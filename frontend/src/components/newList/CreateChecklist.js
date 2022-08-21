@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { findTotalWeight } from "../../helpers/utils";
-import { useClosetContext } from "../../hooks/useClosetContext";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { findTotalWeight } from '../../helpers/utils';
+import { useClosetContext } from '../../hooks/useClosetContext';
 
 // css modules
 import NewListCSS from '../../styles/newList.module.css'
