@@ -32,6 +32,8 @@ const ChecklistDetails = ({ checklist }) => {
       {checklist.checklist_notes && <p><strong>Notes: </strong>{checklist.checklist_notes}</p>}
       <p><strong>Gear: </strong>{gearNames.join(" · ")}</p>
       <p>{formatDistanceToNow(new Date(checklist.createdAt), { addSuffix: true })}</p>
+      <span className={`material-symbols-outlined ${ChecklistDetailsCSS.editBtn}`}>edit</span>
+      <span className={`material-symbols-outlined ${ChecklistDetailsCSS.deleteBtn}`}>delete</span>
     </div>
    );
 }

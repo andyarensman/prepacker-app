@@ -23,3 +23,22 @@
   color: inherit;
   text-decoration: inherit;
 }
+
+.checklistDetails span {
+  position: absolute;
+  top: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+  font-size: 22px;
+}
+
+span.editBtn {
+  right: 70px;
+}
+
+span.deleteBtn {
+  right: 20px;
+}
