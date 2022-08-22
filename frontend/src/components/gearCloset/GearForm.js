@@ -74,7 +74,7 @@ const GearForm = ({
     <form className={GearFormCSS.create} onSubmit={handleSubmit}>
       <h3>Add a New Piece of Gear</h3>
 
-      <label>Gear Name:</label>
+      <label>Gear Name</label>
       <input 
         type="text"
         onChange={(e) => setGearName(e.target.value)}
@@ -89,13 +89,13 @@ const GearForm = ({
           onChange={(e) => setPounds(e.target.value)}
           value={pounds}
         />
-        <label>lbs.</label>
+        <label>lbs</label>
         <input 
           type="number"
           onChange={(e) => setOunces(e.target.value)}
           value={ounces}
         />
-        <label>oz.</label>
+        <label>oz</label>
       </div>
 
       <label>Category</label>
@@ -116,14 +116,14 @@ const GearForm = ({
         <option value="other">Other</option>
       </select>
 
-      <label>Product URL:</label>
+      <label>Product URL</label>
       <input 
         type="url"
         onChange={(e) => setUrl(e.target.value)}
         value={url}
       />
 
-      <label>Price ($):</label>
+      <label>Price ($)</label>
       <input 
         type="number"
         onChange={(e) => setPrice(e.target.value)}

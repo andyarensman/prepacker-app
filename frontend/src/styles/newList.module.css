@@ -1,7 +1,7 @@
 .page {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  gap: 100px;
+  gap: 50px;
 }
 
 .closetListHeader {
@@ -15,6 +15,17 @@
   height: 37px;
 }
 
+.inList {
+  font-style: italic;
+  color: #666666;
+  text-decoration: line-through;
+}
+
+.gearItem {
+  padding-left: 23px;
+  text-indent:-12px;
+}
+
 .saveList {
   margin-top: 15px; 
 }
@@ -22,6 +33,7 @@
 button.deleteList {
   background-color: #9A3E25;
   margin-top: 10px;
+  margin-left: 15px;
   border: 0;
   color: #fff;
   padding: 10px;
@@ -50,8 +62,8 @@ button.deleteList {
 }
 
 @media screen and (max-width: 1200px) {
-  .page {
+  /* .page {
     grid-template-columns: 2fr 1fr;
     gap: 50px;
-  }
+  } */
 }

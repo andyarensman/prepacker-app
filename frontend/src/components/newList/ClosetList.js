@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import { handleWeight } from "../../helpers/utils"
 
+// css modules
+import NewListCSS from '../../styles/newList.module.css'
+
 const ClosetList = ({ gear, trip_list, setTripList }) => {
   const [inList, setInList] = useState(true)
 
@@ -29,9 +32,9 @@ const ClosetList = ({ gear, trip_list, setTripList }) => {
   }
 
   return ( 
-    <div className="closet-list-item">
-      <span onClick={() => handleClick()}className="material-symbols-outlined cancel">{inList ? 'do_not_disturb_on' : 'add_circle'}</span> 
-      {gear.gear_name} {gear.weight && <i className="weight-italics">({handleWeight(gear.weight)})</i>}
+    <div className={inList ? `${NewListCSS.inList} ${NewListCSS.gearItem}` : NewListCSS.gearItem}>
+      <span onClick={() => handleClick()}className="material-symbols-outlined cancel no-select">{inList ? 'do_not_disturb_on' : 'add_circle'}</span> 
+      {gear.gear_name} {gear.weight && <i className={inList ? NewListCSS.inList : "weight-italics"}>({handleWeight(gear.weight)})</i>}
     </div>
    );
 }

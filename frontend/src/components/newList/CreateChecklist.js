@@ -49,7 +49,8 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
   }
 
   // Remove all from checklist
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
     setTripList([])
     setChecklistName('')
     setChecklistNotes('')
@@ -64,14 +65,15 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
           <b>Total Weight: <i className="weight-italics">{findTotalWeight(trip_list)}</i></b>
         </p>
         <br/>
-        <label><b>Checklist Name:</b></label>
+        <label>Checklist Name</label>
         <input
           type="text" 
           onChange={(e) => setChecklistName(e.target.value)}
           value={checklist_name}
           className={emptyFields.includes('checklist_name') ? `error ${NewListCSS.listName}` : NewListCSS.listName}
         />
-        <label><b>Notes:</b></label>
+        <br/>
+        <label>Notes</label>
         <textarea 
           onChange={(e) => setChecklistNotes(e.target.value)}
           value={checklist_notes}
@@ -79,9 +81,8 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
         />
         <br/>
         <button className={NewListCSS.saveList}>Save List</button>
-        
+        <button className={NewListCSS.deleteList} type="button" onClick={(e) => handleClick(e)}>Remove All</button>
       </form>
-      <button className={NewListCSS.deleteList} onClick={() => handleClick()}>Remove All</button>
       {error && <div className="error list-name">{error}</div>}
     </>
   );
