@@ -13,6 +13,27 @@
   padding-bottom: 20px;
 }
 
+.scrapeInput {
+  display: grid;
+  grid-template-columns: 1fr 78px;
+  gap: 0px;
+}
+
+.scrapeInput button {
+  height: 37px;
+  margin-top: 10px;
+  margin-bottom: auto;
+  padding: 0;
+  border-radius: 0px 4px 4px 0px;
+  border: 1px solid #ddd;
+  border-left: none;
+}
+
+.scrapeInput input {
+  border-radius: 4px 0px 0px 4px;
+  border-right: none;
+}
+
 .create input, .create select, .scrape input {
   margin-top: 10px;
   margin-bottom: 20px;

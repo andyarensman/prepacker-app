@@ -1,7 +1,7 @@
 .page {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 100px;
+  grid-template-columns: 3fr 1.25fr;
+  gap: 50px;
 }
 
 .closetHeader {
