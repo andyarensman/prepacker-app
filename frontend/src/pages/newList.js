@@ -8,18 +8,21 @@ import CreateChecklist from '../components/newList/CreateChecklist';
 
 // css modules
 import NewListCSS from '../styles/newList.module.css'
-import SearchCSS from '../styles/search.module.css'
+import TitleSearch from '../components/TitleSearch';
 
 const NewList = () => {
   const [trip_list, setTripList] = useState([])
   const [currentSortArr, setCurrentSortArr] = useState([])
+  const [alpha, setAlpha] = useState([])
 
   const { closet }= useClosetContext()
 
   // Set currentSortArr to closet
   useEffect(() => {
     if (closet) {
-      setCurrentSortArr([...closet])
+      const alphaAsc = [...closet].sort((a, b) => a.gear_name.localeCompare(b.gear_name))
+      setAlpha([...alphaAsc])
+      setCurrentSortArr([...alphaAsc])
     } 
   }, [closet])
 
@@ -33,19 +36,6 @@ const NewList = () => {
   useEffect(() =>{
     window.localStorage.setItem('PREPACK_NEW_CHECKLIST', JSON.stringify(trip_list))
   }, [trip_list])
-
-  
-  // Search Functionality
-  const handleChange = (searchWord) => {
-
-    if (!searchWord) {
-      setCurrentSortArr([...closet])
-    } else {
-      let regex = new RegExp(searchWord, 'i')
-      let searchResult = closet.filter(gear => regex.test(gear.gear_name))
-      setCurrentSortArr([...searchResult])
-    }
-  }
 
   return ( 
     <div className={NewListCSS.page}>
@@ -68,19 +58,16 @@ const NewList = () => {
         )}  
       </div>
       <div className="closet-list">
-        <div className={NewListCSS.closetListHeader}>
-          <h2>My Gear</h2>
-          <div className="search-container">
-            <form onSubmit={(e) => e.preventDefault()} className={SearchCSS.searchForm}>
-              <input 
-                type="text"
-                placeholder="Search..."
-                onChange={(e) => handleChange(e.target.value)}
-              />
-              <button><span className={`material-symbols-outlined ${SearchCSS.searchSymbol}`}>search</span></button>
-            </form>
-          </div> 
-        </div>
+        <TitleSearch 
+          title="My Gear"
+          selectNeeded={false}
+          containerClass={NewListCSS.closetListHeader}
+          searchArr={[...alpha]}
+          searchKey="gear_name"
+          sort={false}
+          setSort={false}
+          setCurrentSortArr={setCurrentSortArr}
+        />
         {closet && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
           <ClosetCategory
             closet={currentSortArr}

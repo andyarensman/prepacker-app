@@ -7,7 +7,7 @@ import AddGear from "../components/gearCloset/AddGear";
 
 // css modules
 import GearClosetCSS from '../styles/gearCloset.module.css'
-import SearchCSS from '../styles/search.module.css'
+import TitleSearch from "../components/TitleSearch";
 
 const GearCloset = () => {
   const { closet } = useClosetContext()
@@ -23,114 +23,20 @@ const GearCloset = () => {
       setCurrentSortArr([...alphaAsc])
     }
   }, [closet])
-
-  const changeSort = (e) => {
-    setSort(e)
-
-    switch(e) {
-      case "nameAscending":
-        setCurrentSortArr([...alpha])
-        break;
-      case "nameDescending":
-        setCurrentSortArr([...alpha].sort((a, b) => b.gear_name.localeCompare(a.gear_name)))
-        break;
-      case "categoryAscending":
-        setCurrentSortArr([...alpha].sort((a, b) => a.category.localeCompare(b.category)))
-        break;
-      case "categoryDescending":
-        setCurrentSortArr([...alpha].sort((a, b) => b.category.localeCompare(a.category)))
-        break;
-      case "weightAscending":
-        setCurrentSortArr([...alpha].sort((a, b) => {
-          if (!a.weight) {
-            return 1
-          } else if (!b.weight) {
-            return -1
-          } else {
-            return a.weight - b.weight
-          }
-        }))
-        break;
-      case "weightDescending":
-        setCurrentSortArr([...alpha].sort((a, b) => {
-          if (!a.weight) {
-            return 1
-          } else if (!b.weight) {
-            return -1
-          } else {
-            return b.weight - a.weight
-          }
-        }))
-        break;
-      case "priceAscending":
-        setCurrentSortArr([...alpha].sort((a, b) => {
-          if (!a.price) {
-            return 1
-          } else if (!b.price) {
-            return -1
-          } else {
-            return a.price - b.price
-          }
-        }))
-        break;
-      case "priceDescending":
-        setCurrentSortArr([...alpha].sort((a, b) => b.price - a.price))
-        break;
-      case "createdAscending":
-        setCurrentSortArr([...alpha].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)))
-        break;
-      case "createdDescending":
-        setCurrentSortArr([...alpha].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)))
-        break;
-      default:
-        break;
-    }
-  }
-
-  // Search Functionality
-  const handleChange = (searchWord) => {
-    setSort('nameAscending')
-
-    if (!searchWord) {
-      setCurrentSortArr([...closet])
-    } else {
-      let regex = new RegExp(searchWord, 'i')
-      let searchResult = closet.filter(gear => regex.test(gear.gear_name))
-      setCurrentSortArr([...searchResult])
-    }
-  }
   
   return ( 
     <div className={GearClosetCSS.page}>
       <div className="closet">
-        <div className={GearClosetCSS.closetHeader}>
-          <h2>My Gear</h2>
-          <select
-            value={sort}
-            onChange={(e) => changeSort(e.target.value)}
-          >
-            <option value="nameAscending">Name: A - Z</option>
-            <option value="nameDescending">Name: Z - A</option>
-            <option value="categoryAscending">Category: A - Z</option>
-            <option value="categoryDescending">Category: Z - A</option>
-            <option value="weightAscending">Weight: Low - High</option>
-            <option value="weightDescending">Weight: High - Low</option>
-            <option value="priceAscending">Price: Low - High</option>
-            <option value="priceDescending">Price: High - Low</option>
-            <option value="createdAscending">Added: New - Old</option>
-            <option value="createdDescending">Added: Old - New</option>
-          </select>
-          <div className="search-container">
-            <form onSubmit={(e) => e.preventDefault()} className={SearchCSS.searchForm}>
-              <input 
-                type="text"
-                placeholder="Search..."
-                onChange={(e) => handleChange(e.target.value)}
-              />
-              <button><span className={`material-symbols-outlined ${SearchCSS.searchSymbol}`}>search</span></button>
-            </form>
-          </div>
-        </div>
+        <TitleSearch 
+          title="My Gear"
+          selectNeeded={true}
+          containerClass={GearClosetCSS.closetHeader}
+          searchArr={[...alpha]}
+          searchKey="gear_name"
+          sort={sort}
+          setSort={setSort}
+          setCurrentSortArr={setCurrentSortArr}
+        />
         {closet && currentSortArr.map((gear) => (
           <GearDetails key={gear._id} gear={gear}/>
         ))}
