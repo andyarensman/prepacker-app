@@ -19,3 +19,5 @@ In order to use local storage to set state, I had to disable Strict Mode in the 
 I quickly had a lot of components and a lot of things to implement. In order to prevent myself from becoming overwhelmed, I divided up the components folder into sub-folders based on what page the component is being used for. I also made a to do list with every feature I want to add so I could quickly look something up and start to add it.
 
 Make sure to use array.forEach instead of array.map if you don't have a return value.
+
+Need to accredit the author of the mountain header: <a href="http://www.freepik.com">Designed by pch.vector / Freepik</a> 

@@ -111,3 +111,25 @@ nav {
 nav a {
   margin-left: 10px;
 }
+
+.img-container {
+  overflow: hidden;
+  margin: 0px auto;
+  margin-top: -30px;
+  max-width: 1400px;
+}
+
+img {
+  display: block;
+  min-width: 2000px;
+  max-width: 2000px;
+  margin: 0 auto;
+  overflow-y: hidden;
+}
+
+@media screen and (max-width: 1450px) {
+  .img-container {
+    margin: 0px 20px;
+    margin-top: -30px;
+  }
+}

@@ -23,6 +23,9 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
+      <div className="img-container">
+        <img src="/Mountains.png" alt="mtn-header"></img>
+      </div>
     </header>
    );
 }
