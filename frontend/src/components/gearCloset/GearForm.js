@@ -25,7 +25,8 @@ const GearForm = ({
     emptyFields,
     setEmptyFields,
     setUrlScrape,
-    setScraperError
+    setScraperError,
+    setSort
   }) => {
   const { dispatch } = useClosetContext()
 
@@ -65,6 +66,7 @@ const GearForm = ({
       setEmptyFields([])
       setUrlScrape('')
       setScraperError(false)
+      setSort('nameAscending')
       console.log('new gear added', json)
       dispatch({type: 'CREATE_GEAR', payload: json})
     }

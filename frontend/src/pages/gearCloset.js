@@ -42,7 +42,9 @@ const GearCloset = () => {
         ))}
       </div>
       <div>
-        <AddGear />
+        <AddGear
+          setSort={setSort}
+        />
       </div>
     </div>
    );

@@ -2,7 +2,7 @@ import { useState } from "react";
 import GearForm from "./GearForm";
 import GearScraper from "./GearScraper";
 
-const AddGear = () => {
+const AddGear = ({ setSort }) => {
   const [gear_name, setGearName] = useState('')
   const [pounds, setPounds] = useState('')
   const [ounces, setOunces] = useState('')
@@ -53,6 +53,7 @@ const AddGear = () => {
         setEmptyFields={setEmptyFields}
         setUrlScrape={setUrlScrape}
         setScraperError={setScraperError}
+        setSort={setSort}
       />
     </div>
    );
