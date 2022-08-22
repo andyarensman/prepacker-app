@@ -5,9 +5,8 @@ const ClosetList = ({ gear, trip_list, setTripList }) => {
   const [inList, setInList] = useState(true)
 
   useEffect(() => {
-    if (trip_list.some(e => e === gear)) {
+    if (trip_list.some(e => e.gear_name === gear.gear_name)) {
       setInList(true)
-      console.log('is in')
     } else {
       setInList(false)
     }
