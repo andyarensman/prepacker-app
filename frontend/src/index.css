@@ -3,7 +3,7 @@
 
 /*! This is to prevent the page shift */
 html {
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 /* layout */
@@ -16,27 +16,6 @@ body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Lato";
-}
-
-header {
-  /* Fallback color */
-  background: #fff;
-  /* Gradient */
-  background-image: linear-gradient(#3c668e, #bcc7d9, #fff);
-}
-
-header .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-header a {
-  color: #333;
-  text-decoration: none;
 }
 
 .pages{
@@ -103,42 +82,4 @@ input.error, select.error {
 
 .weight-italics {
   color: #9A3E25
-}
-
-/* navbar */
-nav {
-  display: flex;
-  align-items: center;
-}
-
-nav a {
-  margin-left: 10px;
-}
-
-.title-logo {
-  height: 60px;
-  margin: 21.44px 0px;
-  image-rendering: crisp-edges;
-}
-
-.img-container {
-  overflow: hidden;
-  margin: 0px auto;
-  margin-top: -30px;
-  max-width: 1400px;
-}
-
-.mountains {
-  display: block;
-  min-width: 2000px;
-  max-width: 2000px;
-  margin: 0 auto;
-  overflow-y: hidden;
-}
-
-@media screen and (max-width: 1450px) {
-  .img-container {
-    margin: 0px 20px;
-    margin-top: -30px;
-  }
 }

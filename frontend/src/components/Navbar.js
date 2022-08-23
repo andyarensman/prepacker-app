@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
+import NavbarCSS from "../styles/Navbar.module.css"
 
 const Navbar = () => {
   return ( 
-    <header>
-      <div className="container">
+    <header className={NavbarCSS.header}>
+      <div className={NavbarCSS.container}>
         <Link to="/new-list">
           {/* <h1>PrePacker</h1> */}
-          <img src="/PrePacker-logo-1.png" alt="PrePacker" className="title-logo"></img>
+          <img src="/PrePacker-logo-1.png" alt="PrePacker" className={NavbarCSS.titleLogo}></img>
         </Link>
         <Link to="/new-list">
           <h3>New List</h3>
@@ -24,8 +25,8 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
-      <div className="img-container">
-        <img src="/Mountains.png" alt="mtn-header" className="mountains"></img>
+      <div className={NavbarCSS.imgContainer}>
+        <img src="/Mountains.png" alt="mtn-header" className={NavbarCSS.mountains}></img>
       </div>
     </header>
    );

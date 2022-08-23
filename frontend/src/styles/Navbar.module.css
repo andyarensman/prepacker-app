@@ -1,0 +1,57 @@
+.header {
+  /* Fallback color */
+  background: #fff;
+  /* Gradient */
+  background-image: linear-gradient(#3c668e, #bcc7d9, #fff);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 10px;
+}
+
+.titleLogo {
+  height: 60px;
+  margin: 21.44px 0px;
+  image-rendering: crisp-edges;
+}
+
+.imgContainer {
+  overflow: hidden;
+  margin: 0px auto;
+  margin-top: -30px;
+  max-width: 1400px;
+}
+
+.mountains {
+  display: block;
+  min-width: 2000px;
+  max-width: 2000px;
+  margin: 0 auto;
+  overflow-y: hidden;
+}
+
+@media screen and (max-width: 1450px) {
+  .imgContainer {
+    margin: 0px 20px;
+    margin-top: -30px;
+  }
+}
