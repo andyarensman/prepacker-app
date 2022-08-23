@@ -20,6 +20,7 @@
 
 .titleLogo {
   height: 60px;
+  width: 214px;
   margin: 21.44px 0px;
   image-rendering: crisp-edges;
 }
@@ -47,8 +48,10 @@ nav {
 
 .mountains {
   display: block;
-  min-width: 2000px;
-  max-width: 2000px;
+  min-width: 1400px;
+  max-width: 1400px;
+  width: 1400px;
+  height: 36px;
   margin: 0 auto;
   overflow-y: hidden;
 }

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import NavbarCSS from "../styles/Navbar.module.css"
+import mtn1400 from "../images/mtn-1400.png"
 
 const Navbar = () => {
   return ( 
@@ -30,7 +31,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className={NavbarCSS.imgContainer}>
-        <img src="/Mountains.png" alt="mtn-header" className={NavbarCSS.mountains}></img>
+        <img src={mtn1400} alt="mtn-header" className={NavbarCSS.mountains}></img>
       </div>
     </header>
    );
