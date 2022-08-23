@@ -20,9 +20,9 @@
 
 .titleLogo {
   height: 60px;
-  width: 214px;
+  width: 214.61px;
   margin: 21.44px 0px;
-  image-rendering: crisp-edges;
+  /* image-rendering: crisp-edges; */
 }
 
 nav {

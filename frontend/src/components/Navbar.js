@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import NavbarCSS from "../styles/Navbar.module.css"
 import mtn1400 from "../images/mtn-1400.png"
+import prePackerLogo from "../images/prepacker-logo.svg"
 
 const Navbar = () => {
   return ( 
@@ -8,7 +9,8 @@ const Navbar = () => {
       <div className={NavbarCSS.container}>
         <Link to="/new-list">
           {/* <h1>PrePacker</h1> */}
-          <img src="/PrePacker-logo-1.png" alt="PrePacker" className={NavbarCSS.titleLogo}></img>
+          {/* <img src="/PrePacker-logo-1.png" alt="PrePacker" className={NavbarCSS.titleLogo}></img> */}
+          <img src={prePackerLogo} alt="PrePacker" className={NavbarCSS.titleLogo}></img>
         </Link>
         <nav>
           
