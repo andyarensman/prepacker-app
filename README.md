@@ -20,4 +20,6 @@ I quickly had a lot of components and a lot of things to implement. In order to 
 
 Make sure to use array.forEach instead of array.map if you don't have a return value.
 
-Need to accredit the author of the mountain header: <a href="http://www.freepik.com">Designed by pch.vector / Freepik</a> 
+Need to accredit the author of the mountain header: <a href="http://www.freepik.com">Designed by pch.vector / Freepik</a>
+
+To get a cool looking gradient for the header, I found a picture of a mountain skyline and grabbed the color of the bottom, middle and top. The logo was made with Adobe's logo maker - very cool free software.
