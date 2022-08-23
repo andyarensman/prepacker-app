@@ -19,7 +19,10 @@ body {
 }
 
 header {
+  /* Fallback color */
   background: #fff;
+  /* Gradient */
+  background-image: linear-gradient(#3c668e, #bcc7d9, #fff);
 }
 
 header .container {
