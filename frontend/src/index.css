@@ -112,6 +112,12 @@ nav a {
   margin-left: 10px;
 }
 
+.title-logo {
+  height: 60px;
+  margin: 21.44px 0px;
+  image-rendering: crisp-edges;
+}
+
 .img-container {
   overflow: hidden;
   margin: 0px auto;
@@ -119,7 +125,7 @@ nav a {
   max-width: 1400px;
 }
 
-img {
+.mountains {
   display: block;
   min-width: 2000px;
   max-width: 2000px;

@@ -5,7 +5,8 @@ const Navbar = () => {
     <header>
       <div className="container">
         <Link to="/new-list">
-          <h1>PrePacker</h1>
+          {/* <h1>PrePacker</h1> */}
+          <img src="/PrePacker-logo-1.png" alt="PrePacker" className="title-logo"></img>
         </Link>
         <Link to="/new-list">
           <h3>New List</h3>
@@ -24,7 +25,7 @@ const Navbar = () => {
         </nav>
       </div>
       <div className="img-container">
-        <img src="/Mountains.png" alt="mtn-header"></img>
+        <img src="/Mountains.png" alt="mtn-header" className="mountains"></img>
       </div>
     </header>
    );
