@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
 .header {
   /* Fallback color */
   background: #fff;
@@ -26,6 +28,8 @@
 }
 
 nav {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,10 +37,12 @@ nav {
 }
 
 .login {
-  justify-content: end;
+  justify-content: flex-end;
   display: flex;
   align-items: center;
   gap: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
 }
 
 .imgContainer {
