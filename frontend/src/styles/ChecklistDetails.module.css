@@ -7,15 +7,15 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 
-.checklistDetails h4 {
+.checklistDetails h3 {
   margin: 0 0 10px 0;
-  font-size: 1.2em;
+  font-size: 1.25em;
   color: var(--primary);
 }
 
 .checklistDetails p {
   margin: 0;
-  font-size: 0.9em;
+  font-size: 1em;
   color: #555;
 }
 

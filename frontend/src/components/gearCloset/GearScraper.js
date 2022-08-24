@@ -73,13 +73,14 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
   return (
     <form className={GearFormCSS.scrape} onSubmit={handleUrlSubmit}>
       <h3>Import from Webpage</h3>
-      <label>REI Web Address</label>
+      <label htmlFor='scraper'>REI Web Address</label>
       <div className={GearFormCSS.scrapeInput}>
         <input 
           type="url"
           onChange={(e) => setUrlScrape(e.target.value)}
           value={url_scrape}
           className={scraperError ? 'error' : ''}
+          id="scraper"
         />
         <button>Find Gear</button>
       </div>

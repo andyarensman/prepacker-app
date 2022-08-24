@@ -25,7 +25,7 @@ const GearDetails = ({ gear }) => {
 
   return ( 
     <div className={GearDetailsCSS.gearDetails}>
-      <h4>{gear.gear_name}</h4>
+      <h3>{gear.gear_name}</h3>
       {gear.weight && <p><strong>Weight: </strong>{handleWeight(gear.weight)}</p>}
       {gear.category && <p><strong>Category: </strong>{handleCategory(gear.category)}</p>}
       {gear.website && <p><strong>Product Page: </strong><a href={gear.website} target="_blank" rel="noreferrer">REI</a></p>}

@@ -11,6 +11,7 @@
 
 .scrape {
   padding-bottom: 20px;
+  margin-top: 40px;
 }
 
 .scrapeInput {
@@ -37,4 +38,9 @@
 .create input, .create select, .scrape input {
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.create h2 {
+  margin-top: 20px;
+  margin-bottom: 25px;
 }

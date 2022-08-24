@@ -13,19 +13,19 @@ const Navbar = () => {
           <img src={prePackerLogo} alt="PrePacker" className={NavbarCSS.titleLogo}></img>
         </Link>
         <nav>
-          
+            •
           <Link to="/new-list">
-            <h3>New List</h3>
+            New List
           </Link>
-          <h3>•</h3>
+            •
           <Link to="/saved-lists">
-            <h3>Saved Lists</h3>
+            Saved Lists
           </Link>
-          <h3>•</h3>
+            •
           <Link to="/gear-closet">
-            <h3>Gear Closet</h3>
+            Gear Closet
           </Link>
-          
+            •
         </nav>
         <div className={NavbarCSS.login}>
           <Link to="/">Login</Link>

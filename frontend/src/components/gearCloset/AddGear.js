@@ -17,21 +17,6 @@ const AddGear = ({ setSort }) => {
 
   return ( 
     <div>
-      <GearScraper
-        url_scrape={url_scrape}
-        setUrlScrape={setUrlScrape} 
-        setGearName={setGearName}
-        setPounds={setPounds}
-        setOunces={setOunces}
-        setCategory={setCategory}
-        setUrl={setUrl}
-        setPrice={setPrice}
-        // setImageUrl={setImageUrl}
-        scraperError={scraperError}
-        setScraperError={setScraperError}
-        setError={setError}
-        setEmptyFields={setEmptyFields}
-      />
       <GearForm 
         gear_name={gear_name}
         setGearName={setGearName}
@@ -54,6 +39,21 @@ const AddGear = ({ setSort }) => {
         setUrlScrape={setUrlScrape}
         setScraperError={setScraperError}
         setSort={setSort}
+      />
+      <GearScraper
+        url_scrape={url_scrape}
+        setUrlScrape={setUrlScrape} 
+        setGearName={setGearName}
+        setPounds={setPounds}
+        setOunces={setOunces}
+        setCategory={setCategory}
+        setUrl={setUrl}
+        setPrice={setPrice}
+        // setImageUrl={setImageUrl}
+        scraperError={scraperError}
+        setScraperError={setScraperError}
+        setError={setError}
+        setEmptyFields={setEmptyFields}
       />
     </div>
    );

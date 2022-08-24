@@ -1,5 +1,6 @@
-// TODO: Need to add other things to the form: product type
+// TODO: Need to add other things to the form: notes, images?
 
+import { useEffect, useState } from "react";
 import { useClosetContext } from "../../hooks/useClosetContext";
 
 // css module
@@ -29,6 +30,11 @@ const GearForm = ({
     setSort
   }) => {
   const { dispatch } = useClosetContext()
+  const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    setSuccess(false)
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -52,6 +58,7 @@ const GearForm = ({
       setError(json.error)
       setEmptyFields(json.emptyFields)
       setScraperError(false)
+      setSuccess(false)
     }
 
     if (response.ok) {
@@ -67,6 +74,11 @@ const GearForm = ({
       setUrlScrape('')
       setScraperError(false)
       setSort('nameAscending')
+      setSuccess(true)
+      setTimeout(() => {
+        setSuccess(false)
+    }, 5000);
+      
       console.log('new gear added', json)
       dispatch({type: 'CREATE_GEAR', payload: json})
     }
@@ -74,14 +86,15 @@ const GearForm = ({
 
   return ( 
     <form className={GearFormCSS.create} onSubmit={handleSubmit}>
-      <h3>Add a New Piece of Gear</h3>
+      <h2>Add a New Piece of Gear</h2>
 
-      <label>Gear Name</label>
+      <label htmlFor="gear-name">Gear Name</label>
       <input 
         type="text"
         onChange={(e) => setGearName(e.target.value)}
         value={gear_name}
         className={emptyFields.includes('gear_name') ? 'error' : ''}
+        id="gear-name"
       />
 
       <label>Weight</label>
@@ -90,21 +103,24 @@ const GearForm = ({
           type="number"
           onChange={(e) => setPounds(e.target.value)}
           value={pounds}
+          id="pounds"
         />
-        <label>lbs</label>
+        <label htmlFor="pounds">lbs</label>
         <input 
           type="number"
           onChange={(e) => setOunces(e.target.value)}
           value={ounces}
+          id="ounces"
         />
-        <label>oz</label>
+        <label htmlFor="ounces">oz</label>
       </div>
 
-      <label>Category</label>
+      <label htmlFor="category">Category</label>
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
         className={emptyFields.includes('category') ? 'error' : ''}
+        id="category"
       >
         <option value="" disabled></option>
         <option value="clothing">Clothing</option>
@@ -118,18 +134,20 @@ const GearForm = ({
         <option value="other">Other</option>
       </select>
 
-      <label>Product URL</label>
+      <label htmlFor="url">Product URL</label>
       <input 
         type="url"
         onChange={(e) => setUrl(e.target.value)}
         value={url}
+        id="url"
       />
 
-      <label>Price ($)</label>
+      <label htmlFor="price">Price ($)</label>
       <input 
         type="number"
         onChange={(e) => setPrice(e.target.value)}
         value={price}
+        id="price"
       />
 
       {/* <label>Image Url:</label>
@@ -141,6 +159,7 @@ const GearForm = ({
 
       <button>Add Gear to Closet</button>
       {error && <div className="error">{error}</div>}
+      {success && <div className="success">New gear added!</div>}
     </form>
    );
 }

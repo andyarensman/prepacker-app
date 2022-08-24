@@ -65,19 +65,21 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
           <b>Total Weight: <i className="weight-italics">{findTotalWeight(trip_list)}</i></b>
         </p>
         <br/>
-        <label>Checklist Name</label>
+        <label htmlFor='name'>Checklist Name</label>
         <input
           type="text" 
           onChange={(e) => setChecklistName(e.target.value)}
           value={checklist_name}
           className={emptyFields.includes('checklist_name') ? `error ${NewListCSS.listName}` : NewListCSS.listName}
+          id="name"
         />
         <br/>
-        <label>Notes</label>
+        <label htmlFor='notes'>Notes</label>
         <textarea 
           onChange={(e) => setChecklistNotes(e.target.value)}
           value={checklist_notes}
           className={NewListCSS.listTextarea}
+          id="notes"
         />
         <br/>
         <button className={NewListCSS.saveList}>Save List</button>

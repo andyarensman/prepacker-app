@@ -26,7 +26,7 @@ const ChecklistDetails = ({ checklist }) => {
 
   return ( 
     <div className={ChecklistDetailsCSS.checklistDetails}>
-      <Link to={"/saved-lists/" + checklist._id}><h4>{checklist.checklist_name}</h4></Link>
+      <Link to={"/saved-lists/" + checklist._id}><h3>{checklist.checklist_name}</h3></Link>
       <p><strong>Total Items: </strong>{checklist.gear_items.length}</p>
       <p><strong>Total Weight: </strong>{checklist.total_weight}</p>
       {checklist.checklist_notes && <p><strong>Notes: </strong>{checklist.checklist_notes}</p>}
