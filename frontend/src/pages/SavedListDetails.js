@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import SavedListGearCategory from "../components/savedListDetails/savedListGearCategory";
 import { useClosetContext } from "../hooks/useClosetContext";
 
+import format from 'date-fns/format'
 //css modules
 import SLDetailsCSS from "../styles/savedListDetails.module.css"
 
@@ -38,7 +39,25 @@ const SavedListDetails = () => {
 
   return (
     <div>
-      <h2>{checklist && checklist.checklist_name}</h2>
+      <div className={SLDetailsCSS.header}>
+        <h2>{checklist && checklist.checklist_name}</h2>
+        {checklist && (
+          <>
+            <p className={SLDetailsCSS.spacer}>•</p>
+            <p className={SLDetailsCSS.spacer}>
+              <strong>Created: <i className="weight-italics">{format(new Date(checklist.createdAt), "M/dd/yy")}</i></strong>
+            </p>
+            <p className={SLDetailsCSS.spacer}>•</p>
+            <p className={SLDetailsCSS.spacer}>
+            <strong>Total Items: <i className="weight-italics">{checklist.gear_items.length}</i></strong>
+            </p>
+            <p className={SLDetailsCSS.spacer}>•</p>
+            <p className={SLDetailsCSS.spacer}>
+              <strong>Total Weight: <i className="weight-italics">{checklist.total_weight}</i></strong>
+            </p>
+          </>
+        )}
+      </div>
       <div className={SLDetailsCSS.savedListDetails}>
         {gear && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
           <SavedListGearCategory
@@ -51,19 +70,11 @@ const SavedListDetails = () => {
       </div>
       <br/>
       <hr/>
-        {checklist && (
-          <p>
-            <strong>Total Weight: <i className="weight-italics">{checklist.total_weight}</i></strong>
-          </p>
-        )}
-        {checklist && checklist.checklist_notes && (
-          <div>
-            <p>
-              <strong>Notes:</strong>
-            </p>
-            <p>{checklist.checklist_notes}</p>
-          </div>
-          )}
+      {checklist && checklist.checklist_notes && (
+        <p>
+          <strong>Notes: </strong>{checklist.checklist_notes}
+        </p>
+      )}
     </div>
    );
 }

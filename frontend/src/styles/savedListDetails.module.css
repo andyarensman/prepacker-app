@@ -1,3 +1,17 @@
+.header {
+  display: flex;
+  align-items: flex-end;
+  column-gap: 15px;
+}
+
+.header h2 {
+  margin: 20px 0px 10px;
+}
+
+.spacer {
+  margin-bottom: 12px;
+}
+
 .category {
   columns: auto 21em;
   column-gap: 30px;
@@ -6,6 +20,7 @@
 
 .category h3 {
   column-span: all;
+  margin: 15px 0px;
 }
 
 .gearItem {
