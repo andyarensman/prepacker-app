@@ -28,8 +28,14 @@ const Navbar = () => {
             •
         </nav>
         <div className={NavbarCSS.login}>
-          <Link to="/">Login</Link>
-          <Link to="/">Signup</Link>
+          <Link to="/">
+            Login&nbsp;
+            <span class="material-symbols-outlined cancel">login</span>
+          </Link>
+          <Link to="/">
+            Signup&nbsp;
+            <span class="material-symbols-outlined cancel">person_add</span>
+          </Link>
         </div>
       </div>
       <div className={NavbarCSS.imgContainer}>
