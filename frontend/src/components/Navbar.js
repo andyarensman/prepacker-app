@@ -30,11 +30,11 @@ const Navbar = () => {
         <div className={NavbarCSS.login}>
           <Link to="/">
             Login&nbsp;
-            <span class="material-symbols-outlined cancel">login</span>
+            <span className="material-symbols-outlined cancel">login</span>
           </Link>
           <Link to="/">
             Signup&nbsp;
-            <span class="material-symbols-outlined cancel">person_add</span>
+            <span className="material-symbols-outlined cancel">person_add</span>
           </Link>
         </div>
       </div>

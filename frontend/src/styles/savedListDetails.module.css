@@ -1,0 +1,15 @@
+.category {
+  columns: auto 21em;
+  column-gap: 30px;
+  column-rule: 1px solid #ccc;
+}
+
+.category h3 {
+  column-span: all;
+}
+
+.gearItem {
+  padding-left: 23px;
+  text-indent:-12px;
+  margin-top: 3px;
+}

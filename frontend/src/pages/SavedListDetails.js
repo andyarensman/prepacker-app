@@ -1,9 +1,12 @@
-//! Made need to fix the useEffect hooks here that set the state
+//! May need to fix the useEffect hooks here that set the state
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SavedListGearCategory from "../components/savedListDetails/savedListGearCategory";
 import { useClosetContext } from "../hooks/useClosetContext";
+
+//css modules
+import SLDetailsCSS from "../styles/savedListDetails.module.css"
 
 const SavedListDetails = () => {
   const [checklist, setChecklist] = useState(null)
@@ -33,30 +36,34 @@ const SavedListDetails = () => {
     
   }, [checklists, id, closet])
 
-  return ( 
-    <div className="saved-list-details">
+  return (
+    <div>
       <h2>{checklist && checklist.checklist_name}</h2>
-      {gear && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
-        <SavedListGearCategory
-          category={e}
-          key={e}
-          gear={gear}
-        />         
-      ))}
+      <div className={SLDetailsCSS.savedListDetails}>
+        {gear && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
+          <SavedListGearCategory
+            category={e}
+            key={e}
+            gear={gear}
+          />         
+        ))}
+        
+      </div>
       <br/>
-      {checklist && (
-        <p>
-          <strong>Total Weight: <i className="weight-italics">{checklist.total_weight}</i></strong>
-        </p>
-      )}
-      {checklist && checklist.checklist_notes && (
-        <div>
+      <hr/>
+        {checklist && (
           <p>
-            <strong>Notes:</strong>
+            <strong>Total Weight: <i className="weight-italics">{checklist.total_weight}</i></strong>
           </p>
-          <p>{checklist.checklist_notes}</p>
-        </div>
         )}
+        {checklist && checklist.checklist_notes && (
+          <div>
+            <p>
+              <strong>Notes:</strong>
+            </p>
+            <p>{checklist.checklist_notes}</p>
+          </div>
+          )}
     </div>
    );
 }
