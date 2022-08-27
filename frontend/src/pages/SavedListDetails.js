@@ -68,10 +68,8 @@ const SavedListDetails = () => {
         ))}
         
       </div>
-      <br/>
-      <hr/>
       {checklist && checklist.checklist_notes && (
-        <p>
+        <p className={SLDetailsCSS.notes}>
           <strong>Notes: </strong>{checklist.checklist_notes}
         </p>
       )}

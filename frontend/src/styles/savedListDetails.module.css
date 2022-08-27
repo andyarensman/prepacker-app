@@ -23,8 +23,18 @@
   margin: 15px 0px;
 }
 
+.category h3 span {
+  font-weight: normal;
+}
+
 .gearItem {
   padding-left: 23px;
   text-indent:-12px;
   margin-top: 3px;
+}
+
+.notes {
+  border-top: 1px solid rgb(161, 160, 160);
+  padding-top: 16px;
+  margin-top: 25px;
 }
