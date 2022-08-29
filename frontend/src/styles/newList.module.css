@@ -30,6 +30,34 @@
   height: 37px;
 }
 
+.closet {
+  padding: 20px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+.closet h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.newList {
+  padding: 5px 30px 30px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  background-color: #fff;
+  margin: 20px 0 0;
+}
+
+.newList h3 {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
 .inList {
   font-style: italic;
   color: #666666;

@@ -20,20 +20,22 @@ const SavedListGearCategory = ({ category, gear }) => {
   },[category, gear])
 
   return (
-    <div className={SLDetailsCSS.category}>
-      {gear.some(e => e.category === category) && 
-        <h3>{handleCategory(category)} <span>({gearCheck}/{gearCount})</span></h3>}
-
-      {gear.map((gearItem) => {
-        return gearItem.category === category &&
-          <SavedListGear 
-            key={gearItem._id} 
-            gearItem={gearItem}
-            gearCheck={gearCheck}
-            setGearCheck={setGearCheck}
-          />
-      })}
-    </div>
+    <>
+      {gear.some(e => e.category === category) &&
+        <div className={SLDetailsCSS.category}>
+          <h3>{handleCategory(category)} <span>({gearCheck}/{gearCount})</span></h3>
+          {gear.map((gearItem) => {
+            return gearItem.category === category &&
+              <SavedListGear 
+                key={gearItem._id} 
+                gearItem={gearItem}
+                gearCheck={gearCheck}
+                setGearCheck={setGearCheck}
+              />
+          })}
+        </div>
+      }
+    </>  
   );
 }
  

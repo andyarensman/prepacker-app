@@ -41,20 +41,21 @@ const NewList = () => {
     <div className={NewListCSS.page}>
       <div>
         <h2>My PrePacker Checklist</h2>
-        {trip_list && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
-          <TripListCategory
-            category={e}
-            key={e}
-            trip_list={trip_list}
-            setTripList={setTripList}
-          />
-        ))}
+        <div className={NewListCSS.newList}>
+          {trip_list && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
+            <TripListCategory
+              category={e}
+              key={e}
+              trip_list={trip_list}
+              setTripList={setTripList}
+            />
+          ))}
+        </div>
         {trip_list.length === 0 && (
           <div className={NewListCSS.blankListContainer}>
             <h3 className={NewListCSS.blankList}>Add Gear to Get Started</h3>
           </div>
         )} 
-        <br/>
         {trip_list.length !== 0 && (
           <CreateChecklist
             trip_list={trip_list}

@@ -61,6 +61,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
   return ( 
     <>
       <form className="create-checklist" onSubmit={handleSubmit}>
+        <br />
         <p>
           <b>Total Weight: <i className="weight-italics">{findTotalWeight(trip_list)}</i></b>
         </p>
