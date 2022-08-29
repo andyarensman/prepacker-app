@@ -2,10 +2,31 @@
   display: flex;
   align-items: flex-end;
   column-gap: 15px;
+  position: relative;
 }
 
 .header h2 {
   margin: 20px 0px 10px;
+}
+
+.header span {
+  position: absolute;
+  top: 16px;
+  cursor: pointer;
+  background: white;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  color: #333;
+  font-size: 22px;
+}
+
+span.editBtn {
+  right: 50px;
+}
+
+span.deleteBtn {
+  right: 0px;
 }
 
 .spacer {
@@ -16,15 +37,32 @@
   columns: auto 21em;
   column-gap: 30px;
   column-rule: 1px solid #ccc;
+  padding: 10px 20px 20px;
+  width: 100%;
+  /* border: 1px solid #ddd; */
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  background-color: #fff;
+  margin: 20px 0;
+  color: #555;
+  position: relative;
 }
 
 .category h3 {
   column-span: all;
-  margin: 15px 0px;
+  font-size: 20px;
+  margin: 10px 0px;
+  color: rgb(62, 62, 62);
 }
 
 .category h3 span {
   font-weight: normal;
+  font-size: 18px;
+  color: #555;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .gearItem {

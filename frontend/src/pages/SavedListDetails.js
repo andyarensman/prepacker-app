@@ -55,24 +55,28 @@ const SavedListDetails = () => {
             <p className={SLDetailsCSS.spacer}>
               <strong>Total Weight: <i className="weight-italics">{checklist.total_weight}</i></strong>
             </p>
+            <span className={`material-symbols-outlined ${SLDetailsCSS.editBtn}`}>edit</span>
+            <span className={`material-symbols-outlined ${SLDetailsCSS.deleteBtn}`}>delete</span>
           </>
         )}
       </div>
       <div className={SLDetailsCSS.savedListDetails}>
-        {gear && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
-          <SavedListGearCategory
-            category={e}
-            key={e}
-            gear={gear}
-          />         
-        ))}
+        <>
+          {gear && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
+            <SavedListGearCategory
+              category={e}
+              key={e}
+              gear={gear}
+            />         
+          ))}
+          {checklist && checklist.checklist_notes && (
+            <p className={SLDetailsCSS.notes}>
+              <strong>Notes: </strong>{checklist.checklist_notes}
+            </p>
+          )}
+        </>
         
       </div>
-      {checklist && checklist.checklist_notes && (
-        <p className={SLDetailsCSS.notes}>
-          <strong>Notes: </strong>{checklist.checklist_notes}
-        </p>
-      )}
     </div>
    );
 }
