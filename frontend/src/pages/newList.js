@@ -49,13 +49,18 @@ const NewList = () => {
             setTripList={setTripList}
           />
         ))}
+        {trip_list.length === 0 && (
+          <div className={NewListCSS.blankListContainer}>
+            <h3 className={NewListCSS.blankList}>Add Gear to Get Started</h3>
+          </div>
+        )} 
         <br/>
         {trip_list.length !== 0 && (
           <CreateChecklist
             trip_list={trip_list}
             setTripList={setTripList}
           /> 
-        )}  
+        )} 
       </div>
       <div className="closet-list">
         <TitleSearch 
