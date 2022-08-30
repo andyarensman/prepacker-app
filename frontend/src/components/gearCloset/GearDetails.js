@@ -1,7 +1,9 @@
 // TODO: Need to add any images
 // TODO: Only scroll on this component
-import { useClosetContext } from "../../hooks/useClosetContext";
-import { handleCategory, handleWeight } from "../../helpers/utils";
+import { useClosetContext } from '../../hooks/useClosetContext'
+import { handleCategory, handleWeight } from '../../helpers/utils'
+import EditGearModal from './EditGearModal';
+import { useState } from 'react';
 
 // css module
 import GearDetailsCSS from '../../styles/GearDetails.module.css'
@@ -10,6 +12,7 @@ import GearDetailsCSS from '../../styles/GearDetails.module.css'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const GearDetails = ({ gear }) => {
+  const [hiddenModal, setHiddenModal] = useState(true)
   const { dispatch } = useClosetContext()
 
   const handleClick = async () => {
@@ -32,8 +35,19 @@ const GearDetails = ({ gear }) => {
       {gear.price && <p><strong>Price: </strong>${gear.price}</p>}
       <p>{formatDistanceToNow(new Date(gear.createdAt), { addSuffix: true })}</p>
       {/* {gear.image_url && <img src={gear.image_url} alt={"Image: " + gear.gear_name} className="gear-image"/>} */}
-      <span className={`material-symbols-outlined ${GearDetailsCSS.editBtn}`}>edit</span>
-      <span className={`material-symbols-outlined ${GearDetailsCSS.deleteBtn}`} onClick={handleClick}>delete</span>
+      <span
+        className={`material-symbols-outlined ${GearDetailsCSS.editBtn}`}
+        onClick={() => setHiddenModal(false)}
+      >edit</span>
+      <span
+        className={`material-symbols-outlined ${GearDetailsCSS.deleteBtn}`}
+        onClick={handleClick}
+      >delete</span>
+      <EditGearModal
+        hiddenModal={hiddenModal}
+        setHiddenModal={setHiddenModal}
+        gear={gear}
+      />
     </div>
    );
 }

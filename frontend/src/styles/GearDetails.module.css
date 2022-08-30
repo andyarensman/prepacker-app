@@ -28,7 +28,7 @@
   height: 100px;
 } */
 
-.gearDetails span {
+.gearDetails span.editBtn, .gearDetails span.deleteBtn {
   position: absolute;
   top: 20px;
   cursor: pointer;
@@ -48,12 +48,12 @@ span.deleteBtn {
 }
 
 @media screen and (max-width: 1200px) {
-  span.editBtn {
+  /* span.editBtn {
     top: 20px;
     right: 20px;
   }
   
   span.deleteBtn {
     top: 62px;
-  }
+  } */
 }

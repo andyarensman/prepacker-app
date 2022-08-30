@@ -36,6 +36,15 @@ export const findTotalWeight = (list) => {
   return handleWeight(totalWeight)
 }
 
+// return weight as object with num
+export const handleWeightNum = (weight) => {
+  let pounds = Math.floor(weight/16)
+  let ouncesNoRound = (weight - (Math.floor(weight/16))*16)
+  let ounces = Math.round(ouncesNoRound * 10) / 10
+
+  return {pounds, ounces}
+}
+
 // Order of gear categories with icons
 export const handleCategory = (category) => {
   switch (category) {
