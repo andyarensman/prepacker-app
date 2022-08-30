@@ -95,14 +95,37 @@ const deleteSingleGear = async (req, res) => {
 // edit gear
 const editGear = async (req, res) => {
   const { id } = req.params
+  const {
+    gear_name, 
+    weight, 
+    price,
+    category, 
+    notes, 
+    website 
+    // image_url
+  } = req.body
+
+  // forgotten Field
+  let emptyFields = []
+
+  //! If there are more required fields, add them here with more if checks
+  if(!gear_name) {
+    emptyFields.push('gear_name')
+  }
+  if(!category) {
+    emptyFields.push('category')
+  }
+  if(emptyFields.length > 0) {
+    return res.status(400).json({ error: 'Please fill in all required fields', emptyFields})
+  }
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error: 'No such gear'})
   }
 
-  const gear = await Gear.findOneAndUpdate({_id: id }, {
+  const gear = await Gear.findOneAndUpdate({_id: id}, {
     ...req.body
-  })
+  }, {new: true})
 
   if (!gear) {
     return res.status(404).json({error: 'No such gear'})
@@ -111,6 +134,7 @@ const editGear = async (req, res) => {
   res.status(200).json(gear)
 }
 
+// get scrape data
 const getScrapedGear = async (req, res) => {
 
   const url_scrape = req.body.url_scrape

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 import { handleWeightNum } from '../../helpers/utils'
+import { useClosetContext } from '../../hooks/useClosetContext'
 
 const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
   const [gear_name, setGearName] = useState(gear.gear_name)
@@ -11,9 +12,46 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
   const [category, setCategory] = useState(gear.category)
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
+  const [success, setSuccess] = useState(false)
+
+  const { dispatch } = useClosetContext()
   
   const handleSubmit = async (e) => {
     e.preventDefault()
+    let weight;
+    if (pounds || ounces) {
+      weight = Number(pounds)*16 + Number(ounces)
+    }
+    const gearSubmit = {gear_name, weight, price, category}
+    gearSubmit.website = url
+
+    const response = await fetch(`/api/closet/${gear._id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(gearSubmit),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const json = await response.json()
+
+    if (!response.ok) {
+      setError(json.error)
+      setEmptyFields(json.emptyFields)
+      setSuccess(false)
+      console.log('not ok')
+    }
+
+    if (response.ok) {
+      setError(null)
+      setEmptyFields([]) 
+      setSuccess(true)
+      setTimeout(() => {
+        setSuccess(false)
+    }, 5000);
+      
+      console.log('gear updated', json)
+      dispatch({type: 'UPDATE_GEAR', payload: json})
+    }
   }
 
   // close the modal if you click outside the box
@@ -100,8 +138,9 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
                 id="price"
               />
 
-              <button>Update Gear</button>
+              <button onClick={(e) => handleSubmit(e)}>Update Gear</button>
               {error && <div className="error">{error}</div>}
+              {success && <div className="success">Gear Updated!</div>}
             </form>
           </div>
 

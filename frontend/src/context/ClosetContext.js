@@ -19,6 +19,11 @@ export const closetReducer = (state, action) => {
         ...state,
         closet: state.closet.filter((gear) => gear._id !== action.payload._id)
       }
+    case 'UPDATE_GEAR':
+      return {
+        ...state,
+        closet: [...(state.closet.filter((gear) => gear._id !== action.payload._id)), action.payload]
+      }
     case 'SET_CHECKLISTS':
       return {
         ...state,
