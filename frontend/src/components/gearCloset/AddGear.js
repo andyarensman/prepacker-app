@@ -10,6 +10,7 @@ const AddGear = ({ setSort }) => {
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
   // const [image_url, setImageUrl] = useState('')
+  const [notes, setNotes] = useState('')
   const [error, setError] = useState(null)
   const [scraperError, setScraperError] = useState(false)
   const [emptyFields, setEmptyFields] = useState([])
@@ -32,6 +33,8 @@ const AddGear = ({ setSort }) => {
         setPrice={setPrice}
         // image_url={image_url}
         // setImageUrl={setImageUrl}
+        notes={notes}
+        setNotes={setNotes}
         error={error}
         setError={setError}
         emptyFields={emptyFields}

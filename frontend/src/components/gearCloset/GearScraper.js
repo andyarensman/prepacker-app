@@ -62,7 +62,7 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
         setImageUrl(jsonScrapeObj.gear_image_url)
       }*/
       
-      // setUrlScrape('')
+      setUrlScrape('')
       setScraperError(false)
     } else {
       setScraperError(true)

@@ -7,9 +7,10 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
   const [gear_name, setGearName] = useState(gear.gear_name)
   const [pounds, setPounds] = useState(handleWeightNum(gear.weight).pounds || '')
   const [ounces, setOunces] = useState(handleWeightNum(gear.weight).ounces || '')
+  const [category, setCategory] = useState(gear.category)
   const [url, setUrl] = useState(gear.website || '')
   const [price, setPrice] = useState(gear.price || '')
-  const [category, setCategory] = useState(gear.category)
+  const [notes, setNotes] = useState(gear.notes || '')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
   const [success, setSuccess] = useState(false)
@@ -22,7 +23,7 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
     if (pounds || ounces) {
       weight = Number(pounds)*16 + Number(ounces)
     }
-    const gearSubmit = {gear_name, weight, price, category}
+    const gearSubmit = {gear_name, weight, price, category, notes}
     gearSubmit.website = url
 
     const response = await fetch(`/api/closet/${gear._id}`, {
@@ -136,6 +137,13 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
                 id="price"
+              />
+
+              <label htmlFor="notes">Notes</label>
+              <textarea 
+                onChange={(e) => setNotes(e.target.value)}
+                value={notes}
+                id="notes"
               />
 
               <button onClick={(e) => handleSubmit(e)}>Update Gear</button>

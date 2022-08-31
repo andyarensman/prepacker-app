@@ -35,9 +35,19 @@
   border-right: none;
 }
 
-.create input, .create select, .scrape input {
+.create input, .create select, .create textarea, .scrape input {
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.create textarea {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
 }
 
 .create h2 {

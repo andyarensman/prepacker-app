@@ -33,6 +33,7 @@ const GearDetails = ({ gear }) => {
       {gear.category && <p><strong>Category: </strong>{handleCategory(gear.category)}</p>}
       {gear.website && <p><strong>Product Page: </strong><a href={gear.website} target="_blank" rel="noreferrer">REI</a></p>}
       {gear.price && <p><strong>Price: </strong>${gear.price}</p>}
+      {gear.notes && <p><strong>Notes: </strong>{gear.notes}</p>}
       <p>{formatDistanceToNow(new Date(gear.createdAt), { addSuffix: true })}</p>
       {/* {gear.image_url && <img src={gear.image_url} alt={"Image: " + gear.gear_name} className="gear-image"/>} */}
       <span
