@@ -71,3 +71,40 @@
   margin-top: 0px;
   margin-bottom: 25px;
 }
+
+/* Delete */
+
+
+.modalDeleteContent {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+}
+
+.modalDeleteContent p {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.delete, .cancel {
+  border: 0;
+  color: #fff;
+  padding: 10px 20px;
+  font-family: "Lato";
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.delete {
+  background: #9A3E25;
+}
+
+.cancel {
+  background: var(--primary);
+  margin-left: 20px;
+}

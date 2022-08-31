@@ -47,17 +47,13 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
     <>
       {!hiddenDeleteModal && (
         <div className={ModalCSS.modal} onClick={(e) => closeWindow(e)}>
-          <div className={ModalCSS.modalContent}>
-            <span
-              className={ModalCSS.close}
-              onClick={() => setHiddenDeleteModal(true)}
-            >&times;</span>
+          <div className={ModalCSS.modalDeleteContent}>
 
-            <p>Are you sure you want to delete '{gear.gear_name}'?</p>
+            <p>Are you sure you want to delete <strong>'{gear.gear_name}'</strong> ?</p>
             
             <p>This item will be removed from <strong>{listCounter}</strong> list{listCounter !== 1 ? 's' : ''}!</p>
-            <button onClick={handleClick}>Delete Forever</button>
-            <button onClick={() => setHiddenDeleteModal(true)}>Cancel</button>
+            <button className={ModalCSS.delete} onClick={handleClick}>Delete</button>
+            <button className={ModalCSS.cancel} onClick={() => setHiddenDeleteModal(true)}>Cancel</button>
             
           </div>
         </div>
