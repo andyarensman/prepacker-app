@@ -1,6 +1,6 @@
 // TODO: Need to add any images
 // TODO: Only scroll on this component
-import { useClosetContext } from '../../hooks/useClosetContext'
+
 import { handleCategory, handleWeight } from '../../helpers/utils'
 import EditGearModal from './EditGearModal';
 import { useState } from 'react';
@@ -10,21 +10,11 @@ import GearDetailsCSS from '../../styles/GearDetails.module.css'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import DeleteGearModal from './DeleteGearModal';
 
 const GearDetails = ({ gear }) => {
   const [hiddenModal, setHiddenModal] = useState(true)
-  const { dispatch } = useClosetContext()
-
-  const handleClick = async () => {
-    const response = await fetch('/api/closet/' + gear._id, {
-      method: 'DELETE'
-    })
-    const json = await response.json()
-
-    if (response.ok) {
-      dispatch({type: 'DELETE_GEAR', payload: json})
-    }
-  }
+  const [hiddenDeleteModal, setHiddenDeleteModal] = useState(true)
 
   return ( 
     <div className={GearDetailsCSS.gearDetails}>
@@ -42,11 +32,16 @@ const GearDetails = ({ gear }) => {
       >edit</span>
       <span
         className={`material-symbols-outlined ${GearDetailsCSS.deleteBtn}`}
-        onClick={handleClick}
+        onClick={() => setHiddenDeleteModal(false)}
       >delete</span>
       <EditGearModal
         hiddenModal={hiddenModal}
         setHiddenModal={setHiddenModal}
+        gear={gear}
+      />
+      <DeleteGearModal
+        hiddenDeleteModal={hiddenDeleteModal}
+        setHiddenDeleteModal={setHiddenDeleteModal}
         gear={gear}
       />
     </div>
