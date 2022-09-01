@@ -4,20 +4,33 @@ import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 
 const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
   const [listCounter, setListCounter] = useState(0)
+  const [listUpdates, setListUpdates] = useState([])
   const { checklists, dispatch } = useClosetContext()
 
   useEffect(() => {
     if (!hiddenDeleteModal) {
-      let counter = 0;
+      let counter = 0
+      let checklistIdArr = []
 
       checklists.forEach(checklist => {
         let index = checklist.gear_items.findIndex(x => x === gear._id)
   
         if (index > -1) {
           counter++
+          let obj = {}
+          obj.checklist_id = checklist._id
+
+          let newArr = [...checklist.gear_items]
+          newArr.splice(index, 1)
+          obj.updated_checklist = [...newArr]
+
+          checklistIdArr.push(obj)
         }
       })
 
+      console.log(checklistIdArr)
+
+      setListUpdates(checklistIdArr) // [{checklist_id, updated_checklist}, ...]
       setListCounter(counter)
     }
   }, [checklists, gear, hiddenDeleteModal])
