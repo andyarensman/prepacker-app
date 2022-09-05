@@ -76,23 +76,36 @@ const deleteSingleChecklist = async (req, res) => {
   res.status(200).json(checklist)
 }
 
-// edit checklist
+// edit checklist(s)
 const editChecklist = async (req, res) => {
-  const { id } = req.params
+  const { listUpdates } = req.body
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({error: 'No such checklist'})
+  // For Multi Edit
+  if (listUpdates.length > 0) {
+    for (const checklistObj of listUpdates) {
+      const newChecklist = await Checklist.findOneAndUpdate({_id: checklistObj.checklist_id }, {
+        gear_items: [...checklistObj.updated_checklist]
+      }, {new: true})
+
+      console.log(newChecklist) //! Need to add response to update state
+    }
+    res.status(200)
   }
 
-  const checklist = await Checklist.findOneAndUpdate({_id: id }, {
-    ...req.body
-  })
+  // For Single Edit
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   return res.status(404).json({error: 'No such checklist'})
+  // }
 
-  if (!checklist) {
-    return res.status(404).json({error: 'No such checklist'})
-  }
+  // const checklist = await Checklist.findOneAndUpdate({_id: id }, {
+  //   ...req.body
+  // })
 
-  res.status(200).json(checklist)
+  // if (!checklist) {
+  //   return res.status(404).json({error: 'No such checklist'})
+  // }
+
+  // res.status(200).json(checklist)
 }
 
 

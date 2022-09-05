@@ -54,6 +54,23 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
     if (response.ok) {
       dispatch({type: 'DELETE_GEAR', payload: json})
     }
+
+    if (listUpdates.length > 0) {
+      const newClosets = {listUpdates}
+      const listResponse = await fetch('/api/checklist', {
+        method: 'PATCH',
+        body: JSON.stringify(newClosets),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (listResponse.ok) {
+        console.log('ok')
+      }
+      if (!listResponse.ok) {
+        console.log('not ok')
+      }
+    }
   }
 
   return (

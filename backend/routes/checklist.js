@@ -16,7 +16,7 @@ router.post('/', addChecklist)
 router.delete('/:id', deleteSingleChecklist)
 
 // UPDATE single checklist item
-router.patch('/:id', editChecklist)
+router.patch('/', editChecklist)
 
 
 
