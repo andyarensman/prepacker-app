@@ -7,9 +7,11 @@ import ChecklistDetailsCSS from '../../styles/ChecklistDetails.module.css'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import DeleteListModal from './DeleteListModal';
 
 const ChecklistDetails = ({ checklist }) => {
   const [gearNames, setGearNames] = useState([])
+  const [hiddenDeleteModal, setHiddenDeleteModal] = useState(true)
   const {closet} = useClosetContext()
   
   useEffect(() => {
@@ -33,7 +35,15 @@ const ChecklistDetails = ({ checklist }) => {
       <p><strong>Gear: </strong>{gearNames.join(" · ")}</p>
       <p>{formatDistanceToNow(new Date(checklist.createdAt), { addSuffix: true })}</p>
       <span className={`material-symbols-outlined ${ChecklistDetailsCSS.editBtn}`}>edit</span>
-      <span className={`material-symbols-outlined ${ChecklistDetailsCSS.deleteBtn}`}>delete</span>
+      <span 
+        className={`material-symbols-outlined ${ChecklistDetailsCSS.deleteBtn}`}
+        onClick={() => setHiddenDeleteModal(false)}
+      >delete</span>
+      <DeleteListModal 
+        hiddenDeleteModal={hiddenDeleteModal}
+        setHiddenDeleteModal={setHiddenDeleteModal}
+        checklist={checklist}
+      />
     </div>
    );
 }
