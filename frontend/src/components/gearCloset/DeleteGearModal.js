@@ -46,6 +46,7 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
 
   //delete item
   const handleClick = async () => {
+    const gearId = gear._id
     const response = await fetch('/api/closet/' + gear._id, {
       method: 'DELETE'
     })
@@ -53,6 +54,21 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
 
     if (response.ok) {
       dispatch({type: 'DELETE_GEAR', payload: json})
+
+      //remove from local storage if there
+      const data = window.localStorage.getItem('PREPACK_NEW_CHECKLIST')
+      if (data !== null) {
+        let newListData = JSON.parse(data)
+        
+        let index = newListData.findIndex(x => x._id === gearId)
+  
+        if (index > -1) {
+          let newArr = [...newListData]
+          newArr.splice(index, 1)
+          
+          window.localStorage.setItem('PREPACK_NEW_CHECKLIST', JSON.stringify(newArr))
+        }
+      }
     }
 
     if (listUpdates.length > 0) {
