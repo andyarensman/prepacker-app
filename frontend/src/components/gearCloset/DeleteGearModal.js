@@ -28,7 +28,7 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
         }
       })
 
-      console.log(checklistIdArr)
+      // console.log(checklistIdArr)
 
       setListUpdates(checklistIdArr) // [{checklist_id, updated_checklist}, ...]
       setListCounter(counter)
@@ -71,6 +71,7 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
       }
     }
 
+    // handle updating lists
     if (listUpdates.length > 0) {
       const newClosets = {listUpdates}
       const listResponse = await fetch('/api/checklist', {
@@ -80,8 +81,9 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
           'Content-Type': 'application/json'
         }
       })
+      const listJson = await listResponse.json()
       if (listResponse.ok) {
-        console.log('ok')
+        listJson.forEach(list => dispatch({type: 'UPDATE_CHECKLIST', payload: list}))
       }
       if (!listResponse.ok) {
         console.log('not ok')

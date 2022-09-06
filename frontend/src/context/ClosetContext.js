@@ -39,6 +39,11 @@ export const closetReducer = (state, action) => {
         ...state,
         checklists: state.checklists.filter((checklist) => checklist._id !== action.payload._id)
       }
+    case 'UPDATE_CHECKLIST':
+      return {
+        ...state,
+        checklists: [...(state.checklists.filter((checklist) => checklist._id !== action.payload._id)), action.payload]
+      }
     default:
       return state
   }

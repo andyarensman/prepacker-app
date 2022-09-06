@@ -82,14 +82,19 @@ const editChecklist = async (req, res) => {
 
   // For Multi Edit
   if (listUpdates.length > 0) {
+    let resArray = []
     for (const checklistObj of listUpdates) {
       const newChecklist = await Checklist.findOneAndUpdate({_id: checklistObj.checklist_id }, {
         gear_items: [...checklistObj.updated_checklist]
       }, {new: true})
 
-      console.log(newChecklist) //! Need to add response to update state
+      //! Do I need a case if it doesn't work?
+      if (newChecklist) {
+        resArray.push(newChecklist)
+      }
     }
-    res.status(200)
+    // console.log(resArray)
+    res.status(200).json(resArray)
   }
 
   // For Single Edit
