@@ -30,8 +30,7 @@ const addChecklist = async (req, res) => {
   const {
     checklist_name, 
     gear_items,
-    checklist_notes,
-    total_weight
+    checklist_notes
   } = req.body
 
   // forgotten Field
@@ -50,8 +49,7 @@ const addChecklist = async (req, res) => {
     const checklist = await Checklist.create({
         checklist_name, 
         gear_items,
-        checklist_notes,
-        total_weight
+        checklist_notes
       })
     res.status(200).json(checklist)
   } catch (error) {

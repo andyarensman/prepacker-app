@@ -1,23 +1,26 @@
 //! May need to fix the useEffect hooks here that set the state
 
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import SavedListGearCategory from "../components/savedListDetails/savedListGearCategory";
-import { useClosetContext } from "../hooks/useClosetContext";
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import SavedListGearCategory from '../components/savedListDetails/savedListGearCategory'
+import { useClosetContext } from '../hooks/useClosetContext'
+import { findTotalWeight } from '../helpers/utils'
 
 import format from 'date-fns/format'
 
 //css modules
-import SLDetailsCSS from "../styles/savedListDetails.module.css"
-import DeleteListModal from '../components/savedLists/DeleteListModal';
+import SLDetailsCSS from '../styles/savedListDetails.module.css'
+import DeleteListModal from '../components/savedLists/DeleteListModal'
 
 const SavedListDetails = () => {
   const [checklist, setChecklist] = useState(null)
   const [gear, setGear] = useState([])
+  const [listWeight, setListWeight] = useState('')
   const [hiddenDeleteModal, setHiddenDeleteModal] = useState(true)
   const { closet, checklists }= useClosetContext()
   let { id } = useParams()
 
+  // Get all data
   useEffect(() => {
     const findChecklist = () => {
       let tempChecklist = checklists.find(e => e._id === id)
@@ -25,16 +28,19 @@ const SavedListDetails = () => {
 
       if (tempChecklist.gear_items && closet) {
         let tempArray = []
+        let tempWeightArr = []
         closet.forEach(e => {
           if (tempChecklist.gear_items.includes(e._id)) {
             tempArray.push(e)
+            tempWeightArr.push({weight: e.weight})
           }
         })
         setGear(tempArray)
+        setListWeight(findTotalWeight(tempWeightArr))
       }
     }
     
-    if (checklists) {
+    if (checklists && closet) {
       findChecklist()
     }
     
@@ -56,7 +62,7 @@ const SavedListDetails = () => {
             </p>
             <p className={SLDetailsCSS.spacer}>•</p>
             <p className={SLDetailsCSS.spacer}>
-              <strong>Total Weight: <i className="weight-italics">{checklist.total_weight}</i></strong>
+              <strong>Total Weight: <i className="weight-italics">{listWeight || "N/A"}</i></strong>
             </p>
             <span className={`material-symbols-outlined ${SLDetailsCSS.editBtn}`}>edit</span>
             <span
