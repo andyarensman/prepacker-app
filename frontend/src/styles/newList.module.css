@@ -4,6 +4,10 @@
   gap: 50px;
 }
 
+.hidden {
+  display: none;
+}
+
 .blankList {
   text-align: center;
   padding: 15px;

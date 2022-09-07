@@ -41,7 +41,7 @@ const NewList = () => {
     <div className={NewListCSS.page}>
       <div>
         <h2>My PrePacker Checklist</h2>
-        <div className={NewListCSS.newList}>
+        <div className={trip_list.length > 0 ? NewListCSS.newList : NewListCSS.hidden}>
           {trip_list && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
             <TripListCategory
               category={e}
