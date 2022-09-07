@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { useClosetContext } from '../../hooks/useClosetContext'
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 
 const DeleteListModal = ({ hiddenDeleteModal, setHiddenDeleteModal, checklist}) => {
   const { dispatch } = useClosetContext()
+  const navigate = useNavigate()
 
   // close the modal if you click outside the box
   const closeWindow = (e) => {
@@ -23,6 +25,9 @@ const DeleteListModal = ({ hiddenDeleteModal, setHiddenDeleteModal, checklist}) 
 
     if (response.ok) {
       dispatch({type: 'DELETE_CHECKLIST', payload: json})
+      if (window.location.pathname !== '/saved-lists') {
+        navigate('/saved-lists')
+      }
     }
   }
 

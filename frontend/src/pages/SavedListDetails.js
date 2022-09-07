@@ -6,12 +6,15 @@ import SavedListGearCategory from "../components/savedListDetails/savedListGearC
 import { useClosetContext } from "../hooks/useClosetContext";
 
 import format from 'date-fns/format'
+
 //css modules
 import SLDetailsCSS from "../styles/savedListDetails.module.css"
+import DeleteListModal from '../components/savedLists/DeleteListModal';
 
 const SavedListDetails = () => {
   const [checklist, setChecklist] = useState(null)
   const [gear, setGear] = useState([])
+  const [hiddenDeleteModal, setHiddenDeleteModal] = useState(true)
   const { closet, checklists }= useClosetContext()
   let { id } = useParams()
 
@@ -56,7 +59,15 @@ const SavedListDetails = () => {
               <strong>Total Weight: <i className="weight-italics">{checklist.total_weight}</i></strong>
             </p>
             <span className={`material-symbols-outlined ${SLDetailsCSS.editBtn}`}>edit</span>
-            <span className={`material-symbols-outlined ${SLDetailsCSS.deleteBtn}`}>delete</span>
+            <span
+              className={`material-symbols-outlined ${SLDetailsCSS.deleteBtn}`}
+              onClick={() => setHiddenDeleteModal(false)}
+            >delete</span>
+            <DeleteListModal 
+              hiddenDeleteModal={hiddenDeleteModal}
+              setHiddenDeleteModal={setHiddenDeleteModal}
+              checklist={checklist}
+            />
           </>
         )}
       </div>
