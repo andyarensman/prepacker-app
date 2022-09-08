@@ -1,16 +1,19 @@
 // TODO: Need to add any images
 // TODO: Only scroll on this component
 
-import { handleCategory, handleWeight } from '../../helpers/utils'
-import EditGearModal from './EditGearModal'
 import { useState } from 'react'
 
-// css module
+// components
+import EditGearModal from './EditGearModal'
+import DeleteGearModal from './DeleteGearModal'
+
+// helpers, date fns
+import { handleCategory, handleWeight } from '../../helpers/utils'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
+// css modules
 import GearDetailsCSS from '../../styles/gearCloset/GearDetails.module.css'
 
-// date fns
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import DeleteGearModal from './DeleteGearModal';
 
 const GearDetails = ({ gear }) => {
   const [hiddenModal, setHiddenModal] = useState(true)

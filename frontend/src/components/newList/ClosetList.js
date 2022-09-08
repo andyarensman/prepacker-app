@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+
+// helpers
 import { handleWeight } from '../../helpers/utils'
 
 // css modules

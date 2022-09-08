@@ -1,13 +1,15 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar';
-import { useEffect } from "react";
 
-// pages, components, context
-import NewList from './pages/newList';
-import GearCloset from './pages/gearCloset';
-import SavedLists from './pages/savedLists';
-import IndividualList from './pages/individualList';
-import { useClosetContext } from './hooks/useClosetContext';
+// pages, components
+import NewList from './pages/newList'
+import GearCloset from './pages/gearCloset'
+import SavedLists from './pages/savedLists'
+import IndividualList from './pages/individualList'
+import Navbar from './components/Navbar'
+
+// context
+import { useClosetContext } from './hooks/useClosetContext'
 
 
 function App() {

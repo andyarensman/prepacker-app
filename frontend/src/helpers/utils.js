@@ -1,3 +1,4 @@
+// css imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShirt, faBox, faScrewdriverWrench, faHandSparkles, faFireBurner, faTent, faMobile, faMountain, faBinoculars } from '@fortawesome/free-solid-svg-icons'
 

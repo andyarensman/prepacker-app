@@ -1,9 +1,11 @@
 // TODO: Need to add other things to the form: notes, images?
 
 import { useEffect, useState } from 'react'
+
+// context
 import { useClosetContext } from '../../hooks/useClosetContext'
 
-// css module
+// css modules
 import GearFormCSS from '../../styles/gearCloset/GearForm.module.css'
 
 const GearForm = ({

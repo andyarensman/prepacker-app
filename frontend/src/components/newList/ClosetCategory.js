@@ -1,11 +1,14 @@
-import { handleCategory } from '../../helpers/utils'
+// components
 import ClosetList from './ClosetList'
+
+// helpers
+import { handleCategory } from '../../helpers/utils'
 
 // css module
 import NewListCSS from '../../styles/newList/newList.module.css'
 
+
 const ClosetCategory = ({ closet, category, trip_list, setTripList }) => {
-  
   return (
     <>
       {closet.some(e => e.category === category) &&

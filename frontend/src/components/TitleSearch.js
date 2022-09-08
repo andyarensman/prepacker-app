@@ -1,4 +1,6 @@
+// css modules
 import SearchCSS from '../styles/search.module.css'
+
 
 const TitleSearch = ({title, selectNeeded, containerClass, searchArr, searchKey, sort, setSort, setCurrentSortArr}) => {
 

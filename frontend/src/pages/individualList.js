@@ -2,15 +2,19 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+
+// components
 import IndividualListGearCategory from '../components/individualList/IndividualListGearCategory'
-import { useClosetContext } from '../hooks/useClosetContext'
-import { findTotalWeight } from '../helpers/utils'
 import DeleteListModal from '../components/savedLists/DeleteListModal'
 
+// helpers, date fns, context
+import { findTotalWeight } from '../helpers/utils'
 import format from 'date-fns/format'
+import { useClosetContext } from '../hooks/useClosetContext'
 
 //css modules
 import SLDetailsCSS from '../styles/individualList/individualList.module.css'
+
 
 const IndividualList = () => {
   const [checklist, setChecklist] = useState(null)

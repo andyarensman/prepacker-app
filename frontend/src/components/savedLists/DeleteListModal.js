@@ -1,6 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import { useClosetContext } from '../../hooks/useClosetContext'
+import { useNavigate } from 'react-router-dom'
+
+// components
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
+
+// context
+import { useClosetContext } from '../../hooks/useClosetContext'
+
 
 const DeleteListModal = ({ hiddenDeleteModal, setHiddenDeleteModal, checklist}) => {
   const { dispatch } = useClosetContext()

@@ -1,5 +1,6 @@
-// css module
+// css modules
 import GearFormCSS from '../../styles/gearCloset/GearForm.module.css'
+
 
 const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setCategory, setUrl, setPrice,/* setImageUrl,*/ scraperError, setScraperError, setError, setEmptyFields}) => {
 

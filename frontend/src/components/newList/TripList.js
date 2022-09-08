@@ -1,15 +1,14 @@
-import { handleWeight } from "../../helpers/utils"
+// helpers
+import { handleWeight } from '../../helpers/utils'
+
 
 const TripList = ({trip_list, setTripList, gear}) => {
-
   // Remove from List
   const handleClick = () => {
     let index = trip_list.findIndex(x => x._id === gear._id)
-
     let new_trip_list = trip_list.filter((e, i) => i !== index)
 
     setTripList(new_trip_list)
-    
   }
 
   return ( 

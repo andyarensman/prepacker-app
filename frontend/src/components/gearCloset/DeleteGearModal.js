@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
+
+// context
 import { useClosetContext } from '../../hooks/useClosetContext'
+
+// css modules
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 
 const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {

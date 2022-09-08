@@ -1,8 +1,14 @@
-import { handleCategory } from '../../helpers/utils'
+import { useEffect, useState } from 'react'
+
+// components
 import IndividualListGear from './IndividualListGear'
 
+// helpers
+import { handleCategory } from '../../helpers/utils'
+
+// css modules
 import SLDetailsCSS from '../../styles/individualList/individualList.module.css'
-import { useEffect, useState } from "react";
+
 
 const IndividualListGearCategory = ({ category, gear }) => {
   const [gearCount, setGearCount] = useState(0)

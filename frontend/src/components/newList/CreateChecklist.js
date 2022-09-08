@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+// helpers, context
 import { findTotalWeight } from '../../helpers/utils'
 import { useClosetContext } from '../../hooks/useClosetContext'
 
 // css modules
 import NewListCSS from '../../styles/newList/newList.module.css'
+
 
 const CreateChecklist = ({ trip_list, setTripList }) => {
   const [checklist_name, setChecklistName] = useState('')

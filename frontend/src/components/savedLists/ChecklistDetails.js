@@ -1,14 +1,17 @@
-import { useClosetContext } from '../../hooks/useClosetContext'
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { findTotalWeight } from '../../helpers/utils'
+import { Link } from 'react-router-dom'
 
-// css module
+// components
+import DeleteListModal from './DeleteListModal'
+
+// helpers, date fns, context
+import { findTotalWeight } from '../../helpers/utils'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { useClosetContext } from '../../hooks/useClosetContext'
+
+// css modules
 import ChecklistDetailsCSS from '../../styles/savedLists/ChecklistDetails.module.css'
 
-// date fns
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import DeleteListModal from './DeleteListModal'
 
 const ChecklistDetails = ({ checklist }) => {
   const [gearNames, setGearNames] = useState([])

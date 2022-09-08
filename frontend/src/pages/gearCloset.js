@@ -1,13 +1,16 @@
-import { useClosetContext } from '../hooks/useClosetContext'
 import { useEffect, useState } from 'react'
 
 // components
 import GearDetails from '../components/gearCloset/GearDetails'
 import AddGear from '../components/gearCloset/AddGear'
+import TitleSearch from '../components/TitleSearch'
+
+// context
+import { useClosetContext } from '../hooks/useClosetContext'
 
 // css modules
 import GearClosetCSS from '../styles/gearCloset/gearCloset.module.css'
-import TitleSearch from '../components/TitleSearch'
+
 
 const GearCloset = () => {
   const { closet } = useClosetContext()

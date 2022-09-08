@@ -1,7 +1,11 @@
 import { useState } from 'react'
-import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
+
+// helpers, context
 import { handleWeightNum } from '../../helpers/utils'
 import { useClosetContext } from '../../hooks/useClosetContext'
+
+// css modules
+import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 
 const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
   const [gear_name, setGearName] = useState(gear.gear_name)

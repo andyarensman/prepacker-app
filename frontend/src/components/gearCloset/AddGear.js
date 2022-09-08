@@ -1,6 +1,8 @@
-import { useState } from "react";
-import GearForm from "./GearForm";
-import GearScraper from "./GearScraper";
+import { useState } from 'react'
+
+// components
+import GearForm from './GearForm'
+import GearScraper from './GearScraper'
 
 const AddGear = ({ setSort }) => {
   const [gear_name, setGearName] = useState('')

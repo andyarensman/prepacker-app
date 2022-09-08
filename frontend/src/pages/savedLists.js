@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
+
+// components
 import ChecklistDetails from '../components/savedLists/ChecklistDetails'
 import TitleSearch from '../components/TitleSearch'
+
+// context
 import { useClosetContext } from '../hooks/useClosetContext'
 
 // css module
 import SavedListsCSS from '../styles/savedLists/savedLists.module.css'
+
 
 const SavedLists = () => {
   const [currentSortArr, setCurrentSortArr] = useState([])

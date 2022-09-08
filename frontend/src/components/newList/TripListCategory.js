@@ -1,5 +1,9 @@
-import { handleCategory } from '../../helpers/utils'
+// components
 import TripList from './TripList'
+
+// helpers
+import { handleCategory } from '../../helpers/utils'
+
 
 const TripListCategory = ({ category, trip_list, setTripList }) => {
   return ( 
