@@ -1,10 +1,10 @@
 import { handleCategory } from '../../helpers/utils'
-import SavedListGear from './savedListGear'
+import IndividualListGear from './IndividualListGear'
 
 import SLDetailsCSS from '../../styles/individualList/individualList.module.css'
 import { useEffect, useState } from "react";
 
-const SavedListGearCategory = ({ category, gear }) => {
+const IndividualListGearCategory = ({ category, gear }) => {
   const [gearCount, setGearCount] = useState(0)
   const [gearCheck, setGearCheck] = useState(0);
 
@@ -26,7 +26,7 @@ const SavedListGearCategory = ({ category, gear }) => {
           <h3>{handleCategory(category)} <span>({gearCheck}/{gearCount})</span></h3>
           {gear.map((gearItem) => {
             return gearItem.category === category &&
-              <SavedListGear 
+              <IndividualListGear 
                 key={gearItem._id} 
                 gearItem={gearItem}
                 gearCheck={gearCheck}
@@ -39,4 +39,4 @@ const SavedListGearCategory = ({ category, gear }) => {
   );
 }
  
-export default SavedListGearCategory;
+export default IndividualListGearCategory;

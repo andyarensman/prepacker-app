@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import SavedListGearCategory from '../components/savedListDetails/savedListGearCategory'
+import IndividualListGearCategory from '../components/individualList/IndividualListGearCategory'
 import { useClosetContext } from '../hooks/useClosetContext'
 import { findTotalWeight } from '../helpers/utils'
 import DeleteListModal from '../components/savedLists/DeleteListModal'
@@ -12,7 +12,7 @@ import format from 'date-fns/format'
 //css modules
 import SLDetailsCSS from '../styles/individualList/individualList.module.css'
 
-const SavedListDetails = () => {
+const IndividualList = () => {
   const [checklist, setChecklist] = useState(null)
   const [gear, setGear] = useState([])
   const [listWeight, setListWeight] = useState('')
@@ -80,7 +80,7 @@ const SavedListDetails = () => {
       <div className={SLDetailsCSS.savedListDetails}>
         <>
           {gear && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
-            <SavedListGearCategory
+            <IndividualListGearCategory
               category={e}
               key={e}
               gear={gear}
@@ -98,4 +98,4 @@ const SavedListDetails = () => {
    );
 }
  
-export default SavedListDetails;
+export default IndividualList;

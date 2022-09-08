@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import NewList from './pages/newList';
 import GearCloset from './pages/gearCloset';
 import SavedLists from './pages/savedLists';
-import SavedListDetails from './pages/savedListDetails';
+import IndividualList from './pages/individualList';
 import { useClosetContext } from './hooks/useClosetContext';
 
 
@@ -61,7 +61,7 @@ function App() {
             />
             <Route 
               path="/saved-lists/:id"
-              element={<SavedListDetails />}
+              element={<IndividualList />}
             />
           </Routes>
         </div>

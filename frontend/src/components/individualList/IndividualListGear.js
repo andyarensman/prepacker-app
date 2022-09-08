@@ -4,7 +4,7 @@ import { handleWeight } from '../../helpers/utils'
 // css modules
 import SLDetailsCSS from "../../styles/individualList/individualList.module.css"
 
-const SavedListGear = ({ gearItem, gearCheck, setGearCheck }) => {
+const IndividualListGear = ({ gearItem, gearCheck, setGearCheck }) => {
   const [isChecked, setIsChecked] = useState(false)
 
   const handleClick = () => {
@@ -25,4 +25,4 @@ const SavedListGear = ({ gearItem, gearCheck, setGearCheck }) => {
   );
 }
  
-export default SavedListGear;
+export default IndividualListGear;
