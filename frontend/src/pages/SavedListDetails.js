@@ -5,12 +5,12 @@ import { useParams } from 'react-router-dom'
 import SavedListGearCategory from '../components/savedListDetails/savedListGearCategory'
 import { useClosetContext } from '../hooks/useClosetContext'
 import { findTotalWeight } from '../helpers/utils'
+import DeleteListModal from '../components/savedLists/DeleteListModal'
 
 import format from 'date-fns/format'
 
 //css modules
-import SLDetailsCSS from '../styles/savedListDetails.module.css'
-import DeleteListModal from '../components/savedLists/DeleteListModal'
+import SLDetailsCSS from '../styles/individualList/individualList.module.css'
 
 const SavedListDetails = () => {
   const [checklist, setChecklist] = useState(null)

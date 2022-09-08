@@ -1,7 +1,8 @@
 import { handleCategory } from '../../helpers/utils'
 import ClosetList from './ClosetList'
 
-import NewListCSS from '../../styles/newList.module.css'
+// css module
+import NewListCSS from '../../styles/newList/newList.module.css'
 
 const ClosetCategory = ({ closet, category, trip_list, setTripList }) => {
   

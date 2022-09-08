@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { handleWeight } from "../../helpers/utils";
+import { useState } from 'react'
+import { handleWeight } from '../../helpers/utils'
 
-//css modules
-import SLDetailsCSS from "../../styles/savedListDetails.module.css"
+// css modules
+import SLDetailsCSS from "../../styles/individualList/individualList.module.css"
 
 const SavedListGear = ({ gearItem, gearCheck, setGearCheck }) => {
   const [isChecked, setIsChecked] = useState(false)

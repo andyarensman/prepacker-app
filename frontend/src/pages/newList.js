@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useClosetContext } from '../hooks/useClosetContext';
+import { useEffect, useState } from 'react'
+import { useClosetContext } from '../hooks/useClosetContext'
 
 // components
-import ClosetCategory from '../components/newList/ClosetCategory';
-import TripListCategory from '../components/newList/TripListCategory';
-import CreateChecklist from '../components/newList/CreateChecklist';
+import ClosetCategory from '../components/newList/ClosetCategory'
+import TripListCategory from '../components/newList/TripListCategory'
+import CreateChecklist from '../components/newList/CreateChecklist'
 
 // css modules
-import NewListCSS from '../styles/newList.module.css'
-import TitleSearch from '../components/TitleSearch';
+import NewListCSS from '../styles/newList/newList.module.css'
+import TitleSearch from '../components/TitleSearch'
 
 const NewList = () => {
   const [trip_list, setTripList] = useState([])

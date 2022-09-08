@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import ChecklistDetails from "../components/savedLists/ChecklistDetails";
-import TitleSearch from "../components/TitleSearch";
-import { useClosetContext } from "../hooks/useClosetContext";
+import { useEffect, useState } from 'react'
+import ChecklistDetails from '../components/savedLists/ChecklistDetails'
+import TitleSearch from '../components/TitleSearch'
+import { useClosetContext } from '../hooks/useClosetContext'
 
 // css module
-import SavedListsCSS from '../styles/savedLists.module.css'
+import SavedListsCSS from '../styles/savedLists/savedLists.module.css'
 
 const SavedLists = () => {
   const [currentSortArr, setCurrentSortArr] = useState([])

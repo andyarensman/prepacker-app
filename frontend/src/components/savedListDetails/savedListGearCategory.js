@@ -1,7 +1,7 @@
-import { handleCategory } from "../../helpers/utils";
-import SavedListGear from "./savedListGear";
+import { handleCategory } from '../../helpers/utils'
+import SavedListGear from './savedListGear'
 
-import SLDetailsCSS from "../../styles/savedListDetails.module.css"
+import SLDetailsCSS from '../../styles/individualList/individualList.module.css'
 import { useEffect, useState } from "react";
 
 const SavedListGearCategory = ({ category, gear }) => {

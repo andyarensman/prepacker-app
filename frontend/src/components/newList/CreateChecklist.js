@@ -4,7 +4,7 @@ import { findTotalWeight } from '../../helpers/utils'
 import { useClosetContext } from '../../hooks/useClosetContext'
 
 // css modules
-import NewListCSS from '../../styles/newList.module.css'
+import NewListCSS from '../../styles/newList/newList.module.css'
 
 const CreateChecklist = ({ trip_list, setTripList }) => {
   const [checklist_name, setChecklistName] = useState('')

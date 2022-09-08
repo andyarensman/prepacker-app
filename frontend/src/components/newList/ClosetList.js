@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { handleWeight } from "../../helpers/utils"
+import { useEffect, useState } from 'react'
+import { handleWeight } from '../../helpers/utils'
 
 // css modules
-import NewListCSS from '../../styles/newList.module.css'
+import NewListCSS from '../../styles/newList/newList.module.css'
 
 const ClosetList = ({ gear, trip_list, setTripList }) => {
   const [inList, setInList] = useState(true)

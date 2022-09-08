@@ -1,10 +1,10 @@
 // TODO: Need to add other things to the form: notes, images?
 
-import { useEffect, useState } from "react";
-import { useClosetContext } from "../../hooks/useClosetContext";
+import { useEffect, useState } from 'react'
+import { useClosetContext } from '../../hooks/useClosetContext'
 
 // css module
-import GearFormCSS from '../../styles/GearForm.module.css'
+import GearFormCSS from '../../styles/gearCloset/GearForm.module.css'
 
 const GearForm = ({
     gear_name,

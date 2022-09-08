@@ -2,11 +2,11 @@
 // TODO: Only scroll on this component
 
 import { handleCategory, handleWeight } from '../../helpers/utils'
-import EditGearModal from './EditGearModal';
-import { useState } from 'react';
+import EditGearModal from './EditGearModal'
+import { useState } from 'react'
 
 // css module
-import GearDetailsCSS from '../../styles/GearDetails.module.css'
+import GearDetailsCSS from '../../styles/gearCloset/GearDetails.module.css'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
