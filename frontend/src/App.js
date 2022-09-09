@@ -7,6 +7,7 @@ import GearCloset from './pages/gearCloset'
 import SavedLists from './pages/savedLists'
 import IndividualList from './pages/individualList'
 import Navbar from './components/Navbar'
+import EditList from './pages/editList'
 
 // context
 import { useClosetContext } from './hooks/useClosetContext'
@@ -64,6 +65,10 @@ function App() {
             <Route 
               path="/saved-lists/:id"
               element={<IndividualList />}
+            />
+            <Route 
+              path="/saved-lists/edit/:id"
+              element={<EditList />}
             />
           </Routes>
         </div>

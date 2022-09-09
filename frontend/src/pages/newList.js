@@ -17,7 +17,7 @@ const NewList = () => {
   const [currentSortArr, setCurrentSortArr] = useState([])
   const [alpha, setAlpha] = useState([])
 
-  const { closet }= useClosetContext()
+  const { closet } = useClosetContext()
 
   // Set currentSortArr to closet
   useEffect(() => {
