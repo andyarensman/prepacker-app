@@ -17,6 +17,14 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
   const { dispatch }= useClosetContext()
   const navigate = useNavigate()
 
+  // Remove all gear from checklist
+  const removeAllGear = (e) => {
+    e.preventDefault()
+    setGear([])
+    setError(null)
+    setEmptyFields([])
+  }
+
   return ( 
     <>
       <form className="create-checklist">
@@ -44,8 +52,16 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
         <br/>
         <button className={NewListCSS.saveList}>Save List</button>
         <button className={NewListCSS.saveList}>Save As</button>
-        <button className={NewListCSS.deleteList} type="button">Remove All</button>
-        <button className={NewListCSS.deleteList} type="button">Cancel</button>
+        <button 
+          className={NewListCSS.deleteList}
+          type="button"
+          onClick={(e) => removeAllGear(e)}
+        >Remove All Gear</button>
+        <button
+          className={NewListCSS.deleteList}
+          type="button"
+          onClick={() => navigate(-1)}
+        >Cancel</button>
       </form>
       {error && <div className="error list-name">{error}</div>}
     </>

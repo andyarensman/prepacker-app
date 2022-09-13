@@ -86,7 +86,11 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
         />
         <br/>
         <button className={NewListCSS.saveList}>Save List</button>
-        <button className={NewListCSS.deleteList} type="button" onClick={(e) => handleClick(e)}>Remove All</button>
+        <button
+          className={NewListCSS.deleteList}
+          type="button"
+          onClick={(e) => handleClick(e)}
+        >Remove All</button>
       </form>
       {error && <div className="error list-name">{error}</div>}
     </>
