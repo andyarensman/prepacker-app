@@ -3,24 +3,19 @@ import { useParams } from 'react-router-dom'
 
 // components
 import ClosetCategory from '../components/newList/ClosetCategory'
-
 import TitleSearch from '../components/TitleSearch'
 
-// helpers, date fns, context
-import { findTotalWeight } from '../helpers/utils'
-import format from 'date-fns/format'
+// context
 import { useClosetContext } from '../hooks/useClosetContext'
 
 // css modules
 import NewListCSS from '../styles/newList/newList.module.css'
 import TripListCategory from '../components/newList/TripListCategory'
-import CreateChecklist from '../components/newList/CreateChecklist'
 import EditListForm from '../components/editList/EditListForm'
 
 const EditList = () => {
   const [checklist, setChecklist] = useState(null)
   const [gear, setGear] = useState([])
-  const [listWeight, setListWeight] = useState('')
 
   const [currentSortArr, setCurrentSortArr] = useState([])
   const [alpha, setAlpha] = useState([])
@@ -44,7 +39,6 @@ const EditList = () => {
           }
         })
         setGear(tempArray)
-        setListWeight(findTotalWeight(tempWeightArr))
       }
     }
     
