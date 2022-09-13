@@ -1,7 +1,7 @@
 //! May need to fix the useEffect hooks here that set the state
 
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 // components
 import IndividualListGearCategory from '../components/individualList/IndividualListGearCategory'
@@ -22,7 +22,9 @@ const IndividualList = () => {
   const [listWeight, setListWeight] = useState('')
   const [hiddenDeleteModal, setHiddenDeleteModal] = useState(true)
   const { closet, checklists }= useClosetContext()
+
   let { id } = useParams()
+  const navigate = useNavigate()
 
   // Get all data
   useEffect(() => {
@@ -68,7 +70,10 @@ const IndividualList = () => {
             <p className={SLDetailsCSS.spacer}>
               <strong>Total Weight: <i className="weight-italics">{listWeight || "N/A"}</i></strong>
             </p>
-            <span className={`material-symbols-outlined ${SLDetailsCSS.editBtn}`}>edit</span>
+            <span
+              className={`material-symbols-outlined ${SLDetailsCSS.editBtn}`}
+              onClick={() => navigate('/saved-lists/edit/' + id)}
+            >edit</span>
             <span
               className={`material-symbols-outlined ${SLDetailsCSS.deleteBtn}`}
               onClick={() => setHiddenDeleteModal(false)}

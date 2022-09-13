@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // components
 import DeleteListModal from './DeleteListModal'
@@ -17,7 +17,9 @@ const ChecklistDetails = ({ checklist }) => {
   const [gearNames, setGearNames] = useState([])
   const [listWeight, setListWeight] = useState('')
   const [hiddenDeleteModal, setHiddenDeleteModal] = useState(true)
+
   const {closet} = useClosetContext()
+  const navigate = useNavigate()
   
   // get gear_names and total weight
   useEffect(() => {
@@ -43,7 +45,10 @@ const ChecklistDetails = ({ checklist }) => {
       {checklist.checklist_notes && <p><strong>Notes: </strong>{checklist.checklist_notes}</p>}
       <p><strong>Gear: </strong>{gearNames.join(" · ") || "None"}</p>
       <p>{formatDistanceToNow(new Date(checklist.createdAt), { addSuffix: true })}</p>
-      <span className={`material-symbols-outlined ${ChecklistDetailsCSS.editBtn}`}>edit</span>
+      <span
+        className={`material-symbols-outlined ${ChecklistDetailsCSS.editBtn}`}
+        onClick={() => navigate('/saved-lists/edit/' + checklist._id)}
+      >edit</span>
       <span 
         className={`material-symbols-outlined ${ChecklistDetailsCSS.deleteBtn}`}
         onClick={() => setHiddenDeleteModal(false)}
