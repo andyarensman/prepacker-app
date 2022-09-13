@@ -25,6 +25,63 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
     setEmptyFields([])
   }
 
+  // Save List
+  const saveList = async (e) => {
+    e.preventDefault()
+
+    const updated_checklist = gear.map(x => x._id)
+    const updatedList = [{checklist_id: id, updated_checklist}]
+
+    const response = await fetch('/api/checklist', {
+      method: 'PATCH',
+      body: JSON.stringify({listUpdates: updatedList}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const json = await response.json()
+    if (response.ok) {
+      json.forEach(list => dispatch({type: 'UPDATE_CHECKLIST', payload: list}))
+      console.log('ok')
+      navigate('/saved-lists/' + id)
+    }
+    if (!response.ok) {
+      console.log('not ok')
+    }
+  }
+
+  // Save Copy of List
+  const saveCopy = async (e) => {
+    e.preventDefault()
+
+    const gear_items = gear.map(x => x._id)
+
+    const newChecklist = {checklist_name, gear_items, checklist_notes}
+
+    const response = await fetch('/api/checklist', {
+      method: 'POST',
+      body: JSON.stringify(newChecklist),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const json = await response.json()
+
+    if (!response.ok) {
+      setError(json.error)
+      setEmptyFields(json.emptyFields)
+    }
+
+    if (response.ok) {
+      console.log('new list added', json)
+      setError(null)
+      setEmptyFields([])
+      dispatch({type: 'CREATE_CHECKLIST', payload: json})
+      navigate('/saved-lists/' + json._id)
+    }
+  }
+
   return ( 
     <>
       <form className="create-checklist">
@@ -50,8 +107,16 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
           id="notes"
         />
         <br/>
-        <button className={NewListCSS.saveList}>Save List</button>
-        <button className={NewListCSS.saveList}>Save As</button>
+        <button
+          className={NewListCSS.saveList}
+          type="button"
+          onClick={(e) => saveList(e)}
+        >Save List</button>
+        <button
+          className={NewListCSS.saveCopy}
+          type="button"
+          onClick={(e) => saveCopy(e)}
+        >Save As New List</button>
         <button 
           className={NewListCSS.deleteList}
           type="button"

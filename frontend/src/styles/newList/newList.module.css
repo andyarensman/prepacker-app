@@ -73,8 +73,12 @@
   text-indent:-12px;
 }
 
-.saveList {
+.saveList, .saveCopy {
   margin-top: 15px; 
+}
+
+.saveCopy {
+  margin-left: 15px;
 }
 
 button.deleteList {
