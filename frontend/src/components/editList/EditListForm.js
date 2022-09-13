@@ -30,23 +30,23 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
     e.preventDefault()
 
     const updated_checklist = gear.map(x => x._id)
-    const updatedList = [{checklist_id: id, updated_checklist}]
 
     const response = await fetch('/api/checklist', {
       method: 'PATCH',
-      body: JSON.stringify({listUpdates: updatedList}),
+      body: JSON.stringify({ multi: false, id, checklist_name, checklist_notes, gear_items: updated_checklist}),
       headers: {
         'Content-Type': 'application/json'
       }
     })
     const json = await response.json()
     if (response.ok) {
-      json.forEach(list => dispatch({type: 'UPDATE_CHECKLIST', payload: list}))
-      console.log('ok')
+      dispatch({type: 'UPDATE_CHECKLIST', payload: json})
       navigate('/saved-lists/' + id)
     }
     if (!response.ok) {
       console.log('not ok')
+      setError(json.error)
+      setEmptyFields(json.emptyFields)
     }
   }
 

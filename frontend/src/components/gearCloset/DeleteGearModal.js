@@ -77,7 +77,7 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
 
     // handle updating lists
     if (listUpdates.length > 0) {
-      const newClosets = {listUpdates}
+      const newClosets = {listUpdates, multi: true}
       const listResponse = await fetch('/api/checklist', {
         method: 'PATCH',
         body: JSON.stringify(newClosets),
