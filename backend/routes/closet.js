@@ -1,7 +1,6 @@
 const express = require('express')
 const { getGear, getSingleGear, addGear, deleteSingleGear, editGear, getScrapedGear } = require('../controllers/closetController')
 
-
 const router = express.Router()
 
 // GET all closet items

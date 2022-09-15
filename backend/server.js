@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const closetRoutes = require('./routes/closet')
 const checklistRoutes = require('./routes/checklist')
+const userRoutes = require('./routes/user')
 
 
 // express app
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/closet', closetRoutes)
 app.use('/api/checklist', checklistRoutes)
+app.use('/api/user', userRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
