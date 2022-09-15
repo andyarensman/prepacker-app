@@ -19,5 +19,4 @@ router.delete('/:id', deleteSingleChecklist)
 router.patch('/', editChecklist)
 
 
-
 module.exports = router

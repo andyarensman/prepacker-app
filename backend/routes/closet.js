@@ -22,6 +22,4 @@ router.patch('/:id', editGear)
 router.post('/scrape-gear', getScrapedGear)
 
 
-
-
 module.exports = router
