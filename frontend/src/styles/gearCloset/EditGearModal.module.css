@@ -22,6 +22,14 @@
   border: 1px solid #888;
   width: 60%; /*! This needs to change*/
 }
+.modalLoginContent {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 250px; /*! This needs to change*/
+}
 
 /* The Close Button */
 .close {

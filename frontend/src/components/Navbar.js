@@ -1,4 +1,9 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+// components
+import LoginModal from './navbar/LoginModal'
+import SignupModal from './navbar/SignupModal'
 
 // css modules, images
 import NavbarCSS from '../styles/Navbar.module.css'
@@ -7,6 +12,9 @@ import prePackerLogo from '../images/prepacker-logo.svg'
 
 
 const Navbar = () => {
+  const [hiddenLogin, setHiddenLogin] = useState(true)
+  const [hiddenSignup, setHiddenSignup] = useState(true)
+
   return ( 
     <header className={NavbarCSS.header}>
       <div className={NavbarCSS.container}>
@@ -29,19 +37,31 @@ const Navbar = () => {
             •
         </nav>
         <div className={NavbarCSS.login}>
-          <Link to="/">
-            Login&nbsp;
+          <span
+            // className={}
+            onClick={() => setHiddenLogin(false)}
+          >Login&nbsp;
             <span className="material-symbols-outlined cancel">login</span>
-          </Link>
-          <Link to="/">
-            Signup&nbsp;
+          </span>
+          <span
+            // className={}
+            onClick={() => setHiddenSignup(false)}
+          >Signup&nbsp;
             <span className="material-symbols-outlined cancel">person_add</span>
-          </Link>
+          </span>
         </div>
       </div>
       <div className={NavbarCSS.imgContainer}>
         <img src={mtn1400} alt="mtn-header" className={NavbarCSS.mountains}></img>
       </div>
+      <LoginModal 
+        hiddenLogin={hiddenLogin}
+        setHiddenLogin={setHiddenLogin}
+      />
+      <SignupModal 
+        hiddenSignup={hiddenSignup}
+        setHiddenSignup={setHiddenSignup}
+      />
     </header>
    );
 }
