@@ -1,16 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import { ClosetContextProvider } from './context/ClosetContext';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import App from './App'
+import { ClosetContextProvider } from './context/ClosetContext'
+import { AuthContextProvider } from './context/AuthContext'
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   // <React.StrictMode>
+  <AuthContextProvider>
     <ClosetContextProvider>
       <App />
     </ClosetContextProvider>
+  </AuthContextProvider>
   // </React.StrictMode>
 );
 
