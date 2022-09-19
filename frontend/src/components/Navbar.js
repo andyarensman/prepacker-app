@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+//! Add this
+import { useLogout } from '../hooks/useLogout'
 
 // css modules, images
 import NavbarCSS from '../styles/Navbar.module.css'
@@ -7,6 +9,14 @@ import prePackerLogo from '../images/prepacker-logo.svg'
 
 
 const Navbar = () => {
+  //! Add this
+  const { logout } = useLogout()
+
+  //! Add this
+  const handleClick = () => {
+    logout()
+  }
+
   return ( 
     <header className={NavbarCSS.header}>
       <div className={NavbarCSS.container}>
@@ -29,6 +39,11 @@ const Navbar = () => {
             •
         </nav>
         <div className={NavbarCSS.login}>
+          {/*  Add this in  */}
+          <div>
+            <button onClick={handleClick}>Logout</button>
+          </div>
+          {/*  ----- */}
           <Link to="/">
             Login&nbsp;
             <span className="material-symbols-outlined cancel">login</span>
