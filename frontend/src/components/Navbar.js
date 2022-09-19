@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-//! Add this
+//! Add these
 import { useLogout } from '../hooks/useLogout'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 // css modules, images
 import NavbarCSS from '../styles/Navbar.module.css'
@@ -9,8 +10,9 @@ import prePackerLogo from '../images/prepacker-logo.svg'
 
 
 const Navbar = () => {
-  //! Add this
+  //! Add these
   const { logout } = useLogout()
+  const { user } = useAuthContext()
 
   //! Add this
   const handleClick = () => {
@@ -40,18 +42,25 @@ const Navbar = () => {
         </nav>
         <div className={NavbarCSS.login}>
           {/*  Add this in  */}
-          <div>
-            <button onClick={handleClick}>Logout</button>
-          </div>
+          {user && (
+            <div>
+              {/* <span>{user.email}</span> */}
+              <button onClick={handleClick}>Logout</button>
+            </div>
+          )}
           {/*  ----- */}
-          <Link to="/">
-            Login&nbsp;
-            <span className="material-symbols-outlined cancel">login</span>
-          </Link>
-          <Link to="/">
-            Signup&nbsp;
-            <span className="material-symbols-outlined cancel">person_add</span>
-          </Link>
+          {!user && (
+            <Link to="/">
+              Login&nbsp;
+              <span className="material-symbols-outlined cancel">login</span>
+            </Link> 
+          )}
+          {!user && (
+            <Link to="/">
+              Signup&nbsp;
+              <span className="material-symbols-outlined cancel">person_add</span>
+            </Link>
+          )}
         </div>
       </div>
       <div className={NavbarCSS.imgContainer}>
