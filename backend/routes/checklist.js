@@ -1,7 +1,13 @@
 const express = require('express')
 const { getChecklists, getSingleChecklist, addChecklist, deleteSingleChecklist, editChecklist } = require('../controllers/checklistController')
+const requireAuth = require('../middleware/requireAuth') //! Add this
+
 
 const router = express.Router()
+
+//! Add this
+// require auth for all routes
+router.use(requireAuth)
 
 // GET all checklist items
 router.get('/', getChecklists)

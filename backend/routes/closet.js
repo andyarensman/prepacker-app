@@ -1,7 +1,13 @@
 const express = require('express')
 const { getGear, getSingleGear, addGear, deleteSingleGear, editGear, getScrapedGear } = require('../controllers/closetController')
+const requireAuth = require('../middleware/requireAuth') //! Add this
+
 
 const router = express.Router()
+
+//! Add this
+// require auth for all routes
+router.use(requireAuth)
 
 // GET all closet items
 router.get('/', getGear)
