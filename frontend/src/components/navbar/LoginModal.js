@@ -7,12 +7,13 @@ import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 const LoginModal = ({ hiddenLogin, setHiddenLogin }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const {login, error, isLoading} = useLogin()
+  const {login, error, isLoading} = useLogin(setHiddenLogin, setEmail, setPassword)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('click 1');
 
-    await login (email, password)
+    await login(email, password)
   }
 
   // close the modal if you click outside the box

@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className={NavbarCSS.login}>
           {user && (
               <div>
-                {/* <span>{user.email}</span> */}
+                <span>{user.email}</span>
                 <button onClick={handleClick} className={NavbarCSS.logoutBtn}>Logout</button>
               </div>
             )}

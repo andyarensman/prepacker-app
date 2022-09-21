@@ -7,7 +7,7 @@ import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 const SignupModal = ({ hiddenSignup, setHiddenSignup}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const {signup, error, isLoading} = useSignup()
+  const {signup, error, isLoading} = useSignup(setHiddenSignup, setEmail, setPassword)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
