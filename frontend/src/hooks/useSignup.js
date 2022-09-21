@@ -1,5 +1,3 @@
-//! Need to add useSignup to the Signup Modal (#10 9:30)
-
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 
