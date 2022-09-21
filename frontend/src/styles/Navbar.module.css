@@ -35,6 +35,16 @@ nav {
   column-gap: 30px;
 }
 
+.logoutBtn {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .login {
   justify-content: flex-end;
   display: flex;

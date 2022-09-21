@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+// hooks
+import { useLogout } from '../hooks/useLogout'
+import { useAuthContext } from '../hooks/useAuthContext'
+
 // components
 import LoginModal from './navbar/LoginModal'
 import SignupModal from './navbar/SignupModal'
@@ -14,6 +18,13 @@ import prePackerLogo from '../images/prepacker-logo.svg'
 const Navbar = () => {
   const [hiddenLogin, setHiddenLogin] = useState(true)
   const [hiddenSignup, setHiddenSignup] = useState(true)
+
+  const { logout } = useLogout()
+  const { user } = useAuthContext()
+
+  const handleClick = () => {
+    logout()
+  }
 
   return ( 
     <header className={NavbarCSS.header}>
@@ -37,18 +48,28 @@ const Navbar = () => {
             •
         </nav>
         <div className={NavbarCSS.login}>
-          <span
-            // className={}
-            onClick={() => setHiddenLogin(false)}
-          >Login&nbsp;
-            <span className="material-symbols-outlined cancel">login</span>
-          </span>
-          <span
-            // className={}
-            onClick={() => setHiddenSignup(false)}
-          >Signup&nbsp;
-            <span className="material-symbols-outlined cancel">person_add</span>
-          </span>
+          {user && (
+              <div>
+                {/* <span>{user.email}</span> */}
+                <button onClick={handleClick} className={NavbarCSS.logoutBtn}>Logout</button>
+              </div>
+            )}
+          {!user && (
+            <span
+              // className={}
+              onClick={() => setHiddenLogin(false)}
+            >Login&nbsp;
+              <span className="material-symbols-outlined cancel">login</span>
+            </span>
+          )}
+          {!user && (
+            <span
+              // className={}
+              onClick={() => setHiddenSignup(false)}
+            >Signup&nbsp;
+              <span className="material-symbols-outlined cancel">person_add</span>
+            </span>
+          )}
         </div>
       </div>
       <div className={NavbarCSS.imgContainer}>
