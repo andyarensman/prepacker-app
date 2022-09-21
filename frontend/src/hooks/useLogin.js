@@ -1,5 +1,3 @@
-//! Need to add useLogin to the Login Modal (#12 2:15)
-
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 

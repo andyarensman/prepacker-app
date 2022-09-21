@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState } from 'react'
+import { useLogin } from '../../hooks/useLogin'
 
 // css modules
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
@@ -6,11 +7,12 @@ import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 const LoginModal = ({ hiddenLogin, setHiddenLogin }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const {login, error, isLoading} = useLogin()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log(email, password)
+    await login (email, password)
   }
 
   // close the modal if you click outside the box
@@ -46,7 +48,8 @@ const LoginModal = ({ hiddenLogin, setHiddenLogin }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <button onClick={(e) => handleSubmit(e)}>Log In</button>
+              <button disabled={isLoading} onClick={(e) => handleSubmit(e)}>Log In</button>
+              {error && <div className="error">{error}</div>}
             </form>
           </div>
         </div>
