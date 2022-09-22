@@ -1,8 +1,13 @@
 // css modules
 import GearFormCSS from '../../styles/gearCloset/GearForm.module.css'
 
+// context
+import { useAuthContext } from '../../hooks/useAuthContext'
+
 
 const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setCategory, setUrl, setPrice,/* setImageUrl,*/ scraperError, setScraperError, setError, setEmptyFields}) => {
+
+  const { user } = useAuthContext()
 
   const handleWeight = (weight) => {
     let pounds = Math.floor(weight/16)
@@ -24,6 +29,12 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
 
   const handleUrlSubmit = async (e) => {
     e.preventDefault()
+
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+    
     setError(null)
     setEmptyFields([])
 
@@ -38,7 +49,8 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
         method: 'POST',
         body: JSON.stringify(url),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
         }
       })
 

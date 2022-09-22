@@ -5,10 +5,12 @@ import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 
 // context
 import { useClosetContext } from '../../hooks/useClosetContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 
 const DeleteListModal = ({ hiddenDeleteModal, setHiddenDeleteModal, checklist}) => {
   const { dispatch } = useClosetContext()
+  const { user } = useAuthContext()
   const navigate = useNavigate()
 
   // close the modal if you click outside the box
@@ -22,8 +24,16 @@ const DeleteListModal = ({ hiddenDeleteModal, setHiddenDeleteModal, checklist}) 
 
   // delete list
   const handleClick = async () => {
+    if (!user) {
+      console.log('You must be logged in')
+      return
+    }
+
     const response = await fetch('/api/checklist/' + checklist._id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
     })
     
     const json = await response.json()

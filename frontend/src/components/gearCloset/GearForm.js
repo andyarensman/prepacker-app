@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 // context
 import { useClosetContext } from '../../hooks/useClosetContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 // css modules
 import GearFormCSS from '../../styles/gearCloset/GearForm.module.css'
@@ -33,8 +34,9 @@ const GearForm = ({
     setScraperError,
     setSort
   }) => {
-  const { dispatch } = useClosetContext()
   const [success, setSuccess] = useState(false)
+  const { dispatch } = useClosetContext()
+  const { user } = useAuthContext()
 
   useEffect(() => {
     setSuccess(false)
@@ -42,6 +44,12 @@ const GearForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+
     let weight;
     if (pounds || ounces) {
       weight = Number(pounds)*16 + Number(ounces)
@@ -53,7 +61,8 @@ const GearForm = ({
       method: 'POST',
       body: JSON.stringify(gear),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
     const json = await response.json()

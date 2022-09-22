@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 // helpers, context
 import { findTotalWeight } from '../../helpers/utils'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { useClosetContext } from '../../hooks/useClosetContext'
 
 // css modules
@@ -15,6 +16,7 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
   const [emptyFields, setEmptyFields] = useState([])
 
   const { dispatch }= useClosetContext()
+  const { user } = useAuthContext()
   const navigate = useNavigate()
 
   // Remove all gear from checklist
@@ -29,16 +31,24 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
   const saveList = async (e) => {
     e.preventDefault()
 
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+
     const updated_checklist = gear.map(x => x._id)
 
     const response = await fetch('/api/checklist', {
       method: 'PATCH',
       body: JSON.stringify({ multi: false, id, checklist_name, checklist_notes, gear_items: updated_checklist}),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
+
     const json = await response.json()
+
     if (response.ok) {
       dispatch({type: 'UPDATE_CHECKLIST', payload: json})
       navigate('/saved-lists/' + id)
@@ -54,6 +64,11 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
   const saveCopy = async (e) => {
     e.preventDefault()
 
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+
     const gear_items = gear.map(x => x._id)
 
     const newChecklist = {checklist_name, gear_items, checklist_notes}
@@ -62,7 +77,8 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
       method: 'POST',
       body: JSON.stringify(newChecklist),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
 

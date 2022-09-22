@@ -3,6 +3,7 @@ import { useState } from 'react'
 // helpers, context
 import { handleWeightNum } from '../../helpers/utils'
 import { useClosetContext } from '../../hooks/useClosetContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 // css modules
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
@@ -20,9 +21,16 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
   const [success, setSuccess] = useState(false)
 
   const { dispatch } = useClosetContext()
+  const { user } = useAuthContext()
   
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+
     let weight;
     if (pounds || ounces) {
       weight = Number(pounds)*16 + Number(ounces)
@@ -34,7 +42,8 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
       method: 'PATCH',
       body: JSON.stringify(gearSubmit),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
     const json = await response.json()

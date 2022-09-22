@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 // helpers, context
 import { findTotalWeight } from '../../helpers/utils'
 import { useClosetContext } from '../../hooks/useClosetContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 // css modules
 import NewListCSS from '../../styles/newList/newList.module.css'
@@ -16,11 +17,17 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
   const [emptyFields, setEmptyFields] = useState([])
 
   const { dispatch }= useClosetContext()
+  const { user } = useAuthContext()
   const navigate = useNavigate()
 
   // Submit Checklist 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
 
     let gear_items = trip_list.map(e => e._id)
 
@@ -30,7 +37,8 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
       method: 'POST',
       body: JSON.stringify(checklist),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
 

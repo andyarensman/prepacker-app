@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 // context
 import { useClosetContext } from '../../hooks/useClosetContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 // css modules
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
@@ -9,7 +10,9 @@ import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
   const [listCounter, setListCounter] = useState(0)
   const [listUpdates, setListUpdates] = useState([])
+
   const { checklists, dispatch } = useClosetContext()
+  const { user } = useAuthContext()
 
   useEffect(() => {
     if (!hiddenDeleteModal) {
@@ -50,9 +53,17 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
 
   //delete item
   const handleClick = async () => {
+    if (!user) {
+      console.log('You must be logged in')
+      return
+    }
+
     const gearId = gear._id
     const response = await fetch('/api/closet/' + gear._id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers : {
+        'Authorization': `Bearer ${user.token}`
+      }
     })
     const json = await response.json()
 
@@ -82,7 +93,8 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
         method: 'PATCH',
         body: JSON.stringify(newClosets),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
         }
       })
       const listJson = await listResponse.json()
