@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 // pages, components
+import Home from './pages/Home'
 import NewList from './pages/newList'
 import GearCloset from './pages/gearCloset'
 import SavedLists from './pages/savedLists'
@@ -64,25 +65,29 @@ function App() {
       <Navbar />
         <div className="pages">
           <Routes>
-          <Route 
+            <Route 
+              path="/"
+              element={!user ? <Home /> : <Navigate to="/new-list" />}
+            />
+            <Route 
               path="/new-list"
-              element={<NewList />}
+              element={user ? <NewList /> : <Navigate to="/" />}
             />
             <Route 
               path="/gear-closet"
-              element={<GearCloset />}
+              element={user ? <GearCloset /> : <Navigate to="/" />}
             />
             <Route 
               path="/saved-lists"
-              element={<SavedLists />}
+              element={user ? <SavedLists /> : <Navigate to="/" />}
             />
             <Route 
               path="/saved-lists/:id"
-              element={<IndividualList />}
+              element={user ? <IndividualList /> : <Navigate to="/" />}
             />
             <Route 
               path="/saved-lists/edit/:id"
-              element={<EditList />}
+              element={user ? <EditList /> : <Navigate to="/" />}
             />
           </Routes>
         </div>

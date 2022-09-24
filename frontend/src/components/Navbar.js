@@ -29,7 +29,7 @@ const Navbar = () => {
   return ( 
     <header className={NavbarCSS.header}>
       <div className={NavbarCSS.container}>
-        <Link to="/new-list">
+        <Link to="/">
           <img src={prePackerLogo} alt="PrePacker" className={NavbarCSS.titleLogo}></img>
         </Link>
         <nav>
