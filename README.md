@@ -24,6 +24,8 @@ Need to accredit the author of the mountain header or find something else: <a hr
 
 To get a cool looking gradient for the header, I found a picture of a mountain skyline and grabbed the color of the bottom, middle and top. The logo was made with Adobe's logo maker - very cool free software.
 
+It is still unclear to me if there is any downside to using a relational database over subdocuments. Currently each checklist and gear item is connected to their user via a user_id property. Would this cause any security or performance issues?
+
 ## Future Updates
 
 I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, include food and water weight, and possibly a few other things.
