@@ -5,8 +5,10 @@ const cheerio = require('cheerio')
 
 // get all gear
 const getGear = async (req, res) => {
+  const user_id = req.user._id
+
   // TODO: may need to change the sort later or do it in front end
-  const gear = await Gear.find({}).collation({'locale':'en'}).sort({gear_name: 1})
+  const gear = await Gear.find({ user_id }).collation({'locale':'en'}).sort({gear_name: 1})
 
   res.status(200).json(gear)
 }
@@ -58,13 +60,15 @@ const addGear = async (req, res) => {
 
   // add doc to db
   try {
+    const user_id = req.user._id
     const gear = await Gear.create({
         gear_name, 
         weight,
         category, 
         price, 
         notes, 
-        website 
+        website,
+        user_id 
         // image_url
       })
     res.status(200).json(gear)

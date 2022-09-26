@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 
 // get all checklists
 const getChecklists = async (req, res) => {
-  const checklist = await Checklist.find({}).sort({createdAt: -1})
+  const user_id = req.user._id
+
+  const checklist = await Checklist.find({ user_id }).sort({createdAt: -1})
 
   res.status(200).json(checklist)
 }
@@ -46,10 +48,12 @@ const addChecklist = async (req, res) => {
 
   // add doc to db
   try {
+    const user_id = req.user._id
     const checklist = await Checklist.create({
         checklist_name, 
         gear_items,
-        checklist_notes
+        checklist_notes,
+        user_id
       })
     res.status(200).json(checklist)
   } catch (error) {

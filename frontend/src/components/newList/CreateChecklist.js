@@ -51,6 +51,8 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
 
     if (response.ok) {
       console.log('new list added', json)
+      setTripList([])
+      window.localStorage.removeItem('PREPACK_NEW_CHECKLIST')
       setError(null)
       setEmptyFields([])
       dispatch({type: 'CREATE_CHECKLIST', payload: json})
