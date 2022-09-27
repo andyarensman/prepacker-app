@@ -81,7 +81,7 @@ const deleteSingleChecklist = async (req, res) => {
 // edit checklist(s)
 const editChecklist = async (req, res) => {
   const { multi } = req.body
-  console.log(multi)
+  // console.log(multi)
 
   // For Multi Edit
   if (multi) {

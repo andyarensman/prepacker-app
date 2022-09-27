@@ -52,7 +52,6 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
       setError(json.error)
       setEmptyFields(json.emptyFields)
       setSuccess(false)
-      console.log('not ok')
     }
 
     if (response.ok) {
@@ -62,8 +61,7 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
       setTimeout(() => {
         setSuccess(false)
     }, 5000);
-      
-      console.log('gear updated', json)
+      // console.log('gear updated', json)
       dispatch({type: 'UPDATE_GEAR', payload: json})
     }
   }

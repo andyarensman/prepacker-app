@@ -157,7 +157,7 @@ const getScrapedGear = async (req, res) => {
       // Grab gear name
       const gear_name = $('#product-page-title').text().trim()
       if (gear_name.length !== 0) {
-        console.log(gear_name)
+        // console.log(gear_name)
         returnData.gear_name = gear_name
       }
 
@@ -227,10 +227,10 @@ const getScrapedGear = async (req, res) => {
         categoryFinder(potentialCategory3)
       }
 
-      console.log('category: ', category)
+      // console.log('category: ', category)
 
       if (category) {
-        console.log('added category')
+        // console.log('added category')
         returnData.category = category
       }
       
@@ -284,7 +284,7 @@ const getScrapedGear = async (req, res) => {
       }
       
       // console.log(tableArray)
-      console.log(gearWeightOptions)
+      // console.log(gearWeightOptions)
 
       // regex for lbs oz
       const lbsOzRegex = /\d+\s?lbs?\.?\s?\d+(\.\d+)?\s?oz\.?/i
@@ -348,7 +348,7 @@ const getScrapedGear = async (req, res) => {
         weightToNum(gearWeightOptions[otherWeightKeys][0])
       }
       
-      console.log(gear_weight_ounces, 'ounces')
+      // console.log(gear_weight_ounces, 'ounces')
       if (gear_weight_ounces) {
         returnData.gear_weight_ounces = gear_weight_ounces
       }

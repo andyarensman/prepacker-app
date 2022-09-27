@@ -11,7 +11,6 @@ const LoginModal = ({ hiddenLogin, setHiddenLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('click 1');
 
     await login(email, password)
   }

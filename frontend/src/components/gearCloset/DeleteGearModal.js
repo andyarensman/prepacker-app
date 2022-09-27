@@ -102,7 +102,7 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
         listJson.forEach(list => dispatch({type: 'UPDATE_CHECKLIST', payload: list}))
       }
       if (!listResponse.ok) {
-        console.log('not ok')
+        console.log('lists were not deleted')
       }
     }
   }

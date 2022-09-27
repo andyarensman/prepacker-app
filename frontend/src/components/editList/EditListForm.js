@@ -54,7 +54,6 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
       navigate('/saved-lists/' + id)
     }
     if (!response.ok) {
-      console.log('not ok')
       setError(json.error)
       setEmptyFields(json.emptyFields)
     }
@@ -90,7 +89,7 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
     }
 
     if (response.ok) {
-      console.log('new list added', json)
+      // console.log('new list added', json)
       setError(null)
       setEmptyFields([])
       dispatch({type: 'CREATE_CHECKLIST', payload: json})

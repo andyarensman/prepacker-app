@@ -92,8 +92,7 @@ const GearForm = ({
       setTimeout(() => {
         setSuccess(false)
     }, 5000);
-      
-      console.log('new gear added', json)
+      // console.log('new gear added', json)
       dispatch({type: 'CREATE_GEAR', payload: json})
     }
   }
