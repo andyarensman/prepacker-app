@@ -23,6 +23,12 @@
   width: fit-content;
 }
 
+.blankListContainer a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 .closetListHeader {
   display: grid;
   grid-template-columns: 110px 1fr;

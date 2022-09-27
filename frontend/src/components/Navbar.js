@@ -56,7 +56,7 @@ const Navbar = () => {
                   className={NavbarCSS.logoutBtn}
                 >Logout&nbsp;
                   <span 
-                    class="material-symbols-outlined logout"
+                    className="material-symbols-outlined logout"
                   >logout</span>
                 </button>
               </div>

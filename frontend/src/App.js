@@ -67,7 +67,7 @@ function App() {
           <Routes>
             <Route 
               path="/"
-              element={!user ? <Home /> : <Navigate to="/new-list" />}
+              element={<Home />}
             />
             <Route 
               path="/new-list"

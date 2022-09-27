@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // components
 import ChecklistDetails from '../components/savedLists/ChecklistDetails'
@@ -9,6 +10,7 @@ import { useClosetContext } from '../hooks/useClosetContext'
 
 // css module
 import SavedListsCSS from '../styles/savedLists/savedLists.module.css'
+import NewListCSS from '../styles/newList/newList.module.css'
 
 
 const SavedLists = () => {
@@ -42,6 +44,11 @@ const SavedLists = () => {
           <ChecklistDetails key={checklist._id} checklist={checklist} />
         ))}
       </div>
+      {checklists.length === 0 && (
+        <div className={NewListCSS.blankListContainer}>
+          <h3 className={NewListCSS.blankList}>Create a <Link to="/new-list">New List</Link> or <Link to="/gear-closet">Add Gear</Link> to Get Started</h3>
+        </div>
+      )}
     </div>
    );
 }

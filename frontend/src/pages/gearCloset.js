@@ -10,6 +10,7 @@ import { useClosetContext } from '../hooks/useClosetContext'
 
 // css modules
 import GearClosetCSS from '../styles/gearCloset/gearCloset.module.css'
+import NewListCSS from '../styles/newList/newList.module.css'
 
 
 const GearCloset = () => {
@@ -43,6 +44,11 @@ const GearCloset = () => {
         {closet && currentSortArr.map((gear) => (
           <GearDetails key={gear._id} gear={gear}/>
         ))}
+        {closet.length === 0 && (
+          <div className={NewListCSS.blankListContainer}>
+            <h3 className={NewListCSS.blankList}>Add Gear to Get Started</h3>
+          </div>
+        )}
       </div>
       <div>
         <AddGear
