@@ -46,6 +46,17 @@ span.cancel {
   margin-right: 5px;
 }
 
+span.logout {
+  /* position: relative;
+  top: 4px; */
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  vertical-align: middle;
+  
+}
+
+
 label, input, select {
   display: block;
 }

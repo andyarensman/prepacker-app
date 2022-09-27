@@ -50,13 +50,20 @@ const Navbar = () => {
         <div className={NavbarCSS.login}>
           {user && (
               <div>
-                <span>{user.email}</span>
-                <button onClick={handleClick} className={NavbarCSS.logoutBtn}>Logout</button>
+                <span className={NavbarCSS.userEmail}>{user.email}</span>
+                <button 
+                  onClick={handleClick}
+                  className={NavbarCSS.logoutBtn}
+                >Logout&nbsp;
+                  <span 
+                    class="material-symbols-outlined logout"
+                  >logout</span>
+                </button>
               </div>
             )}
           {!user && (
             <span
-              // className={}
+              className={NavbarCSS.hover}
               onClick={() => setHiddenLogin(false)}
             >Login&nbsp;
               <span className="material-symbols-outlined cancel">login</span>
@@ -64,7 +71,7 @@ const Navbar = () => {
           )}
           {!user && (
             <span
-              // className={}
+              className={NavbarCSS.hover}
               onClick={() => setHiddenSignup(false)}
             >Signup&nbsp;
               <span className="material-symbols-outlined cancel">person_add</span>
