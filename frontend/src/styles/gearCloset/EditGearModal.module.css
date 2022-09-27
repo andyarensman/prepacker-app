@@ -40,6 +40,10 @@
   margin-top: -8px;
 }
 
+.authTitle {
+  margin-top: 0;
+}
+
 .close:hover,
 .close:focus {
   color: #000;

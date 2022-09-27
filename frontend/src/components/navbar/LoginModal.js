@@ -36,7 +36,7 @@ const LoginModal = ({ hiddenLogin, setHiddenLogin }) => {
             >&times;</span>
 
             <form onSubmit={handleSubmit} className={ModalCSS.create}>
-              <h3>Sign Up</h3>
+              <h3 className={ModalCSS.authTitle}>Sign Up</h3>
               <label>Email:</label>
               <input
                 type="email"
