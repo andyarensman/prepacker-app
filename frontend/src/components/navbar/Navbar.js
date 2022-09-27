@@ -2,17 +2,17 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // hooks
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useLogout } from '../../hooks/useLogout'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 // components
-import LoginModal from './navbar/LoginModal'
-import SignupModal from './navbar/SignupModal'
+import LoginModal from './LoginModal'
+import SignupModal from './SignupModal'
 
 // css modules, images
-import NavbarCSS from '../styles/Navbar.module.css'
-import mtn1400 from '../images/mtn-1400.png'
-import prePackerLogo from '../images/prepacker-logo.svg'
+import NavbarCSS from '../../styles/Navbar.module.css'
+import mtn1400 from '../../images/mtn-1400.png'
+import prePackerLogo from '../../images/prepacker-logo.svg'
 
 
 const Navbar = () => {

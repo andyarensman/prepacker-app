@@ -7,7 +7,7 @@ import NewList from './pages/newList'
 import GearCloset from './pages/gearCloset'
 import SavedLists from './pages/savedLists'
 import IndividualList from './pages/individualList'
-import Navbar from './components/Navbar'
+import Navbar from './components/navbar/Navbar'
 import EditList from './pages/editList'
 
 // context
