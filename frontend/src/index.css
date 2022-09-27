@@ -74,7 +74,8 @@ form button {
   border: 0;
   color: #fff;
   padding: 10px;
-  font-family: "Lato";
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
 }

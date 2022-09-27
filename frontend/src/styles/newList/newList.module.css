@@ -88,7 +88,8 @@ button.deleteList {
   border: 0;
   color: #fff;
   padding: 10px;
-  font-family: "Lato";
+  font-size: 14px;
+  font-family: 'Roboto Condensed', sans-serif;
   border-radius: 4px;
   cursor: pointer;
 }
