@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // components
 import ClosetCategory from '../components/newList/ClosetCategory'
@@ -67,7 +68,7 @@ const NewList = () => {
       </div>
       <div className="closet-list">
         <TitleSearch 
-          title="My Gear"
+          title="My Gear Closet"
           selectNeeded={false}
           containerClass={NewListCSS.closetListHeader}
           searchArr={[...alpha]}
@@ -85,6 +86,15 @@ const NewList = () => {
             setTripList={setTripList}
           />
         ))}
+        <Link to="/gear-closet">
+          <button 
+            className={closet.length !== 0 ? NewListCSS.gearBtn : `${NewListCSS.gearBtn} ${NewListCSS.gearBtnMarg}`}
+          >Add New Gear&nbsp;
+            <span
+              className="material-symbols-outlined logout"
+            >switch_access_shortcut</span>
+          </button>
+        </Link>
       </div>
     </div>
   );

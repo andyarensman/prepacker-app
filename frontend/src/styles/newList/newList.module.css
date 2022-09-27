@@ -31,13 +31,17 @@
 
 .closetListHeader {
   display: grid;
-  grid-template-columns: 110px 1fr;
+  grid-template-columns: 150px 1fr;
   gap: 10px;
 }
 
 .closetListHeader h2 {
   margin: 20px 0px 0px 0px;
   height: 37px;
+}
+
+.closetListHeader>div {
+  justify-self: end;
 }
 
 .closet {
@@ -117,6 +121,22 @@ button.deleteList {
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+.gearBtn {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.gearBtnMarg {
+  margin-top: 40px;
 }
 
 @media screen and (max-width: 1200px) {
