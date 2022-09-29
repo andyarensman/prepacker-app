@@ -26,6 +26,8 @@ To get a cool looking gradient for the header, I found a picture of a mountain s
 
 It is still unclear to me if there is any downside to using a relational database over subdocuments. Currently each checklist and gear item is connected to their user via a user_id property. Would this cause any security or performance issues?
 
+I will add more detailed notes here later.
+
 ## Future Updates
 
 I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, include food and water weight, and possibly a few other things.
