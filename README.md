@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The goal of this project is to make a MERN fullstack app for use as a portfolio item. It will include authentication and web scraping amongst other things.
+The goal of this project is to make a MERN fullstack app for use as a portfolio item. It will include authentication and web scraping amongst other things. I am hoping to improve my React and CSS skills mainly, but I wanted a full MERN stack to practice having everything together.
 
 Users should be able to login, upload gear data (manually or with the scraper), and create PrePacker lists that will help them plan what to bring on a trip. This is mainly aimed at backpackers, but could be used for any trip, or simply to keep track of what items you own.
 
