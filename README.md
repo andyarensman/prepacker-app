@@ -8,6 +8,8 @@ Users should be able to login, upload gear data (manually or with the scraper), 
 
 There will be two main pages: the closet and the PrePacker. On the closet page, users will be able to see all the equipment they have uploaded with more detail compared to the PrePacker page. The PrePacker page will be for creating lists for items to pack on a trip. Users will be able to save these lists for future use. Both pages will allow the user to upload new gear.
 
+The project is almost complete, I just need to add a few more feature such as the landing page, password recovery, and mobile css.
+
 ## Notes
 
 Originally I planned to scrape image urls and use those as images next to the gear data. However, I soon realized that this would likely be a copyright violation, so I scrapped the idea. I may use some public domain icons to represent each gear category instead, or allow users to upload their own images.
