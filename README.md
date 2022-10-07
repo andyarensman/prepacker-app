@@ -10,7 +10,7 @@ There will be two main pages: the closet and the PrePacker. On the closet page, 
 
 The project is almost complete, I just need to add a few more feature such as the landing page, password recovery, and mobile css.
 
-Working remote on Mac now.
+Working remote on Mac now. This will hopefully all work fine.
 
 ## Notes
 
