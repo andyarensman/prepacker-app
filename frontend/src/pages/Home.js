@@ -4,14 +4,19 @@ import gearAll from '../images/gear-all.jpg'
 import tentSunset from '../images/tent-sunset.jpg'
 import mountaineer from '../images/mountaineer.jpg'
 
+//css modules
+import HomeCSS from '../styles/Home.module.css'
+
 const Home = () => {
   return ( 
     <div>
-      <div>
-        <h2>Pack Your Next Trip</h2>
-        <p>Helping hikers and backpackers stay organized</p>
-        <p>Don't forget that important item!</p>
-        <button>Signup</button>
+      <div className={HomeCSS.gridContainer}>
+        <div>
+          <h2>Pack Your Next Trip</h2>
+          <p>Helping hikers and backpackers stay organized</p>
+          <p>Don't forget that important item!</p>
+          <button>Signup</button>
+        </div>
         <img src={hikerGreenSnowy} alt="" className=""/>
       </div>
       <div>
