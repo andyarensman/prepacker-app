@@ -19,19 +19,23 @@ const Home = () => {
         </div>
         <img src={hikerGreenSnowy} alt="" className=""/>
       </div>
-      <div>
-        {/* Features */}
+      
+      {/* Features */}
+      <div className={HomeCSS.gridContainer}>
+        <img src={mountaineer} alt="" className=""/>
         <div>
           <h3>Create Checklists</h3>
           <p>Plan out exactly what you'll need to bring on your next adventure</p>
-          <img src={mountaineer} alt="" className=""/>
         </div>
+      </div>
+      <div className={HomeCSS.gridContainer}>
         <div>
           <h3>Upload Your Gear</h3>
           <p>Store a digital record of your gear so you can quickly plan your next trip</p>
-          <img src={gearAll} alt="" className=""/>
         </div>
+        <img src={gearAll} alt="" className=""/>
       </div>
+      
       <div>
         <h3>What are you waiting for?</h3>
         <button>Start PrePacking!</button>
