@@ -1,4 +1,75 @@
 .gridContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.page {
+  margin-top: 20px;
+}
+
+.gridContainer h1, .gridContainer h2 {
+  margin-top: 0;
+}
+
+.noBottom {
+  margin-bottom: 0;
+}
+
+.gridContainer img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  border: 4px solid #fff;
+}
+
+.textContainer {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.textContainer p, .textContainer li {
+  font-size: 18px;
+}
+
+.textContainer ul {
+  padding-left: inherit;
+}
+
+.textContainer li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.finalCall {
+ text-align: center;
+ display: block;
+ border-top: 2px solid #ddd;
+ padding: 10px;
+ margin-top: 10px;
+}
+
+.finalCall img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  border: 4px solid #fff;
+  margin-top: 20px;
 }
