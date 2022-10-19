@@ -42,12 +42,21 @@ A condensed version of each list is shown on the saved lists page. The user can 
 
 New users will be greeted with a landing page that describes what the app can do.
 
-![Example of the Landing Page](https://lh3.googleusercontent.com/Y6fWx9IupmifLTPwDSc1IGQT2LI54ku7gMkKJH-kymTTtRngXbh-fHdLnP1Rc2mlPyAVLQ96juQYiKBMhksIUU-uKKcWmv85whVfb9ggUh-Peu-z-jCgDRPKQs5Uk6YPK2UdscBQHbB7WNrYGV_8SCQq4HWXAx1btkZDL8BN8Dago3hF9S72g4sDE1gO8iQa0cWo9p9rNPuVSDhO3oaBGxishG_AYbDxERKVrPxI9c21-PEhWuQB5kp5bZs-hHA6p6EUBN4cF19OlPPmBY5svb52LMvKT1pVKEbyyceevhkADREpe9Snimhr1CdOyqVhQUWSzU3xVEuJdp0ThUzwlQbIvAGLUYghPLU4QHDbuIW-m2k379YCZfZyMrRLJUVTPuPkfa4-qQtSaSNxo2PqLVAceRzYPKCWYRJtN4CsFtgIibb6omGytG3IUN2aayzcHIGJS8iW0OdQjj3U_YD_cSyekH484ADarVh6rNgFDuZcCK9KxiN_YlW24R-epgQUAnN_uh9wyuiMU-f6D5u_NZr0yOaUg7Gecehzf0vWCOD9MeK-5FAJDk1obrx2barQVFOXTggYOVPXa2TPKnDnRr7crHg11asi8J7XfNRMxlqoaNl-1ensP8MDUS7gxLAcHfdyVepNspKmbdrm5JAs1k2hNVtdx6TaFD9A0VgmvyNolFTanVB5qbJ0cE7Dup04NsFo8VjakvoufeWLizhpstQVNB3pH38STEo2uaegesuolSi_8UG_yg0ADm8zTdZmt3-IZd-qTmNzcuJ51-mZLHpJAo3pCmIHtJB8SnchQg5YQZQPRUu1kxHrIBHalZJ3VLI4JZ0kXKMJcoB1HyBIBUGsYiZwfwDiW8sBTEvQPeXDjHD-wLCT3Wsn3O2HTG2A7pBQnhJmo2jdlEXLBhBdZXzyB5uyoJv-8gCNNw=w1266-h1046-no?authuser=0)
+![Example of the Landing Page 1](https://i.imgur.com/rw6tks3.png)
+![Example of the Landing Page 2](https://i.imgur.com/3M6M2C0.png)
 
 ## Other Features
 
 - When deleting a piece of gear from their closet, the user will be notified if the gear is being used in any lists. If they choose to delete a piece of gear that is in a list, the gear will be removed from that list.
 - All lists and gear can be searched, edited, and deleted.
+
+Example of searching and sorting the gear:
+
+![Searching and Sorting the Gear](https://i.imgur.com/HOcRzo6.gif)
+
+Example of the gear editor and delete windows:
+
+![Example of the gear editor and delete windows](https://i.imgur.com/cDapgBW.gif)
 
 # Notes
 
