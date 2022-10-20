@@ -60,13 +60,47 @@ Example of the gear editor and delete windows:
 
 # Notes
 
-## Backend
+## MongoDB and Mongoose
 
-*[Add in the schemas?]*
+I have three Mongoose models:
+
+    const userSchema = new Schema({
+      email: {
+        type: String,
+        required: true,
+        unique: true
+      },
+      password: {
+        type: String,
+        required: true
+      }
+    })
+
+    const gearSchema = new Schema({
+      gear_name: { type: String, required: true },
+      weight: Number,
+      price: Number,
+      category: { type: String, required: true },
+      notes: String,
+      website: Schema.Types.Mixed,
+      image_url: Schema.Types.Mixed, //Saved for future use
+      user_id: { type: String, required: true }
+    }, { timestamps: true })
+
+    const checklistSchema = new Schema({
+      checklist_name: { type: String, required: true },
+      gear_items: [String], //Array of _id's
+      checklist_notes: String,
+      user_id: { type: String, required: true }
+    }, { timestamps: true })
+
+The `checklistSchema` contains a `gear_items` property that is an array of `gearSchema` IDs - rather than duplicating the gear data for every checklist, it made more sense to just reference it.
+
+The `gearSchema` and `checklistSchema` both reference the `userSchema` via a `user_id` property. It is still unclear to me if there is any downside to using this relational database over Mongoose subdocuments. Is doing it this way causing any security or performance issues?
+
+## Controllers and Routing
 
 Creating the backend for the checklists was super simple - I just had to copy everything from the closet side of things (model, route, controller) and change a few variables.
-
-It is still unclear to me if there is any downside to using a relational database over subdocuments. Currently each checklist and gear item is connected to their user via a user_id property. Would this cause any security or performance issues?
 
 ## Authentication
 
