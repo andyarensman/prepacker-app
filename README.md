@@ -1,16 +1,14 @@
-*README work in progress*
-
 # PrePacker
 
 ## Introduction
 
 The goal of this project is to make a MERN fullstack app for use as a portfolio item. It will include authentication and web scraping amongst other things. I am hoping to improve my React and CSS skills mainly, but I wanted a full MERN stack to practice having everything together.
 
-Users should be able to login, upload gear data (manually or with the scraper), and create PrePacker lists that will help them plan what to bring on a trip. This is mainly aimed at backpackers, but could be used for any trip, or simply to keep track of what items you own.
+This app is aimed at backpackers looking to plan what they want to bring on their next trip. Users should be able to login, upload gear data (manually or with the web scraper), and create PrePacker lists that will help them plan what to bring on a trip. This is mainly aimed at backpackers, but could be used for any trip, or simply to keep track of what items you own.
 
 There will be two main pages: the closet and the PrePacker. On the closet page, users will be able to see all the equipment they have uploaded with more detail compared to the PrePacker page. The PrePacker page will be for creating lists for items to pack on a trip. Users will be able to save these lists for future use.
 
-The project is almost complete, I just need to add a few more feature such as the password recovery and mobile css.
+The project is almost complete, I just need to add a few more feature such as the password recovery and mobile styling. The project is currently not deployed.
 
 # Demonstrations
 
@@ -28,13 +26,13 @@ Here is an example of a user adding new gear to their closet.
 
 ## Using the Web Scraper to Add New Gear
 
-Here is an example of the scraper in use. Any data found at the REI web address provided will be added to the fields. If data is not found for a specific field, it will be left blank:
+Here is an example of the scraper in use. Any data found at the REI web address provided will be added to the fields. If data is not found for a specific field, it will be left blank. I may allow the user to upload data from other websites in the future:
 
 ![Example Scraping](https://i.imgur.com/4s4mVma.gif)
 
 ## Saved Lists
 
-A condensed version of each list is shown on the saved lists page. The user can view all their saved lists, edit the lists, delete, and save as to create a copy of a list.
+A condensed version of each list is shown on the saved lists page. The user can view all their saved lists, edit the lists, delete, and 'save as' to create a copy of a list.
 
 ![Example of Saved List](https://i.imgur.com/zm38F5x.gif)
 
@@ -100,19 +98,24 @@ The `gearSchema` and `checklistSchema` both reference the `userSchema` via a `us
 
 ## Controllers and Routing
 
+The controlling and routing is fairly simple - I basically just needed to be able to talk with MongoDB.
 Creating the backend for the checklists was super simple - I just had to copy everything from the closet side of things (model, route, controller) and change a few variables.
 
 ## Authentication
 
-*[To add later]*
+My authentication uses json web token, bcrypt, and React context.
 
 ## React
 
-*[Notes about context, hooks, helpers?]*
+One of my main goals with this project was to gain a better understanding of React. I had twenty components, six pages, and a few hooks that helped me get used to the syntax of React.
+
+I used React context for gear and checklist viewing, creating, deleting, and editing. This allowed for easier use in various components. I also used context for authentication.
 
 ## Web Scraping
 
-Originally I planned to scrape image urls and use those as images next to the gear data. However, I soon realized that this would likely be a copyright violation, so I scrapped the idea. I may use some public domain icons to represent each gear category instead, or allow users to upload their own images.
+The frontend end sends the url to the backend which uses cheerio and axios to grab any relevant data from an REI page. The pages are mostly similar, but there are usually multiple options for data such as weight, price, and category. In these cases I would grab the first one found. Users are expected to confirm the information is correct - perhaps a warning should be placed.
+
+Originally I planned to scrape image urls and use those as images next to the gear data. However, I soon realized that this would likely be a copyright violation, so I scrapped the idea. I may allow users to upload their own images in the future and host them on Imgur like I did with a my [Hiker Tracker App](https://github.com/andyarensman/Hiker-Tracker).
 
 ## Organization
 
@@ -122,17 +125,16 @@ I had a few functions I was using over and over again - I put these into a utils
 
 ## Design
 
-- To get a cool looking gradient for the header, I found a picture of a mountain skyline and grabbed the color of the bottom, middle, and top.
+- To get a cool looking gradient for the header, I found a picture of a mountain skyline and grabbed the color of the bottom, middle, and top, then recreated the effect using the color values.
 - The PrePacker logo was made with Adobe's logo maker - very cool free software.
-- I decided to use css modules and keep them in a separate styles folder to help keep myself organized. I still kept the index.css file for some global things.
+- I decided to use css modules and keep them in a separate styles folder to help keep myself organized. I still kept the index.css file for some global things. The index-alt.css file is left over from a scrolling feature I may try to add back in later.
 
 
 ## Miscellaneous Notes
 
-*[Talk about any dependencies?]*
-
 - In order to use local storage to set state, I had to disable Strict Mode in the index.js. I may add it back in later to make sure I don't have any problems.
 - Make sure to use array.forEach instead of array.map if you don't have a return value.
+- I'm using axios, bcrypt, cheerio, dotenv, express, jsonwebtoken, mongoose, and validator on the backend and fontawesome, date-fns, react, and react-router-dom on the frontend.
 
 # Future Updates
 
