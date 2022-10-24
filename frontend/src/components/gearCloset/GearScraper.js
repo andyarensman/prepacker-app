@@ -45,7 +45,7 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
       const url = {url_scrape}
 
       // Get data to frontend
-      const scrapeResponse = await fetch('/api/closet/scrape-gear', {
+      const scrapeResponse = await fetch(process.env.REACT_APP_BACKEND + '/api/closet/scrape-gear', {
         method: 'POST',
         body: JSON.stringify(url),
         headers: {

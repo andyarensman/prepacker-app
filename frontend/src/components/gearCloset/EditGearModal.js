@@ -38,7 +38,7 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
     const gearSubmit = {gear_name, weight, price, category, notes}
     gearSubmit.website = url
 
-    const response = await fetch(`/api/closet/${gear._id}`, {
+    const response = await fetch(process.env.REACT_APP_BACKEND + '/api/closet/' + gear._id, {
       method: 'PATCH',
       body: JSON.stringify(gearSubmit),
       headers: {

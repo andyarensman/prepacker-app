@@ -29,7 +29,7 @@ const DeleteListModal = ({ hiddenDeleteModal, setHiddenDeleteModal, checklist}) 
       return
     }
 
-    const response = await fetch('/api/checklist/' + checklist._id, {
+    const response = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist/' + checklist._id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`

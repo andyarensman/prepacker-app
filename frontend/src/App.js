@@ -22,7 +22,7 @@ function App() {
   // Grab the closet data. This was on every page.
   useEffect(() => {
     const fetchCloset = async () => {
-      const response = await fetch('/api/closet', {
+      const response = await fetch(process.env.REACT_APP_BACKEND + '/api/closet', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -42,7 +42,7 @@ function App() {
   // Grab the checklists data
   useEffect(() => {
     const fetchSavedLists = async () => {
-      const response = await fetch('/api/checklist', {
+      const response = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }

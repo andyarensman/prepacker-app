@@ -33,7 +33,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
 
     const checklist = {checklist_name, gear_items, checklist_notes}
 
-    const response = await fetch('/api/checklist', {
+    const response = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist', {
       method: 'POST',
       body: JSON.stringify(checklist),
       headers: {

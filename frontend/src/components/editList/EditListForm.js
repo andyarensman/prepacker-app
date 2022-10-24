@@ -38,7 +38,7 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
 
     const updated_checklist = gear.map(x => x._id)
 
-    const response = await fetch('/api/checklist', {
+    const response = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist', {
       method: 'PATCH',
       body: JSON.stringify({ multi: false, id, checklist_name, checklist_notes, gear_items: updated_checklist}),
       headers: {
@@ -72,7 +72,7 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
 
     const newChecklist = {checklist_name, gear_items, checklist_notes}
 
-    const response = await fetch('/api/checklist', {
+    const response = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist', {
       method: 'POST',
       body: JSON.stringify(newChecklist),
       headers: {

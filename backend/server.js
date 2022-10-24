@@ -5,12 +5,18 @@ const mongoose = require('mongoose')
 const closetRoutes = require('./routes/closet')
 const checklistRoutes = require('./routes/checklist')
 const userRoutes = require('./routes/user')
+const cors = require('cors')
 
 
 // express app
 const app = express()
 
 // middleware
+app.use(
+  cors({
+    origin: process.env.CORS_URL
+  })
+)
 app.use(express.json())
 
 app.use((req, res, next) => {

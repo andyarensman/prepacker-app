@@ -59,7 +59,7 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
     }
 
     const gearId = gear._id
-    const response = await fetch('/api/closet/' + gear._id, {
+    const response = await fetch(process.env.REACT_APP_BACKEND + '/api/closet/' + gear._id, {
       method: 'DELETE',
       headers : {
         'Authorization': `Bearer ${user.token}`
@@ -89,7 +89,7 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
     // handle updating lists
     if (listUpdates.length > 0) {
       const newClosets = {listUpdates, multi: true}
-      const listResponse = await fetch('/api/checklist', {
+      const listResponse = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist', {
         method: 'PATCH',
         body: JSON.stringify(newClosets),
         headers: {

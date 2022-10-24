@@ -57,7 +57,7 @@ const GearForm = ({
     const gear = {gear_name, weight, price,/* image_url,*/ notes, category}
     gear.website = url
 
-    const response = await fetch('/api/closet', {
+    const response = await fetch(process.env.REACT_APP_BACKEND + '/api/closet', {
       method: 'POST',
       body: JSON.stringify(gear),
       headers: {
