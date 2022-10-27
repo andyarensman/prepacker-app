@@ -32,7 +32,7 @@ const Navbar = () => {
         <Link to="/">
           <img src={prePackerLogo} alt="PrePacker" className={NavbarCSS.titleLogo}></img>
         </Link>
-        <nav>
+        <nav className={NavbarCSS.desktopNav}>
             •
           <Link to="/new-list">
             New List
@@ -78,9 +78,56 @@ const Navbar = () => {
             </span>
           )}
         </div>
+        <div className={NavbarCSS.mobileHam}>
+          <span className="material-symbols-outlined">menu</span>
+        </div>
       </div>
       <div className={NavbarCSS.imgContainer}>
         <img src={mtn1400} alt="mtn-header" className={NavbarCSS.mountains}></img>
+      </div>
+      <div className={NavbarCSS.mobileMenu}>
+        <div className={NavbarCSS.mobileLogin}>
+          {user && (
+            <div>
+              <span className={NavbarCSS.userEmail}>{user.email}</span>
+              <button 
+                onClick={handleClick}
+                className={NavbarCSS.logoutBtn}
+              >Logout&nbsp;
+                <span 
+                  className="material-symbols-outlined logout"
+                >logout</span>
+              </button>
+            </div>
+            )}
+          {!user && (
+            <span
+              className={NavbarCSS.hover}
+              onClick={() => setHiddenLogin(false)}
+            >Login&nbsp;
+              <span className={`${NavbarCSS.symbols} material-symbols-outlined`}>login</span>
+            </span>
+          )}
+          {!user && (
+            <span
+              className={NavbarCSS.hover}
+              onClick={() => setHiddenSignup(false)}
+            >Signup&nbsp;
+              <span className={`${NavbarCSS.symbols} material-symbols-outlined`}>person_add</span>
+            </span>
+          )}
+        </div>
+        <nav className={NavbarCSS.mobileNav}>
+          <Link to="/new-list">
+            New List
+          </Link>
+          <Link to="/saved-lists">
+            Saved Lists
+          </Link>
+          <Link to="/gear-closet">
+            Gear Closet
+          </Link>
+        </nav>
       </div>
       <LoginModal 
         hiddenLogin={hiddenLogin}

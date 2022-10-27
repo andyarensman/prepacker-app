@@ -80,6 +80,10 @@ nav {
   overflow-y: hidden;
 }
 
+.mobileHam, .mobileMenu {
+  display: none;
+}
+
 @media screen and (max-width: 1450px) {
   .imgContainer {
     margin: 0px 20px;
@@ -87,6 +91,55 @@ nav {
   }
 }
 
-@media screen and (max-width: 1200px) {
-  
+/* Small Screen */
+@media screen and (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+  .login {
+    display: none;
+  }
+  .mobileHam {
+    display: block;
+    align-self: center;
+    justify-self: right;
+  }
+  .mobileHam span {
+    font-size: 52px;
+  }
+  .mobileHam span:hover {
+    cursor: pointer;
+  }
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .mobileLogin, .mobileNav {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-self: right;
+    font-size: 28px;
+    color: #333;
+  }
+  .mobileLogin {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .symbols {
+    top: 3.5px;
+    position: relative;
+  }
+  .mobileMenu {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    background-color: #fff;
+    right: 0;
+    box-shadow: 2px 2px 5px rgb(0 0 0 / 5%);
+    border-radius: 0 0 0 4px;
+    padding: 10px 20px;
+    border: 1px solid #888;
+    border-right-style: none;
+    border-top-style: none;
+  }
 }
