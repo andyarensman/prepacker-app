@@ -66,7 +66,7 @@ const NewList = () => {
           /> 
         )} 
       </div>
-      <div className="closet-list">
+      <div className={NewListCSS.closetList}>
         <TitleSearch 
           title="My Gear Closet"
           selectNeeded={false}

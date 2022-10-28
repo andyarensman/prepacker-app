@@ -139,9 +139,18 @@ button.deleteList {
   margin-top: 40px;
 }
 
-@media screen and (max-width: 1200px) {
-  /* .page {
-    grid-template-columns: 2fr 1fr;
-    gap: 50px;
-  } */
+@media screen and (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .blankListContainer {
+    margin-top: 35px;
+  }
+  .closetList {
+    border-top: 2px solid #ddd;
+  }
+  .listName, .listTextarea {
+    width: 100%;
+  }
 }
