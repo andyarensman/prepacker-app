@@ -14,3 +14,14 @@
   margin: 20px 0px 0px 0px;
   height: 37px;
 }
+
+@media screen and (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .order {
+    order: -1;
+    border-bottom: 2px solid #ddd;
+  }
+}

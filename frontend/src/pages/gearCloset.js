@@ -50,7 +50,7 @@ const GearCloset = () => {
           </div>
         )}
       </div>
-      <div>
+      <div className={GearClosetCSS.order}>
         <AddGear
           setSort={setSort}
         />
