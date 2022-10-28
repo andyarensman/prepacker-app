@@ -48,7 +48,7 @@ const Home = () => {
       {/* Features */}
       <div className={HomeCSS.gridContainer}>
         <img src={mountaineer} alt="A mountaineer carrying an ice axe, rope, poles, and other gear posing next to a glacier"/>
-        <div className={HomeCSS.textContainer}>
+        <div className={`${HomeCSS.textContainer} ${HomeCSS.orderChange}`}>
           <h2>Create Checklists</h2>
           <ul className={HomeCSS.noBottom}>
             <li>Plan out exactly what you'll need to bring on your next adventure</li>
