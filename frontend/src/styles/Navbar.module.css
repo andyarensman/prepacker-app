@@ -93,6 +93,10 @@ nav {
 
 /* Small Screen */
 @media screen and (max-width: 768px) {
+  .container {
+    padding-top: 0;
+    padding-bottom: 5px;
+  }
   .desktopNav {
     display: none;
   }
@@ -106,6 +110,7 @@ nav {
   }
   .mobileHam span {
     font-size: 52px;
+    user-select: none;
   }
   .mobileHam span:hover {
     cursor: pointer;
@@ -131,7 +136,7 @@ nav {
   }
   .mobileMenu {
     display: block;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     background-color: #fff;
     right: 0;
@@ -141,5 +146,11 @@ nav {
     border: 1px solid #888;
     border-right-style: none;
     border-top-style: none;
+  }
+  .mountains {
+    min-width: 1000px;
+    max-width: 1000px;
+    width: 1000px;
+    height: auto;
   }
 }

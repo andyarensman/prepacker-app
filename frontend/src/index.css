@@ -36,6 +36,10 @@ body {
 
 /* Forms */
 
+* {
+  -webkit-tap-highlight-color: transparent; /* Stops Highlighting*/
+}
+
 span.cancel {
   position: relative;
   top: 4px;
