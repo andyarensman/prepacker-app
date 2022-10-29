@@ -20,8 +20,13 @@ body {
 
 .pages{
   max-width: 1400px;
-  padding: 20px 40px;
+  padding: 20px 40px 100px;
   margin: 0 auto;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
 }
 
 .no-select {

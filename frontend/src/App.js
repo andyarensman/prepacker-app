@@ -13,6 +13,7 @@ import EditList from './pages/editList'
 // context
 import { useClosetContext } from './hooks/useClosetContext'
 import { useAuthContext } from './hooks/useAuthContext'
+import Footer from './components/footer/Footer'
 
 
 function App() {
@@ -91,6 +92,7 @@ function App() {
             />
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );

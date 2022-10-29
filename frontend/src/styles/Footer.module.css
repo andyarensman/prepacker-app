@@ -1,0 +1,18 @@
+.footer {
+  height: 50px; /* Change the .pages bottom padding on index.css if this changes*/
+  background: #c0aba0;
+  /* background-image: linear-gradient(#c19d89, #a88b79, #897062); */
+  background-image: linear-gradient(#c0aba0, #a89385, #8a786d);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* border-top: 2px solid #a89385; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.footer a {
+  text-decoration: none;
+  color: black;
+}
