@@ -76,3 +76,15 @@ span.deleteBtn {
   padding-top: 16px;
   margin-top: 25px;
 }
+
+@media screen and (max-width: 850px) {
+  .header {
+    flex-wrap: wrap;
+  }
+  .header h2 {
+    width: 100%;
+  }
+  .hide {
+    display: none;
+  }
+}

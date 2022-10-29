@@ -58,7 +58,7 @@ const IndividualList = () => {
         <h2>{checklist && checklist.checklist_name}</h2>
         {checklist && (
           <>
-            <p className={SLDetailsCSS.spacer}>•</p>
+            <p className={`${SLDetailsCSS.spacer} ${SLDetailsCSS.hide}`}>•</p>
             <p className={SLDetailsCSS.spacer}>
               <strong>Created: <i className="weight-italics">{format(new Date(checklist.createdAt), "M/dd/yy")}</i></strong>
             </p>
