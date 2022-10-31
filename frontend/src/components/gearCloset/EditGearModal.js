@@ -104,6 +104,7 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
                   onChange={(e) => setPounds(e.target.value)}
                   value={pounds}
                   id="pounds"
+                  min="0"
                 />
                 <label htmlFor="pounds">lbs</label>
                 <input 
@@ -111,6 +112,7 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
                   onChange={(e) => setOunces(e.target.value)}
                   value={ounces}
                   id="ounces"
+                  min="0"
                 />
                 <label htmlFor="ounces">oz</label>
               </div>
@@ -148,6 +150,7 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
                 id="price"
+                min="0"
               />
 
               <label htmlFor="notes">Notes</label>
