@@ -91,8 +91,14 @@ nav {
   }
 }
 
+@media screen and (max-width: 1100px) {
+  .container {
+    grid-template-columns: 1fr 3fr 90px;
+  }
+}
+
 /* Small Screen */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .container {
     padding-top: 0;
     padding-bottom: 5px;
@@ -125,7 +131,12 @@ nav {
     font-size: 28px;
     color: #333;
   }
-  .mobileLogin {
+  /* .mobileLogin {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  } */
+  .mobileNav {
     border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
     margin-bottom: 10px;

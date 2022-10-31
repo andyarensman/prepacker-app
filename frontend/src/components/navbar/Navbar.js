@@ -62,7 +62,7 @@ const Navbar = () => {
         <div className={NavbarCSS.login}>
           {user && (
               <div>
-                <span className={NavbarCSS.userEmail}>{user.email}</span>
+                {/* <span className={NavbarCSS.userEmail}>{user.email}</span> */}
                 <button 
                   onClick={handleClick}
                   className={NavbarCSS.logoutBtn}
@@ -103,19 +103,6 @@ const Navbar = () => {
       {!hiddenHamburger && (
         <div className={NavbarCSS.mobileMenu}>
           <div className={NavbarCSS.mobileLogin}>
-            {user && (
-              <div>
-                <span className={NavbarCSS.userEmail}>{user.email}</span>
-                <button 
-                  onClick={handleClick}
-                  className={NavbarCSS.logoutBtn}
-                >Logout&nbsp;
-                  <span 
-                    className="material-symbols-outlined logout"
-                  >logout</span>
-                </button>
-              </div>
-              )}
             {!user && (
               <span
                 className={NavbarCSS.hover}
@@ -139,17 +126,33 @@ const Navbar = () => {
               </span>
             )}
           </div>
-          <nav className={NavbarCSS.mobileNav}>
-            <Link to="/new-list" onClick={() => setHiddenHamburger(true)}>
-              New List
-            </Link>
-            <Link to="/saved-lists" onClick={() => setHiddenHamburger(true)}>
-              Saved Lists
-            </Link>
-            <Link to="/gear-closet" onClick={() => setHiddenHamburger(true)}>
-              Gear Closet
-            </Link>
-          </nav>
+          {user && (
+            <>
+              <nav className={NavbarCSS.mobileNav}>
+                <Link to="/new-list" onClick={() => setHiddenHamburger(true)}>
+                  New List
+                </Link>
+                <Link to="/saved-lists" onClick={() => setHiddenHamburger(true)}>
+                  Saved Lists
+                </Link>
+                <Link to="/gear-closet" onClick={() => setHiddenHamburger(true)}>
+                  Gear Closet
+                </Link>
+              </nav>
+              <div>
+                {/* <span className={NavbarCSS.userEmail}>{user.email}</span> */}
+                <button 
+                  onClick={handleClick}
+                  className={NavbarCSS.logoutBtn}
+                >Logout&nbsp;
+                  <span 
+                    className="material-symbols-outlined logout"
+                  >logout</span>
+                </button>
+              </div>
+            
+            </>
+            )}
         </div>
       )}
       <LoginModal 
