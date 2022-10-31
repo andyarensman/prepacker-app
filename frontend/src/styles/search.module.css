@@ -28,3 +28,9 @@
 .searchSymbol {
   margin-top: 5px;
 }
+
+@media screen and (max-width: 768px) {
+  .searchForm {
+    grid-template-columns: 2fr 1fr;
+  }
+}

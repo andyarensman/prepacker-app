@@ -15,6 +15,12 @@
   height: 37px;
 }
 
+@media screen and (max-width: 1100px) {
+  .closetHeader {
+    grid-template-columns: 120px 1fr 1fr;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .page {
     grid-template-columns: 1fr;
@@ -24,4 +30,5 @@
     order: -1;
     border-bottom: 2px solid #ddd;
   }
+  
 }

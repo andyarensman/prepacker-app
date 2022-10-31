@@ -88,7 +88,7 @@ const EditList = () => {
       </div>
       <div className="closet-list">
         <TitleSearch 
-          title="My Gear"
+          title="My Gear Closet"
           selectNeeded={false}
           containerClass={NewListCSS.closetListHeader}
           searchArr={[...alpha]}

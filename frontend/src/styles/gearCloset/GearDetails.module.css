@@ -7,6 +7,11 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 
+.gearDetails {
+  min-height: 84px;
+  padding-right: 75px;
+}
+
 .gearDetails h3 {
   margin: 0 0 10px 0;
   font-size: 1.25em;
@@ -17,6 +22,8 @@
   margin: 0;
   font-size: 1em;
   color: #555;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .gearDetails a {
@@ -28,10 +35,10 @@
   height: 100px;
 } */
 
-.gearDetails span.editBtn, .gearDetails span.deleteBtn {
+.editBtn, .deleteBtn {
   position: absolute;
-  top: 20px;
   cursor: pointer;
+  right: 20px;
   background: #f1f1f1;
   padding: 6px;
   border-radius: 50%;
@@ -39,21 +46,10 @@
   font-size: 22px;
 }
 
-span.editBtn {
-  right: 70px;
+span.editBtn { 
+  top: 20px;
 }
 
 span.deleteBtn {
-  right: 20px;
-}
-
-@media screen and (max-width: 1200px) {
-  /* span.editBtn {
-    top: 20px;
-    right: 20px;
-  }
-  
-  span.deleteBtn {
-    top: 62px;
-  } */
+  top: 70px;
 }
