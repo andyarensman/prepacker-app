@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This MERN stack app is a digital checklist aimed at backpackers looking to plan what they want to bring on their next trip. Users should be able to login, upload gear data (manually or with a web scraper), create PrePacker checklists, and use the lists to help them pack. This is mainly aimed at backpackers, but could be used for any trip, or simply to keep track of what gear you own.
+This MERN stack app is a digital checklist aimed at backpackers looking to plan what they want to bring on their next trip. Users are able to login, upload gear data (manually or with a web scraper), create PrePacker checklists, and use the lists to help them pack. This is mainly aimed at backpackers, but could be used for any trip, or simply to keep track of what gear you own.
 
 [You can check out the app here](https://prepacker.netlify.app/)
 
@@ -10,7 +10,7 @@ The goal of this project was to make a MERN fullstack app for use as a portfolio
 
 There are three main pages: the closet, the checklist creator, and the saved lists page. On the closet page, users can see all the equipment they have uploaded with more detail compared to the PrePacker page including price, weight, personal notes, and links to where they bought the items. They can upload and edit information about their gear here. The checklist creator page is where users select gear to make a custom checklist for their trips. Users can save these lists and access them on the saved lists page.
 
-The project is almost complete, I just need to add a few more features such as the password recovery and mobile styling.
+The project is almost complete, I just need to add a few more features such as the password recovery.
 
 ## Table of Contents
 
@@ -146,7 +146,7 @@ I have three Mongoose models:
       user_id: { type: String, required: true }
     }, { timestamps: true })
 
-The `checklistSchema` contains a `gear_items` property that is an array of `gearSchema` IDs - rather than duplicating the gear data for every checklist, it made more sense to just reference it.
+The `checklistSchema` contains a `gear_items` property that is an array of `gearSchema` IDs - rather than duplicating the gear data for every checklist, it made more sense to just reference it. The total weight of the list is calculated on the front end.
 
 The `gearSchema` and `checklistSchema` both reference the `userSchema` via a `user_id` property. It is still unclear to me if there is any downside to using this relational database over Mongoose subdocuments. Is doing it this way causing any security or performance issues?
 
