@@ -1,4 +1,4 @@
-//! Not sure if I will need to change this after I change the models to be subdocuments to the Users
+//! Not sure if I will need to change this if I change the models to be sub-documents of the Users
 
 const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
