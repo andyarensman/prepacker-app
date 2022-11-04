@@ -1,10 +1,12 @@
-// TODO: Need to add other things to the form: notes, images?
+// TODO: Need to add other things to the form: images?
 
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-// context
+// hooks/context
 import { useClosetContext } from '../../hooks/useClosetContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useLogout } from '../../hooks/useLogout'
 
 // css modules
 import GearFormCSS from '../../styles/gearCloset/GearForm.module.css'
@@ -37,6 +39,8 @@ const GearForm = ({
   const [success, setSuccess] = useState(false)
   const { dispatch } = useClosetContext()
   const { user } = useAuthContext()
+  const navigate = useNavigate()
+  const { logout } = useLogout()
 
   useEffect(() => {
     setSuccess(false)
@@ -66,6 +70,10 @@ const GearForm = ({
       }
     })
     const json = await response.json()
+    
+    if (response.status === 401) {
+      logout()
+    }
 
     if (!response.ok) {
       setError(json.error)

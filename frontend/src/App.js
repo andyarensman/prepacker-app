@@ -9,16 +9,18 @@ import SavedLists from './pages/savedLists'
 import IndividualList from './pages/individualList'
 import Navbar from './components/navbar/Navbar'
 import EditList from './pages/editList'
+import Footer from './components/footer/Footer'
 
-// context
+// hooks/context
 import { useClosetContext } from './hooks/useClosetContext'
 import { useAuthContext } from './hooks/useAuthContext'
-import Footer from './components/footer/Footer'
+import { useLogout } from './hooks/useLogout'
 
 
 function App() {
   const { dispatch } = useClosetContext()
   const { user } = useAuthContext()
+  const { logout } = useLogout()
   
   // Grab the closet data. This was on every page.
   useEffect(() => {
@@ -32,6 +34,10 @@ function App() {
 
       if (response.ok) {
         dispatch({type:'SET_CLOSET', payload: json})
+      }
+      //! There might be a better way to do this
+      if (!response.ok) {
+        logout()
       }
     }
 
@@ -52,6 +58,10 @@ function App() {
 
       if (response.ok) {
         dispatch({type:'SET_CHECKLISTS', payload: json})
+      }
+      //! There might be a better way to do this
+      if (!response.ok) {
+        logout()
       }
     }
 
