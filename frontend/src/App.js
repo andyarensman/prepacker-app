@@ -44,7 +44,7 @@ function App() {
     if (user) {
       fetchCloset()
     }
-  }, [dispatch, user])
+  }, [dispatch, user]) //'logout' is purposefully not being declared here
 
   // Grab the checklists data
   useEffect(() => {
@@ -68,7 +68,7 @@ function App() {
     if (user) {
       fetchSavedLists()
     }
-  }, [dispatch, user])
+  }, [dispatch, user]) //'logout' is purposefully not being declared here
 
   return (
     <div className="App">

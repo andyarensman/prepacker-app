@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { findTotalWeight } from '../../helpers/utils'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useClosetContext } from '../../hooks/useClosetContext'
+import { useLogout } from '../../hooks/useLogout'
 
 // css modules
 import NewListCSS from '../../styles/newList/newList.module.css'
@@ -17,6 +18,7 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
 
   const { dispatch }= useClosetContext()
   const { user } = useAuthContext()
+  const { logout } = useLogout()
   const navigate = useNavigate()
 
   // Remove all gear from checklist
@@ -49,10 +51,16 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
 
     const json = await response.json()
 
+    // checks if access token is still good
+    if (response.status === 401) {
+      logout()
+    }
+
     if (response.ok) {
       dispatch({type: 'UPDATE_CHECKLIST', payload: json})
       navigate('/saved-lists/' + id)
     }
+
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)
@@ -83,6 +91,12 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
 
     const json = await response.json()
 
+    // checks if access token is still good
+    if (response.status === 401) {
+      logout()
+    }
+
+    // checks if any fields are missing
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)

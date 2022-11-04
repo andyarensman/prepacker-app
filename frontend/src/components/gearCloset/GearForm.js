@@ -1,7 +1,6 @@
 // TODO: Need to add other things to the form: images?
 
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 // hooks/context
 import { useClosetContext } from '../../hooks/useClosetContext'
@@ -39,7 +38,6 @@ const GearForm = ({
   const [success, setSuccess] = useState(false)
   const { dispatch } = useClosetContext()
   const { user } = useAuthContext()
-  const navigate = useNavigate()
   const { logout } = useLogout()
 
   useEffect(() => {
@@ -71,10 +69,12 @@ const GearForm = ({
     })
     const json = await response.json()
     
+    // checks if access token is still good
     if (response.status === 401) {
       logout()
     }
 
+    // checks if any fields are missing
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)

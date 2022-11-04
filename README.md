@@ -173,7 +173,11 @@ Originally I planned to scrape image urls and use those as images next to the ge
 
 ## Authentication
 
-My authentication uses json web token, bcrypt, and React context.
+My authentication uses json web token, bcrypt, and React context. The token is stored in local storage - this may need to change as I learn more about JWT. I am not using a refresh token for now, but I may add this in the future.
+
+When the user returns to the website after previously being logged in, a `useEffect` hook will run because there is local storage data containing the access token. If the token is expired, a `401` status will return and the user will be logged out. If not, the user's data will be available for them. In order to get this to work in the `useEffect` hook, I had to omit my `logout` hook as a dependency. React doesn't like this, but I don't think it causes any problems.
+
+If the token expires when the user is trying to post/edit/delete, the user will be logged out and sent back to the homepage. This is done by running a check on the response status - if it is `401`, the `logout` hook is fired. This may be confusing for the user, so if I make this project public, I will want to change it. It would be helpful to at least have a message for the user to read that would pop up on the homepage. Refresh tokens may also solve the problem.
 
 
 <a id="react"></a>

@@ -1,13 +1,15 @@
 // css modules
 import GearFormCSS from '../../styles/gearCloset/GearForm.module.css'
 
-// context
+// hooks/context
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useLogout } from '../../hooks/useLogout'
 
 
 const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunces, setCategory, setUrl, setPrice,/* setImageUrl,*/ scraperError, setScraperError, setError, setEmptyFields}) => {
 
   const { user } = useAuthContext()
+  const { logout } = useLogout()
 
   const handleWeight = (weight) => {
     let pounds = Math.floor(weight/16)
@@ -57,6 +59,11 @@ const GearScraper = ({url_scrape, setUrlScrape, setGearName, setPounds, setOunce
       // Update state with new data
       const jsonScrapeObj = await scrapeResponse.json()
       // console.log(jsonScrapeObj)
+
+      // checks if access token is still good
+      if (scrapeResponse.status === 401) {
+        logout()
+      }
 
       if (jsonScrapeObj.gear_name) {
         setGearName(jsonScrapeObj.gear_name)

@@ -3,14 +3,16 @@ import { useNavigate } from 'react-router-dom'
 // components
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
 
-// context
+// hooks/context
 import { useClosetContext } from '../../hooks/useClosetContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useLogout } from '../../hooks/useLogout'
 
 
 const DeleteListModal = ({ hiddenDeleteModal, setHiddenDeleteModal, checklist}) => {
   const { dispatch } = useClosetContext()
   const { user } = useAuthContext()
+  const { logout } = useLogout()
   const navigate = useNavigate()
 
   // close the modal if you click outside the box
@@ -37,6 +39,11 @@ const DeleteListModal = ({ hiddenDeleteModal, setHiddenDeleteModal, checklist}) 
     })
     
     const json = await response.json()
+
+    // checks if access token is still good
+    if (response.status === 401) {
+      logout()
+    }
 
     if (response.ok) {
       dispatch({type: 'DELETE_CHECKLIST', payload: json})

@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
-// helpers, context
+// helpers, hooks, context
 import { handleWeightNum } from '../../helpers/utils'
 import { useClosetContext } from '../../hooks/useClosetContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useLogout } from '../../hooks/useLogout'
 
 // css modules
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
@@ -22,6 +23,7 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
 
   const { dispatch } = useClosetContext()
   const { user } = useAuthContext()
+  const { logout } = useLogout()
   
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -48,6 +50,12 @@ const EditGearModal = ({ hiddenModal, setHiddenModal, gear }) => {
     })
     const json = await response.json()
 
+    // checks if access token is still good
+    if (response.status === 401) {
+      logout()
+    }
+
+    // checks if any fields are missing
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)

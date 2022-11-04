@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// helpers, context
+// helpers, hooks, context
 import { findTotalWeight } from '../../helpers/utils'
 import { useClosetContext } from '../../hooks/useClosetContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useLogout } from '../../hooks/useLogout'
 
 // css modules
 import NewListCSS from '../../styles/newList/newList.module.css'
@@ -18,6 +19,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
 
   const { dispatch }= useClosetContext()
   const { user } = useAuthContext()
+  const { logout } = useLogout()
   const navigate = useNavigate()
 
   // Submit Checklist 
@@ -44,6 +46,12 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
 
     const json = await response.json()
 
+    // checks if access token is still good
+    if (response.status === 401) {
+      logout()
+    }
+
+    // checks if any fields are missing
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)

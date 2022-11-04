@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
-// context
+// hooks/context
 import { useClosetContext } from '../../hooks/useClosetContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useLogout } from '../../hooks/useLogout'
 
 // css modules
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
@@ -13,6 +14,7 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
 
   const { checklists, dispatch } = useClosetContext()
   const { user } = useAuthContext()
+  const { logout } = useLogout()
 
   useEffect(() => {
     if (!hiddenDeleteModal) {
@@ -67,6 +69,11 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
     })
     const json = await response.json()
 
+    // checks if access token is still good
+    if (response.status === 401) {
+      logout()
+    }
+
     if (response.ok) {
       dispatch({type: 'DELETE_GEAR', payload: json})
 
@@ -98,6 +105,12 @@ const DeleteGearModal = ({ hiddenDeleteModal, setHiddenDeleteModal, gear}) => {
         }
       })
       const listJson = await listResponse.json()
+      
+      // checks if access token is still good
+      if (listResponse.status === 401) {
+        logout()
+      }
+
       if (listResponse.ok) {
         listJson.forEach(list => dispatch({type: 'UPDATE_CHECKLIST', payload: list}))
       }
