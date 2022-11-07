@@ -1,4 +1,6 @@
 import { useState } from 'react'
+
+// hooks
 import { useLogin } from '../../hooks/useLogin'
 
 // css modules
@@ -49,6 +51,12 @@ const LoginModal = ({ hiddenLogin, setHiddenLogin }) => {
                 value={password}
               />
               <button disabled={isLoading} onClick={(e) => handleSubmit(e)}>Log In</button>
+              <img
+                src="/loading-spin.svg"
+                alt="loading"
+                className={ModalCSS.loadingWheel}
+                hidden={!isLoading}
+              />
               {error && <div className="error">{error}</div>}
             </form>
           </div>

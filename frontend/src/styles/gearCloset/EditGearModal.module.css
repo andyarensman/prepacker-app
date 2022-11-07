@@ -122,6 +122,12 @@
   margin-left: 20px;
 }
 
+.loadingWheel {
+  position: absolute;
+  padding-left: 10px;
+  padding-top: 2px;
+}
+
 @media screen and (max-width: 768px) { 
   .modal {
     padding-top: 80px;

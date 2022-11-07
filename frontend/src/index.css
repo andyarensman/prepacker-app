@@ -88,6 +88,11 @@ form button {
   cursor: pointer;
 }
 
+button:disabled {
+  background-color: #1010104D;
+  cursor: wait;
+}
+
 div.error {
   padding: 10px;
   background: #ffefef;
