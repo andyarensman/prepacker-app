@@ -1,6 +1,8 @@
 // helpers
 import { handleWeight } from '../../helpers/utils'
 
+// css modules
+import NewListCSS from '../../styles/newList/newList.module.css'
 
 const TripList = ({trip_list, setTripList, gear}) => {
   // Remove from List
@@ -12,9 +14,9 @@ const TripList = ({trip_list, setTripList, gear}) => {
   }
 
   return ( 
-    <div className="trip-list">
-      {gear.gear_name} {gear.weight && <i className="weight-italics">({handleWeight(gear.weight)}) </i>}
+    <div className={NewListCSS.newItem}>
       <span className="material-symbols-outlined cancel" onClick={handleClick}>cancel</span>
+      {gear.gear_name} {gear.weight && <i className="weight-italics">({handleWeight(gear.weight)}) </i>}
     </div>
    );
 }

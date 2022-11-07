@@ -11,12 +11,17 @@
   margin: 0 0 10px 0;
   font-size: 1.25em;
   color: var(--primary);
+  word-wrap: break-word;
+  word-break: break-word;
+  padding-right: 90px;
 }
 
 .checklistDetails p {
   margin: 0;
   font-size: 1em;
   color: #555;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .checklistDetails a {

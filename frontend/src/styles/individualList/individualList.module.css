@@ -3,10 +3,15 @@
   align-items: flex-end;
   column-gap: 15px;
   position: relative;
+  padding-right: 100px;
 }
 
 .header h2 {
   margin: 20px 0px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1 1;
 }
 
 .header span {
@@ -31,6 +36,7 @@ span.deleteBtn {
 
 .spacer {
   margin-bottom: 12px;
+  white-space: nowrap;
 }
 
 .category {
@@ -69,6 +75,8 @@ span.deleteBtn {
   padding-left: 23px;
   text-indent:-12px;
   margin-top: 3px;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .notes {
@@ -83,6 +91,7 @@ span.deleteBtn {
   }
   .header h2 {
     width: 100%;
+    flex: none;
   }
   .hide {
     display: none;

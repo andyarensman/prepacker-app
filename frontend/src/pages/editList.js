@@ -61,7 +61,7 @@ const EditList = () => {
   return ( 
     <div className={NewListCSS.page}>
       <div>
-        {checklist && <h2>Editing: {checklist.checklist_name}</h2>}
+        {checklist && <h2 className={NewListCSS.wrap}>Editing: {checklist.checklist_name}</h2>}
         <div className={gear.length > 0 ? NewListCSS.newList : NewListCSS.hidden}>
           {gear && ['essential', 'container', 'sleep', 'kitchen', 'hygiene', 'clothing', 'personal', 'mountaineering', 'other'].map(e => (
             <TripListCategory

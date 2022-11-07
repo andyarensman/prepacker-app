@@ -72,6 +72,18 @@
   margin-top: 20px;
 }
 
+.wrap {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.newItem {
+  word-wrap: break-word;
+  word-break: break-word;
+  padding-left: 23px;
+  text-indent:-12px;
+}
+
 .inList {
   font-style: italic;
   color: #666666;
@@ -81,6 +93,8 @@
 .gearItem {
   padding-left: 23px;
   text-indent:-12px;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .saveList, .saveCopy {
