@@ -59,37 +59,37 @@ const Navbar = () => {
           </Link>
             •
         </nav>
-        <div className={NavbarCSS.login}>
-          {user && (
-              <div>
-                {/* <span className={NavbarCSS.userEmail}>{user.email}</span> */}
-                <button 
-                  onClick={handleClick}
-                  className={NavbarCSS.logoutBtn}
-                >Logout&nbsp;
-                  <span 
-                    className="material-symbols-outlined logout"
-                  >logout</span>
-                </button>
-              </div>
-            )}
-          {!user && (
+        
+        {user && (
+          <div className={NavbarCSS.loggedInHub}>
+            <span className={NavbarCSS.userEmail}>{user.email}</span>
+            <button 
+              onClick={handleClick}
+              className={NavbarCSS.logoutBtn}
+            >Logout&nbsp;
+              <span 
+                className="material-symbols-outlined logout"
+              >logout</span>
+            </button>
+          </div>
+        )}
+        {!user && (
+          <div className={NavbarCSS.login}>
             <span
               className={NavbarCSS.hover}
               onClick={() => setHiddenLogin(false)}
             >Login&nbsp;
               <span className="material-symbols-outlined cancel">login</span>
             </span>
-          )}
-          {!user && (
             <span
               className={NavbarCSS.hover}
               onClick={() => setHiddenSignup(false)}
             >Signup&nbsp;
               <span className="material-symbols-outlined cancel">person_add</span>
             </span>
-          )}
-        </div>
+          </div>
+        )}
+        
         <div className={NavbarCSS.mobileHam}>
           <span
             className="material-symbols-outlined"
