@@ -23,7 +23,7 @@ const SavedLists = () => {
     if (checklists) {
       const alphaAsc = [...checklists].sort((a, b) => a.checklist_name.localeCompare(b.checklist_name))
       setAlpha([...alphaAsc])
-      setCurrentSortArr([...alphaAsc])
+      setCurrentSortArr([...checklists]) //default is new to old
     }
   }, [checklists])
 
