@@ -239,8 +239,7 @@ I may allow the user to upload photos, share their lists somehow, have container
 
 # Resources
 
-- The Net Ninja Youtube channel
+- [The Net Ninja](https://www.youtube.com/c/TheNetNinja) Youtube channel
   - I used a couple tutorials on this channel to understand the basics of a MERN stack, authentication, and to learn about some CSS styling
 - ['Learn CORS In 6 Minutes'](https://www.youtube.com/watch?v=PNtFSVU-YTI) from the [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified) YouTube channel
 - ['Free Heroku Alternatives'](https://github.com/DmitryScaletta/free-heroku-alternatives) by Dimitry Scaletta
-- I need to credit the author of the backpack icon or find something else: <a href="http://www.freepik.com">Designed by pch.vector / Freepik</a>. I may also need to credit the designer of the mountain header
