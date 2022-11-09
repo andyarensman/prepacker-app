@@ -4,7 +4,7 @@
 
 This MERN stack app is a digital checklist aimed at backpackers looking to plan what they want to bring on their next trip. Users are able to login, upload gear data (manually or with a web scraper), create PrePacker checklists, and use the lists to help them pack. This is mainly aimed at backpackers, but could be used for any trip, or simply to keep track of what gear you own.
 
-[You can check out the app here](https://prepacker.netlify.app/)
+[You can check out the app here](https://prepacker.netlify.app/). It was deployed on Netlify for the frontend and Adaptable for the backend.
 
 The goal of this project was to make a MERN fullstack app for use as a portfolio item. It includes authentication and web scraping amongst other things. My previous project was mostly backend, so my main focus here was to improve my React and CSS skills. However, I wanted a full MERN stack to practice having everything together.
 
