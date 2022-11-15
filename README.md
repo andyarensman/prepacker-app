@@ -37,7 +37,7 @@ The project is almost complete, I just need to add a few more features such as t
     <li><a href="#misc">Miscellaneous Notes</a></li>
   </ul>
   <li><a href="#future">Future Updates</a></li>
-  <li><a href="#helpful">Resources</a></li>
+  <li><a href="#helpful">Helpful Resources</a></li>
 </ul>
 
 <a id="demonstrations"></a>
@@ -146,7 +146,7 @@ I have three Mongoose models:
       user_id: { type: String, required: true }
     }, { timestamps: true })
 
-The `checklistSchema` contains a `gear_items` property that is an array of `gearSchema` IDs - rather than duplicating the gear data for every checklist, it made more sense to just reference it. The total weight of the list is calculated on the front end.
+The `checklistSchema` contains a `gear_items` property that is an array of `gearSchema` IDs - rather than duplicating the gear data for every checklist, it made more sense to just reference it. The total weight of the list is calculated on the frontend.
 
 The `gearSchema` and `checklistSchema` both reference the `userSchema` via a `user_id` property. It is still unclear to me if there is any downside to using this relational database over Mongoose subdocuments. Is doing it this way causing any security or performance issues?
 
@@ -155,7 +155,7 @@ The `gearSchema` and `checklistSchema` both reference the `userSchema` via a `us
 
 ## Controllers and Routing
 
-The controlling and routing is fairly simple - I basically just needed to be able to talk with MongoDB. The most complicated thing was the web scrapped, which is discussed below.
+The controlling and routing is fairly simple - I basically just needed to be able to talk with MongoDB. The most complicated thing was the web scrapper, which is discussed below.
 
 
 <a id="web"></a>
@@ -164,9 +164,9 @@ The controlling and routing is fairly simple - I basically just needed to be abl
 
 The frontend sends the url to the backend which uses cheerio and axios to grab any relevant data from an REI page. The REI product pages are mostly similar, but there are usually multiple options for data such as weight, price, and category. In these cases I would grab the first one found. Users are expected to confirm the information is correct - perhaps a warning should be placed.
 
-If I allow for users to scrape from another website in the future, I will need to make sure the website has consistent product pages - I'm a little worried that Amazon's format would be a little too unpredictable for getting gear data.
+If I allow for users to scrape from another website in the future, I will need to make sure the website has consistent product pages - I'm a little worried that Amazon's format would be a little too unpredictable for getting accurate gear data.
 
-Originally I planned to scrape image urls and use those as images next to the gear data. This looked really nice, however I soon realized that this would likely be a copyright violation, so I scrapped the idea. I may allow users to upload their own images in the future and host them on Imgur like I did with a my [Hiker Tracker App](https://github.com/andyarensman/Hiker-Tracker).
+Originally I planned to scrape image urls and use those as images next to the gear data. This looked really nice, however I soon realized that this would likely be a copyright violation, so I scrapped the idea. I may allow users to upload their own images in the future and host them on Imgur like I did with my [Hiker Tracker App](https://github.com/andyarensman/Hiker-Tracker).
 
 
 <a id="auth"></a>
@@ -193,9 +193,9 @@ I used React context for gear and checklist viewing, creating, deleting, and edi
 
 ## Organization
 
-As the project progressed, I quickly had a lot of components and a lot of things to implement. In order to prevent myself from becoming overwhelmed, I divided up the components folder into sub-folders based on what page the component is being used for. There is some overlap, but it wasn't a problem. I also made a to do list with every feature I wanted to add so I could quickly look something up and start to add it.
+As the project progressed, I quickly had a lot of components and a lot of things to implement. In order to prevent myself from becoming overwhelmed, I divided up the components folder into sub-folders based on what page the component is being used for. There is some overlap, but it wasn't a problem.
 
-I had a few functions I was using over and over again - I put these into a utils.js file in a helpers folder to keep it organized.
+I had a few functions I was using over and over again - I put these into a `utils.js` file in a `helpers` folder to keep it organized.
 
 
 <a id="design"></a>
@@ -204,7 +204,7 @@ I had a few functions I was using over and over again - I put these into a utils
 
 - To get a cool looking gradient for the header, I found a picture of a mountain skyline and grabbed the color of the bottom, middle, and top, then recreated the effect using the color values.
 - The PrePacker logo was made with Adobe's logo maker - very cool free software.
-- I decided to use css modules and keep them in a separate styles folder to help keep myself organized. I still kept the index.css file for some global things. The index-alt.css file is left over from a scrolling feature I may try to add back in later.
+- I decided to use css modules and keep them in a separate styles folder to help keep myself organized. I still kept the index.css file for some global things.
 
 
 <a id="deploy"></a>
@@ -233,13 +233,16 @@ It took a lot of tweaking to get it right, but eventually it all worked.
 
 # Future Updates
 
-I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, include food and water weight, and possibly a few other things. Right now the checklists don't do much on their own - it would be nice to keep track of how many times a user used the list. If I were to open this up to the public, I might include a new page with tutorials on how to use the website.
+I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, include food and water weight, and possibly a few other things. This may require some semi-major reworking. On the backend, the models would be easy to add to, but on the frontend there would need to be some new controls for the user in a few locations and I would have to handle the data from the backend carefully.
+
+Right now the checklists don't do much on their own - it would be nice to keep track of how many times a user used the list or have some sort of exciting effect when they check everything off.
+
+If I were to open this up to the public, I might include a new page with tutorials on how to use the website. The homepage should also have more indication of what the app does with some videos or GIFs rather than just the text.
 
 <a id="helpful"></a>
 
-# Resources
+# Helpful Resources
 
-- [The Net Ninja](https://www.youtube.com/c/TheNetNinja) Youtube channel
-  - I used a couple tutorials on this channel to understand the basics of a MERN stack, authentication, and to learn about some CSS styling
+- [The Net Ninja](https://www.youtube.com/c/TheNetNinja) YouTube channel
 - ['Learn CORS In 6 Minutes'](https://www.youtube.com/watch?v=PNtFSVU-YTI) from the [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified) YouTube channel
 - ['Free Heroku Alternatives'](https://github.com/DmitryScaletta/free-heroku-alternatives) by Dimitry Scaletta
