@@ -32,6 +32,7 @@ The project is almost complete, I just need to add a few more features such as t
     <li><a href="#auth">Authentication</a></li>
     <li><a href="#react">React</a></li>
     <li><a href="#org">Organization</a></li>
+    <li><a href="#sort">Sorting</a></li>
     <li><a href="#design">Design</a></li>
     <li><a href="#deploy">Deployment</a></li>
     <li><a href="#misc">Miscellaneous Notes</a></li>
@@ -195,8 +196,27 @@ I used React context for gear and checklist viewing, creating, deleting, and edi
 
 As the project progressed, I quickly had a lot of components and a lot of things to implement. In order to prevent myself from becoming overwhelmed, I divided up the components folder into sub-folders based on what page the component is being used for. There is some overlap, but it wasn't a problem.
 
-I had a few functions I was using over and over again - I put these into a `utils.js` file in a `helpers` folder to keep it organized.
+I had a few functions I was using over and over again - I put these into a `utils.js` file in a `helpers` folder to keep it organized. They convert the weight from a number to a string and vice versa as well as handle the gear category titles/icons.
 
+<a id="sort"></a>
+
+## Sorting
+
+The gear data on the closet page and new list page can be sorted by a variety of different categories: name a-z, category a-z, weight, price, and date created. When the users selects a new sorting option, a function is triggered with a switch statement that sorts the data based on the option selected.
+
+The string-based sorts use a `.sort` method on the array of gear objects with `.localeCompare` to organize the list alphabetically regardless of upper or lower case characters: `setCurrentSortArr([...searchArr].sort((a, b) => a.category.localeCompare(b.category)))`. To do reverse alphabetical, switch `a` and `b` in the sort function.
+
+If a piece of gear does not contain data for the category being sorted, it will automatically be pushed to the end of the list:
+
+    setCurrentSortArr([...searchArr].sort((a, b) => {
+      if (!a.weight) {
+        return 1
+      } else if (!b.weight) {
+        return -1
+      } else {
+        return b.weight - a.weight
+      }
+    }))
 
 <a id="design"></a>
 
