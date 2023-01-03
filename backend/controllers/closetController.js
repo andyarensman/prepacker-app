@@ -150,7 +150,7 @@ const getScrapedGear = async (req, res) => {
   await axios({
     method: 'get',
     url: url_scrape,
-    timeout: 30000,
+    timeout: 60000,
     httpsAgent: new https.Agent({ keepAlive: true })
   })
     .then(response => {
