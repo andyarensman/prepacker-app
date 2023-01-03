@@ -12,11 +12,12 @@ const cors = require('cors')
 const app = express()
 
 // middleware
-app.use(
-  cors({
-    origin: process.env.CORS_URL
-  })
-)
+// app.use(
+//   cors({
+//     origin: process.env.CORS_URL
+//   })
+// )
+app.use(cors())
 app.use(express.json())
 
 app.use((req, res, next) => {
