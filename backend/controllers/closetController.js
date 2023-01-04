@@ -143,7 +143,7 @@ const editGear = async (req, res) => {
 // get scrape data
 const getScrapedGear = async (req, res) => {
 
-  const url_scrape = req.body.url_scrape
+  const url_scrape = 'https://crossorigin.me/' + req.body.url_scrape
 
   // Create an object for the data in returnData
   let returnData = {};
