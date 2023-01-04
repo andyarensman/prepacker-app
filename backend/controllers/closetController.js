@@ -2,7 +2,8 @@ const Gear = require('../models/gearModel')
 const mongoose = require('mongoose')
 const axios = require('axios')
 const cheerio = require('cheerio')
-const https = require('https')
+//const https = require('https')
+const http = require('http')
 
 // get all gear
 const getGear = async (req, res) => {
@@ -151,7 +152,7 @@ const getScrapedGear = async (req, res) => {
     method: 'get',
     url: url_scrape,
     timeout: 600000,
-    httpsAgent: new https.Agent({ keepAlive: true })
+    httpAgent: new http.Agent({ keepAlive: true })
   })
     .then(response => {
       const html = response.data
