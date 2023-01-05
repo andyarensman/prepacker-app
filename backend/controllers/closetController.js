@@ -156,6 +156,7 @@ const getScrapedGear = async (req, res) => {
   })
     .then(response => {
       const html = response.data
+      console.log(html)
       const $ = cheerio.load(html)
 
       //TODO: Clean it up a bit

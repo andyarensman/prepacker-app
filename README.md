@@ -270,3 +270,4 @@ If I were to open this up to the public, I might include a new page with tutoria
 - ['Free Heroku Alternatives'](https://github.com/DmitryScaletta/free-heroku-alternatives) by Dimitry Scaletta
 - [How to bypass CORS and Scrap any Websites using Javascript (Serverless)](https://medium.com/@charlyyy/how-to-bypass-cors-and-scrap-any-websites-using-javascript-serverless-76115eeecddd) by 
 Charly Berthet
+- [https://corsproxy.github.io/](https://corsproxy.github.io/)
