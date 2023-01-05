@@ -158,7 +158,6 @@ const getScrapedGear = async (req, res) => {
       const html = response.data
       const $ = cheerio.load(html)
 
-      //TODO: Add category scrape?
       //TODO: Clean it up a bit
 
       // Grab gear name

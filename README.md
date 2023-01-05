@@ -169,6 +169,8 @@ If I allow for users to scrape from another website in the future, I will need t
 
 Originally I planned to scrape image urls and use those as images next to the gear data. This looked really nice, however I soon realized that this would likely be a copyright violation, so I scrapped the idea. I may allow users to upload their own images in the future and host them on Imgur like I did with my [Hiker Tracker App](https://github.com/andyarensman/Hiker-Tracker).
 
+The web scraper didn't work after deploying it. This was because of CORS. I had to run it through a proxy server in order to get it to work again. The proxy, crossorigin.me, should be replaced with something more stable in the future.
+
 
 <a id="auth"></a>
 
