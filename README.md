@@ -169,7 +169,7 @@ If I allow for users to scrape from another website in the future, I will need t
 
 Originally I planned to scrape image urls and use those as images next to the gear data. This looked really nice, however I soon realized that this would likely be a copyright violation, so I scrapped the idea. I may allow users to upload their own images in the future and host them on Imgur like I did with my [Hiker Tracker App](https://github.com/andyarensman/Hiker-Tracker).
 
-The web scraper didn't work after deploying it. This was because of CORS. I had to run it through a proxy server in order to get it to work again. The proxy, crossorigin.me, should be replaced with something more stable in the future. Now I have an Axios error that needs fixing.
+The web scraper didn't work after deploying it. This was because of CORS. I had to run it through a proxy server in order to get it to work again. The first proxy, crossorigin.me, ended up not working - I think it might be out of date. I'm using the free tier of `scraperapi` now, but you only get 1000 free calls. The lowest tier pricing is $49/month, so I will have to either find a different solution or remove the scraper from the final version. I will probably opt to remove it because the feature is more of just a neat trick that only saves a little time for the user.
 
 
 <a id="auth"></a>
@@ -270,4 +270,3 @@ If I were to open this up to the public, I might include a new page with tutoria
 - ['Free Heroku Alternatives'](https://github.com/DmitryScaletta/free-heroku-alternatives) by Dimitry Scaletta
 - [How to bypass CORS and Scrap any Websites using Javascript (Serverless)](https://medium.com/@charlyyy/how-to-bypass-cors-and-scrap-any-websites-using-javascript-serverless-76115eeecddd) by 
 Charly Berthet
-- [https://corsproxy.github.io/](https://corsproxy.github.io/)

@@ -2,8 +2,6 @@ const Gear = require('../models/gearModel')
 const mongoose = require('mongoose')
 const axios = require('axios')
 const cheerio = require('cheerio')
-//const https = require('https')
-const http = require('http')
 
 // get all gear
 const getGear = async (req, res) => {
@@ -143,23 +141,20 @@ const editGear = async (req, res) => {
 // get scrape data
 const getScrapedGear = async (req, res) => {
 
-  const url_scrape = 'https://crossorigin.me/' + req.body.url_scrape
-
+  //const url_scrape = 'https://crossorigin.me/' + req.body.url_scrape
+  const url_scrape = `http://api.scraperapi.com?api_key=${process.env.SCRAPER_API_KEY}&url=${req.body.url_scrape}`
+  
   // Create an object for the data in returnData
   let returnData = {};
 
   await axios({
     method: 'get',
-    url: url_scrape,
-    timeout: 600000,
-    httpAgent: new http.Agent({ keepAlive: true })
+    url: url_scrape
   })
     .then(response => {
       const html = response.data
-      console.log(html)
+      // console.log(html)
       const $ = cheerio.load(html)
-
-      //TODO: Clean it up a bit
 
       // Grab gear name
       const gear_name = $('#product-page-title').text().trim()
