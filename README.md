@@ -241,7 +241,9 @@ Because I'm hosting the backend and frontend at different locations, I needed to
 
 I also needed to use [environmental variables](https://create-react-app.dev/docs/adding-custom-environment-variables/) in the frontend. Originally I was using a proxy in the `package.json` file to get around the CORS, but this doesn't work for deployment. So I made an environment variable for the backend url and attached it to the front of all my fetches.
 
-It took a lot of tweaking to get it right, but eventually it all worked.
+Once the site was running on Netlify, I wasn't able to refresh a page without the app crashing. The routes also wouldn't work when manually typing them in. In order to get around this, you need to have a `_redirects` file with `/*    /index.html   200`. I put this file into my build folder. If I create another build, I will have to do this again manually. I think this file needs to be created because React is a single page application and Netlify thinks you are going to a different file when you type in a different route.
+
+Note to self: Make sure you change the environment variable on the frontend to the correct route before trying to run the app locally or before building the app. 
 
 <a id="misc"></a>
 
