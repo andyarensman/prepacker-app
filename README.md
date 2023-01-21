@@ -261,7 +261,9 @@ I may allow the user to upload photos, share their lists somehow, have container
 
 Right now the checklists don't do much on their own - it would be nice to keep track of how many times a user used the list or have some sort of exciting effect when they check everything off.
 
-If I were to open this up to the public, I might include a new page with tutorials on how to use the website. The homepage should also have more indication of what the app does with some videos or GIFs rather than just the text.
+If I were to open this up to the public, I might include a new page with tutorials on how to use the website. The homepage should also have more indication of what the app does with some videos or GIFs rather than just the text. I would also get a custom domain name.
+
+The first things I will add will probably be password resetting and recovery, then the ability to add water and food weight.
 
 <a id="helpful"></a>
 
