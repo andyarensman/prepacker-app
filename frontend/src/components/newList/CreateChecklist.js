@@ -12,6 +12,9 @@ import NewListCSS from '../../styles/newList/newList.module.css'
 
 
 const CreateChecklist = ({ trip_list, setTripList }) => {
+  const [water_weight, setWaterWeight] = useState(null)
+  const [water_volume, setWaterVolume] = useState(null)
+  const [food_weight, setFoodWeight] = useState(null)
   const [checklist_name, setChecklistName] = useState('')
   const [checklist_notes, setChecklistNotes] = useState('')
   const [error, setError] = useState(null)
@@ -61,6 +64,9 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
       // console.log('new list added', json)
       setTripList([])
       window.localStorage.removeItem('PREPACK_NEW_CHECKLIST')
+      setWaterWeight(null)
+      setWaterVolume(null)
+      setFoodWeight(null)
       setError(null)
       setEmptyFields([])
       dispatch({type: 'CREATE_CHECKLIST', payload: json})
@@ -72,6 +78,9 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
   const handleClick = (e) => {
     e.preventDefault()
     setTripList([])
+    setWaterWeight(null)
+    setWaterVolume(null)
+    setFoodWeight(null)
     setChecklistName('')
     setChecklistNotes('')
     setError(null)
@@ -83,8 +92,44 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
       <form className="create-checklist" onSubmit={handleSubmit}>
         <br />
         <p>
+          <b>Pack Weight: <i className="weight-italics">{findTotalWeight(trip_list)}</i></b>
+        </p>
+        <br />
+
+        <label>Water Weight</label>
+        <input 
+          type="number"
+          onChange={(e) => setWaterWeight(e.target.value)}
+          value={water_weight}
+          id="water-weight"
+          min="0"
+        />
+        <label htmlFor='water-weight'>oz</label>
+        <input 
+          type="number"
+          onChange={(e) => setWaterVolume(e.target.value)}
+          value={water_volume}
+          id="water-volume"
+          min="0"
+        />
+        <label htmlFor='water-volume'>liters</label>
+        <br />
+
+        <label>Food Weight</label>
+        <input 
+          type="number"
+          onChange={(e) => setFoodWeight(e.target.value)}
+          value={food_weight}
+          id="food-weight"
+          min="0"
+        />
+        <label htmlFor='food-weight'>oz</label>
+
+        <br />
+        <p>
           <b>Total Weight: <i className="weight-italics">{findTotalWeight(trip_list)}</i></b>
         </p>
+
         <br/>
         <label htmlFor='name'>Checklist Name</label>
         <input
