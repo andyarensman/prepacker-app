@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // helpers, hooks, context
-import { findTotalWeight } from '../../helpers/utils'
+import { findTotalWeight, handleWeight } from '../../helpers/utils'
 import { useClosetContext } from '../../hooks/useClosetContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useLogout } from '../../hooks/useLogout'
@@ -12,9 +12,9 @@ import NewListCSS from '../../styles/newList/newList.module.css'
 
 
 const CreateChecklist = ({ trip_list, setTripList }) => {
-  const [water_weight, setWaterWeight] = useState(null)
-  const [water_volume, setWaterVolume] = useState(null)
-  const [food_weight, setFoodWeight] = useState(null)
+  const [water_weight, setWaterWeight] = useState(0)
+  const [water_volume, setWaterVolume] = useState(0)
+  const [food_weight, setFoodWeight] = useState(0)
 
   const [checklist_name, setChecklistName] = useState('')
   const [checklist_notes, setChecklistNotes] = useState('')
@@ -65,9 +65,9 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
       // console.log('new list added', json)
       setTripList([])
       window.localStorage.removeItem('PREPACK_NEW_CHECKLIST')
-      setWaterWeight(null)
-      setWaterVolume(null)
-      setFoodWeight(null)
+      setWaterWeight(0)
+      setWaterVolume(0)
+      setFoodWeight(0)
       setError(null)
       setEmptyFields([])
       dispatch({type: 'CREATE_CHECKLIST', payload: json})
@@ -79,9 +79,9 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
   const handleClick = (e) => {
     e.preventDefault()
     setTripList([])
-    setWaterWeight(null)
-    setWaterVolume(null)
-    setFoodWeight(null)
+    setWaterWeight(0)
+    setWaterVolume(0)
+    setFoodWeight(0)
     setChecklistName('')
     setChecklistNotes('')
     setError(null)
@@ -103,6 +103,28 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
     setWaterVolume(e.target.value)
     let weight = Math.round(((e.target.value * 2.2) + Number.EPSILON) * 100) / 100
     setWaterWeight(weight)
+  }
+
+  // Handle Total Weight
+  const getTotalWeight = () => {
+    //first get the weight (in ounces of all the gear)
+    let totalWeight = 0
+
+    trip_list.map(gear => {
+      if (gear.weight) {
+        totalWeight += gear.weight
+      }
+      return totalWeight
+    })
+
+    //add the water weight after converting it to ounces
+    totalWeight += (water_weight * 16)
+
+    //add the food weight
+    totalWeight += (food_weight * 16)
+
+    //convert to the string using the helper method
+    return (handleWeight(totalWeight))
   }
 
   return ( 
@@ -141,11 +163,11 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
           id="food-weight"
           min="0"
         />
-        <label htmlFor='food-weight'>oz</label>
+        <label htmlFor='food-weight'>lb</label>
 
         <br />
         <p>
-          <b>Total Weight: <i className="weight-italics">{findTotalWeight(trip_list)}</i></b>
+          <b>Total Weight: <i className="weight-italics">{getTotalWeight()}</i></b>
         </p>
 
         <br/>
