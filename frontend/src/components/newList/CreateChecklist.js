@@ -15,6 +15,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
   const [water_weight, setWaterWeight] = useState(null)
   const [water_volume, setWaterVolume] = useState(null)
   const [food_weight, setFoodWeight] = useState(null)
+
   const [checklist_name, setChecklistName] = useState('')
   const [checklist_notes, setChecklistNotes] = useState('')
   const [error, setError] = useState(null)
@@ -87,6 +88,23 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
     setEmptyFields([])
   }
 
+  // Handle Weight(oz) to Volume(liters)
+  const weightToVolume = (e) => {
+    e.preventDefault()
+    setWaterWeight(e.target.value)
+    let volume = Math.round(((e.target.value / 2.2) + Number.EPSILON) * 100) / 100
+    setWaterVolume(volume)
+  }
+
+  // Handle Volume(liters) to Weight(oz)
+    //multiple the volume by 33.814
+  const volumeToWeight = (e) => {
+    e.preventDefault()
+    setWaterVolume(e.target.value)
+    let weight = Math.round(((e.target.value * 2.2) + Number.EPSILON) * 100) / 100
+    setWaterWeight(weight)
+  }
+
   return ( 
     <>
       <form className="create-checklist" onSubmit={handleSubmit}>
@@ -99,20 +117,20 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
         <label>Water Weight</label>
         <input 
           type="number"
-          onChange={(e) => setWaterWeight(e.target.value)}
-          value={water_weight}
-          id="water-weight"
-          min="0"
-        />
-        <label htmlFor='water-weight'>oz</label>
-        <input 
-          type="number"
-          onChange={(e) => setWaterVolume(e.target.value)}
+          onChange={(e) => volumeToWeight(e)}
           value={water_volume}
           id="water-volume"
           min="0"
         />
         <label htmlFor='water-volume'>liters</label>
+        <input 
+          type="number"
+          onChange={(e) => weightToVolume(e)}
+          value={water_weight}
+          id="water-weight"
+          min="0"
+        />
+        <label htmlFor='water-weight'>lb</label>
         <br />
 
         <label>Food Weight</label>
