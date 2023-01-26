@@ -134,38 +134,39 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
         <p>
           <b>Pack Weight: <i className="weight-italics">{findTotalWeight(trip_list)}</i></b>
         </p>
-        <br />
 
-        <label>Water Weight</label>
-        <input 
-          type="number"
-          onChange={(e) => volumeToWeight(e)}
-          value={water_volume}
-          id="water-volume"
-          min="0"
-        />
-        <label htmlFor='water-volume'>liters</label>
-        <input 
-          type="number"
-          onChange={(e) => weightToVolume(e)}
-          value={water_weight}
-          id="water-weight"
-          min="0"
-        />
-        <label htmlFor='water-weight'>lb</label>
-        <br />
+        <div className={NewListCSS.waterWeight}>
+          <label>Water Volume/Weight:</label>
+          <input 
+            type="number"
+            onChange={(e) => volumeToWeight(e)}
+            value={water_volume}
+            id="water-volume"
+            min="0"
+          />
+          <label htmlFor='water-volume'>L</label>
+          <input 
+            type="number"
+            onChange={(e) => weightToVolume(e)}
+            value={water_weight}
+            id="water-weight"
+            min="0"
+          />
+          <label htmlFor='water-weight'>lb</label>
+        </div>
 
-        <label>Food Weight</label>
-        <input 
-          type="number"
-          onChange={(e) => setFoodWeight(e.target.value)}
-          value={food_weight}
-          id="food-weight"
-          min="0"
-        />
-        <label htmlFor='food-weight'>lb</label>
+        <div className={NewListCSS.foodWeight}>
+          <label>Food Weight:</label>
+          <input 
+            type="number"
+            onChange={(e) => setFoodWeight(e.target.value)}
+            value={food_weight}
+            id="food-weight"
+            min="0"
+          />
+          <label htmlFor='food-weight'>lb</label>
+        </div>
 
-        <br />
         <p>
           <b>Total Weight: <i className="weight-italics">{getTotalWeight()}</i></b>
         </p>

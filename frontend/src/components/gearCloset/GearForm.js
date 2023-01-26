@@ -127,7 +127,7 @@ const GearForm = ({
           id="pounds"
           min="0"
         />
-        <label htmlFor="pounds">lbs</label>
+        <label htmlFor="pounds">lb</label>
         <input 
           type="number"
           onChange={(e) => setOunces(e.target.value)}
