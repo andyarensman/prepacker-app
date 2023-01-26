@@ -126,6 +126,7 @@ const GearForm = ({
           value={pounds}
           id="pounds"
           min="0"
+          step="0.01"
         />
         <label htmlFor="pounds">lb</label>
         <input 
@@ -134,6 +135,7 @@ const GearForm = ({
           value={ounces}
           id="ounces"
           min="0"
+          step="0.01"
         />
         <label htmlFor="ounces">oz</label>
       </div>
@@ -172,6 +174,7 @@ const GearForm = ({
         value={price}
         id="price"
         min="0"
+        step="0.01"
       />
 
       {/* <label>Image Url:</label>
