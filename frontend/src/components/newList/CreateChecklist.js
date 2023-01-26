@@ -37,7 +37,13 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
 
     let gear_items = trip_list.map(e => e._id)
 
-    const checklist = {checklist_name, gear_items, checklist_notes}
+    const checklist = {
+      water_weight,
+      food_weight,
+      checklist_name,
+      gear_items,
+      checklist_notes
+    }
 
     const response = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist', {
       method: 'POST',
@@ -143,6 +149,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
             value={water_volume}
             id="water-volume"
             min="0"
+            step="0.01"
           />
           <label htmlFor='water-volume'>L</label>
           <input 
@@ -151,6 +158,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
             value={water_weight}
             id="water-weight"
             min="0"
+            step="0.01"
           />
           <label htmlFor='water-weight'>lb</label>
         </div>
@@ -163,6 +171,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
             value={food_weight}
             id="food-weight"
             min="0"
+            step="0.01"
           />
           <label htmlFor='food-weight'>lb</label>
         </div>

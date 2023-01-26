@@ -30,6 +30,8 @@ const getSingleChecklist = async (req, res) => {
 // add new checklist
 const addChecklist = async (req, res) => {
   const {
+    water_weight,
+    food_weight,
     checklist_name, 
     gear_items,
     checklist_notes
@@ -50,6 +52,8 @@ const addChecklist = async (req, res) => {
   try {
     const user_id = req.user._id
     const checklist = await Checklist.create({
+        water_weight,
+        food_weight,
         checklist_name, 
         gear_items,
         checklist_notes,
@@ -108,6 +112,8 @@ const editChecklist = async (req, res) => {
   if (!multi) {
     const {
       id,
+      water_weight,
+      food_weight,
       checklist_name, 
       gear_items,
       checklist_notes
@@ -129,6 +135,8 @@ const editChecklist = async (req, res) => {
     }
   
     const checklist = await Checklist.findOneAndUpdate({_id: id }, {
+      water_weight,
+      food_weight,
       checklist_name, 
       gear_items,
       checklist_notes
@@ -140,7 +148,6 @@ const editChecklist = async (req, res) => {
   
     res.status(200).json(checklist)
   }
-
 
 }
 
