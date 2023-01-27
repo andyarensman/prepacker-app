@@ -8,7 +8,7 @@ import IndividualListGearCategory from '../components/individualList/IndividualL
 import DeleteListModal from '../components/savedLists/DeleteListModal'
 
 // helpers, date fns, context
-import { findTotalWeight } from '../helpers/utils'
+import { findTotalWeight, handleWeight } from '../helpers/utils'
 import format from 'date-fns/format'
 import { useClosetContext } from '../hooks/useClosetContext'
 
@@ -20,6 +20,9 @@ const IndividualList = () => {
   const [checklist, setChecklist] = useState(null)
   const [gear, setGear] = useState([])
   const [listWeight, setListWeight] = useState('')
+  const [water_volume, setWaterVolume] = useState(null)
+  const [food_weight, setFoodWeight] = useState(null)
+  const [total_weight, setTotalWeight] = useState(null)
   const [hiddenDeleteModal, setHiddenDeleteModal] = useState(true)
   const { closet, checklists }= useClosetContext()
 
@@ -32,9 +35,10 @@ const IndividualList = () => {
       let tempChecklist = checklists.find(e => e._id === id)
       setChecklist(tempChecklist)
 
+      let tempWeightArr = []
       if (tempChecklist.gear_items && closet) {
         let tempArray = []
-        let tempWeightArr = []
+        
         closet.forEach(e => {
           if (tempChecklist.gear_items.includes(e._id)) {
             tempArray.push(e)
@@ -43,6 +47,38 @@ const IndividualList = () => {
         })
         setGear(tempArray)
         setListWeight(findTotalWeight(tempWeightArr))
+      }
+
+      let waterWeight = 0
+      if (tempChecklist.water_weight && closet) {
+        waterWeight = tempChecklist.water_weight
+        let volume = Math.round(((waterWeight / 2.2) + Number.EPSILON) * 100) / 100
+        setWaterVolume(volume)
+      }
+
+      let foodWeight = 0
+      if (tempChecklist.food_weight && closet) {
+        foodWeight = tempChecklist.food_weight
+        setFoodWeight(foodWeight)
+      }
+
+      // If there's food and/or water, get total weight
+      if (tempChecklist.gear_items && (waterWeight > 0 || foodWeight > 0)) {
+        let totalWeight = 0
+        tempWeightArr.forEach(gear => {
+          if (gear.weight) {
+            totalWeight += gear.weight
+          }
+        })
+
+        //add the water weight after converting it to ounces
+        totalWeight += (waterWeight * 16)
+
+        //add the food weight
+        totalWeight += (foodWeight * 16)
+
+        //convert to the string using the helper method
+        setTotalWeight(handleWeight(totalWeight))
       }
     }
     
@@ -66,10 +102,35 @@ const IndividualList = () => {
             <p className={SLDetailsCSS.spacer}>
             <strong>Total Items: <i className="weight-italics">{checklist.gear_items.length}</i></strong>
             </p>
+            {food_weight && (
+              <>
+                <p className={SLDetailsCSS.spacer}>•</p>
+                <p className={SLDetailsCSS.spacer}>
+                  <strong>Food: <i className="weight-italics">{food_weight} lb</i></strong>
+                </p>
+              </>
+            )}
+            {water_volume && (
+              <>
+                <p className={SLDetailsCSS.spacer}>•</p>
+                <p className={SLDetailsCSS.spacer}>
+                  <strong>Water: <i className="weight-italics">{water_volume} L</i></strong>
+                </p>
+              </>
+            )}
             <p className={SLDetailsCSS.spacer}>•</p>
             <p className={SLDetailsCSS.spacer}>
-              <strong>Total Weight: <i className="weight-italics">{listWeight || "N/A"}</i></strong>
+              <strong>Pack Weight: <i className="weight-italics">{listWeight || "N/A"}</i></strong>
             </p>
+            {total_weight && (
+              <>
+                <p className={SLDetailsCSS.spacer}>•</p>
+                <p className={SLDetailsCSS.spacer}>
+                  <strong>Total Weight: <i className="weight-italics">{total_weight}</i></strong>
+                </p>
+              </>
+            )}
+            
             <span
               className={`material-symbols-outlined ${SLDetailsCSS.editBtn}`}
               onClick={() => navigate('/saved-lists/edit/' + id)}
