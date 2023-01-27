@@ -94,7 +94,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
     setEmptyFields([])
   }
 
-  // Handle Weight(oz) to Volume(liters)
+  // Handle Weight(lb) to Volume(L)
   const weightToVolume = (e) => {
     e.preventDefault()
     setWaterWeight(e.target.value)
@@ -102,8 +102,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
     setWaterVolume(volume)
   }
 
-  // Handle Volume(liters) to Weight(oz)
-    //multiple the volume by 33.814
+  // Handle Volume(L) to Weight(lb)
   const volumeToWeight = (e) => {
     e.preventDefault()
     setWaterVolume(e.target.value)
