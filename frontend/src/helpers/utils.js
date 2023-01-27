@@ -46,6 +46,12 @@ export const handleWeightNum = (weight) => {
   return {pounds, ounces}
 }
 
+// return Weight(lb) to Volume(L)
+export const weightToVolumeHelper = (value) => {
+  let volume = Math.round(((value / 2.2) + Number.EPSILON) * 100) / 100
+  return volume
+}
+
 // Order of gear categories with icons
 export const handleCategory = (category) => {
   switch (category) {
