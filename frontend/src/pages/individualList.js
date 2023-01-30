@@ -90,11 +90,27 @@ const IndividualList = () => {
 
   return (
     <div>
+      <div className={SLDetailsCSS.title}>
+        <h2 className={SLDetailsCSS.checklistName}>{checklist && checklist.checklist_name}</h2>
+
+        <span
+          className={`material-symbols-outlined ${SLDetailsCSS.editBtn}`}
+          onClick={() => navigate('/saved-lists/edit/' + id)}
+        >edit</span>
+        <span
+          className={`material-symbols-outlined ${SLDetailsCSS.deleteBtn}`}
+          onClick={() => setHiddenDeleteModal(false)}
+        >delete</span>
+
+        <DeleteListModal 
+          hiddenDeleteModal={hiddenDeleteModal}
+          setHiddenDeleteModal={setHiddenDeleteModal}
+          checklist={checklist}
+        />
+      </div>
       <div className={SLDetailsCSS.header}>
-        <h2>{checklist && checklist.checklist_name}</h2>
         {checklist && (
           <>
-            <p className={`${SLDetailsCSS.spacer} ${SLDetailsCSS.hide}`}>•</p>
             <p className={SLDetailsCSS.spacer}>
               <strong>Created: <i className="weight-italics">{format(new Date(checklist.createdAt), "M/dd/yy")}</i></strong>
             </p>
@@ -131,19 +147,7 @@ const IndividualList = () => {
               </>
             )}
             
-            <span
-              className={`material-symbols-outlined ${SLDetailsCSS.editBtn}`}
-              onClick={() => navigate('/saved-lists/edit/' + id)}
-            >edit</span>
-            <span
-              className={`material-symbols-outlined ${SLDetailsCSS.deleteBtn}`}
-              onClick={() => setHiddenDeleteModal(false)}
-            >delete</span>
-            <DeleteListModal 
-              hiddenDeleteModal={hiddenDeleteModal}
-              setHiddenDeleteModal={setHiddenDeleteModal}
-              checklist={checklist}
-            />
+            
           </>
         )}
       </div>
