@@ -175,6 +175,7 @@ const CreateChecklist = ({ trip_list, setTripList }) => {
           <label htmlFor='food-weight'>lb</label>
         </div>
 
+        <hr style={{width: "350px", marginLeft: "0"}}/>
         <p>
           <b>Total Weight: <i className="weight-italics">{getTotalWeight()}</i></b>
         </p>

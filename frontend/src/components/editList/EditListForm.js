@@ -211,9 +211,11 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
           <label htmlFor='food-weight'>lb</label>
         </div>
 
+        <hr style={{width: "350px", marginLeft: "0"}}/>
         <p>
           <b>Total Weight: <i className="weight-italics">{getTotalWeight()}</i></b>
         </p>
+        {/* <hr /> */}
 
         <br/>
         <label htmlFor='name'>Edit Checklist Name</label>
