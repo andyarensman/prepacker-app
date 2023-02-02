@@ -1,6 +1,6 @@
 // css imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShirt, faBox, faScrewdriverWrench, faHandSparkles, faFireBurner, faTent, faMobile, faMountain, faBinoculars } from '@fortawesome/free-solid-svg-icons'
+import { faShirt, faBox, faScrewdriverWrench, faHandSparkles, faFireBurner, faTent, faMobile, faMountain, faBinoculars, faUtensils } from '@fortawesome/free-solid-svg-icons'
 
 
 // return weight as lbs and/or oz string
@@ -71,6 +71,8 @@ export const handleCategory = (category) => {
         return (<><FontAwesomeIcon icon={faMobile} /> Personal Item</>)
       case ("mountaineering"):
         return (<><FontAwesomeIcon icon={faMountain} /> Mountaineering</>)
+      case ("food-water"):
+        return (<><FontAwesomeIcon icon={faUtensils} /> Food/Water</>)
       case ("other"):
         return (<><FontAwesomeIcon icon={faBinoculars} /> Other</>)
       default:

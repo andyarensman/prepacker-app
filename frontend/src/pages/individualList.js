@@ -8,7 +8,7 @@ import IndividualListGearCategory from '../components/individualList/IndividualL
 import DeleteListModal from '../components/savedLists/DeleteListModal'
 
 // helpers, date fns, context
-import { findTotalWeight, handleWeight } from '../helpers/utils'
+import { findTotalWeight, handleCategory, handleWeight } from '../helpers/utils'
 import format from 'date-fns/format'
 import { useClosetContext } from '../hooks/useClosetContext'
 
@@ -164,6 +164,23 @@ const IndividualList = () => {
             <p className={SLDetailsCSS.notes}>
               <strong>Notes: </strong>{checklist.checklist_notes}
             </p>
+          )}
+          {(food_weight || water_volume) && (
+            <div className={SLDetailsCSS.category}>
+              <h3>{handleCategory("food-water")} <span>(?/?)</span></h3>
+              {food_weight && (
+                <div className={SLDetailsCSS.gearItem}>
+                  <span className="material-symbols-outlined cancel no-select">check_box_outline_blank</span>
+                  food <i className="weight-italics">{food_weight} lb</i>
+                </div>
+              )}
+              {water_volume && (
+                <div className={SLDetailsCSS.gearItem}>
+                  <span className="material-symbols-outlined cancel no-select">check_box_outline_blank</span>
+                  water <i className="weight-italics">{water_volume} L</i>
+                </div>
+              )}
+            </div>
           )}
         </>
         
