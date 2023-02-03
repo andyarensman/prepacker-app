@@ -243,7 +243,7 @@ I also needed to use [environmental variables](https://create-react-app.dev/docs
 
 Once the site was running on Netlify, I wasn't able to refresh a page without the app crashing. The routes also wouldn't work when manually typing them in. In order to get around this, you need to have a `_redirects` file with `/*    /index.html   200`. I put this file into my build folder. If I create another build, I will have to do this again manually. I think this file needs to be created because React is a single page application and Netlify thinks you are going to a different file when you type in a different route.
 
-Note to self: Make sure you change the environment variable on the frontend to the correct route before trying to run the app locally or before building the app. 
+Note to self: Make sure you change the environment variable on the frontend to the correct route before trying to run the app locally or before building the app. Add the `_redirects` file to the build folder before deploying.
 
 <a id="misc"></a>
 
@@ -257,13 +257,13 @@ Note to self: Make sure you change the environment variable on the frontend to t
 
 # Future Updates
 
-I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, include food and water weight, and possibly a few other things. This may require some semi-major reworking. On the backend, the models would be easy to add to, but on the frontend there would need to be some new controls for the user in a few locations and I would have to handle the data from the backend carefully.
+I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, and possibly a few other things. This may require some semi-major reworking. On the backend, the models would be easy to add to, but on the frontend there would need to be some new controls for the user in a few locations and I would have to handle the data from the backend carefully.
 
 Right now the checklists don't do much on their own - it would be nice to keep track of how many times a user used the list or have some sort of exciting effect when they check everything off.
 
 If I were to open this up to the public, I might include a new page with tutorials on how to use the website. The homepage should also have more indication of what the app does with some videos or GIFs rather than just the text. I would also get a custom domain name.
 
-The first things I will add will probably be password resetting and recovery, then the ability to add water and food weight.
+The first things I will add will probably be password resetting and recovery.
 
 <a id="helpful"></a>
 
