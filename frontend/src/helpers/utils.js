@@ -1,6 +1,6 @@
 // css imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShirt, faBox, faScrewdriverWrench, faHandSparkles, faFireBurner, faTent, faMobile, faMountain, faBinoculars } from '@fortawesome/free-solid-svg-icons'
+import { faShirt, faBox, faScrewdriverWrench, faHandSparkles, faFireBurner, faTent, faMobile, faMountain, faBinoculars, faUtensils } from '@fortawesome/free-solid-svg-icons'
 
 
 // return weight as lbs and/or oz string
@@ -46,6 +46,12 @@ export const handleWeightNum = (weight) => {
   return {pounds, ounces}
 }
 
+// return Weight(lb) to Volume(L)
+export const weightToVolumeHelper = (value) => {
+  let volume = Math.round(((value / 2.2) + Number.EPSILON) * 100) / 100
+  return volume
+}
+
 // Order of gear categories with icons
 export const handleCategory = (category) => {
   switch (category) {
@@ -65,6 +71,8 @@ export const handleCategory = (category) => {
         return (<><FontAwesomeIcon icon={faMobile} /> Personal Item</>)
       case ("mountaineering"):
         return (<><FontAwesomeIcon icon={faMountain} /> Mountaineering</>)
+      case ("food-water"):
+        return (<><FontAwesomeIcon icon={faUtensils} /> Food/Water</>)
       case ("other"):
         return (<><FontAwesomeIcon icon={faBinoculars} /> Other</>)
       default:

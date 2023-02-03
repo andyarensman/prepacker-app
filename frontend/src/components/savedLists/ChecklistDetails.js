@@ -41,7 +41,7 @@ const ChecklistDetails = ({ checklist }) => {
     <div className={ChecklistDetailsCSS.checklistDetails}>
       <Link to={"/saved-lists/" + checklist._id}><h3>{checklist.checklist_name}</h3></Link>
       <p><strong>Total Items: </strong>{checklist.gear_items.length}</p>
-      <p><strong>Total Weight: </strong>{listWeight || "N/A"}</p>
+      <p><strong>Pack Weight: </strong>{listWeight || "N/A"}</p>
       {checklist.checklist_notes && <p><strong>Notes: </strong>{checklist.checklist_notes}</p>}
       <p><strong>Gear: </strong>{gearNames.join(" · ") || "None"}</p>
       <p>{formatDistanceToNow(new Date(checklist.createdAt), { addSuffix: true })}</p>

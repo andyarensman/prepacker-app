@@ -97,6 +97,24 @@
   word-break: break-word;
 }
 
+.waterWeight {
+  display: grid;
+  grid-template-columns: 142px 70px 15px 70px 15px;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.foodWeight {
+  display: grid;
+  grid-template-columns: 83px 70px 15px;
+  gap: 10px;
+  margin-bottom: 21px;
+}
+
+.waterWeight label, .foodWeight label {
+  align-self: center;
+}
+
 .saveList, .saveCopy {
   margin-top: 15px; 
 }
@@ -124,7 +142,7 @@ button.deleteList {
 }
 
 .listName, .listTextarea {
-  width: 325px;
+  width: 350px;
   box-sizing: border-box;
 }
 

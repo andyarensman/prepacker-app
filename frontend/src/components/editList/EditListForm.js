@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // helpers, context
-import { findTotalWeight } from '../../helpers/utils'
+import { findTotalWeight, handleWeight, weightToVolumeHelper } from '../../helpers/utils'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useClosetContext } from '../../hooks/useClosetContext'
 import { useLogout } from '../../hooks/useLogout'
@@ -11,6 +11,10 @@ import { useLogout } from '../../hooks/useLogout'
 import NewListCSS from '../../styles/newList/newList.module.css'
 
 const EditListForm = ( { id, checklist, gear, setGear } ) => {
+  const [water_weight, setWaterWeight] = useState(checklist.water_weight)
+  const [water_volume, setWaterVolume] = useState(weightToVolumeHelper(checklist.water_weight))
+  const [food_weight, setFoodWeight] = useState(checklist.food_weight)
+
   const [checklist_name, setChecklistName] = useState(checklist.checklist_name)
   const [checklist_notes, setChecklistNotes] = useState(checklist.checklist_notes)
   const [error, setError] = useState(null)
@@ -42,7 +46,15 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
 
     const response = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist', {
       method: 'PATCH',
-      body: JSON.stringify({ multi: false, id, checklist_name, checklist_notes, gear_items: updated_checklist}),
+      body: JSON.stringify({
+        multi: false,
+        id,
+        water_weight,
+        food_weight,
+        checklist_name,
+        checklist_notes,
+        gear_items: updated_checklist
+      }),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`
@@ -78,7 +90,13 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
 
     const gear_items = gear.map(x => x._id)
 
-    const newChecklist = {checklist_name, gear_items, checklist_notes}
+    const newChecklist = {
+      water_weight,
+      food_weight,
+      checklist_name,
+      gear_items,
+      checklist_notes
+    }
 
     const response = await fetch(process.env.REACT_APP_BACKEND + '/api/checklist', {
       method: 'POST',
@@ -111,13 +129,94 @@ const EditListForm = ( { id, checklist, gear, setGear } ) => {
     }
   }
 
+  // Handle Weight(lb) to Volume(L)
+  const weightToVolume = (e) => {
+    e.preventDefault()
+    setWaterWeight(e.target.value)
+    let volume = Math.round(((e.target.value / 2.2) + Number.EPSILON) * 100) / 100
+    setWaterVolume(volume)
+  }
+
+  // Handle Volume(L) to Weight(lb)
+    //multiple the volume by 33.814
+  const volumeToWeight = (e) => {
+    e.preventDefault()
+    setWaterVolume(e.target.value)
+    let weight = Math.round(((e.target.value * 2.2) + Number.EPSILON) * 100) / 100
+    setWaterWeight(weight)
+  }
+
+  // Handle Total Weight
+  const getTotalWeight = () => {
+    //first get the weight (in ounces of all the gear)
+    let totalWeight = 0
+
+    gear.map(gears => {
+      if (gears.weight) {
+        totalWeight += gears.weight
+      }
+      return totalWeight
+    })
+
+    //add the water weight after converting it to ounces
+    totalWeight += (water_weight * 16)
+
+    //add the food weight
+    totalWeight += (food_weight * 16)
+
+    //convert to the string using the helper method
+    return (handleWeight(totalWeight))
+  }
+
   return ( 
     <>
       <form className="create-checklist">
         <br />
         <p>
-          <b>Total Weight: <i className="weight-italics">{findTotalWeight(gear)}</i></b>
+          <b>Pack Weight: <i className="weight-italics">{findTotalWeight(gear)}</i></b>
         </p>
+
+        <div className={NewListCSS.waterWeight}>
+          <label>Water Volume/Weight:</label>
+          <input 
+            type="number"
+            onChange={(e) => volumeToWeight(e)}
+            value={water_volume}
+            id="water-volume"
+            min="0"
+            step="0.01"
+          />
+          <label htmlFor='water-volume'>L</label>
+          <input 
+            type="number"
+            onChange={(e) => weightToVolume(e)}
+            value={water_weight}
+            id="water-weight"
+            min="0"
+            step="0.01"
+          />
+          <label htmlFor='water-weight'>lb</label>
+        </div>
+
+        <div className={NewListCSS.foodWeight}>
+          <label>Food Weight:</label>
+          <input 
+            type="number"
+            onChange={(e) => setFoodWeight(e.target.value)}
+            value={food_weight}
+            id="food-weight"
+            min="0"
+            step="0.01"
+          />
+          <label htmlFor='food-weight'>lb</label>
+        </div>
+
+        <hr style={{width: "350px", marginLeft: "0"}}/>
+        <p>
+          <b>Total Weight: <i className="weight-italics">{getTotalWeight()}</i></b>
+        </p>
+        {/* <hr /> */}
+
         <br/>
         <label htmlFor='name'>Edit Checklist Name</label>
         <input
