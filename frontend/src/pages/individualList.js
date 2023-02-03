@@ -24,6 +24,12 @@ const IndividualList = () => {
   const [food_weight, setFoodWeight] = useState(null)
   const [total_weight, setTotalWeight] = useState(null)
   const [hiddenDeleteModal, setHiddenDeleteModal] = useState(true)
+
+  const [foodWaterCount, setFoodWaterCount] = useState(0)
+  const [foodWaterCheck, setFoodWaterCheck] = useState(0)
+  const [foodChecked, setFoodChecked] = useState(false)
+  const [waterChecked, setWaterChecked] = useState(false)
+
   const { closet, checklists }= useClosetContext()
 
   let { id } = useParams()
@@ -49,18 +55,25 @@ const IndividualList = () => {
         setListWeight(findTotalWeight(tempWeightArr))
       }
 
+      // Keep track if there is food or water
+      let foodWaterCountTemp = 0
+
       let waterWeight = 0
       if (tempChecklist.water_weight && closet) {
         waterWeight = tempChecklist.water_weight
         let volume = Math.round(((waterWeight / 2.2) + Number.EPSILON) * 100) / 100
         setWaterVolume(volume)
+        foodWaterCountTemp++
       }
 
       let foodWeight = 0
       if (tempChecklist.food_weight && closet) {
         foodWeight = tempChecklist.food_weight
         setFoodWeight(foodWeight)
+        foodWaterCountTemp++
       }
+
+      setFoodWaterCount(foodWaterCountTemp)
 
       // If there's food and/or water, get total weight
       if (tempChecklist.gear_items && (waterWeight > 0 || foodWeight > 0)) {
@@ -87,6 +100,28 @@ const IndividualList = () => {
     }
     
   }, [checklists, id, closet])
+
+  //food click
+  const handleFoodClick = () => {
+    if (foodChecked) {
+      setFoodChecked(false)
+      setFoodWaterCheck(foodWaterCheck - 1)
+    } else {
+      setFoodChecked(true)
+      setFoodWaterCheck(foodWaterCheck + 1)
+    }
+  }
+
+  //water click
+  const handleWaterClick = () => {
+    if (waterChecked) {
+      setWaterChecked(false)
+      setFoodWaterCheck(foodWaterCheck - 1)
+    } else {
+      setWaterChecked(true)
+      setFoodWaterCheck(foodWaterCheck + 1)
+    }
+  }
 
   return (
     <div>
@@ -146,8 +181,6 @@ const IndividualList = () => {
                 </p>
               </>
             )}
-            
-            
           </>
         )}
       </div>
@@ -167,23 +200,28 @@ const IndividualList = () => {
           )}
           {(food_weight || water_volume) && (
             <div className={SLDetailsCSS.category}>
-              <h3>{handleCategory("food-water")} <span>(?/?)</span></h3>
+              <h3>{handleCategory("food-water")} <span>({foodWaterCheck}/{foodWaterCount})</span></h3>
               {food_weight && (
                 <div className={SLDetailsCSS.gearItem}>
-                  <span className="material-symbols-outlined cancel no-select">check_box_outline_blank</span>
+                  <span
+                    className="material-symbols-outlined cancel no-select"
+                    onClick={() => handleFoodClick()}
+                  >{foodChecked ? 'check_box' : 'check_box_outline_blank'}</span>
                   food <i className="weight-italics">{food_weight} lb</i>
                 </div>
               )}
               {water_volume && (
                 <div className={SLDetailsCSS.gearItem}>
-                  <span className="material-symbols-outlined cancel no-select">check_box_outline_blank</span>
+                  <span
+                    className="material-symbols-outlined cancel no-select"
+                    onClick={() => handleWaterClick()}
+                  >{waterChecked ? 'check_box' : 'check_box_outline_blank'}</span>
                   water <i className="weight-italics">{water_volume} L</i>
                 </div>
               )}
             </div>
           )}
         </>
-        
       </div>
     </div>
    );
