@@ -30,6 +30,8 @@ const IndividualList = () => {
   const [foodChecked, setFoodChecked] = useState(false)
   const [waterChecked, setWaterChecked] = useState(false)
 
+  const [totalBagCount, setTotalBagCount] = useState(0)
+
   const { closet, checklists }= useClosetContext()
 
   let { id } = useParams()
@@ -193,11 +195,6 @@ const IndividualList = () => {
               gear={gear}
             />         
           ))}
-          {checklist && checklist.checklist_notes && (
-            <p className={SLDetailsCSS.notes}>
-              <strong>Notes: </strong>{checklist.checklist_notes}
-            </p>
-          )}
           {(food_weight || water_volume) && (
             <div className={SLDetailsCSS.category}>
               <h3>{handleCategory("food-water")} <span>({foodWaterCheck}/{foodWaterCount})</span></h3>
@@ -220,6 +217,11 @@ const IndividualList = () => {
                 </div>
               )}
             </div>
+          )}
+          {checklist && checklist.checklist_notes && (
+            <p className={SLDetailsCSS.notes}>
+              <strong>Notes: </strong>{checklist.checklist_notes}
+            </p>
           )}
         </>
       </div>
