@@ -33,7 +33,7 @@ const IndividualList = () => {
   const [totalBagCount, setTotalBagCount] = useState(0)
 
   const { closet, checklists }= useClosetContext()
-
+  
   let { id } = useParams()
   const navigate = useNavigate()
 
@@ -108,9 +108,11 @@ const IndividualList = () => {
     if (foodChecked) {
       setFoodChecked(false)
       setFoodWaterCheck(foodWaterCheck - 1)
+      setTotalBagCount(totalBagCount - 1)
     } else {
       setFoodChecked(true)
       setFoodWaterCheck(foodWaterCheck + 1)
+      setTotalBagCount(totalBagCount + 1)
     }
   }
 
@@ -119,9 +121,11 @@ const IndividualList = () => {
     if (waterChecked) {
       setWaterChecked(false)
       setFoodWaterCheck(foodWaterCheck - 1)
+      setTotalBagCount(totalBagCount - 1)
     } else {
       setWaterChecked(true)
       setFoodWaterCheck(foodWaterCheck + 1)
+      setTotalBagCount(totalBagCount + 1)
     }
   }
 
@@ -193,6 +197,8 @@ const IndividualList = () => {
               category={e}
               key={e}
               gear={gear}
+              totalBagCount={totalBagCount}
+              setTotalBagCount={setTotalBagCount}
             />         
           ))}
           {(food_weight || water_volume) && (
@@ -223,6 +229,7 @@ const IndividualList = () => {
               <strong>Notes: </strong>{checklist.checklist_notes}
             </p>
           )}
+          <p>{totalBagCount}</p> {/*! FOR TESTING - DELETE LATER */}
         </>
       </div>
     </div>
