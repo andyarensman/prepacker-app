@@ -31,6 +31,7 @@ const IndividualList = () => {
   const [waterChecked, setWaterChecked] = useState(false)
 
   const [totalBagCount, setTotalBagCount] = useState(0)
+  const [totalBagCheck, setTotalBagCheck] = useState(0)
 
   const { closet, checklists }= useClosetContext()
   
@@ -44,6 +45,7 @@ const IndividualList = () => {
       setChecklist(tempChecklist)
 
       let tempWeightArr = []
+      let tempTotalItems;
       if (tempChecklist.gear_items && closet) {
         let tempArray = []
         
@@ -55,6 +57,7 @@ const IndividualList = () => {
         })
         setGear(tempArray)
         setListWeight(findTotalWeight(tempWeightArr))
+        tempTotalItems = tempChecklist.gear_items.length
       }
 
       // Keep track if there is food or water
@@ -66,6 +69,7 @@ const IndividualList = () => {
         let volume = Math.round(((waterWeight / 2.2) + Number.EPSILON) * 100) / 100
         setWaterVolume(volume)
         foodWaterCountTemp++
+        tempTotalItems++
       }
 
       let foodWeight = 0
@@ -73,6 +77,7 @@ const IndividualList = () => {
         foodWeight = tempChecklist.food_weight
         setFoodWeight(foodWeight)
         foodWaterCountTemp++
+        tempTotalItems++
       }
 
       setFoodWaterCount(foodWaterCountTemp)
@@ -94,6 +99,8 @@ const IndividualList = () => {
 
         //convert to the string using the helper method
         setTotalWeight(handleWeight(totalWeight))
+
+        setTotalBagCount(tempTotalItems)
       }
     }
     
@@ -108,11 +115,11 @@ const IndividualList = () => {
     if (foodChecked) {
       setFoodChecked(false)
       setFoodWaterCheck(foodWaterCheck - 1)
-      setTotalBagCount(totalBagCount - 1)
+      setTotalBagCheck(totalBagCheck - 1)
     } else {
       setFoodChecked(true)
       setFoodWaterCheck(foodWaterCheck + 1)
-      setTotalBagCount(totalBagCount + 1)
+      setTotalBagCheck(totalBagCheck + 1)
     }
   }
 
@@ -121,11 +128,11 @@ const IndividualList = () => {
     if (waterChecked) {
       setWaterChecked(false)
       setFoodWaterCheck(foodWaterCheck - 1)
-      setTotalBagCount(totalBagCount - 1)
+      setTotalBagCheck(totalBagCheck - 1)
     } else {
       setWaterChecked(true)
       setFoodWaterCheck(foodWaterCheck + 1)
-      setTotalBagCount(totalBagCount + 1)
+      setTotalBagCheck(totalBagCheck + 1)
     }
   }
 
@@ -197,8 +204,8 @@ const IndividualList = () => {
               category={e}
               key={e}
               gear={gear}
-              totalBagCount={totalBagCount}
-              setTotalBagCount={setTotalBagCount}
+              totalBagCheck={totalBagCheck}
+              setTotalBagCheck={setTotalBagCheck}
             />         
           ))}
           {(food_weight || water_volume) && (
@@ -229,7 +236,7 @@ const IndividualList = () => {
               <strong>Notes: </strong>{checklist.checklist_notes}
             </p>
           )}
-          <p>{totalBagCount}</p> {/*! FOR TESTING - DELETE LATER */}
+          <p>{totalBagCheck}/{totalBagCount}</p> {/*! FOR TESTING - DELETE LATER */}
         </>
       </div>
     </div>

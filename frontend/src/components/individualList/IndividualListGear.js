@@ -6,18 +6,18 @@ import { handleWeight } from '../../helpers/utils'
 // css modules
 import SLDetailsCSS from "../../styles/individualList/individualList.module.css"
 
-const IndividualListGear = ({ gearItem, gearCheck, setGearCheck, totalBagCount, setTotalBagCount }) => {
+const IndividualListGear = ({ gearItem, gearCheck, setGearCheck, totalBagCheck, setTotalBagCheck }) => {
   const [isChecked, setIsChecked] = useState(false)
 
   const handleClick = () => {
     if (isChecked) {
       setIsChecked(false)
       setGearCheck(gearCheck - 1)
-      setTotalBagCount(totalBagCount - 1)
+      setTotalBagCheck(totalBagCheck - 1)
     } else {
       setIsChecked(true)
       setGearCheck(gearCheck + 1)
-      setTotalBagCount(totalBagCount + 1)
+      setTotalBagCheck(totalBagCheck + 1)
     }
   }
 

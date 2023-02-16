@@ -10,7 +10,7 @@ import { handleCategory } from '../../helpers/utils'
 import SLDetailsCSS from '../../styles/individualList/individualList.module.css'
 
 
-const IndividualListGearCategory = ({ category, gear, totalBagCount, setTotalBagCount }) => {
+const IndividualListGearCategory = ({ category, gear, totalBagCheck, setTotalBagCheck }) => {
   const [gearCount, setGearCount] = useState(0)
   const [gearCheck, setGearCheck] = useState(0);
 
@@ -35,10 +35,10 @@ const IndividualListGearCategory = ({ category, gear, totalBagCount, setTotalBag
               <IndividualListGear 
                 key={gearItem._id} 
                 gearItem={gearItem}
+                totalBagCheck={totalBagCheck}
+                setTotalBagCheck={setTotalBagCheck}
                 gearCheck={gearCheck}
                 setGearCheck={setGearCheck}
-                totalBagCount={totalBagCount}
-                setTotalBagCount={setTotalBagCount}
               />
           })}
         </div>
