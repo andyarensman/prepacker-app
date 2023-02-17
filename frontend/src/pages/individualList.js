@@ -237,6 +237,10 @@ const IndividualList = () => {
             </p>
           )}
           <p>{totalBagCheck}/{totalBagCount}</p> {/*! FOR TESTING - DELETE LATER */}
+          <button
+            className={SLDetailsCSS.button}
+            disabled={totalBagCheck !== totalBagCount}
+            >{(totalBagCheck === totalBagCount) ? "I'm all packed!": `${totalBagCount - totalBagCheck} item(s) left`}</button>
         </>
       </div>
     </div>
