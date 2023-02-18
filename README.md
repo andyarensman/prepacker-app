@@ -272,5 +272,4 @@ The first things I will add will probably be password resetting and recovery.
 - [The Net Ninja](https://www.youtube.com/c/TheNetNinja) YouTube channel
 - ['Learn CORS In 6 Minutes'](https://www.youtube.com/watch?v=PNtFSVU-YTI) from the [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified) YouTube channel
 - ['Free Heroku Alternatives'](https://github.com/DmitryScaletta/free-heroku-alternatives) by Dimitry Scaletta
-- [How to bypass CORS and Scrap any Websites using Javascript (Serverless)](https://medium.com/@charlyyy/how-to-bypass-cors-and-scrap-any-websites-using-javascript-serverless-76115eeecddd) by 
-Charly Berthet
+- [How to bypass CORS and Scrap any Websites using Javascript (Serverless)](https://medium.com/@charlyyy/how-to-bypass-cors-and-scrap-any-websites-using-javascript-serverless-76115eeecddd) by Charly Berthet
