@@ -251,7 +251,7 @@ Note to self: Make sure you change the environment variable on the frontend to t
 
 - In order to use local storage to set state, I had to disable Strict Mode in the index.js. I may add it back in later to make sure I don't have any problems.
 - Make sure to use array.forEach instead of array.map if you don't have a return value.
-- I'm using axios, bcrypt, cheerio, dotenv, express, jsonwebtoken, mongoose, and validator on the backend and fontawesome, date-fns, react, and react-router-dom on the frontend.
+- I'm using axios, bcrypt, cheerio, dotenv, express, jsonwebtoken, mongoose, and validator on the backend and font awesome, date-fns, react, and react-router-dom on the frontend.
 
 <a id="future"></a>
 
