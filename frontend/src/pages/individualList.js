@@ -14,6 +14,7 @@ import { useClosetContext } from '../hooks/useClosetContext'
 
 //css modules
 import SLDetailsCSS from '../styles/individualList/individualList.module.css'
+import FanfareModal from '../components/individualList/FanfareModal'
 
 
 const IndividualList = () => {
@@ -32,6 +33,8 @@ const IndividualList = () => {
 
   const [totalBagCount, setTotalBagCount] = useState(0)
   const [totalBagCheck, setTotalBagCheck] = useState(0)
+
+  const [hiddenModal, setHiddenModal] = useState(true)
 
   const { closet, checklists }= useClosetContext()
   
@@ -240,9 +243,14 @@ const IndividualList = () => {
           <button
             className={SLDetailsCSS.button}
             disabled={totalBagCheck !== totalBagCount}
+            onClick={() => setHiddenModal(false)}
             >{(totalBagCheck === totalBagCount) ? "I'm all packed!": `${totalBagCount - totalBagCheck} item(s) left`}</button>
         </>
       </div>
+      <FanfareModal
+        hiddenModal={hiddenModal}
+        setHiddenModal={setHiddenModal}
+      />
     </div>
    );
 }
