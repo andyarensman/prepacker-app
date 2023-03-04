@@ -1,5 +1,6 @@
 // css modules
 import ModalCSS from '../../styles/gearCloset/EditGearModal.module.css'
+import mtnsGroup from '../../images/mtns-group.png'
 
 const FanfareModal = ({ hiddenModal, setHiddenModal }) => {
 
@@ -22,6 +23,7 @@ const FanfareModal = ({ hiddenModal, setHiddenModal }) => {
               onClick={() => setHiddenModal(true)}
             >&times;</span>
             <h2>Have a Great Trip!</h2>
+            <img src={mtnsGroup} alt="Mountains"></img>
           </div>
         </div>
       )}
