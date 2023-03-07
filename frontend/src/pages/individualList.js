@@ -103,8 +103,8 @@ const IndividualList = () => {
         //convert to the string using the helper method
         setTotalWeight(handleWeight(totalWeight))
 
-        setTotalBagCount(tempTotalItems)
       }
+      setTotalBagCount(tempTotalItems)
     }
     
     if (checklists && closet) {
