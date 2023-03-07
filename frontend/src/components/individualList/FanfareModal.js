@@ -22,8 +22,12 @@ const FanfareModal = ({ hiddenModal, setHiddenModal }) => {
               className={ModalCSS.close}
               onClick={() => setHiddenModal(true)}
             >&times;</span>
-            <h2>Have a Great Trip!</h2>
-            <img src={mtnsGroup} alt="Mountains"></img>
+            <h2 className={ModalCSS.fanfareCenter}>Have a Great Trip!</h2>
+            <img 
+              className={ModalCSS.fanfareImage}
+              src={mtnsGroup}
+              alt="Mountains"
+            ></img>
           </div>
         </div>
       )}
