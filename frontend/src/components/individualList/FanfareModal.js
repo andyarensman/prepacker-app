@@ -17,7 +17,7 @@ const FanfareModal = ({ hiddenModal, setHiddenModal }) => {
     <>
       {!hiddenModal && (
         <div className={ModalCSS.modal} onClick={(e) => closeWindow(e)}>
-          <div className={ModalCSS.modalContent}>
+          <div className={ModalCSS.modalFanfareContent}>
             <span
               className={ModalCSS.close}
               onClick={() => setHiddenModal(true)}

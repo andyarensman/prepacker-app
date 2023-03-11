@@ -30,6 +30,14 @@
   border: 1px solid #888;
   width: 250px; /*! This needs to change*/
 }
+.modalFanfareContent {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 500px;
+}
 
 /* The Close Button */
 .close {
@@ -143,5 +151,8 @@
 @media screen and (max-width: 768px) { 
   .modal {
     padding-top: 80px;
+  }
+  .modalFanfareContent {
+    max-width: 400px;
   }
 }
