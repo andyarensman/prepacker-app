@@ -84,8 +84,7 @@
   margin-bottom: 25px;
 }
 
-/* Delete */
-
+/* Delete Modal */
 
 .modalDeleteContent {
   background-color: #f1f1f1;
@@ -128,8 +127,39 @@
   padding-top: 2px;
 }
 
+/* Fanfare Modal*/
+.modalFanfareContent {
+  /* background-color: #f1f1f1; */
+  background-image: url("../../images/fanfare.png");
+  background-position: center;
+  border-radius: 20px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 502px;
+  height: 282px;
+  box-sizing: border-box;
+}
+.fanfareTitle {
+  text-align: center;
+  font-size: 36px;
+  font-style: italic;
+  margin-top: 60px;
+}
+
+.fanfareImage {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media screen and (max-width: 768px) { 
   .modal {
     padding-top: 80px;
+  }
+  .modalFanfareContent {
+    max-width: 300px;
   }
 }

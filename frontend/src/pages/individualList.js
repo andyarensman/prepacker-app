@@ -14,6 +14,7 @@ import { useClosetContext } from '../hooks/useClosetContext'
 
 //css modules
 import SLDetailsCSS from '../styles/individualList/individualList.module.css'
+import FanfareModal from '../components/individualList/FanfareModal'
 
 
 const IndividualList = () => {
@@ -30,8 +31,13 @@ const IndividualList = () => {
   const [foodChecked, setFoodChecked] = useState(false)
   const [waterChecked, setWaterChecked] = useState(false)
 
-  const { closet, checklists }= useClosetContext()
+  const [totalBagCount, setTotalBagCount] = useState(0)
+  const [totalBagCheck, setTotalBagCheck] = useState(0)
 
+  const [hiddenModal, setHiddenModal] = useState(true)
+
+  const { closet, checklists }= useClosetContext()
+  
   let { id } = useParams()
   const navigate = useNavigate()
 
@@ -42,6 +48,7 @@ const IndividualList = () => {
       setChecklist(tempChecklist)
 
       let tempWeightArr = []
+      let tempTotalItems;
       if (tempChecklist.gear_items && closet) {
         let tempArray = []
         
@@ -53,6 +60,7 @@ const IndividualList = () => {
         })
         setGear(tempArray)
         setListWeight(findTotalWeight(tempWeightArr))
+        tempTotalItems = tempChecklist.gear_items.length
       }
 
       // Keep track if there is food or water
@@ -64,6 +72,7 @@ const IndividualList = () => {
         let volume = Math.round(((waterWeight / 2.2) + Number.EPSILON) * 100) / 100
         setWaterVolume(volume)
         foodWaterCountTemp++
+        tempTotalItems++
       }
 
       let foodWeight = 0
@@ -71,6 +80,7 @@ const IndividualList = () => {
         foodWeight = tempChecklist.food_weight
         setFoodWeight(foodWeight)
         foodWaterCountTemp++
+        tempTotalItems++
       }
 
       setFoodWaterCount(foodWaterCountTemp)
@@ -92,7 +102,9 @@ const IndividualList = () => {
 
         //convert to the string using the helper method
         setTotalWeight(handleWeight(totalWeight))
+
       }
+      setTotalBagCount(tempTotalItems)
     }
     
     if (checklists && closet) {
@@ -106,9 +118,11 @@ const IndividualList = () => {
     if (foodChecked) {
       setFoodChecked(false)
       setFoodWaterCheck(foodWaterCheck - 1)
+      setTotalBagCheck(totalBagCheck - 1)
     } else {
       setFoodChecked(true)
       setFoodWaterCheck(foodWaterCheck + 1)
+      setTotalBagCheck(totalBagCheck + 1)
     }
   }
 
@@ -117,9 +131,11 @@ const IndividualList = () => {
     if (waterChecked) {
       setWaterChecked(false)
       setFoodWaterCheck(foodWaterCheck - 1)
+      setTotalBagCheck(totalBagCheck - 1)
     } else {
       setWaterChecked(true)
       setFoodWaterCheck(foodWaterCheck + 1)
+      setTotalBagCheck(totalBagCheck + 1)
     }
   }
 
@@ -191,13 +207,10 @@ const IndividualList = () => {
               category={e}
               key={e}
               gear={gear}
+              totalBagCheck={totalBagCheck}
+              setTotalBagCheck={setTotalBagCheck}
             />         
           ))}
-          {checklist && checklist.checklist_notes && (
-            <p className={SLDetailsCSS.notes}>
-              <strong>Notes: </strong>{checklist.checklist_notes}
-            </p>
-          )}
           {(food_weight || water_volume) && (
             <div className={SLDetailsCSS.category}>
               <h3>{handleCategory("food-water")} <span>({foodWaterCheck}/{foodWaterCount})</span></h3>
@@ -221,8 +234,23 @@ const IndividualList = () => {
               )}
             </div>
           )}
+          {checklist && checklist.checklist_notes && (
+            <p className={SLDetailsCSS.notes}>
+              <strong>Notes: </strong>{checklist.checklist_notes}
+            </p>
+          )}
+          <p>{totalBagCheck}/{totalBagCount}</p> {/*! FOR TESTING - DELETE LATER */}
+          <button
+            className={SLDetailsCSS.button}
+            disabled={totalBagCheck !== totalBagCount}
+            onClick={() => setHiddenModal(false)}
+            >{(totalBagCheck === totalBagCount) ? "I'm all packed!": `${totalBagCount - totalBagCheck} item(s) left`}</button>
         </>
       </div>
+      <FanfareModal
+        hiddenModal={hiddenModal}
+        setHiddenModal={setHiddenModal}
+      />
     </div>
    );
 }

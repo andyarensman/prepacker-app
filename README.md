@@ -243,7 +243,7 @@ I also needed to use [environmental variables](https://create-react-app.dev/docs
 
 Once the site was running on Netlify, I wasn't able to refresh a page without the app crashing. The routes also wouldn't work when manually typing them in. In order to get around this, you need to have a `_redirects` file with `/*    /index.html   200`. I put this file into my build folder. If I create another build, I will have to do this again manually. I think this file needs to be created because React is a single page application and Netlify thinks you are going to a different file when you type in a different route.
 
-Note to self: Make sure you change the environment variable on the frontend to the correct route before trying to run the app locally or before building the app. Add the `_redirects` file to the build folder before deploying.
+Note: Make sure you change the environment variable on the frontend to the correct route before trying to run the app locally or before building the app. Add the `_redirects` file to the build folder before deploying.
 
 <a id="misc"></a>
 
@@ -251,15 +251,15 @@ Note to self: Make sure you change the environment variable on the frontend to t
 
 - In order to use local storage to set state, I had to disable Strict Mode in the index.js. I may add it back in later to make sure I don't have any problems.
 - Make sure to use array.forEach instead of array.map if you don't have a return value.
-- I'm using axios, bcrypt, cheerio, dotenv, express, jsonwebtoken, mongoose, and validator on the backend and fontawesome, date-fns, react, and react-router-dom on the frontend.
+- I'm using axios, bcrypt, cheerio, dotenv, express, jsonwebtoken, mongoose, and validator on the backend and font awesome, date-fns, react, and react-router-dom on the frontend.
 
 <a id="future"></a>
 
 # Future Updates
 
-I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, and possibly a few other things. This may require some semi-major reworking. On the backend, the models would be easy to add to, but on the frontend there would need to be some new controls for the user in a few locations and I would have to handle the data from the backend carefully.
+I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, and possibly a few other things. This may require some semi-major reworking. On the backend, the models would be easy to add to, but on the frontend there would need to be some new controls for the user in a few locations and I would have to handle the data from the backend carefully. It may be nice to have custom categories at some point as well.
 
-Right now the checklists don't do much on their own - it would be nice to keep track of how many times a user used the list or have some sort of exciting effect when they check everything off.
+Right now the checklists don't do much on their own - it would be nice to keep track of how many times a user used the list.
 
 If I were to open this up to the public, I might include a new page with tutorials on how to use the website. The homepage should also have more indication of what the app does with some videos or GIFs rather than just the text. I would also get a custom domain name.
 
@@ -272,5 +272,4 @@ The first things I will add will probably be password resetting and recovery.
 - [The Net Ninja](https://www.youtube.com/c/TheNetNinja) YouTube channel
 - ['Learn CORS In 6 Minutes'](https://www.youtube.com/watch?v=PNtFSVU-YTI) from the [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified) YouTube channel
 - ['Free Heroku Alternatives'](https://github.com/DmitryScaletta/free-heroku-alternatives) by Dimitry Scaletta
-- [How to bypass CORS and Scrap any Websites using Javascript (Serverless)](https://medium.com/@charlyyy/how-to-bypass-cors-and-scrap-any-websites-using-javascript-serverless-76115eeecddd) by 
-Charly Berthet
+- [How to bypass CORS and Scrap any Websites using Javascript (Serverless)](https://medium.com/@charlyyy/how-to-bypass-cors-and-scrap-any-websites-using-javascript-serverless-76115eeecddd) by Charly Berthet
