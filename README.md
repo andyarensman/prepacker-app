@@ -243,7 +243,7 @@ I also needed to use [environmental variables](https://create-react-app.dev/docs
 
 Once the site was running on Netlify, I wasn't able to refresh a page without the app crashing. The routes also wouldn't work when manually typing them in. In order to get around this, you need to have a `_redirects` file with `/*    /index.html   200`. I put this file into my build folder. If I create another build, I will have to do this again manually. I think this file needs to be created because React is a single page application and Netlify thinks you are going to a different file when you type in a different route.
 
-Note: Make sure you change the environment variable on the frontend to the correct route before trying to run the app locally or before building the app. Add the `_redirects` file to the build folder before deploying.
+Note: Make sure you change the environment variable on the frontend to the correct route before trying to run the app locally or before building the app. Add the `_redirects` file to the build folder before deploying. I may need to change the version of Node I'm using when working on this project (v14).
 
 <a id="misc"></a>
 
