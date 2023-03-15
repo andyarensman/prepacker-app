@@ -10,7 +10,7 @@ The goal of this project was to make a MERN fullstack app for use as a portfolio
 
 There are three main pages: the closet, the checklist creator, and the saved lists page. On the closet page, users can see all the equipment they have uploaded with more detail compared to the PrePacker page including price, weight, personal notes, and links to where they bought the items. They can upload and edit information about their gear here. The checklist creator page is where users select gear to make a custom checklist for their trips. Users can save these lists and access them on the saved lists page.
 
-The project is almost complete, I just need to add a few more features such as the password recovery.
+The project is usable in it's current state, but I will continue to update it with new features and fixes.
 
 ## Table of Contents
 
