@@ -53,6 +53,8 @@ Here is an example of a user creating a new checklist. You can see new items bei
 
 ![Example Create Checklist](https://i.imgur.com/Eg7UaJZ.gif)
 
+The latest version also includes water and food weight.
+
 
 <a id="adding"></a>
 
