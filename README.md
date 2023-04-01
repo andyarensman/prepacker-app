@@ -144,7 +144,9 @@ I have three Mongoose models:
 
     const checklistSchema = new Schema({
       checklist_name: { type: String, required: true },
-      gear_items: [String], //Array of _id's
+      gear_items: [String], // Array of _id's
+      water_weight: Number, // in lb
+      food_weight: Number, // in lb
       checklist_notes: String,
       user_id: { type: String, required: true }
     }, { timestamps: true })
