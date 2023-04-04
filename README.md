@@ -160,7 +160,7 @@ The `gearSchema` and `checklistSchema` both reference the `userSchema` via a `us
 
 ## Controllers and Routing
 
-The controlling and routing is fairly simple - I basically just needed to be able to talk with MongoDB. The most complicated thing was the web scrapper, which is discussed below.
+The controlling and routing is fairly simple - I mostly just needed to be able to talk with MongoDB. The most complicated thing was the web scrapper, which is discussed below.
 
 
 <a id="web"></a>
