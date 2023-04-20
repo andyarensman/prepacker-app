@@ -263,6 +263,8 @@ Note: Make sure you change the environment variable on the frontend to the corre
 
 I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, and possibly a few other things. This may require some semi-major reworking. On the backend, the models would be easy to add to, but on the frontend there would need to be some new controls for the user in a few locations and I would have to handle the data from the backend carefully. It may be nice to have custom categories at some point as well.
 
+I might reorder the tabs to "Gear Closet - New List - Saved List" since that is the order or using the app.
+
 Right now the checklists don't do much on their own other than congratulate users - it would be nice to keep track of how many times a user used the list.
 
 If I were to open this up to the public, I might include a new page with tutorials on how to use the website. The homepage should also have more indication of what the app does with some videos or GIFs rather than just the text. I would also get a custom domain name.
