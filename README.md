@@ -267,7 +267,7 @@ I might reorder the tabs to "Gear Closet - New List - Saved List" since that is 
 
 Right now the checklists don't do much on their own other than congratulate users - it would be nice to keep track of how many times a user used the list.
 
-If I were to open this up to the public, I might include a new page with tutorials on how to use the website. The homepage should also have more indication of what the app does with some videos or GIFs rather than just the text. I would also get a custom domain name.
+If I were to open this up to the public, I might include a new page with tutorials on how to use the website. The homepage should also have more indication of what the app does with some videos or GIFs rather than just the text. I would also get a custom domain name. This may happen in the near future.
 
 The first things I will add will probably be password resetting and recovery.
 
