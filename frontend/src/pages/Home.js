@@ -15,7 +15,8 @@ import hikerGreenSnowy from "../images/hikers-green-snowy.jpg";
 import gearAll from "../images/gear-all.jpg";
 import tentSunset from "../images/tent-sunset.jpg";
 import mountaineer from "../images/mountaineer.jpg";
-import demo1 from "../images/demo2.gif";
+import demo1 from "../images/demo1.gif";
+import demo2 from "../images/demo2.gif";
 
 const Home = () => {
   const [hiddenSignup, setHiddenSignup] = useState(true);
@@ -75,7 +76,9 @@ const Home = () => {
       </div>
 
       <div className={HomeCSS.gifContainer}>
-        <img src={demo1} alt="Demo of the checklist creator" />
+        <div className={HomeCSS.gifInsideContainer}>
+          <img src={demo1} alt="Demo of the checklist creator" />
+        </div>
       </div>
 
       <div className={HomeCSS.gridContainer}>
@@ -94,6 +97,12 @@ const Home = () => {
           src={gearAll}
           alt="A backpacker's gear neatly organized on a wooden floor"
         />
+      </div>
+
+      <div className={HomeCSS.gifContainer}>
+        <div className={HomeCSS.gifInsideContainer}>
+          <img src={demo2} alt="Demo of the gear closet" />
+        </div>
       </div>
 
       <div className={HomeCSS.finalCall}>
