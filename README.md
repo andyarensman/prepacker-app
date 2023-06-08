@@ -55,7 +55,6 @@ Here is an example of a user creating a new checklist. You can see new items bei
 
 The latest version also includes water and food weight.
 
-
 <a id="adding"></a>
 
 ## Adding New Gear
@@ -63,7 +62,6 @@ The latest version also includes water and food weight.
 Here is an example of a user adding new gear to their closet:
 
 ![Example User Adding Gear](https://i.imgur.com/q0HrfX7.gif)
-
 
 <a id="scraper"></a>
 
@@ -73,7 +71,6 @@ Here is an example of the scraper in use. Any data found at the REI web address 
 
 ![Example Scraping](https://i.imgur.com/4s4mVma.gif)
 
-
 <a id="saved"></a>
 
 ## Saved Lists
@@ -81,7 +78,6 @@ Here is an example of the scraper in use. Any data found at the REI web address 
 A condensed version of each list is shown on the saved lists page. The user can view all their saved lists, edit the lists, delete, and 'save as' to create a copy of a list:
 
 ![Example of Saved List](https://i.imgur.com/zm38F5x.gif)
-
 
 <a id="landing"></a>
 
@@ -91,7 +87,6 @@ New users will be greeted with a landing page that describes what the app can do
 
 ![Example of the Landing Page 1](https://i.imgur.com/rw6tks3.png)
 ![Example of the Landing Page 2](https://i.imgur.com/3M6M2C0.png)
-
 
 <a id="other"></a>
 
@@ -107,7 +102,6 @@ Example of searching and sorting the gear:
 Example of the gear editor and delete windows:
 
 ![Example of the gear editor and delete windows](https://i.imgur.com/cDapgBW.gif)
-
 
 <a id="notes"></a>
 
@@ -155,13 +149,11 @@ The `checklistSchema` contains a `gear_items` property that is an array of `gear
 
 The `gearSchema` and `checklistSchema` both reference the `userSchema` via a `user_id` property. It is still unclear to me if there is any downside to using this relational database over Mongoose subdocuments. Is doing it this way causing any security or performance issues?
 
-
 <a id="control"></a>
 
 ## Controllers and Routing
 
 The controlling and routing is fairly simple - I mostly just needed to be able to talk with MongoDB. The most complicated thing was the web scrapper, which is discussed below.
-
 
 <a id="web"></a>
 
@@ -175,7 +167,6 @@ Originally I planned to scrape image urls and use those as images next to the ge
 
 The web scraper didn't work after deploying it. This was because of CORS. I had to run it through a proxy server in order to get it to work again. The first proxy, crossorigin.me, ended up not working - I think it might be out of date. I'm using the free tier of `scraperapi` now, but you only get 1000 free calls. The lowest tier pricing is $49/month, so I will have to either find a different solution or remove the scraper from the final version. I will probably opt to remove it because the feature is more of just a neat trick that only saves a little time for the user.
 
-
 <a id="auth"></a>
 
 ## Authentication
@@ -186,7 +177,6 @@ When the user returns to the website after previously being logged in, a `useEff
 
 If the token expires when the user is trying to post/edit/delete, the user will be logged out and sent back to the homepage. This is done by running a check on the response status - if it is `401`, the `logout` hook is fired. This may be confusing for the user, so if I make this project public, I will want to change it. It would be helpful to at least have a message for the user to read that would pop up on the homepage. Refresh tokens may also solve the problem.
 
-
 <a id="react"></a>
 
 ## React
@@ -194,7 +184,6 @@ If the token expires when the user is trying to post/edit/delete, the user will 
 One of my main goals with this project was to gain a better understanding of React. I had twenty components, six pages, and a few hooks that helped me get used to the syntax of React.
 
 I used React context for gear and checklist viewing, creating, deleting, and editing. This allowed for easier use in various components. I also used context for authentication.
-
 
 <a id="org"></a>
 
@@ -232,7 +221,6 @@ If a piece of gear does not contain data for the category being sorted, it will 
 - The PrePacker logo was made with Adobe's logo maker - very cool free software.
 - I decided to use css modules and keep them in a separate styles folder to help keep myself organized. I still kept the index.css file for some global things.
 
-
 <a id="deploy"></a>
 
 ## Deployment
@@ -262,8 +250,6 @@ Note: Make sure you change the environment variable on the frontend to the corre
 # Future Updates
 
 I may allow the user to upload photos, share their lists somehow, have container groupings, have a 'wearing' section that doesn't go towards the pack weight, and possibly a few other things. This may require some semi-major reworking. On the backend, the models would be easy to add to, but on the frontend there would need to be some new controls for the user in a few locations and I would have to handle the data from the backend carefully. It may be nice to have custom categories at some point as well.
-
-I might reorder the tabs to "Gear Closet - New List - Saved List" since that is the order or using the app.
 
 Right now the checklists don't do much on their own other than congratulate users - it would be nice to keep track of how many times a user used the list.
 
