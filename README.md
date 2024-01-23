@@ -1,25 +1,30 @@
 # PrePacker
+<a href="https://prepacker.netlify.app/"><img src="https://github.com/andyarensman/prepacker-app/assets/86622025/f7cff423-8779-47ba-895e-c5f0e8e997a5" alt="PrePacker Logo" width="300"/></a>
 
-## Introduction
+## Description
 
-This MERN stack app is a digital checklist aimed at backpackers looking to plan what they want to bring on their next trip. Users are able to login, upload gear data (manually or with a web scraper), create PrePacker checklists, and use the lists to help them pack. This is mainly aimed at backpackers, but could be used for any trip, or simply to keep track of what gear you own.
+This MERN stack app is a tool aimed at backpackers looking to plan what they want to bring on their next trip. Users are able to keep track of key details about what gear they own, create PrePacker checklists that include the total weight of their bags, and use the lists to help them pack. This is mainly aimed at backpackers, but could be used for any trip, or simply to digitally store information about equipment.
 
 [You can check out the app here](https://prepacker.netlify.app/). It was deployed on Netlify for the frontend and Adaptable for the backend.
 
-The goal of this project was to make a MERN fullstack app for use as a portfolio item. It includes authentication and web scraping amongst other things. My [previous project](https://github.com/andyarensman/Hiker-Tracker) was mostly backend, so my main focus here was to improve my React and CSS skills. However, I wanted a full MERN stack to practice having everything together.
+## Why?
 
-There are three main pages: the closet, the checklist creator, and the saved lists page. On the closet page, users can see all the equipment they have uploaded with more detail compared to the PrePacker page including price, weight, personal notes, and links to where they bought the items. They can upload and edit information about their gear here. The checklist creator page is where users select gear to make a custom checklist for their trips and see how much their pack will weigh. Users can save these lists and access them on the saved lists page.
+Packing for a trip can be stressful, so why not make it easier? With PrePacker, you will know:
+* exactly what you need to bring so you don't forget any essential items
+* how much everything weighs so you can efficiently find ways to lighten your load
+* what you brought on previous trips for quick reference
+* what did and didn't work by keeping notes in the app
 
-The project is usable in it's current state, but will continue to be updated with new features and fixes. The next feature will likely allow the user to reset their password. If the project is released to a wider audience, I will likely remove the web scraper as it can only be used a certain number of times per month (more on this below).
+PrePacker is your go-to solution for seamless, stress-free trip preparation.
 
 ## Table of Contents
 
 <ul>
   <li><a href="#demonstrations">Demonstrations</a></li>
   <ul>
-    <li><a href="#creating">Creating a New Checklist</a></li>
     <li><a href="#adding">Adding New Gear</a></li>
     <li><a href="#scraper">Using the Web Scraper to Add New Gear</a></li>
+    <li><a href="#creating">Creating a New Checklist</a></li>
     <li><a href="#saved">Saved Lists</a></li>
     <li><a href="#landing">Landing Page</a></li>
     <li><a href="#other">Other Features</a></li>
@@ -45,15 +50,9 @@ The project is usable in it's current state, but will continue to be updated wit
 
 # Demonstrations
 
-<a id="creating"></a>
+There are three main pages: the closet, the checklist creator, and the saved lists page. On the closet page, users can see all the equipment they have uploaded with more detail compared to the PrePacker page including price, weight, personal notes, and links to where they bought the items. Here they can upload (manually or with a web scraper) and edit information about their gear. The checklist creator page is where users select gear to make a custom checklist for their trips and see how much their pack will weigh. Users can save these lists and access them on the saved lists page.
 
-## Creating a New Checklist
-
-Here is an example of a user creating a new checklist. You can see new items being added and removed, the total weight being updated, and the list being saved:
-
-![Example Create Checklist](https://i.imgur.com/Eg7UaJZ.gif)
-
-The latest version also includes water and food weight.
+These features can be seen in action below.
 
 <a id="adding"></a>
 
@@ -70,6 +69,16 @@ Here is an example of a user adding new gear to their closet:
 Here is an example of the scraper in use. Any data found at the REI web address provided will be added to the fields. If data is not found for a specific field, it will be left blank. I may allow the user to scrape data from other websites in the future:
 
 ![Example Scraping](https://i.imgur.com/4s4mVma.gif)
+
+<a id="creating"></a>
+
+## Creating a New Checklist
+
+Here is an example of a user creating a new checklist. You can see new items being added and removed, the total weight being updated, and the list being saved:
+
+![Example Create Checklist](https://i.imgur.com/Eg7UaJZ.gif)
+
+The latest version also includes water and food weight.
 
 <a id="saved"></a>
 
